@@ -6,6 +6,7 @@ import { ThemeProvider } from "styled-components";
 import "./index.css";
 
 import Home from "./pages/home";
+import ArcticMemories from "./pages/arctic-memories";
 
 const router = createBrowserRouter([
   {
@@ -13,8 +14,8 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/about",
-    element: <div>About page!</div>,
+    path: "/arctic-memories",
+    element: <ArcticMemories />,
   },
 ]);
 

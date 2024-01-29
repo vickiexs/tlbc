@@ -1,4 +1,4 @@
-import IconLink from "../../atoms/icon-link";
+import IconLink from "../icon-link";
 
 import {
   StyledFooterWrapper,
