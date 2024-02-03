@@ -1,4 +1,4 @@
-export const headerQuery = `header->{
+export const headerFragment = `
   navItems[]->{
     label,
     link,
@@ -7,4 +7,4 @@ export const headerQuery = `header->{
       link
     }
   }
-}`
+`;

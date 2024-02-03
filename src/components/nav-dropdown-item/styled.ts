@@ -38,12 +38,20 @@ export const StyledLabel = styled(`div`)<{
 
 export const StyledDropdownMenu = styled(`div`)(({ theme }) => ({
   position: "absolute",
-  backgroundColor: "inherit",
+  backgroundColor: "white",
   marginLeft: "-20px",
-  padding: theme.spacing(5),
   gap: theme.spacing(6),
+  maxHeight: 0,
+  transition: "all 1s ease-in-out",
+  overflow: "hidden",
   a: {
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(3),
+  },
+  "a:first-child": {
+    marginTop: theme.spacing(4),
+  },
+  "&.visible": {
+    maxHeight: "170px",
   },
 }));
 
@@ -54,13 +62,8 @@ export const StyledDropdownLink = styled(Link)(({ theme }) => ({
   whiteSpace: "nowrap",
   textDecoration: "none",
   textTransform: "uppercase",
-  transition: "color 250ms ease-in-out, width 1.5s ease-in-out",
-  overflow: "hidden",
-  width: "0%",
+  padding: `0 ${theme.spacing(5)}`,
   "&:hover": {
     color: "#548990",
-  },
-  "&.visible": {
-    width: "100%",
   },
 }));

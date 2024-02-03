@@ -1,8 +1,8 @@
-export const footerQuery = `footer->{
+export const footerFragment = `
   contact,
   links[]->{
     icon,
     link
   },
   copyright
-}`;
+`;
