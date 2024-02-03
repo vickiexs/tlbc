@@ -1,4 +1,5 @@
 export interface NavLinkProps {
-  label: string
-  link: string
+  label: string;
+  link: string;
+  variation?: string;
 }

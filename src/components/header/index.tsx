@@ -2,7 +2,7 @@ import NavLink from "../nav-link";
 import NavDropdownItem from "../nav-dropdown-item";
 
 import {
-  StyledHeaderWrapper,
+  StyledHeaderContainer,
   StyledLogo,
   StyledNavLinks,
   StyledMenuIcon,
@@ -11,8 +11,7 @@ import { HeaderProps } from "./type";
 import { NavLinkProps as NavLinkType } from "../nav-link/type";
 import { NavDropdownItemProps as NavDropdownType } from "../nav-dropdown-item/type";
 
-export default function Header({ navItems }: HeaderProps) {
-  console.log("NAV ITEMS:", navItems);
+export default function Header({ navItems, variation = "white" }: HeaderProps) {
   const isNavDropdownItem = (
     navItem: NavLinkType | NavDropdownType
   ): navItem is NavDropdownType => {
@@ -20,18 +19,22 @@ export default function Header({ navItems }: HeaderProps) {
   };
 
   return (
-    <StyledHeaderWrapper>
+    <StyledHeaderContainer variation={variation}>
       <StyledLogo></StyledLogo>
       <StyledNavLinks>
         {navItems.map((navItem) =>
           isNavDropdownItem(navItem) ? (
-            <NavDropdownItem {...navItem} />
+            <NavDropdownItem {...navItem} variation={variation} />
           ) : (
-            <NavLink label={navItem.label} link={navItem.link} />
+            <NavLink
+              label={navItem.label}
+              link={navItem.link}
+              variation={variation}
+            />
           )
         )}
       </StyledNavLinks>
       <StyledMenuIcon />
-    </StyledHeaderWrapper>
+    </StyledHeaderContainer>
   );
 }

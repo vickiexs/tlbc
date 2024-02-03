@@ -11,6 +11,7 @@ const theme = {
   spacing: (n: number) => `${n * 0.25}rem`,
   palette: {
     text: "#2B2B2B",
+    white: "#ffffff",
   },
   fontWeight: {
     semiBold: 600,

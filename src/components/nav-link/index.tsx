@@ -1,9 +1,13 @@
 import { StyledNavLink } from "./styled";
 import { NavLinkProps } from "./type";
 
-export default function NavLink({ label, link }: NavLinkProps) {
+export default function NavLink({
+  label,
+  link,
+  variation = "white",
+}: NavLinkProps) {
   return (
-    <StyledNavLink to={link}>
+    <StyledNavLink to={link} variation={variation}>
       {label}
     </StyledNavLink>
   );

@@ -20,7 +20,6 @@ export default function Home() {
   }, []);
 
   console.log("DATA:", data);
-  // console.log('HEADER DATA:', ...data.header)
 
   return (
     <>
