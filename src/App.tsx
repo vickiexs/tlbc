@@ -6,12 +6,19 @@ import client from "./client";
 import { appQuery } from "./utils/queries";
 
 import Home from "./pages/home";
+import Svalbard from "./pages/trips/svalbard";
+import Greenland from "./pages/trips/greenland";
 import ArcticMemories from "./pages/arctic-memories";
+import Testimonials from "./pages/testimonials";
+import About from "./pages/about";
+import Error404 from "./pages/404";
 
 import Header from "./components/header";
 import { HeaderProps } from "./components/header/type";
 import Footer from "./components/footer";
 import { FooterProps } from "./components/footer/type";
+
+import { PATHS } from "./utils/constants";
 
 function App() {
   const [data, setData] = useState();
@@ -32,8 +39,16 @@ function App() {
           <>
             <Header {...(data[0] as HeaderProps)} />
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/arctic-memories" element={<ArcticMemories />} />
+              <Route path={PATHS.HOME} element={<Home />} />
+              <Route path={PATHS.SVALBARD} element={<Svalbard />} />
+              <Route path={PATHS.GREENLAND} element={<Greenland />} />
+              <Route
+                path={PATHS.ARCTIC_MEMORIES}
+                element={<ArcticMemories />}
+              />
+              <Route path={PATHS.TESTIMONIALS} element={<Testimonials />} />
+              <Route path={PATHS.ABOUT} element={<About />} />
+              <Route path="*" element={<Error404 />} />
             </Routes>
             <Footer {...(data[1] as FooterProps)} />
           </>
