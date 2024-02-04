@@ -9,6 +9,7 @@ export const StyledNavDropdownItem = styled(`button`)(({ theme }) => ({
   fontFamily: "Titillium Web",
   fontSize: theme.fontSize(4),
   fontWeight: theme.fontWeight.semiBold,
+  textAlign: "inherit",
 }));
 
 export const StyledLabel = styled(`div`)<{
@@ -53,6 +54,17 @@ export const StyledDropdownMenu = styled(`div`)(({ theme }) => ({
   "&.visible": {
     maxHeight: "170px",
   },
+
+  [`@media ${theme.breakpoints.md}`]: {
+    position: "relative",
+    margin: 0,
+    a: {
+      marginTop: theme.spacing(5),
+    },
+    "a:first-child": {
+      marginTop: theme.spacing(5),
+    },
+  },
 }));
 
 export const StyledDropdownLink = styled(Link)(({ theme }) => ({
@@ -65,5 +77,9 @@ export const StyledDropdownLink = styled(Link)(({ theme }) => ({
   padding: `0 ${theme.spacing(5)}`,
   "&:hover": {
     color: "#548990",
+  },
+
+  [`@media ${theme.breakpoints.md}`]: {
+    padding: 0,
   },
 }));

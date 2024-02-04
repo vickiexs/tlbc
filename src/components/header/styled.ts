@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { MdMenu } from "react-icons/md";
+import { MdMenu, MdClose } from "react-icons/md";
 
 export const StyledHeaderContainer = styled(`header`)<{ variation: string }>(
   ({ theme, variation }) => ({
@@ -39,12 +39,75 @@ export const StyledNavLinks = styled(`nav`)(({ theme }) => ({
 }));
 
 export const StyledMenuIcon = styled(MdMenu)(({ theme }) => ({
+  height: "40px",
+  width: "40px",
+  fill: theme.palette.text,
+}));
+
+export const StyledCloseIcon = styled(MdClose)(({ theme }) => ({
+  height: "40px",
+  width: "40px",
+  fill: theme.palette.text,
+}));
+
+export const StyledMobileOverlay = styled(`div`)(({ theme }) => ({
+  position: "fixed",
+  height: "100%",
+  width: "100%",
+  top: 0,
+  left: 0,
+  backgroundColor: theme.palette.text,
+  opacity: 0,
+  transition: "all 1s ease-in-out",
+  zIndex: 1,
+  pointerEvents: "none",
+  "&.visible": {
+    opacity: 0.5,
+  },
+}));
+
+export const StyledMobileMenu = styled(`div`)(({ theme }) => ({
+  position: "fixed",
+  height: "100%",
+  width: "60%",
+  top: 0,
+  right: "-700px",
+  zIndex: 10,
+  backgroundColor: theme.palette.white,
+  padding: theme.spacing(6),
+  transition: "all 1s ease-in-out",
+  "&.visible": {
+    right: 0,
+  },
   display: "none",
 
   [`@media ${theme.breakpoints.md}`]: {
-    display: "inherit",
-    height: "40px",
-    width: "40px",
-    fill: theme.palette.text,
+    display: "block",
+  },
+  [`@media ${theme.breakpoints.sm}`]: {
+    right: "-600px",
+  },
+  [`@media ${theme.breakpoints.sm}`]: {
+    right: "-500px",
+  },
+}));
+
+export const StyledMobileMenuItems = styled(`nav`)(({ theme }) => ({
+  height: "60%",
+  marginLeft: theme.spacing(10),
+  marginTop: "50%",
+  textAlign: "left",
+  "a, button": {
+    marginTop: theme.spacing(10),
+  },
+
+  [`@media ${theme.breakpoints.md}`]: {
+    marginTop: "30%",
+  },
+  [`@media ${theme.breakpoints.sm}`]: {
+    marginTop: "40%",
+  },
+  [`@media ${theme.breakpoints.xs}`]: {
+    marginTop: "60%",
   },
 }));
