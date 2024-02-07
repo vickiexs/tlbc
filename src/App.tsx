@@ -18,10 +18,15 @@ import { HeaderProps } from "./components/header/type";
 import Footer from "./components/footer";
 import { FooterProps } from "./components/footer/type";
 
-import { PATHS } from "./utils/constants";
+type GenericObject = { [key: string]: any };
+interface AppData {
+  header: HeaderProps[];
+  pages: GenericObject[];
+  footer: FooterProps[];
+}
 
 function App() {
-  const [data, setData] = useState();
+  const [data, setData] = useState<AppData>();
 
   useEffect(() => {
     client
@@ -30,31 +35,46 @@ function App() {
       .catch(console.error);
   }, []);
 
-  console.log("APP DATA:", data);
+  /* TODO: dynamically get page components */
+  const getPageComponent = (key: string, pageData: GenericObject) => {
+    switch (key) {
+      case "home":
+        return <Home pageData={pageData} />;
+      case "svalbard":
+        return <Svalbard pageData={pageData} />;
+      case "greenland":
+        return <Greenland pageData={pageData} />;
+      case "memories":
+        return <ArcticMemories pageData={pageData} />;
+      case "testimonials":
+        return <Testimonials pageData={pageData} />;
+      case "about":
+        return <About pageData={pageData} />;
+    }
+  };
 
   return (
-    <main>
-      <ThemeProvider theme={theme}>
-        {data && (
-          <>
-            <Header {...(data[0] as HeaderProps)} />
-            <Routes>
-              <Route path={PATHS.HOME} element={<Home />} />
-              <Route path={PATHS.SVALBARD} element={<Svalbard />} />
-              <Route path={PATHS.GREENLAND} element={<Greenland />} />
-              <Route
-                path={PATHS.ARCTIC_MEMORIES}
-                element={<ArcticMemories />}
-              />
-              <Route path={PATHS.TESTIMONIALS} element={<Testimonials />} />
-              <Route path={PATHS.ABOUT} element={<About />} />
-              <Route path="*" element={<Error404 />} />
-            </Routes>
-            <Footer {...(data[1] as FooterProps)} />
-          </>
-        )}
-      </ThemeProvider>
-    </main>
+    <>
+      <main>
+        <ThemeProvider theme={theme}>
+          {data && (
+            <>
+              <Header {...(data.header[0] as HeaderProps)} />
+              <Routes>
+                {data.pages.map((page) => (
+                  <Route
+                    path={page.path}
+                    element={getPageComponent(page.key, page.sections)}
+                  />
+                ))}
+                <Route path="*" element={<Error404 />} />
+              </Routes>
+              <Footer {...(data.footer[0] as FooterProps)} />
+            </>
+          )}
+        </ThemeProvider>
+      </main>
+    </>
   );
 }
 

@@ -50,19 +50,19 @@ export const StyledCloseIcon = styled(MdClose)(({ theme }) => ({
   fill: theme.palette.text,
 }));
 
-export const StyledMobileOverlay = styled(`div`)(({ theme }) => ({
+export const StyledMobileOverlay = styled(`div`)(() => ({
   position: "fixed",
   height: "100%",
   width: "100%",
   top: 0,
   left: 0,
-  backgroundColor: theme.palette.text,
-  opacity: 0,
+  backgroundColor: "rgba( 0, 0, 0, 0 )",
   transition: "all 1s ease-in-out",
   zIndex: 1,
   pointerEvents: "none",
   "&.visible": {
-    opacity: 0.5,
+    backgroundColor: "rgba( 0, 0, 0, 0.6 )",
+    backdropFilter: "blur(2px)",
   },
 }));
 

@@ -1,13 +1,21 @@
-import { headerFragment } from "../components/header/query";
-import { footerFragment } from "../components/footer/query";
+import { headerQuery } from "../components/header/query";
+import { footerQuery } from "../components/footer/query";
+import { spotlightQuery } from "../components/spotlight/query";
+
+export const pageQuery = `
+*[_type in ["page"]]{
+  key,
+  path,
+  sections[]->{
+    ${spotlightQuery}
+  }
+}
+`;
 
 export const appQuery = `
-*[_type in ["header", "footer"]]{
-  _type == "header" => {
-    ${headerFragment}
-  },
-  _type == "footer" => {
-    ${footerFragment}
-  }
+{
+  "header": ${headerQuery},
+  "pages": ${pageQuery},
+  "footer": ${footerQuery}
 }
 `;
