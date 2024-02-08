@@ -51,7 +51,9 @@ export default function AccordionItem({
         className={classNames({ visible: index === activeItem })}
       >
         <Typography variation="body">
-          <PortableText value={content} components={components} />
+          {index === activeItem && (
+            <PortableText value={content} components={components} />
+          )}
         </Typography>
       </StyledAccordionContent>
     </StyledAccordionContainer>
