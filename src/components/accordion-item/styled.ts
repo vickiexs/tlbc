@@ -22,13 +22,13 @@ export const StyledAccordionHeader = styled(`button`)(({ theme }) => ({
     cursor: "pointer",
   },
   svg: {
-    transition: "all 1s ease-in-out",
+    transition: "all 0.5s ease-in-out",
     marginLeft: theme.spacing(2),
     height: "15px",
   },
   "&.open": {
     svg: {
-      transition: "all 1s ease-in-out",
+      transition: "all 0.75s ease-in-out",
       transform: "rotate(-180deg)",
     },
   },
@@ -47,13 +47,12 @@ export const StyledAccordionContent = styled(`div`)(() => ({
   maxHeight: 0,
   height: 0,
   opacity: 0,
-  transition: "all 0s ease-in-out",
   pointerEvents: "none",
   "&.visible": {
     maxHeight: "650px",
     height: "100%",
     opacity: 1,
     pointerEvents: "auto",
-    transition: "all 1s ease-in-out",
+    transition: "all 1.5s ease-in-out",
   },
 }));

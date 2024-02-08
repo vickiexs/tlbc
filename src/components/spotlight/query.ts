@@ -1,5 +1,7 @@
 export const spotlightQuery = `
 _type == "spotlight" => {
   _type,
-  heading
+  heading,
+  subheadings[],
+  darkText
 }`;

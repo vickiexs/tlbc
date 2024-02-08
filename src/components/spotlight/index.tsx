@@ -1,19 +1,32 @@
+import Typewriter from "typewriter-effect";
+
 import {
   StyledSpotlightContainer,
-  StyledTextWrapper,
   StyledTextContainer,
   StyledHeading,
+  StyledSubtitle,
 } from "./styled";
 import { SpotlightProps } from "./type";
 
-export default function Spotlight({ heading }: SpotlightProps) {
+export default function Spotlight({
+  heading,
+  subheadings,
+  darkText,
+}: SpotlightProps) {
   return (
     <StyledSpotlightContainer>
-      <StyledTextWrapper>
-        <StyledTextContainer>
-          <StyledHeading>{heading}</StyledHeading>
-        </StyledTextContainer>
-      </StyledTextWrapper>
+      <StyledTextContainer darkText={darkText}>
+        <StyledHeading>{heading}</StyledHeading>
+        <StyledSubtitle>
+          <Typewriter
+            options={{
+              strings: subheadings,
+              autoStart: true,
+              loop: true,
+            }}
+          />
+        </StyledSubtitle>
+      </StyledTextContainer>
     </StyledSpotlightContainer>
   );
 }
