@@ -7,6 +7,7 @@ export const StyledFooterWrapper = styled(`footer`)(({ theme }) => ({
   marginTop: "auto",
   padding: `${theme.spacing(8)} 0`,
   gap: theme.spacing(1),
+  zIndex: 2,
 
   [`@media ${theme.breakpoints.md}`]: {
     padding: `${theme.spacing(6)} 0`,
@@ -23,11 +24,11 @@ export const StyledContact = styled(`div`)(({ theme }) => ({
 
   [`@media ${theme.breakpoints.md}`]: {
     fontSize: theme.fontSize(5),
-    gap: theme.spacing(3)
+    gap: theme.spacing(3),
   },
   [`@media ${theme.breakpoints.sm}`]: {
     fontSize: theme.fontSize(4),
-    gap: theme.spacing(2)
+    gap: theme.spacing(2),
   },
 }));
 
@@ -38,10 +39,10 @@ export const StyledIconLinks = styled(`div`)(({ theme }) => ({
   gap: theme.spacing(3),
 
   [`@media ${theme.breakpoints.md}`]: {
-    gap: theme.spacing(2)
+    gap: theme.spacing(2),
   },
   [`@media ${theme.breakpoints.sm}`]: {
-    gap: theme.spacing(2)
+    gap: theme.spacing(2),
   },
 }));
 
@@ -52,7 +53,7 @@ export const StyledCopyright = styled(`div`)(({ theme }) => ({
   fontWeight: theme.fontWeight.semiBold,
 
   [`@media ${theme.breakpoints.md}`]: {
-    fontSize: '0.625rem'
+    fontSize: "0.625rem",
   },
   [`@media ${theme.breakpoints.sm}`]: {
     fontSize: theme.fontSize(2),

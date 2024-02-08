@@ -18,7 +18,8 @@ import { HeaderProps } from "./components/header/type";
 import Footer from "./components/footer";
 import { FooterProps } from "./components/footer/type";
 
-type GenericObject = { [key: string]: any };
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type GenericObject = { [key: string]: any };
 interface AppData {
   header: HeaderProps[];
   pages: GenericObject[];
@@ -35,21 +36,20 @@ function App() {
       .catch(console.error);
   }, []);
 
-  /* TODO: dynamically get page components */
   const getPageComponent = (key: string, pageData: GenericObject) => {
     switch (key) {
       case "home":
-        return <Home pageData={pageData} />;
+        return <Home {...pageData} />;
       case "svalbard":
-        return <Svalbard pageData={pageData} />;
+        return <Svalbard {...pageData} />;
       case "greenland":
-        return <Greenland pageData={pageData} />;
+        return <Greenland {...pageData} />;
       case "memories":
-        return <ArcticMemories pageData={pageData} />;
+        return <ArcticMemories {...pageData} />;
       case "testimonials":
-        return <Testimonials pageData={pageData} />;
+        return <Testimonials {...pageData} />;
       case "about":
-        return <About pageData={pageData} />;
+        return <About {...pageData} />;
     }
   };
 
@@ -64,7 +64,7 @@ function App() {
                 {data.pages.map((page) => (
                   <Route
                     path={page.path}
-                    element={getPageComponent(page.key, page.sections)}
+                    element={getPageComponent(page.key, page)}
                   />
                 ))}
                 <Route path="*" element={<Error404 />} />

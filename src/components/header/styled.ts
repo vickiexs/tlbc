@@ -11,6 +11,10 @@ export const StyledHeaderContainer = styled(`header`)<{ variation: string }>(
     gap: theme.spacing(1),
     backgroundColor: variation === "white" ? theme.palette.white : "none",
     color: variation === "white" ? theme.palette.text : theme.palette.white,
+    zIndex: 2,
+    position: "fixed",
+    left: 0,
+    right: 0,
 
     [`@media ${theme.breakpoints.md}`]: {
       padding: `${theme.spacing(4)} ${theme.spacing(6)}`,

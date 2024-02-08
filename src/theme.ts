@@ -15,6 +15,8 @@ const theme = {
   },
   fontWeight: {
     semiBold: 600,
+    regular: 400,
+    light: 300,
   },
   fontSize: (n: number) => `${n * 0.25}rem`,
   borderRadius: {
