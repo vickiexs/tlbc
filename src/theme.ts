@@ -12,6 +12,10 @@ const theme = {
   palette: {
     text: "#2B2B2B",
     white: "#ffffff",
+    grey: "#EAEAEA",
+    primary: {
+      main: "#548990",
+    },
   },
   fontWeight: {
     semiBold: 600,
@@ -33,6 +37,7 @@ const theme = {
     xl: `(max-width: ${size.xl})`,
     xxl: `(max-width: ${size.xxl})`,
   },
+  maxContentWidth: "1512px",
 };
 
 export default theme;

@@ -4,18 +4,23 @@ export const StyledSection = styled(`div`)<{
   backgroundColor?: string;
   textColor?: string;
 }>(({ theme, backgroundColor, textColor }) => ({
+  width: "100%",
+  backgroundColor: backgroundColor ? backgroundColor : theme.palette.white,
+  color: textColor ? textColor : theme.palette.text,
+  fill: textColor ? textColor : theme.palette.text,
+}));
+
+export const StyledSectionContainer = styled(`div`)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(5),
   padding: `${theme.spacing(18)} ${theme.spacing(20)}`,
   margin: `0 auto`,
-  minWidth: "1352px",
-  backgroundColor: backgroundColor ? backgroundColor : theme.palette.white,
-  color: textColor ? textColor : theme.palette.text,
-  fill: textColor ? textColor : theme.palette.text,
+  minWidth: theme.maxContentWidth,
+  maxWidth: theme.maxContentWidth,
 
   [`@media ${theme.breakpoints.xl}`]: {
-    maxWidth: "1352px",
+    maxWidth: theme.maxContentWidth,
     minWidth: "unset",
     margin: 0,
   },

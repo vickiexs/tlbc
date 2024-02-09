@@ -76,7 +76,7 @@ export const StyledDropdownLink = styled(Link)(({ theme }) => ({
   textTransform: "uppercase",
   padding: `0 ${theme.spacing(5)}`,
   "&:hover": {
-    color: "#548990",
+    color: theme.palette.primary.main,
   },
 
   [`@media ${theme.breakpoints.md}`]: {

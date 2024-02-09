@@ -1,0 +1,9 @@
+import styled from "styled-components";
+
+export const StyledAvatar = styled(`div`)<{ size: number }>(({ size }) => ({
+  backgroundColor: "grey",
+  height: `${size}px`,
+  width: `${size}px`,
+  borderRadius: "50%",
+  overflow: "hidden",
+}));

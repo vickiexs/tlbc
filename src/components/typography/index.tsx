@@ -1,4 +1,9 @@
-import { StyledHeading2, StyledHeading3, StyledBody } from "./styled";
+import {
+  StyledHeading2,
+  StyledHeading3,
+  StyledHeading4,
+  StyledBody,
+} from "./styled";
 import { TypographyProps } from "./type";
 
 export default function Typography({
@@ -15,6 +20,10 @@ export default function Typography({
       case "h3":
         return (
           <StyledHeading3 className={className}>{children}</StyledHeading3>
+        );
+      case "h4":
+        return (
+          <StyledHeading4 className={className}>{children}</StyledHeading4>
         );
       case "body":
         return <StyledBody className={className}>{children}</StyledBody>;

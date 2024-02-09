@@ -1,5 +1,9 @@
 import { TiSocialInstagram } from "react-icons/ti";
 import { MdMailOutline } from "react-icons/md";
+import { IoMdCalendar } from "react-icons/io";
+import { IoPricetags } from "react-icons/io5";
+import { MdPeople } from "react-icons/md";
+import { MdLocationPin } from "react-icons/md";
 
 interface IconProps {
   icon: string;
@@ -13,6 +17,14 @@ export default function Icon({ icon, size }: IconProps) {
         return <TiSocialInstagram size={size} />;
       case "email":
         return <MdMailOutline size={size} />;
+      case "calendar":
+        return <IoMdCalendar size={size} />;
+      case "priceTags":
+        return <IoPricetags size={size} />;
+      case "people":
+        return <MdPeople size={size} />;
+      case "location":
+        return <MdLocationPin size={size} />;
     }
   };
 

@@ -1,15 +1,12 @@
 import styled from "styled-components";
 
 export const StyledHeading2 = styled(`h2`)(({ theme }) => ({
-  fontSize: theme.fontSize(6),
+  fontSize: theme.fontSize(5),
   fontWeight: theme.fontWeight.semiBold,
   color: "inherit",
   margin: 0,
 
   [`@media ${theme.breakpoints.md}`]: {
-    fontSize: theme.fontSize(5),
-  },
-  [`@media ${theme.breakpoints.xs}`]: {
     fontSize: theme.fontSize(4),
   },
 }));
@@ -25,6 +22,21 @@ export const StyledHeading3 = styled(`h3`)(({ theme }) => ({
   },
   [`@media ${theme.breakpoints.xs}`]: {
     fontSize: theme.fontSize(7),
+  },
+}));
+
+export const StyledHeading4 = styled(`h4`)(({ theme }) => ({
+  fontSize: theme.fontSize(7),
+  fontWeight: theme.fontWeight.semiBold,
+  textTransform: "uppercase",
+  color: "inherit",
+  margin: 0,
+
+  [`@media ${theme.breakpoints.lg}`]: {
+    fontSize: theme.fontSize(6),
+  },
+  [`@media ${theme.breakpoints.md}`]: {
+    fontSize: theme.fontSize(5),
   },
 }));
 
