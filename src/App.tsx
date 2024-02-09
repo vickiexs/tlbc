@@ -30,6 +30,13 @@ function App() {
   const [data, setData] = useState<AppData>();
 
   useEffect(() => {
+    const path = localStorage.getItem("path");
+    if (path) {
+      localStorage.removeItem("path");
+      console.log(path);
+      // location.pathname = path
+    }
+
     client
       .fetch(appQuery)
       .then((data) => setData(data))
@@ -39,7 +46,7 @@ function App() {
   const getPageComponent = (key: string, pageData: GenericObject) => {
     switch (key) {
       case "home":
-        return <Home {...pageData} />;
+        return <Home />;
       case "svalbard":
         return <Svalbard {...pageData} />;
       case "greenland":
