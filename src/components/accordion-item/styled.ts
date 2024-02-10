@@ -6,7 +6,6 @@ export const StyledAccordionContainer = styled(`div`)(() => ({
 }));
 
 export const StyledAccordionHeader = styled(`button`)(({ theme }) => ({
-  gap: theme.spacing(3),
   fontFamily: "inherit",
   fontSize: theme.fontSize(5),
   fontWeight: theme.fontWeight.semiBold,
@@ -23,7 +22,6 @@ export const StyledAccordionHeader = styled(`button`)(({ theme }) => ({
   },
   svg: {
     transition: "all 0.5s ease-in-out",
-    marginLeft: theme.spacing(2),
     height: "15px",
   },
   "&.open": {
@@ -37,9 +35,17 @@ export const StyledAccordionHeader = styled(`button`)(({ theme }) => ({
     fontSize: theme.fontSize(4),
     marginBottom: theme.spacing(2),
     svg: {
-      marginLeft: theme.spacing(1),
       height: "13px",
     },
+  },
+}));
+
+export const StyledAccordionHeaderLabel = styled(`div`)(({ theme }) => ({
+  display: "inline",
+  marginRight: theme.spacing(2),
+
+  [`@media ${theme.breakpoints.md}`]: {
+    marginRight: theme.spacing(2),
   },
 }));
 

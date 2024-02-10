@@ -7,6 +7,7 @@ import ArrowIcon from "../icons/arrow";
 import {
   StyledAccordionContainer,
   StyledAccordionHeader,
+  StyledAccordionHeaderLabel,
   StyledAccordionContent,
 } from "./styled";
 import { AccordionProps } from "./type";
@@ -44,7 +45,7 @@ export default function AccordionItem({
         onClick={handleHeaderClick}
         className={classNames({ open: index === activeItem })}
       >
-        {header}
+        <StyledAccordionHeaderLabel>{header}</StyledAccordionHeaderLabel>
         <ArrowIcon />
       </StyledAccordionHeader>
       <StyledAccordionContent
