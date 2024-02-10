@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import theme from "./theme";
 import { ThemeProvider } from "styled-components";
 import client from "./client";
@@ -27,14 +27,14 @@ interface AppData {
 }
 
 function App() {
+  const navigate = useNavigate()
   const [data, setData] = useState<AppData>();
 
   useEffect(() => {
     const path = localStorage.getItem("path");
     if (path) {
       localStorage.removeItem("path");
-      console.log(path);
-      // location.pathname = path
+      navigate(path.split(/\/(.*)/s)[1]);
     }
 
     client

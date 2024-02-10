@@ -7,7 +7,10 @@
     <title>The Laid-Back Company</title>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      const path = window.location.pathname.slice(1);
+      localStorage.setItem('path', path);
+      window.location.href='/tlbc/';
+  </script>
   </body>
 </html>
