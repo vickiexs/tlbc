@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-export const StyledSection = styled(`div`)<{
+export const StyledSection = styled(`div`).withConfig({
+  shouldForwardProp: (props) =>
+    props !== "backgroundColor" && props !== "textColor",
+})<{
   backgroundColor?: string;
   textColor?: string;
 }>(({ theme, backgroundColor, textColor }) => ({

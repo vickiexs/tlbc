@@ -43,14 +43,15 @@ export default function Header({ navItems, variation = "white" }: HeaderProps) {
     <StyledHeaderContainer variation={variation}>
       <StyledLogo></StyledLogo>
       <StyledNavLinks>
-        {navItems.map((navItem) =>
+        {navItems.map((navItem, index) =>
           isNavDropdownItem(navItem) ? (
-            <NavDropdownItem {...navItem} variation={variation} />
+            <NavDropdownItem {...navItem} variation={variation} key={index} />
           ) : (
             <NavLink
               label={navItem.label}
               link={navItem.link}
               variation={variation}
+              key={index}
             />
           )
         )}
@@ -65,14 +66,15 @@ export default function Header({ navItems, variation = "white" }: HeaderProps) {
           <StyledCloseIcon />
         </IconButton>
         <StyledMobileMenuItems>
-          {navItems.map((navItem) =>
+          {navItems.map((navItem, index) =>
             isNavDropdownItem(navItem) ? (
-              <NavDropdownItem {...navItem} variation={variation} />
+              <NavDropdownItem {...navItem} variation={variation} key={index} />
             ) : (
               <NavLink
                 label={navItem.label}
                 link={navItem.link}
                 variation={variation}
+                key={index}
               />
             )
           )}

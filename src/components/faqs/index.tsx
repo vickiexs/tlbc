@@ -26,6 +26,7 @@ export default function FAQs({ faqs }: FAQProps) {
             index={index}
             activeItem={activeItem}
             setActiveItem={setActiveItem}
+            key={index}
           />
         ))}
       </StyledColumn>
@@ -38,6 +39,7 @@ export default function FAQs({ faqs }: FAQProps) {
               index={index + mid}
               activeItem={activeItem}
               setActiveItem={setActiveItem}
+              key={index}
             />
           ))}
         </StyledColumn>

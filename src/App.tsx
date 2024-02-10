@@ -27,7 +27,7 @@ interface AppData {
 }
 
 function App() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [data, setData] = useState<AppData>();
 
   useEffect(() => {
@@ -68,10 +68,11 @@ function App() {
             <>
               <Header {...(data.header[0] as HeaderProps)} />
               <Routes>
-                {data.pages.map((page) => (
+                {data.pages.map((page, index) => (
                   <Route
                     path={page.path}
                     element={getPageComponent(page.key, page)}
+                    key={index}
                   />
                 ))}
                 <Route path="*" element={<Error404 />} />

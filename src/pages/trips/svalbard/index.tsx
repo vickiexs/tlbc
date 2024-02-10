@@ -14,15 +14,16 @@ export default function Svalbard(pageData: GenericObject) {
   const theme = useTheme();
   const { sections } = pageData;
 
-  const renderPageSection = (section: GenericObject) => {
+  const renderPageSection = (section: GenericObject, index: number) => {
     switch (section._type) {
       case "spotlight":
-        return <Spotlight {...(section as SpotlightProps)} />;
+        return <Spotlight {...(section as SpotlightProps)} key={index} />;
       case "tripLogistics":
         return (
           <Section
             eyebrowHeading={section.eyebrowHeading}
             heading={section.heading}
+            key={index}
           >
             <TripLogistics {...(section as TripLogisticsProps)} />
           </Section>
@@ -34,6 +35,7 @@ export default function Svalbard(pageData: GenericObject) {
             heading={section.heading}
             backgroundColor={theme.palette.text}
             textColor={theme.palette.white}
+            key={index}
           >
             <FAQs {...(section as FAQProps)} />
           </Section>
@@ -43,6 +45,10 @@ export default function Svalbard(pageData: GenericObject) {
     }
   };
   return (
-    <>{sections.map((section: GenericObject) => renderPageSection(section))}</>
+    <>
+      {sections.map((section: GenericObject, index: number) =>
+        renderPageSection(section, index)
+      )}
+    </>
   );
 }

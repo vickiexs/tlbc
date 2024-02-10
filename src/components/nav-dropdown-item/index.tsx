@@ -24,8 +24,10 @@ export default function NavDropdownItem({
         {label}
       </StyledLabel>
       <StyledDropdownMenu className={classNames({ visible: showDropdownMenu })}>
-        {dropdownItems.map((item) => (
-          <StyledDropdownLink to={item.link}>{item.label}</StyledDropdownLink>
+        {dropdownItems.map((item, index) => (
+          <StyledDropdownLink to={item.link} key={index}>
+            {item.label}
+          </StyledDropdownLink>
         ))}
       </StyledDropdownMenu>
     </StyledNavDropdownItem>

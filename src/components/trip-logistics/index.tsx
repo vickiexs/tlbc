@@ -51,8 +51,8 @@ export default function TripLogistics({
         <StyledHostDetails>
           <Typography variation="h4">{tripHosts.heading}</Typography>
           <StyledHosts>
-            {tripHosts.hosts.map((host) => (
-              <StyledHost>
+            {tripHosts.hosts.map((host, index) => (
+              <StyledHost key={index}>
                 <Avatar size={avatarSize}>
                   <img
                     src={urlFor(host.image)

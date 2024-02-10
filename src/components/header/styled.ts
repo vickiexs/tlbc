@@ -2,25 +2,25 @@ import styled from "styled-components";
 
 import { MdMenu, MdClose } from "react-icons/md";
 
-export const StyledHeaderContainer = styled(`header`)<{ variation: string }>(
-  ({ theme, variation }) => ({
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: `${theme.spacing(4)} ${theme.spacing(8)}`,
-    gap: theme.spacing(1),
-    backgroundColor: variation === "white" ? theme.palette.white : "none",
-    color: variation === "white" ? theme.palette.text : theme.palette.white,
-    zIndex: 2,
-    position: "fixed",
-    left: 0,
-    right: 0,
+export const StyledHeaderContainer = styled(`header`).withConfig({
+  shouldForwardProp: (props) => props !== "variation",
+})<{ variation: string }>(({ theme, variation }) => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  padding: `${theme.spacing(4)} ${theme.spacing(8)}`,
+  gap: theme.spacing(1),
+  backgroundColor: variation === "white" ? theme.palette.white : "none",
+  color: variation === "white" ? theme.palette.text : theme.palette.white,
+  zIndex: 2,
+  position: "fixed",
+  left: 0,
+  right: 0,
 
-    [`@media ${theme.breakpoints.md}`]: {
-      padding: `${theme.spacing(4)} ${theme.spacing(6)}`,
-    },
-  })
-);
+  [`@media ${theme.breakpoints.md}`]: {
+    padding: `${theme.spacing(4)} ${theme.spacing(6)}`,
+  },
+}));
 
 export const StyledLogo = styled(`div`)(({ theme }) => ({
   height: "80px",

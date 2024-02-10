@@ -12,7 +12,10 @@ export const StyledNavDropdownItem = styled(`button`)(({ theme }) => ({
   textAlign: "inherit",
 }));
 
-export const StyledLabel = styled(`div`)<{
+export const StyledLabel = styled(`div`).withConfig({
+  shouldForwardProp: (props) =>
+    props !== "dropdownMenuOpen" && props !== "variation",
+})<{
   dropdownMenuOpen: boolean;
   variation: string;
 }>(({ theme, dropdownMenuOpen, variation }) => ({

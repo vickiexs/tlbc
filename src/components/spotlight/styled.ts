@@ -8,16 +8,16 @@ export const StyledSpotlightContainer = styled(`div`)(() => ({
   overflowX: "hidden",
 }));
 
-export const StyledTextContainer = styled(`div`)<{ darkText: boolean }>(
-  ({ theme, darkText }) => ({
-    display: "flex",
-    flexDirection: "column",
-    height: "100%",
-    alignItems: "center",
-    justifyContent: "center",
-    color: darkText ? theme.palette.text : theme.palette.white,
-  })
-);
+export const StyledTextContainer = styled(`div`).withConfig({
+  shouldForwardProp: (props) => props !== "darkText",
+})<{ darkText: boolean }>(({ theme, darkText }) => ({
+  display: "flex",
+  flexDirection: "column",
+  height: "100%",
+  alignItems: "center",
+  justifyContent: "center",
+  color: darkText ? theme.palette.text : theme.palette.white,
+}));
 
 export const StyledHeading = styled(`h1`)(({ theme }) => ({
   fontSize: theme.fontSize(20),

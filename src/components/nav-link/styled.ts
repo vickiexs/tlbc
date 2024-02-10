@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 import { Link } from "react-router-dom";
 
-export const StyledNavLink = styled(Link)<{
+export const StyledNavLink = styled(Link).withConfig({
+  shouldForwardProp: (props) => props !== "isActive",
+})<{
   variation: string;
   isActive: boolean;
 }>(({ theme, variation, isActive }) => ({
