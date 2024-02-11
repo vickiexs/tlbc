@@ -67,6 +67,7 @@ export const StyledMobileOverlay = styled(`div`)(() => ({
   "&.visible": {
     backgroundColor: "rgba( 0, 0, 0, 0.6 )",
     backdropFilter: "blur(2px)",
+    WebkitBackdropFilter: "blur(2px)",
   },
 }));
 
