@@ -4,4 +4,5 @@ export interface NavDropdownItemProps {
   label: string;
   dropdownItems: NavLink[];
   variation?: string;
+  closeMobileMenu: () => void;
 }

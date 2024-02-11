@@ -6,6 +6,7 @@ export default function NavLink({
   label,
   link,
   variation = "white",
+  closeMobileMenu,
 }: NavLinkProps) {
   const location = useLocation();
   return (
@@ -13,6 +14,7 @@ export default function NavLink({
       to={link}
       variation={variation}
       isActive={location.pathname === link}
+      onClick={closeMobileMenu}
     >
       {label}
     </StyledNavLink>

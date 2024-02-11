@@ -31,7 +31,18 @@ export default function Header({ navItems, variation = "white" }: HeaderProps) {
 
   useEffect(() => {
     setShowMobileMenu(false);
+    document.body.style.overflowY = "visible";
   }, [location.pathname]);
+
+  const openMobileMenu = () => {
+    document.body.style.overflowY = "hidden";
+    setShowMobileMenu(true);
+  };
+
+  const closeMobileMenu = () => {
+    document.body.style.overflowY = "visible";
+    setShowMobileMenu(false);
+  };
 
   const isNavDropdownItem = (
     navItem: NavLinkType | NavDropdownType
@@ -45,35 +56,47 @@ export default function Header({ navItems, variation = "white" }: HeaderProps) {
       <StyledNavLinks>
         {navItems.map((navItem, index) =>
           isNavDropdownItem(navItem) ? (
-            <NavDropdownItem {...navItem} variation={variation} key={index} />
+            <NavDropdownItem
+              {...navItem}
+              variation={variation}
+              closeMobileMenu={closeMobileMenu}
+              key={index}
+            />
           ) : (
             <NavLink
               label={navItem.label}
               link={navItem.link}
               variation={variation}
+              closeMobileMenu={closeMobileMenu}
               key={index}
             />
           )
         )}
       </StyledNavLinks>
       {isMobile && (
-        <IconButton onClick={() => setShowMobileMenu(true)}>
+        <IconButton onClick={() => openMobileMenu()}>
           <StyledMenuIcon />
         </IconButton>
       )}
       <StyledMobileMenu className={classNames({ visible: showMobileMenu })}>
-        <IconButton onClick={() => setShowMobileMenu(false)}>
+        <IconButton onClick={() => closeMobileMenu()}>
           <StyledCloseIcon />
         </IconButton>
         <StyledMobileMenuItems>
           {navItems.map((navItem, index) =>
             isNavDropdownItem(navItem) ? (
-              <NavDropdownItem {...navItem} variation={variation} key={index} />
+              <NavDropdownItem
+                {...navItem}
+                variation={variation}
+                closeMobileMenu={closeMobileMenu}
+                key={index}
+              />
             ) : (
               <NavLink
                 label={navItem.label}
                 link={navItem.link}
                 variation={variation}
+                closeMobileMenu={closeMobileMenu}
                 key={index}
               />
             )

@@ -19,12 +19,15 @@ export const StyledTripDetailsContainer = styled(`div`)(({ theme }) => ({
 export const StyledTripDetails = styled(`div`)(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(20),
+  ".left-col": {
+    width: "60%",
+  },
 
   [`@media ${theme.breakpoints.md}`]: {
     justifyContent: "center",
   },
   [`@media ${theme.breakpoints.sm}`]: {
-    gap: theme.spacing(10),
+    gap: theme.spacing(5),
   },
 }));
 

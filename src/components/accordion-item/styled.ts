@@ -40,12 +40,18 @@ export const StyledAccordionHeader = styled(`button`)(({ theme }) => ({
   },
 }));
 
-export const StyledAccordionHeaderLabel = styled(`div`)(({ theme }) => ({
+export const StyledAccordionHeaderLabel = styled(`div`)(() => ({
   display: "inline",
-  marginRight: theme.spacing(2),
+}));
 
-  [`@media ${theme.breakpoints.md}`]: {
-    marginRight: theme.spacing(2),
+export const StyledAccordionHeaderLastWord = styled(`div`)(({ theme }) => ({
+  display: "inline",
+  whiteSpace: "nowrap",
+  svg: {
+    marginLeft: theme.spacing(2),
+    [`@media ${theme.breakpoints.md}`]: {
+      marginLeft: theme.spacing(1),
+    },
   },
 }));
 

@@ -7,7 +7,6 @@ export const StyledFooterWrapper = styled(`footer`)(({ theme }) => ({
   marginTop: "auto",
   padding: `${theme.spacing(8)} 0`,
   gap: theme.spacing(1),
-  zIndex: 2,
 
   [`@media ${theme.breakpoints.md}`]: {
     padding: `${theme.spacing(6)} 0`,

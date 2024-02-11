@@ -39,11 +39,11 @@ export default function TripLogistics({
     <StyledTripLogistics>
       <StyledTripDetailsContainer>
         <StyledTripDetails>
-          <StyledColumn>
+          <StyledColumn className="left-col">
             <HeadedContentBlock {...dates} />
             <HeadedContentBlock {...spaces} />
           </StyledColumn>
-          <StyledColumn>
+          <StyledColumn className="right-col">
             <HeadedContentBlock {...price} />
             <HeadedContentBlock {...location} />
           </StyledColumn>

@@ -23,8 +23,16 @@ export const StyledNavLink = styled(Link).withConfig({
       variation === "white" ? theme.palette.text : theme.palette.white,
     width: isActive ? "100%" : "0%",
     bottom: "-3px",
+
+    [`@media ${theme.breakpoints.md}`]: {
+      width: "0%",
+    },
   },
   "&:hover:before": {
     width: "100%",
+
+    [`@media ${theme.breakpoints.md}`]: {
+      width: "0%",
+    },
   },
 }));

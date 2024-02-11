@@ -8,6 +8,7 @@ import {
   StyledAccordionContainer,
   StyledAccordionHeader,
   StyledAccordionHeaderLabel,
+  StyledAccordionHeaderLastWord,
   StyledAccordionContent,
 } from "./styled";
 import { AccordionProps } from "./type";
@@ -39,14 +40,27 @@ export default function AccordionItem({
     },
   };
 
+  const splitString = (str: string, section: string) => {
+    const splitString = str.split(" ");
+    const lastWord = splitString[splitString.length - 1];
+    return section === "first" ? str.replace(lastWord, "") : lastWord;
+  };
+
   return (
     <StyledAccordionContainer>
       <StyledAccordionHeader
         onClick={handleHeaderClick}
         className={classNames({ open: index === activeItem })}
       >
-        <StyledAccordionHeaderLabel>{header}</StyledAccordionHeaderLabel>
-        <ArrowIcon />
+        <StyledAccordionHeaderLabel>
+          {splitString(header, "first")}
+        </StyledAccordionHeaderLabel>
+        <StyledAccordionHeaderLastWord>
+          <StyledAccordionHeaderLabel>
+            {splitString(header, "last")}
+          </StyledAccordionHeaderLabel>
+          <ArrowIcon />
+        </StyledAccordionHeaderLastWord>
       </StyledAccordionHeader>
       <StyledAccordionContent
         className={classNames({ visible: index === activeItem })}

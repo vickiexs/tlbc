@@ -72,9 +72,9 @@ export const StyledMobileOverlay = styled(`div`)(() => ({
 
 export const StyledMobileMenu = styled(`div`)(({ theme }) => ({
   position: "fixed",
-  height: "100%",
   width: "60%",
   top: 0,
+  bottom: 0,
   right: "-700px",
   zIndex: 10,
   backgroundColor: theme.palette.white,
@@ -83,10 +83,14 @@ export const StyledMobileMenu = styled(`div`)(({ theme }) => ({
   "&.visible": {
     right: 0,
   },
+  button: {
+    alignSelf: "flex-start",
+  },
   display: "none",
 
   [`@media ${theme.breakpoints.md}`]: {
-    display: "block",
+    display: "flex",
+    flexDirection: "column",
   },
   [`@media ${theme.breakpoints.sm}`]: {
     right: "-600px",
@@ -97,21 +101,19 @@ export const StyledMobileMenu = styled(`div`)(({ theme }) => ({
 }));
 
 export const StyledMobileMenuItems = styled(`nav`)(({ theme }) => ({
-  height: "60%",
+  height: "100%",
   marginLeft: theme.spacing(10),
-  marginTop: "50%",
   textAlign: "left",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  marginTop: "-50px",
   "a, button": {
     marginTop: theme.spacing(10),
   },
-
-  [`@media ${theme.breakpoints.md}`]: {
-    marginTop: "30%",
-  },
-  [`@media ${theme.breakpoints.sm}`]: {
-    marginTop: "40%",
-  },
-  [`@media ${theme.breakpoints.xs}`]: {
-    marginTop: "60%",
+  ".nav-dropdown-link": {
+    marginTop: theme.spacing(6),
+    marginBottom: 0,
+    color: theme.palette.primary.main,
   },
 }));
