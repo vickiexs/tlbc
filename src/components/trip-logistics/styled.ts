@@ -35,11 +35,9 @@ export const StyledColumn = styled(`div`)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(10),
-  justifyContent: "space-between",
 
   [`@media ${theme.breakpoints.md}`]: {
     gap: theme.spacing(6),
-    justifyContent: "flex-start",
   },
 }));
 

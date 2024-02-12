@@ -3,6 +3,8 @@ import { useTheme } from "styled-components";
 import Section from "../../../components/section";
 import Spotlight from "../../../components/spotlight";
 import { SpotlightProps } from "../../../components/spotlight/type";
+import TripIntroduction from "../../../components/trip-introduction";
+import { TripIntroductionProps } from "../../../components/trip-introduction/type";
 import TripLogistics from "../../../components/trip-logistics";
 import { TripLogisticsProps } from "../../../components/trip-logistics/type";
 import FAQs from "../../../components/faqs";
@@ -18,6 +20,16 @@ export default function Svalbard(pageData: GenericObject) {
     switch (section._type) {
       case "spotlight":
         return <Spotlight {...(section as SpotlightProps)} key={index} />;
+      case "tripIntroduction":
+        return (
+          <Section
+            eyebrowHeading={section.eyebrowHeading}
+            heading={section.heading}
+            key={index}
+          >
+            <TripIntroduction {...(section as TripIntroductionProps)} />
+          </Section>
+        );
       case "tripLogistics":
         return (
           <Section
