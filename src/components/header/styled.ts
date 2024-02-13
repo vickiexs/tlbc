@@ -2,34 +2,44 @@ import styled from "styled-components";
 
 import { MdMenu, MdClose } from "react-icons/md";
 
-export const StyledHeaderContainer = styled(`header`).withConfig({
-  shouldForwardProp: (props) => props !== "variation",
-})<{ variation: string }>(({ theme, variation }) => ({
+export const StyledHeaderContainer = styled(`header`)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  padding: `${theme.spacing(4)} ${theme.spacing(8)}`,
+  padding: `${theme.spacing(3)} ${theme.spacing(10)}`,
   gap: theme.spacing(1),
-  backgroundColor: variation === "white" ? theme.palette.white : "none",
-  color: variation === "white" ? theme.palette.text : theme.palette.white,
-  zIndex: 2,
+  backgroundColor: theme.palette.white,
+  color: theme.palette.text,
+  zIndex: 10,
   position: "fixed",
   left: 0,
   right: 0,
+  transition: "all 0.5s ease-in-out",
+  boxShadow: "2px 1px 7px 3px rgb(0 0 0 / 10%)",
+  "&.transparent": {
+    color: theme.palette.white,
+    backgroundColor: "transparent",
+    boxShadow: "none",
+  },
 
   [`@media ${theme.breakpoints.md}`]: {
-    padding: `${theme.spacing(4)} ${theme.spacing(6)}`,
+    padding: `${theme.spacing(3)} ${theme.spacing(6)}`,
   },
 }));
 
-export const StyledLogo = styled(`div`)(({ theme }) => ({
-  height: "80px",
-  width: "80px",
-  backgroundColor: "black",
+export const StyledLogoContainer = styled(`div`)(({ theme }) => ({
+  display: "flex",
+  svg: {
+    height: "75px",
+    width: "75px",
+    fill: theme.palette.black,
+  },
 
   [`@media ${theme.breakpoints.md}`]: {
-    height: "50px",
-    width: "50px",
+    svg: {
+      height: "50px",
+      width: "50px",
+    },
   },
 }));
 
@@ -46,6 +56,10 @@ export const StyledMenuIcon = styled(MdMenu)(({ theme }) => ({
   height: "40px",
   width: "40px",
   fill: theme.palette.text,
+  transition: "all 0.5s ease-in-out",
+  "&.light": {
+    fill: theme.palette.white,
+  },
 }));
 
 export const StyledCloseIcon = styled(MdClose)(({ theme }) => ({
@@ -109,6 +123,7 @@ export const StyledMobileMenuItems = styled(`nav`)(({ theme }) => ({
   flexDirection: "column",
   justifyContent: "center",
   marginTop: "-50px",
+  color: theme.palette.text,
   "a, button": {
     marginTop: theme.spacing(10),
   },

@@ -10,14 +10,14 @@ import {
   StyledTextContainer,
   StyledImageContainer,
 } from "./styled";
-import { TripIntroductionProps } from "./type";
+import { TripIntroOutroProps } from "./type";
 
-export default function TripIntroduction({
+export default function TripIntroOutro({
   content,
   image,
-}: TripIntroductionProps) {
+}: TripIntroOutroProps) {
   return (
-    <StyledTripIntroduction>
+    <StyledTripIntroduction className="trip-intro-outro">
       <StyledTextContainer>
         <Typography variation="body">
           <PortableText value={content} />

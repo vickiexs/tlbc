@@ -3,5 +3,6 @@ _type == "spotlight" => {
   _type,
   heading,
   subheadings[],
+  image,
   darkText
 }`;

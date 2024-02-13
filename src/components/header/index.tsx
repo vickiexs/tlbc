@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { useMediaQuery } from "usehooks-ts";
+import { useMediaQuery, useWindowSize } from "usehooks-ts";
+import { useWindowScroll } from "@uidotdev/usehooks";
 import { useTheme } from "styled-components";
 import classNames from "classnames";
+
+import Logo from "./logo";
 
 import NavLink from "../nav-link";
 import NavDropdownItem from "../nav-dropdown-item";
@@ -10,7 +13,7 @@ import IconButton from "../icon-button";
 
 import {
   StyledHeaderContainer,
-  StyledLogo,
+  StyledLogoContainer,
   StyledNavLinks,
   StyledMenuIcon,
   StyledCloseIcon,
@@ -22,17 +25,30 @@ import { HeaderProps } from "./type";
 import { NavLinkProps as NavLinkType } from "../nav-link/type";
 import { NavDropdownItemProps as NavDropdownType } from "../nav-dropdown-item/type";
 
-export default function Header({ navItems, variation = "white" }: HeaderProps) {
+export default function Header({ navItems }: HeaderProps) {
   const location = useLocation();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [spotlightOffset, setSpotlightOffset] = useState(0);
+  const [spotlight, setSpotlight] = useState<HTMLElement | null>();
+  const { height } = useWindowSize();
+  const [{ y }] = useWindowScroll();
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.md);
 
+  const isTransparentHeader = spotlight && (y as number) < spotlightOffset;
+
   useEffect(() => {
     setShowMobileMenu(false);
     document.body.style.overflowY = "visible";
+    setSpotlight(document.getElementById("spotlight"));
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (spotlight) {
+      setSpotlightOffset(spotlight.offsetHeight);
+    }
+  }, [height, spotlight]);
 
   const openMobileMenu = () => {
     document.body.style.overflowY = "hidden";
@@ -51,14 +67,22 @@ export default function Header({ navItems, variation = "white" }: HeaderProps) {
   };
 
   return (
-    <StyledHeaderContainer variation={variation}>
-      <StyledLogo></StyledLogo>
+    <StyledHeaderContainer
+      className={classNames({
+        transparent: isTransparentHeader,
+      })}
+    >
+      <StyledLogoContainer>
+        <Logo />
+      </StyledLogoContainer>
       <StyledNavLinks>
         {navItems.map((navItem, index) =>
           isNavDropdownItem(navItem) ? (
             <NavDropdownItem
               {...navItem}
-              variation={variation}
+              underlineColor={
+                isTransparentHeader ? theme.palette.white : theme.palette.text
+              }
               closeMobileMenu={closeMobileMenu}
               key={index}
             />
@@ -66,7 +90,9 @@ export default function Header({ navItems, variation = "white" }: HeaderProps) {
             <NavLink
               label={navItem.label}
               link={navItem.link}
-              variation={variation}
+              underlineColor={
+                isTransparentHeader ? theme.palette.white : theme.palette.text
+              }
               closeMobileMenu={closeMobileMenu}
               key={index}
             />
@@ -75,7 +101,11 @@ export default function Header({ navItems, variation = "white" }: HeaderProps) {
       </StyledNavLinks>
       {isMobile && (
         <IconButton onClick={() => openMobileMenu()}>
-          <StyledMenuIcon />
+          <StyledMenuIcon
+            className={classNames({
+              light: isTransparentHeader,
+            })}
+          />
         </IconButton>
       )}
       <StyledMobileMenu className={classNames({ visible: showMobileMenu })}>
@@ -87,7 +117,6 @@ export default function Header({ navItems, variation = "white" }: HeaderProps) {
             isNavDropdownItem(navItem) ? (
               <NavDropdownItem
                 {...navItem}
-                variation={variation}
                 closeMobileMenu={closeMobileMenu}
                 key={index}
               />
@@ -95,7 +124,6 @@ export default function Header({ navItems, variation = "white" }: HeaderProps) {
               <NavLink
                 label={navItem.label}
                 link={navItem.link}
-                variation={variation}
                 closeMobileMenu={closeMobileMenu}
                 key={index}
               />

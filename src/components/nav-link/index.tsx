@@ -5,14 +5,14 @@ import { NavLinkProps } from "./type";
 export default function NavLink({
   label,
   link,
-  variation = "white",
+  underlineColor,
   closeMobileMenu,
 }: NavLinkProps) {
   const location = useLocation();
   return (
     <StyledNavLink
       to={link}
-      variation={variation}
+      underlineColor={underlineColor}
       isActive={location.pathname === link}
       onClick={closeMobileMenu}
     >

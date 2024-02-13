@@ -1,6 +1,6 @@
 export interface NavLinkProps {
   label: string;
   link: string;
-  variation?: string;
+  underlineColor?: string;
   closeMobileMenu: () => void;
 }

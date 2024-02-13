@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledTripIntroduction = styled(`div`)(({ theme }) => ({
   display: "flex",
-  gap: theme.spacing(12),
+  gap: theme.spacing(25),
 
   [`@media ${theme.breakpoints.lg}`]: {
     flexDirection: "column",
@@ -19,9 +19,12 @@ export const StyledTextContainer = styled(`div`)(() => ({
 }));
 
 export const StyledImageContainer = styled(`div`)(({ theme }) => ({
-  width: "60%",
+  width: "100%",
   height: "inherit",
 
+  [`@media ${theme.breakpoints.xl}`]: {
+    width: "75%",
+  },
   [`@media ${theme.breakpoints.lg}`]: {
     width: "100%",
   },

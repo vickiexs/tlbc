@@ -1,7 +1,7 @@
 import { headerQuery } from "../components/header/query";
 import { footerQuery } from "../components/footer/query";
 import { spotlightQuery } from "../components/spotlight/query";
-import { tripIntroductionQuery } from "../components/trip-introduction/query";
+import { tripIntroOutroQuery } from "../components/trip-intro-outro/query";
 import { tripLogisticsQuery } from "../components/trip-logistics/query";
 import { faqsQuery } from "../components/faqs/query";
 
@@ -11,7 +11,7 @@ export const pageQuery = `
   path,
   sections[]->{
     ${spotlightQuery},
-    ${tripIntroductionQuery},
+    ${tripIntroOutroQuery},
     ${tripLogisticsQuery},
     ${faqsQuery}
   }

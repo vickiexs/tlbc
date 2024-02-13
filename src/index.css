@@ -16,7 +16,6 @@ body {
   color: #2b2b2b;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
 }
 
 main {

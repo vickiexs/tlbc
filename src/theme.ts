@@ -12,6 +12,7 @@ const theme = {
   palette: {
     text: "#2B2B2B",
     white: "#ffffff",
+    black: "#000000",
     grey: "#EAEAEA",
     primary: {
       main: "#548990",

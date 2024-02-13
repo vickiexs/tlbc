@@ -5,6 +5,6 @@ export const StyledHr = styled(`div`)<{ color: string | undefined }>(
     width: "100%",
     height: "2px",
     backgroundColor: color ? color : theme.palette.text,
-    margin: `${theme.spacing(6)} 0`,
+    margin: `${theme.spacing(8)} 0`,
   })
 );

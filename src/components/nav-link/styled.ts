@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 export const StyledNavLink = styled(Link).withConfig({
   shouldForwardProp: (props) => props !== "isActive",
 })<{
-  variation: string;
+  underlineColor: string | undefined;
   isActive: boolean;
-}>(({ theme, variation, isActive }) => ({
+}>(({ theme, underlineColor, isActive }) => ({
   display: "table",
   position: "relative",
   color: "inherit",
@@ -15,12 +15,11 @@ export const StyledNavLink = styled(Link).withConfig({
   textDecoration: "none",
   textTransform: "uppercase",
   "&:before": {
-    transition: "500ms",
+    transition: "all 500ms ease-in-out",
     height: "2px",
     content: '""',
     position: "absolute",
-    backgroundColor:
-      variation === "white" ? theme.palette.text : theme.palette.white,
+    backgroundColor: underlineColor ? underlineColor : theme.palette.text,
     width: isActive ? "100%" : "0%",
     bottom: "-3px",
 

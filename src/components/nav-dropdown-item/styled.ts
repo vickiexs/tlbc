@@ -14,11 +14,11 @@ export const StyledNavDropdownItem = styled(`button`)(({ theme }) => ({
 
 export const StyledLabel = styled(`div`).withConfig({
   shouldForwardProp: (props) =>
-    props !== "dropdownMenuOpen" && props !== "variation",
+    props !== "dropdownMenuOpen" && props !== "underlineColor",
 })<{
   dropdownMenuOpen: boolean;
-  variation: string;
-}>(({ theme, dropdownMenuOpen, variation }) => ({
+  underlineColor: string | undefined;
+}>(({ theme, dropdownMenuOpen, underlineColor }) => ({
   display: "inline-block",
   position: "relative",
   textTransform: "uppercase",
@@ -26,12 +26,11 @@ export const StyledLabel = styled(`div`).withConfig({
     cursor: "pointer",
   },
   "&:before": {
-    transition: "500ms",
+    transition: "all 500ms ease-in-out",
     height: "2px",
     content: '""',
     position: "absolute",
-    backgroundColor:
-      variation === "white" ? theme.palette.text : theme.palette.white,
+    backgroundColor: underlineColor ? underlineColor : theme.palette.text,
     width: "0%",
     bottom: "-3px",
   },
@@ -46,7 +45,8 @@ export const StyledDropdownMenu = styled(`div`)(({ theme }) => ({
   marginLeft: "-20px",
   gap: theme.spacing(6),
   maxHeight: 0,
-  transition: "all 1s ease-in-out",
+  transition: "all 0.75s ease-in-out, backgroundColor 0.25s ease-in-out",
+  boxShadow: "0px 4px 2px -2px rgb(0 0 0 / 10%)",
   overflow: "hidden",
   a: {
     marginBottom: theme.spacing(3),
@@ -56,6 +56,10 @@ export const StyledDropdownMenu = styled(`div`)(({ theme }) => ({
   },
   "&.visible": {
     maxHeight: "170px",
+  },
+  "&.transparent": {
+    backgroundColor: "transparent",
+    boxShadow: "none",
   },
 
   [`@media ${theme.breakpoints.md}`]: {
@@ -78,8 +82,14 @@ export const StyledDropdownLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
   textTransform: "uppercase",
   padding: `0 ${theme.spacing(5)}`,
+  transition: "500ms",
   "&:hover": {
     color: theme.palette.primary.main,
+  },
+  "&.dark": {
+    "&:hover": {
+      color: theme.palette.text,
+    },
   },
 
   [`@media ${theme.breakpoints.md}`]: {

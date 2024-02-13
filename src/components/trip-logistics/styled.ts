@@ -18,16 +18,29 @@ export const StyledTripDetailsContainer = styled(`div`)(({ theme }) => ({
 
 export const StyledTripDetails = styled(`div`)(({ theme }) => ({
   display: "flex",
-  gap: theme.spacing(20),
+  gap: theme.spacing(10),
+  width: "100%",
   ".left-col": {
     width: "60%",
+  },
+  ".right-col": {
+    width: "100%",
   },
 
   [`@media ${theme.breakpoints.md}`]: {
     justifyContent: "center",
+    ".left-col": {
+      width: "unset",
+    },
+    ".right-col": {
+      width: "unset",
+    },
   },
   [`@media ${theme.breakpoints.sm}`]: {
-    gap: theme.spacing(5),
+    gap: theme.spacing(6),
+    ".left-col": {
+      width: "75%",
+    },
   },
 }));
 
