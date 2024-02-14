@@ -3,5 +3,4 @@ import { NavDropdownItemProps as NavDropdownItem } from "../nav-dropdown-item/ty
 
 export interface HeaderProps {
   navItems: (NavLink | NavDropdownItem)[];
-  variation?: string;
 }

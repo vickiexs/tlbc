@@ -65,6 +65,7 @@ export const StyledDropdownMenu = styled(`div`)(({ theme }) => ({
   [`@media ${theme.breakpoints.md}`]: {
     position: "relative",
     margin: 0,
+    boxShadow: "none",
     a: {
       marginTop: theme.spacing(5),
     },
