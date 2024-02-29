@@ -1,8 +1,8 @@
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { PortableTextBlock } from "@portabletext/types";
 
 import { HeadedContentBlockProps as HeadedContentBlock } from "../headed-content-block/type";
 import { LinkProps as Link } from "../link/type";
+import { ImageProps } from "../image/type";
 
 export interface TripLogisticsProps {
   dates: HeadedContentBlock;
@@ -21,5 +21,5 @@ export interface TripLogisticsProps {
 
 export interface Host {
   nickname: string;
-  image: SanityImageSource;
+  image: ImageProps;
 }

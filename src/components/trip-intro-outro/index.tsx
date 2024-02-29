@@ -3,8 +3,6 @@ import { PortableText } from "@portabletext/react";
 import Typography from "../typography";
 import Image from "../image";
 
-import { urlFor } from "../../utils/getImageUrl";
-
 import {
   StyledTripIntroduction,
   StyledTextContainer,
@@ -24,7 +22,7 @@ export default function TripIntroOutro({
         </Typography>
       </StyledTextContainer>
       <StyledImageContainer>
-        <Image src={urlFor(image).url()} />
+        <Image {...image} />
       </StyledImageContainer>
     </StyledTripIntroduction>
   );

@@ -4,11 +4,9 @@ import { PortableText } from "@portabletext/react";
 import HeadedContentBlock from "../headed-content-block";
 import Typography from "../typography";
 import Avatar from "../avatar";
-import Image from "../image";
 import Link from "../link";
 import Hr from "../horizontal-rule";
-
-import { urlFor } from "../../utils/getImageUrl";
+import Image from "../image";
 
 import {
   StyledTripLogistics,
@@ -55,12 +53,7 @@ export default function TripLogistics({
             {tripHosts.hosts.map((host, index) => (
               <StyledHost key={index}>
                 <Avatar size={avatarSize}>
-                  <Image
-                    src={urlFor(host.image)
-                      .height(avatarSize)
-                      .width(avatarSize)
-                      .url()}
-                  />
+                  <Image {...host.image} />
                 </Avatar>
                 <Typography variation="body">{host.nickname}</Typography>
               </StyledHost>

@@ -1,7 +1,8 @@
 import { PortableTextBlock } from "@portabletext/types";
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+
+import { ImageProps } from "../image/type";
 
 export interface TripIntroOutroProps {
   content: PortableTextBlock;
-  image: SanityImageSource;
+  image: ImageProps;
 }

@@ -2,8 +2,6 @@ import Typewriter from "typewriter-effect";
 
 import Image from "../image";
 
-import { urlFor } from "../../utils/getImageUrl";
-
 import {
   StyledSpotlightContainer,
   StyledBackgroundImage,
@@ -24,7 +22,7 @@ export default function Spotlight({
     <StyledSpotlightContainer id="spotlight">
       <StyledBackgroundImage>
         <StyledImageOverlay />
-        <Image src={urlFor(image).url()} />
+        <Image {...image} />
       </StyledBackgroundImage>
       <StyledTextContainer darkText={darkText}>
         <StyledHeading>{heading}</StyledHeading>

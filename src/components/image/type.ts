@@ -1,3 +1,4 @@
-export interface ImageProps {
-  src: string;
+export interface LinkProps {
+  label: string;
+  link: string;
 }

@@ -1,8 +1,8 @@
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { ImageProps } from "../image/type";
 
 export interface SpotlightProps {
   heading: string;
   subheadings: string[];
-  image: SanityImageSource;
+  image: ImageProps;
   darkText: boolean;
 }

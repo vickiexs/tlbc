@@ -3,6 +3,7 @@ import {
   headedContentBlockQueryWithIcon,
 } from "../headed-content-block/query";
 import { linkQuery } from "../link/query";
+import { imageQuery } from "../image/query";
 
 export const tripLogisticsQuery = `
 _type == "tripLogistics" => {
@@ -25,7 +26,7 @@ _type == "tripLogistics" => {
     heading,
     hosts[]->{
       nickname,
-      image
+      ${imageQuery}
     },
     ${linkQuery}
   },
