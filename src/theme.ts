@@ -41,7 +41,8 @@ const theme = {
     xl: `(max-width: ${size.xl})`,
     xxl: `(max-width: ${size.xxl})`,
   },
-  maxContentWidth: "1920px",
+  maxContentWidth: "1512px",
+  maxContentWidthLg: "1920px",
 };
 
 export default theme;

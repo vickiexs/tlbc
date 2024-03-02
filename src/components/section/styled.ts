@@ -20,7 +20,7 @@ export const StyledSectionContainer = styled(`div`)(({ theme }) => ({
   padding: `${theme.spacing(18)} ${theme.spacing(20)}`,
   margin: `0 auto`,
   minWidth: theme.maxContentWidth,
-  maxWidth: theme.maxContentWidth,
+  maxWidth: theme.maxContentWidthLg,
 
   [`@media ${theme.breakpoints.xl}`]: {
     maxWidth: theme.maxContentWidth,
