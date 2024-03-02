@@ -17,6 +17,9 @@ const theme = {
     primary: {
       main: "#548990",
     },
+    secondary: {
+      light: "#D9B089",
+    },
   },
   fontWeight: {
     semiBold: 600,
@@ -38,7 +41,7 @@ const theme = {
     xl: `(max-width: ${size.xl})`,
     xxl: `(max-width: ${size.xxl})`,
   },
-  maxContentWidth: "1512px",
+  maxContentWidth: "1920px",
 };
 
 export default theme;
