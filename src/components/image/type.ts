@@ -18,6 +18,8 @@ export interface ImageProps {
     y: number;
     _type: string;
   };
+  height?: number;
+  width?: number;
 }
 
 export interface ImageMetadata {

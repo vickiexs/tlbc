@@ -5,6 +5,8 @@ import Spotlight from "../../../components/spotlight";
 import { SpotlightProps } from "../../../components/spotlight/type";
 import TripIntroOutro from "../../../components/trip-intro-outro";
 import { TripIntroOutroProps } from "../../../components/trip-intro-outro/type";
+import ScrollingImages from "../../../components/scrolling-images";
+import { ScrollingImagesProps } from "../../../components/scrolling-images/type";
 import Facilities from "./facilities";
 import { FacilitiesProps } from "./facilities/type";
 import TripLogistics from "../../../components/trip-logistics";
@@ -30,6 +32,16 @@ export default function Svalbard(pageData: GenericObject) {
             key={index}
           >
             <TripIntroOutro {...(section as TripIntroOutroProps)} />
+          </Section>
+        );
+      case "tripGallery":
+        return (
+          <Section
+            eyebrowHeading={section.eyebrowHeading}
+            heading={section.heading}
+            key={index}
+          >
+            <ScrollingImages {...(section as ScrollingImagesProps)} />
           </Section>
         );
       case "facilities":
