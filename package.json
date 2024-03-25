@@ -16,6 +16,7 @@
     "@portabletext/types": "^2.0.8",
     "@sanity/client": "^6.11.1",
     "@sanity/image-url": "^1.0.2",
+    "@smakss/react-scroll-direction": "^4.0.4",
     "@uidotdev/usehooks": "^2.4.1",
     "classnames": "^2.5.1",
     "react": "^18.2.0",

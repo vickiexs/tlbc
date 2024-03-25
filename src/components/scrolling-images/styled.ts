@@ -14,25 +14,35 @@ export const StyledContainer = styled(`div`)(({ theme }) => ({
 export const StyledImageContainer = styled(`div`)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  gap: theme.spacing(5),
+  gap: theme.spacing(4),
+  scrollBehavior: "smooth",
+  ".img-row:nth-child(odd)": {
+    marginLeft: `-${theme.spacing(10)}`,
+  },
+  ".img-row:nth-child(even)": {
+    marginLeft: theme.spacing(75),
+  },
+
   [`@media ${theme.breakpoints.md}`]: {
-    gap: theme.spacing(3),
+    gap: theme.spacing(2),
+  },
+  [`@media ${theme.breakpoints.sm}`]: {
+    ".img-row:nth-child(odd)": {
+      marginLeft: theme.spacing(20),
+    },
+    ".img-row:nth-child(even)": {
+      marginLeft: theme.spacing(75),
+    },
   },
 }));
 
 export const StyledRow = styled(`div`)(({ theme }) => ({
   display: "flex",
-  gap: theme.spacing(5),
+  gap: theme.spacing(4),
   flexWrap: "nowrap",
   overflow: "visible",
   [`@media ${theme.breakpoints.md}`]: {
-    gap: theme.spacing(3),
-    "&:nth-child(odd)": {
-      marginLeft: theme.spacing(20),
-    },
-    "&:nth-child(even)": {
-      marginLeft: theme.spacing(40),
-    },
+    gap: theme.spacing(2),
   },
 }));
 
