@@ -31,7 +31,7 @@ export default function ScrollingImages({
   const isMobile = useMediaQuery(theme.breakpoints.xs);
 
   const desktopImageHeight = 300;
-  const mobileImageHeight = 100;
+  const mobileImageHeight = 175;
 
   const row1 = isMobile ? images.slice(0, 4) : images.slice(0, 6);
   const row2 = isMobile ? images.slice(5, 9) : images.slice(6, 12);
