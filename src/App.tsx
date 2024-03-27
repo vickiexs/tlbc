@@ -6,8 +6,7 @@ import client from "./client";
 import { appQuery } from "./utils/queries";
 
 import Home from "./pages/home";
-import Svalbard from "./pages/trips/svalbard";
-import Greenland from "./pages/trips/greenland";
+import TripPage from "./pages/trips";
 import ArcticMemories from "./pages/arctic-memories";
 import Testimonials from "./pages/testimonials";
 import About from "./pages/about";
@@ -48,9 +47,8 @@ function App() {
       case "home":
         return <Home />;
       case "svalbard":
-        return <Svalbard {...pageData} />;
       case "greenland":
-        return <Greenland {...pageData} />;
+        return <TripPage {...pageData} />;
       case "memories":
         return <ArcticMemories {...pageData} />;
       case "testimonials":

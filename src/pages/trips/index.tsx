@@ -1,22 +1,21 @@
 import { useTheme } from "styled-components";
 
-import Section from "../../../components/section";
-import Spotlight from "../../../components/spotlight";
-import { SpotlightProps } from "../../../components/spotlight/type";
-import TripIntroOutro from "../../../components/trip-intro-outro";
-import { TripIntroOutroProps } from "../../../components/trip-intro-outro/type";
-import ScrollingImages from "../../../components/scrolling-images";
-import { ScrollingImagesProps } from "../../../components/scrolling-images/type";
+import Section from "../../components/section";
+import Spotlight from "../../components/spotlight";
+import { SpotlightProps } from "../../components/spotlight/type";
+import TripIntroOutro from "../../components/trip-intro-outro";
+import { TripIntroOutroProps } from "../../components/trip-intro-outro/type";
+import ScrollingImages from "../../components/scrolling-images";
+import { ScrollingImagesProps } from "../../components/scrolling-images/type";
 import Facilities from "./facilities";
 import { FacilitiesProps } from "./facilities/type";
-import TripLogistics from "../../../components/trip-logistics";
-import { TripLogisticsProps } from "../../../components/trip-logistics/type";
-import FAQs from "../../../components/faqs";
-import { FAQProps } from "../../../components/faqs/type";
-import { GenericObject } from "../../../App";
+import TripLogistics from "../../components/trip-logistics";
+import { TripLogisticsProps } from "../../components/trip-logistics/type";
+import FAQs from "../../components/faqs";
+import { FAQProps } from "../../components/faqs/type";
+import { GenericObject } from "../../App";
 
-export default function Svalbard(pageData: GenericObject) {
-  console.log("SVALBARD PAGE DATA:", pageData);
+export default function TripPage(pageData: GenericObject) {
   const theme = useTheme();
   const { sections } = pageData;
 

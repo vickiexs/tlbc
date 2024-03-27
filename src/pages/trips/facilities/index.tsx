@@ -1,9 +1,9 @@
 import { PortableText } from "@portabletext/react";
 
-import Typography from "../../../../components/typography";
-import HeadedContentBlock from "../../../../components/headed-content-block";
-import Image from "../../../../components/image";
-import Carousel from "../../../../components/carousel";
+import Typography from "../../../components/typography";
+import HeadedContentBlock from "../../../components/headed-content-block";
+import Image from "../../../components/image";
+import Carousel from "../../../components/carousel";
 
 import {
   StyledFacilities,
