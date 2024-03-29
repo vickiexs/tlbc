@@ -38,6 +38,7 @@ export default function TripPage(pageData: GenericObject) {
           <Section
             eyebrowHeading={section.eyebrowHeading}
             heading={section.heading}
+            hideOverflow
             key={index}
           >
             <ScrollingImages {...(section as ScrollingImagesProps)} />

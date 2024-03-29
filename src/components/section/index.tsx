@@ -9,10 +9,13 @@ export default function Section({
   heading,
   backgroundColor,
   textColor,
+  hideOverflow,
 }: SectionProps) {
   return (
     <StyledSection backgroundColor={backgroundColor} textColor={textColor}>
-      <StyledSectionContainer>
+      <StyledSectionContainer
+        style={{ overflow: hideOverflow ? "hidden" : "auto" }}
+      >
         {eyebrowHeading && (
           <Typography variation="h2">{eyebrowHeading}</Typography>
         )}

@@ -33,10 +33,10 @@ export default function ScrollingImages({
   const desktopImageHeight = 300;
   const mobileImageHeight = 175;
 
-  const row1 = isMobile ? images.slice(0, 4) : images.slice(0, 6);
-  const row2 = isMobile ? images.slice(5, 9) : images.slice(6, 12);
-  const row3 = isMobile ? images.slice(10, 14) : images.slice(12, 17);
-  const row4 = images.slice(15, images.length);
+  const row1 = isMobile ? images.slice(0, 3) : images.slice(0, 5);
+  const row2 = isMobile ? images.slice(3, 6) : images.slice(5, 10);
+  const row3 = isMobile ? images.slice(6, 9) : images.slice(10, 15);
+  const row4 = images.slice(9, 12);
 
   const rows = isMobile ? [row1, row2, row3, row4] : [row1, row2, row3];
 
@@ -74,7 +74,7 @@ export default function ScrollingImages({
           </animated.div>
         ))}
       </StyledImageContainer>
-      <Link label={link.label} link={link.link} />
+      {link && <Link label={link.label} link={link.link} />}
     </StyledContainer>
   );
 }

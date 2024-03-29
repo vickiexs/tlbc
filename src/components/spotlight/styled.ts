@@ -43,6 +43,7 @@ export const StyledHeading = styled(`h1`)(({ theme }) => ({
   fontSize: theme.fontSize(20),
   fontWeight: theme.fontWeight.semiBold,
   textTransform: "uppercase",
+  textAlign: "center",
   letterSpacing: "0.35rem",
   margin: 0,
 
@@ -50,8 +51,9 @@ export const StyledHeading = styled(`h1`)(({ theme }) => ({
     fontSize: theme.fontSize(15),
   },
   [`@media ${theme.breakpoints.md}`]: {
-    fontSize: theme.fontSize(10),
+    fontSize: theme.fontSize(12),
     letterSpacing: "0.15rem",
+    maxWidth: "350px",
   },
 }));
 
@@ -64,5 +66,6 @@ export const StyledSubtitle = styled(`div`)(({ theme }) => ({
   [`@media ${theme.breakpoints.md}`]: {
     fontSize: theme.fontSize(5),
     letterSpacing: "0.075rem",
+    marginTop: theme.spacing(5),
   },
 }));

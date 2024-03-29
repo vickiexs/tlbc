@@ -4,4 +4,5 @@ export interface SectionProps {
   eyebrowHeading?: string;
   backgroundColor?: string;
   textColor?: string;
+  hideOverflow?: boolean;
 }

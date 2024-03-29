@@ -4,7 +4,14 @@
   font-family: "Titillium Web";
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 html {
+  box-sizing: border-box;
   height: 100%;
 }
 
@@ -22,4 +29,5 @@ main {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  position: relative;
 }

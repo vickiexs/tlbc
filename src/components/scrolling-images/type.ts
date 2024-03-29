@@ -3,5 +3,5 @@ import { LinkProps as Link } from "../link/type";
 
 export interface ScrollingImagesProps {
   images: Image[];
-  link: Link;
+  link?: Link;
 }

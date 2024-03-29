@@ -84,6 +84,9 @@ export const StyledHost = styled(`div`)(({ theme }) => ({
 export const StyledTripCoverage = styled(`div`)(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(10),
+  li: {
+    marginBottom: theme.spacing(2),
+  },
 
   [`@media ${theme.breakpoints.md}`]: {
     flexDirection: "column",
