@@ -55,6 +55,8 @@ function App() {
         return <Testimonials {...pageData} />;
       case "about":
         return <About {...pageData} />;
+      case "error":
+        return <Error404 {...pageData} />;
     }
   };
 
@@ -73,7 +75,6 @@ function App() {
                     key={index}
                   />
                 ))}
-                <Route path="*" element={<Error404 />} />
               </Routes>
               <Footer {...(data.footer[0] as FooterProps)} />
             </>

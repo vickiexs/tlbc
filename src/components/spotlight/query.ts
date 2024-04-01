@@ -1,4 +1,5 @@
 import { imageQuery } from "../image/query";
+import { linkQuery } from "../link/query";
 
 export const spotlightQuery = `
 _type == "spotlight" => {
@@ -6,5 +7,6 @@ _type == "spotlight" => {
   heading,
   subheadings[],
   ${imageQuery},
-  darkText
+  darkText,
+  ${linkQuery}
 }`;
