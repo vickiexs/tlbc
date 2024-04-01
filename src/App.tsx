@@ -11,6 +11,7 @@ import ArcticMemories from "./pages/arctic-memories";
 import Testimonials from "./pages/testimonials";
 import About from "./pages/about";
 import Error404 from "./pages/404";
+import LoadingPage from "./pages/loading";
 
 import Header from "./components/header";
 import { HeaderProps } from "./components/header/type";
@@ -36,10 +37,12 @@ function App() {
       navigate(path.split(/\/(.*)/s)[1]);
     }
 
-    client
-      .fetch(appQuery)
-      .then((data) => setData(data))
-      .catch(console.error);
+    setTimeout(function () {
+      client
+        .fetch(appQuery)
+        .then((data) => setData(data))
+        .catch(console.error);
+    }, 4000);
   }, []);
 
   const getPageComponent = (key: string, pageData: GenericObject) => {
@@ -61,27 +64,25 @@ function App() {
   };
 
   return (
-    <>
-      <main>
-        <ThemeProvider theme={theme}>
-          {data && (
-            <>
-              <Header {...(data.header[0] as HeaderProps)} />
-              <Routes>
-                {data.pages.map((page, index) => (
-                  <Route
-                    path={page.path}
-                    element={getPageComponent(page.key, page)}
-                    key={index}
-                  />
-                ))}
-              </Routes>
-              <Footer {...(data.footer[0] as FooterProps)} />
-            </>
-          )}
-        </ThemeProvider>
-      </main>
-    </>
+    <ThemeProvider theme={theme}>
+      {data ? (
+        <>
+          <Header {...(data.header[0] as HeaderProps)} />
+          <Routes>
+            {data.pages.map((page, index) => (
+              <Route
+                path={page.path}
+                element={getPageComponent(page.key, page)}
+                key={index}
+              />
+            ))}
+          </Routes>
+          <Footer {...(data.footer[0] as FooterProps)} />
+        </>
+      ) : (
+        <LoadingPage />
+      )}
+    </ThemeProvider>
   );
 }
 
