@@ -51,12 +51,16 @@ export default function Header({ navItems }: HeaderProps) {
   }, [height, spotlight]);
 
   const openMobileMenu = () => {
-    document.body.style.overflowY = "hidden";
+    const html = document.getElementsByTagName("html")[0];
+    html.classList.add("lock-scroll");
+
     setShowMobileMenu(true);
   };
 
   const closeMobileMenu = () => {
-    document.body.style.overflowY = "visible";
+    const html = document.getElementsByTagName("html")[0];
+    html.classList.remove("lock-scroll");
+
     setShowMobileMenu(false);
   };
 
