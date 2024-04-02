@@ -6,6 +6,7 @@ import { facilitiesQuery } from "../pages/trips/facilities/query";
 import { tripLogisticsQuery } from "../components/trip-logistics/query";
 import { faqsQuery } from "../components/faqs/query";
 import { scrollingImagesQuery } from "../components/scrolling-images/query";
+import { bookingFormQuery } from "../pages/trips/booking-form/query";
 
 export const pageQuery = `
 *[_type in ["page"]]{
@@ -17,7 +18,8 @@ export const pageQuery = `
     ${scrollingImagesQuery},
     ${facilitiesQuery},
     ${tripLogisticsQuery},
-    ${faqsQuery}
+    ${faqsQuery},
+    ${bookingFormQuery}
   }
 }
 `;

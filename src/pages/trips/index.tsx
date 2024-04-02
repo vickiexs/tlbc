@@ -13,6 +13,8 @@ import TripLogistics from "../../components/trip-logistics";
 import { TripLogisticsProps } from "../../components/trip-logistics/type";
 import FAQs from "../../components/faqs";
 import { FAQProps } from "../../components/faqs/type";
+import BookingForm from "./booking-form";
+import { BookingFormProps } from "./booking-form/type";
 import { GenericObject } from "../../App";
 
 export default function TripPage(pageData: GenericObject) {
@@ -77,6 +79,8 @@ export default function TripPage(pageData: GenericObject) {
             <FAQs {...(section as FAQProps)} />
           </Section>
         );
+      case "bookingForm":
+        return <BookingForm {...(section as BookingFormProps)} key={index} />;
       default:
         return null;
     }
