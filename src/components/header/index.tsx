@@ -73,7 +73,8 @@ export default function Header({ navItems }: HeaderProps) {
   return (
     <StyledHeaderContainer
       className={classNames({
-        transparent: isTransparentHeader,
+        solid: !isTransparentHeader,
+        "no-box-shadow": y === 0,
       })}
     >
       <StyledLogoContainer>

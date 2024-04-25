@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import theme from "./theme";
 import { ThemeProvider } from "styled-components";
@@ -66,7 +66,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       {data ? (
-        <>
+        <Fragment>
           <Header {...(data.header[0] as HeaderProps)} />
           <Routes>
             {data.pages.map((page, index) => (
@@ -78,7 +78,7 @@ function App() {
             ))}
           </Routes>
           <Footer {...(data.footer[0] as FooterProps)} />
-        </>
+        </Fragment>
       ) : (
         <LoadingPage />
       )}

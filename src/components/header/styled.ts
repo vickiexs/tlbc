@@ -8,17 +8,20 @@ export const StyledHeaderContainer = styled(`header`)(({ theme }) => ({
   alignItems: "center",
   padding: `${theme.spacing(3)} ${theme.spacing(10)}`,
   gap: theme.spacing(1),
-  backgroundColor: theme.palette.white,
-  color: theme.palette.text,
+  color: theme.palette.white,
+  backgroundColor: "transparent",
+  boxShadow: "none",
   zIndex: 10,
   position: "fixed",
   left: 0,
   right: 0,
   transition: "all 0.5s ease-in-out",
-  boxShadow: "2px 1px 7px 3px rgb(0 0 0 / 10%)",
-  "&.transparent": {
-    color: theme.palette.white,
-    backgroundColor: "transparent",
+  "&.solid": {
+    backgroundColor: theme.palette.white,
+    color: theme.palette.text,
+    boxShadow: "2px 1px 7px 3px rgb(0 0 0 / 10%)",
+  },
+  "&.no-box-shadow": {
     boxShadow: "none",
   },
 

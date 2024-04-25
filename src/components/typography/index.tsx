@@ -1,4 +1,5 @@
 import {
+  StyledHeading1,
   StyledHeading2,
   StyledHeading3,
   StyledHeading4,
@@ -13,6 +14,10 @@ export default function Typography({
 }: TypographyProps) {
   const renderTypography = () => {
     switch (variation) {
+      case "h1":
+        return (
+          <StyledHeading1 className={className}>{children}</StyledHeading1>
+        );
       case "h2":
         return (
           <StyledHeading2 className={className}>{children}</StyledHeading2>

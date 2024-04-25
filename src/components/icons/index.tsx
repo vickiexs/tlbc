@@ -4,6 +4,7 @@ import { IoMdCalendar } from "react-icons/io";
 import { IoPricetags } from "react-icons/io5";
 import { MdPeople } from "react-icons/md";
 import { MdLocationPin } from "react-icons/md";
+import { MdClose } from "react-icons/md";
 
 interface IconProps {
   icon: string;
@@ -25,6 +26,8 @@ export default function Icon({ icon, size }: IconProps) {
         return <MdPeople size={size} />;
       case "location":
         return <MdLocationPin size={size} />;
+      case "close":
+        return <MdClose size={size} />;
     }
   };
 

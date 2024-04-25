@@ -7,11 +7,14 @@ import { tripLogisticsQuery } from "../components/trip-logistics/query";
 import { faqsQuery } from "../components/faqs/query";
 import { scrollingImagesQuery } from "../components/scrolling-images/query";
 import { bookingFormQuery } from "../pages/trips/booking-form/query";
+import { aboutIntroQuery } from "../pages/about/intro/query";
+import { hostsQuery } from "../pages/about/hosts/query";
 
 export const pageQuery = `
 *[_type in ["page"]]{
   key,
   path,
+  heading,
   sections[]->{
     ${spotlightQuery},
     ${tripIntroOutroQuery},
@@ -19,7 +22,9 @@ export const pageQuery = `
     ${facilitiesQuery},
     ${tripLogisticsQuery},
     ${faqsQuery},
-    ${bookingFormQuery}
+    ${bookingFormQuery},
+    ${aboutIntroQuery},
+    ${hostsQuery}
   }
 }
 `;

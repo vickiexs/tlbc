@@ -1,7 +1,7 @@
 import { imageQuery } from "../image/query";
 
 export const tripIntroOutroQuery = `
-_type == "tripIntroOutro" => {
+_type == "infoSection" => {
   _type,
   eyebrowHeading,
   heading,

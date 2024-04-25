@@ -18,8 +18,17 @@ export const StyledButton = styled(`button`)(({ theme }) => ({
       backgroundColor: "rgba(0, 0, 0, 0.2)",
     },
   },
+  "&.btn-dark": {
+    color: theme.palette.text,
+    border: `2px solid ${theme.palette.text}`,
+    transition: "300ms",
+    "&:hover": {
+      backgroundColor: "rgba(0, 0, 0, 0.05)",
+    },
+  },
 
   [`@media ${theme.breakpoints.md}`]: {
-    fontSize: theme.fontSize(4),
+    fontSize: "14px",
+    padding: `${theme.spacing(2)} ${theme.spacing(4)}`,
   },
 }));
