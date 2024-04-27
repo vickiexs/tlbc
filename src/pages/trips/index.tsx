@@ -16,10 +16,14 @@ import { FAQProps } from "../../components/faqs/type";
 import BookingForm from "./booking-form";
 import { BookingFormProps } from "./booking-form/type";
 import { GenericObject } from "../../App";
+import Timeline from "../../components/itinerary";
+import { ItineraryProps } from "../../components/itinerary/type";
 
 export default function TripPage(pageData: GenericObject) {
   const theme = useTheme();
   const { sections } = pageData;
+
+  console.log(pageData)
 
   const renderPageSection = (section: GenericObject, index: number) => {
     switch (section._type) {
@@ -35,6 +39,13 @@ export default function TripPage(pageData: GenericObject) {
             <TripIntroOutro {...(section as TripIntroOutroProps)} />
           </Section>
         );
+      case "itinerary":
+        return (<Section
+          eyebrowHeading={section.eyebrowHeading}
+        >
+            <Timeline {...(section as ItineraryProps)} />  
+          </Section>
+          )
       case "tripGallery":
         return (
           <Section
