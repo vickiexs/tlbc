@@ -13,6 +13,8 @@ import TripLogistics from "../../components/trip-logistics";
 import { TripLogisticsProps } from "../../components/trip-logistics/type";
 import FAQs from "../../components/faqs";
 import { FAQProps } from "../../components/faqs/type";
+import Quotes from "../../components/quotes";
+import { QuotesProps } from "../../components/quotes/type";
 import BookingForm from "./booking-form";
 import { BookingFormProps } from "./booking-form/type";
 import { GenericObject } from "../../App";
@@ -23,13 +25,13 @@ export default function TripPage(pageData: GenericObject) {
   const theme = useTheme();
   const { sections } = pageData;
 
-  console.log(pageData)
+  console.log("PAGE DATA:", pageData);
 
   const renderPageSection = (section: GenericObject, index: number) => {
     switch (section._type) {
       case "spotlight":
         return <Spotlight {...(section as SpotlightProps)} key={index} />;
-      case "tripIntroOutro":
+      case "infoSection":
         return (
           <Section
             eyebrowHeading={section.eyebrowHeading}
@@ -40,12 +42,11 @@ export default function TripPage(pageData: GenericObject) {
           </Section>
         );
       case "itinerary":
-        return (<Section
-          eyebrowHeading={section.eyebrowHeading}
-        >
-            <Timeline {...(section as ItineraryProps)} />  
+        return (
+          <Section eyebrowHeading={section.eyebrowHeading}>
+            <Timeline {...(section as ItineraryProps)} />
           </Section>
-          )
+        );
       case "tripGallery":
         return (
           <Section
@@ -88,6 +89,17 @@ export default function TripPage(pageData: GenericObject) {
             key={index}
           >
             <FAQs {...(section as FAQProps)} />
+          </Section>
+        );
+      case "testimonialExcerpts":
+        return (
+          <Section
+            // backgroundColor={theme.palette.text}
+            // textColor={theme.palette.white}
+            hideOverflow
+            key={index}
+          >
+            <Quotes {...(section as QuotesProps)} />
           </Section>
         );
       case "bookingForm":

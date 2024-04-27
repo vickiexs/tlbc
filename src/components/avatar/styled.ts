@@ -6,4 +6,5 @@ export const StyledAvatar = styled(`div`)<{ size: number }>(({ size }) => ({
   width: `${size}px`,
   borderRadius: "50%",
   overflow: "hidden",
+  transition: "height 450ms ease-in-out, width 450ms ease-in-out",
 }));

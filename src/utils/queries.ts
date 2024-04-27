@@ -10,6 +10,7 @@ import { facilitiesQuery } from "../pages/trips/facilities/query";
 import { bookingFormQuery } from "../pages/trips/booking-form/query";
 import { aboutIntroQuery } from "../pages/about/intro/query";
 import { hostsQuery } from "../pages/about/hosts/query";
+import { testimonialExcerptQuery } from "../components/quotes/query";
 
 export const pageQuery = `
 *[_type in ["page"]]{
@@ -26,7 +27,8 @@ export const pageQuery = `
     ${faqsQuery},
     ${bookingFormQuery},
     ${aboutIntroQuery},
-    ${hostsQuery}
+    ${hostsQuery},
+    ${testimonialExcerptQuery}
   }
 }
 `;

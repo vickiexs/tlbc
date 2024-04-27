@@ -21,6 +21,12 @@ body {
   height: 100%;
 }
 
+button {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .lock-scroll {
   overflow: hidden;
 }

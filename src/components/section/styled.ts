@@ -27,6 +27,9 @@ export const StyledSectionContainer = styled(`div`)(({ theme }) => ({
     minWidth: "unset",
     margin: 0,
   },
+  [`@media ${theme.breakpoints.lg}`]: {
+    padding: `${theme.spacing(14)} ${theme.spacing(14)}`,
+  },
   [`@media ${theme.breakpoints.md}`]: {
     padding: `${theme.spacing(10)} ${theme.spacing(10)}`,
   },
