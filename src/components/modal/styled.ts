@@ -19,4 +19,8 @@ export const StyledModalContainer = styled(`div`)(({ theme }) => ({
   borderRadius: "10px",
   zIndex: 21,
   overflowY: "scroll",
+
+  [`@media ${theme.breakpoints.md}`]: {
+    borderRadius: 0,
+  },
 }));

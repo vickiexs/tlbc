@@ -3,8 +3,7 @@ import { useTheme } from "styled-components";
 import { useMediaQuery } from "usehooks-ts";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
-import "swiper/css/autoplay";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import classNames from "classnames";
 
@@ -53,15 +52,12 @@ export default function Quotes({ testimonials, darkMode }: QuotesProps) {
     <StyledContainer>
       {isBreakpointSm ? (
         <Swiper
-          modules={[Pagination, Autoplay]}
+          modules={[Pagination]}
           spaceBetween={40}
           slidesPerView="auto"
           loop
           centeredSlides
           pagination
-          autoplay={{
-            delay: 7000,
-          }}
         >
           {testimonials.map((testimonial, index) => (
             <SwiperSlide key={index}>

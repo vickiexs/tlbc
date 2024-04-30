@@ -135,7 +135,7 @@ export const StyledModalTextContainer = styled(`div`)(({ theme }) => ({
 }));
 
 export const StyledCloseButton = styled(`button`)(({ theme }) => ({
-  position: "absolute",
+  position: "fixed",
   right: 0,
   color: theme.palette.white,
   backgroundColor: "rgba(0, 0, 0, 0.3)",
