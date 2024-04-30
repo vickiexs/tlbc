@@ -31,7 +31,7 @@ export const StyledImageContainer = styled(`div`)(({ theme }) => ({
       marginLeft: `-${theme.spacing(15)}`,
     },
     ".img-row:nth-child(even)": {
-      marginLeft: theme.spacing(75),
+      marginLeft: theme.spacing(90),
     },
   },
 }));

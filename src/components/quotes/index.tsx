@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import classNames from "classnames";
 
 import Avatar from "../avatar";
 import Image from "../image";
@@ -24,7 +25,7 @@ import {
 } from "./styled";
 import { QuotesProps } from "./type";
 
-export default function Quotes({ testimonials }: QuotesProps) {
+export default function Quotes({ testimonials, darkMode }: QuotesProps) {
   const theme = useTheme();
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -85,7 +86,9 @@ export default function Quotes({ testimonials }: QuotesProps) {
             ))}
             <StyledHr>
               <StyledArrowButton
-                className="left-arrow-btn"
+                className={classNames("left-arrow-btn", {
+                  "dark-mode": darkMode,
+                })}
                 onClick={() =>
                   setActiveIndex(
                     activeIndex === 0
@@ -96,9 +99,13 @@ export default function Quotes({ testimonials }: QuotesProps) {
               >
                 <ArrowIcon />
               </StyledArrowButton>
-              <Hr color="rgba(0, 0, 0, 0.7)" />
+              <Hr
+                color={darkMode ? theme.palette.white : "rgba(0, 0, 0, 0.7)"}
+              />
               <StyledArrowButton
-                className="right-arrow-btn"
+                className={classNames("right-arrow-btn", {
+                  "dark-mode": darkMode,
+                })}
                 onClick={() =>
                   setActiveIndex(
                     activeIndex === testimonials.length - 1

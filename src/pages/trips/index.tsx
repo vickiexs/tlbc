@@ -18,7 +18,7 @@ import { QuotesProps } from "../../components/quotes/type";
 import BookingForm from "./booking-form";
 import { BookingFormProps } from "./booking-form/type";
 import { GenericObject } from "../../App";
-import Timeline from "../../components/itinerary";
+import Itinerary from "../../components/itinerary";
 import { ItineraryProps } from "../../components/itinerary/type";
 
 export default function TripPage(pageData: GenericObject) {
@@ -43,8 +43,14 @@ export default function TripPage(pageData: GenericObject) {
         );
       case "itinerary":
         return (
-          <Section eyebrowHeading={section.eyebrowHeading}>
-            <Timeline {...(section as ItineraryProps)} />
+          <Section
+            eyebrowHeading={section.eyebrowHeading}
+            backgroundColor={theme.palette.text}
+            textColor={theme.palette.white}
+            hideOverflow
+            key={index}
+          >
+            <Itinerary {...(section as ItineraryProps)} />
           </Section>
         );
       case "tripGallery":

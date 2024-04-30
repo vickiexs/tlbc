@@ -17,11 +17,14 @@ export const StyledSectionContainer = styled(`div`)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(5),
-  padding: `${theme.spacing(18)} ${theme.spacing(20)}`,
   margin: `0 auto`,
+  padding: `${theme.spacing(18)} 0`,
   minWidth: theme.maxContentWidth,
   maxWidth: theme.maxContentWidthLg,
 
+  [`@media ${theme.breakpoints.xxl}`]: {
+    padding: `${theme.spacing(18)} ${theme.spacing(20)}`,
+  },
   [`@media ${theme.breakpoints.xl}`]: {
     maxWidth: theme.maxContentWidth,
     minWidth: "unset",

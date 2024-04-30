@@ -1,53 +1,61 @@
-import { PortableText } from "@portabletext/react";
-import { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useTheme } from "styled-components";
 import { useMediaQuery } from "usehooks-ts";
-import theme from "../../theme";
-import { HeadedContentBlockProps } from "../headed-content-block/type";
+import "swiper/css/effect-coverflow";
+import "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import { PortableText } from "@portabletext/react";
+
 import Typography from "../typography";
-import { ExpandingHorizontalRule, StyledTimeline, StyledTimelineContainer } from "./style";
+import ItineraryCarouselCard from "./itinerary-carousel-card";
+import Hr from "../horizontal-rule";
+import ArrowIcon from "../icons/arrow";
+
+import VerticalItinerary from "./vertical-itinerary";
+
+import { StyledItineraryContainer, StyledButtonContainer } from "./styled";
 import { ItineraryProps } from "./type";
-import HorizontalRule from "../horizontal-rule";
 
-export default function Itinerary(itinerary: ItineraryProps) {
-  const isMobile = useMediaQuery(theme.breakpoints.md);
+export default function Itinerary({ description, timeline }: ItineraryProps) {
+  const theme = useTheme();
+  const isBreakpointLg = useMediaQuery(theme.breakpoints.lg);
+  const isBreakpointMd = useMediaQuery(theme.breakpoints.md);
 
   return (
-    <>
+    <StyledItineraryContainer>
       <Typography variation="body">
-        <PortableText value={itinerary.description} />
+        <PortableText value={description} />
       </Typography>
-      {isMobile
-        ? TimelineMobile(itinerary.timeline)
-        : TimelineWeb(itinerary.timeline)}
-    </>
+      {!isBreakpointMd ? (
+        <Swiper
+          // onRealIndexChange={(swiper) => setTimelineIndex(swiper.realIndex)}
+          slidesPerView="auto"
+          spaceBetween={isBreakpointLg ? 60 : 80}
+          modules={[Navigation]}
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
+        >
+          {timeline.map((timelineItem, index) => (
+            <SwiperSlide key={index}>
+              <ItineraryCarouselCard {...timelineItem} />
+            </SwiperSlide>
+          ))}
+          <StyledButtonContainer>
+            <div className="swiper-button-next">
+              <ArrowIcon />
+            </div>
+            <div className="swiper-button-prev">
+              <ArrowIcon />
+            </div>
+            <Hr color={theme.palette.white} />
+          </StyledButtonContainer>
+        </Swiper>
+      ) : (
+        <VerticalItinerary items={timeline} />
+      )}
+    </StyledItineraryContainer>
   );
-}
-
-function TimelineWeb(timeline: HeadedContentBlockProps[]) {
-  const [timelineIndex, setTimelineIndex] = useState(0);
-
-  return (
-    <StyledTimelineContainer>
-      <Swiper
-        onRealIndexChange={(swiper) => setTimelineIndex(swiper.realIndex)}
-        spaceBetween={80}
-      >
-        {timeline.map((child, index) => (
-          <SwiperSlide key={index}>
-            <PortableText value={child.content} />
-            <StyledTimeline>
-              <HorizontalLine />
-              <RadioDot active={index === timelineIndex} />
-              <HorizontalLine />
-            </StyledTimeline>
-            <Typography variation="body">{child.heading}</Typography>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </StyledTimelineContainer>
-  );
-}
-function TimelineMobile(timeline: HeadedContentBlockProps[]) {
-  return <h1>mobile</h1>;
 }

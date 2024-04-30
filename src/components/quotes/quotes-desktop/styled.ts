@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledContainer = styled(`div`)(({ theme }) => ({
+export const StyledContainer = styled(`div`)(() => ({
   position: "relative",
   display: "flex",
   flexDirection: "column",
@@ -16,17 +16,7 @@ export const StyledContainer = styled(`div`)(({ theme }) => ({
   },
   ".swiper-slide": {
     width: "auto",
-    height: "auto",
-  },
-  ".swiper-pagination-bullet": {
-    background: "transparent",
-    border: `0.75px solid ${theme.palette.text} !important`,
-    height: "8px",
-    width: "8px",
-    opacity: 1,
-  },
-  ".swiper-pagination-bullet-active": {
-    backgroundColor: `${theme.palette.text} !important`,
+    height: "100%",
   },
 }));
 
@@ -117,16 +107,6 @@ export const StyledArrowButton = styled(`button`)(({ theme }) => ({
       padding: "10px",
       fill: theme.palette.white,
     },
-  },
-
-  "&.dark-mode": {
-    backgroundColor: theme.palette.white,
-    svg: {
-      fill: theme.palette.text,
-    },
-  },
-  "&.dark-mode:hover": {
-    backgroundColor: "rgba(227, 227, 227, 1)",
   },
 
   "&:hover": {
