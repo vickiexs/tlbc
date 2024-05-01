@@ -37,10 +37,12 @@ export const StyledTripDetails = styled(`div`)(({ theme }) => ({
     },
   },
   [`@media ${theme.breakpoints.sm}`]: {
-    gap: theme.spacing(6),
-    ".left-col": {
-      width: "75%",
-    },
+    display: "grid",
+    gridTemplateColumns: "repeat(2, 1fr)",
+    gap: theme.spacing(8),
+  },
+  [`@media ${theme.breakpoints.xs}`]: {
+    gap: theme.spacing(5),
   },
 }));
 

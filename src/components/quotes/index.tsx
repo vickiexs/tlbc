@@ -15,7 +15,7 @@ import QuotesCarouselCard from "./quotes-mobile-card";
 
 import {
   StyledContainer,
-  StyledExcerpt,
+  StyledQuote,
   StyledImageLine,
   StyledImageContainer,
   StyledName,
@@ -24,7 +24,7 @@ import {
 } from "./styled";
 import { QuotesProps } from "./type";
 
-export default function Quotes({ testimonials, darkMode }: QuotesProps) {
+export default function Quotes({ quotes, darkMode }: QuotesProps) {
   const theme = useTheme();
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -38,7 +38,7 @@ export default function Quotes({ testimonials, darkMode }: QuotesProps) {
     const id = setInterval(
       () =>
         setActiveIndex((index) =>
-          index === testimonials.length - 1 ? 0 : index + 1
+          index === quotes.length - 1 ? 0 : index + 1
         ),
       7000
     );
@@ -46,7 +46,7 @@ export default function Quotes({ testimonials, darkMode }: QuotesProps) {
     return () => {
       clearInterval(id);
     };
-  }, [testimonials]);
+  }, [quotes]);
 
   return (
     <StyledContainer>
@@ -59,7 +59,7 @@ export default function Quotes({ testimonials, darkMode }: QuotesProps) {
           centeredSlides
           pagination
         >
-          {testimonials.map((testimonial, index) => (
+          {quotes.map((testimonial, index) => (
             <SwiperSlide key={index}>
               <QuotesCarouselCard {...testimonial} />
             </SwiperSlide>
@@ -67,11 +67,9 @@ export default function Quotes({ testimonials, darkMode }: QuotesProps) {
         </Swiper>
       ) : (
         <Fragment>
-          <StyledExcerpt>
-            {`"${testimonials[activeIndex].testimonialExcerpt}"`}
-          </StyledExcerpt>
+          <StyledQuote>{`"${quotes[activeIndex].quote}"`}</StyledQuote>
           <StyledImageLine>
-            {testimonials.map((testimonial, index) => (
+            {quotes.map((testimonial, index) => (
               <StyledImageContainer>
                 <Avatar
                   size={index === activeIndex ? activeAvatarSize : avatarSize}
@@ -87,9 +85,7 @@ export default function Quotes({ testimonials, darkMode }: QuotesProps) {
                 })}
                 onClick={() =>
                   setActiveIndex(
-                    activeIndex === 0
-                      ? testimonials.length - 1
-                      : activeIndex - 1
+                    activeIndex === 0 ? quotes.length - 1 : activeIndex - 1
                   )
                 }
               >
@@ -104,9 +100,7 @@ export default function Quotes({ testimonials, darkMode }: QuotesProps) {
                 })}
                 onClick={() =>
                   setActiveIndex(
-                    activeIndex === testimonials.length - 1
-                      ? 0
-                      : activeIndex + 1
+                    activeIndex === quotes.length - 1 ? 0 : activeIndex + 1
                   )
                 }
               >
@@ -114,7 +108,7 @@ export default function Quotes({ testimonials, darkMode }: QuotesProps) {
               </StyledArrowButton>
             </StyledHr>
           </StyledImageLine>
-          <StyledName>{`${testimonials[activeIndex].fullName} - ${testimonials[activeIndex].location}`}</StyledName>
+          <StyledName>{`${quotes[activeIndex].fullName} - ${quotes[activeIndex].location}`}</StyledName>
         </Fragment>
       )}
     </StyledContainer>

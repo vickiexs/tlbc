@@ -30,7 +30,7 @@ export const StyledContainer = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledExcerpt = styled(`div`)(({ theme }) => ({
+export const StyledQuote = styled(`div`)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -38,10 +38,13 @@ export const StyledExcerpt = styled(`div`)(({ theme }) => ({
   textAlign: "center",
   maxWidth: "750px",
   marginBottom: theme.spacing(15),
+  minHeight: "150px",
 
   [`@media ${theme.breakpoints.md}`]: {
     fontSize: theme.fontSize(5),
     maxWidth: "400px",
+    minHeight: "130px",
+    marginBottom: theme.spacing(10),
   },
 }));
 
@@ -108,6 +111,11 @@ export const StyledArrowButton = styled(`button`)(({ theme }) => ({
       height: "40px",
       padding: "10px",
       fill: theme.palette.white,
+
+      [`@media ${theme.breakpoints.md}`]: {
+        height: "30px",
+        padding: "8px",
+      },
     },
   },
   "&.right-arrow-btn": {
@@ -116,6 +124,11 @@ export const StyledArrowButton = styled(`button`)(({ theme }) => ({
       height: "40px",
       padding: "10px",
       fill: theme.palette.white,
+
+      [`@media ${theme.breakpoints.md}`]: {
+        height: "30px",
+        padding: "8px",
+      },
     },
   },
 

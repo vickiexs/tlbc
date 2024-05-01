@@ -97,7 +97,7 @@ export default function TripPage(pageData: GenericObject) {
             <FAQs {...(section as FAQProps)} />
           </Section>
         );
-      case "testimonialExcerpts":
+      case "quotes":
         return (
           <Section
             // backgroundColor={theme.palette.text}

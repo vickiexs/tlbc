@@ -1,8 +1,8 @@
 import { ImageProps } from "../../image/type";
 
-export interface QuotesCarouselCardProps {
+export interface Quote {
   fullName: string;
   location: string;
-  testimonialExcerpt: string;
+  quote: string;
   image: ImageProps;
 }

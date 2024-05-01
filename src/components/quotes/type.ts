@@ -1,13 +1,6 @@
-import { ImageProps } from "../image/type";
+import { Quote } from "./quotes-mobile-card/type";
 
 export interface QuotesProps {
-  testimonials: Testimonial[];
+  quotes: Quote[];
   darkMode?: boolean;
-}
-
-export interface Testimonial {
-  fullName: string;
-  location: string;
-  testimonialExcerpt: string;
-  image: ImageProps;
 }

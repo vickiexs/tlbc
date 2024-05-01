@@ -2,14 +2,14 @@ import Avatar from "../../avatar";
 import Image from "../../image";
 
 import { StyledCard, StyledQuote, StyledGuestInfo } from "./styled";
-import { Testimonial } from "../type";
+import { Quote } from "./type";
 
 export default function QuotesCarouselCard({
   fullName,
   location,
-  testimonialExcerpt,
+  quote,
   image,
-}: Testimonial) {
+}: Quote) {
   return (
     <StyledCard>
       <Avatar size={120}>
@@ -17,7 +17,7 @@ export default function QuotesCarouselCard({
       </Avatar>
       <StyledGuestInfo>{fullName}</StyledGuestInfo>
       <StyledGuestInfo>{location}</StyledGuestInfo>
-      <StyledQuote>{testimonialExcerpt}</StyledQuote>
+      <StyledQuote>{quote}</StyledQuote>
     </StyledCard>
   );
 }

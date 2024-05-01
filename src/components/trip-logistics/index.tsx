@@ -1,4 +1,5 @@
 import { useTheme } from "styled-components";
+import { useMediaQuery } from "usehooks-ts";
 import { PortableText } from "@portabletext/react";
 
 import HeadedContentBlock from "../headed-content-block";
@@ -32,21 +33,32 @@ export default function TripLogistics({
 }: TripLogisticsProps) {
   const theme = useTheme();
 
+  const isBreakpointSm = useMediaQuery(theme.breakpoints.sm);
+
   const avatarSize = 130;
 
   return (
     <StyledTripLogistics>
       <StyledTripDetailsContainer>
-        <StyledTripDetails>
-          <StyledColumn className="left-col">
+        {isBreakpointSm ? (
+          <StyledTripDetails>
             <HeadedContentBlock {...dates} />
-            <HeadedContentBlock {...spaces} />
-          </StyledColumn>
-          <StyledColumn className="right-col">
             <HeadedContentBlock {...price} />
+            <HeadedContentBlock {...spaces} />
             <HeadedContentBlock {...location} />
-          </StyledColumn>
-        </StyledTripDetails>
+          </StyledTripDetails>
+        ) : (
+          <StyledTripDetails>
+            <StyledColumn className="left-col">
+              <HeadedContentBlock {...dates} />
+              <HeadedContentBlock {...spaces} />
+            </StyledColumn>
+            <StyledColumn className="right-col">
+              <HeadedContentBlock {...price} />
+              <HeadedContentBlock {...location} />
+            </StyledColumn>
+          </StyledTripDetails>
+        )}
         <StyledHostDetails>
           <Typography variation="h4">{tripHosts.heading}</Typography>
           <StyledHosts>

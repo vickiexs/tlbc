@@ -1,13 +1,13 @@
 import { imageQuery } from "../image/query";
 
-export const testimonialExcerptQuery = `
-_type == "testimonialExcerpts" => {
+export const quotesQuery = `
+_type == "quotes" => {
   _type,
   eyebrowHeading,
-  testimonials[]->{
+  quotes[]->{
     fullName,
     location,
-    testimonialExcerpt,
+    quote,
     ${imageQuery}
   }
 }`;
