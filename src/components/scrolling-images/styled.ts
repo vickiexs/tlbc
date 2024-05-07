@@ -7,6 +7,7 @@ export const StyledContainer = styled(`div`)(({ theme }) => ({
   gap: theme.spacing(10),
   marginTop: theme.spacing(8),
   [`@media ${theme.breakpoints.md}`]: {
+    marginTop: theme.spacing(5),
     gap: theme.spacing(8),
   },
 }));
@@ -28,10 +29,10 @@ export const StyledImageContainer = styled(`div`)(({ theme }) => ({
   },
   [`@media ${theme.breakpoints.sm}`]: {
     ".img-row:nth-child(odd)": {
-      marginLeft: `-${theme.spacing(15)}`,
+      marginLeft: `-${theme.spacing(9)}`,
     },
     ".img-row:nth-child(even)": {
-      marginLeft: theme.spacing(90),
+      marginLeft: theme.spacing(130),
     },
   },
 }));

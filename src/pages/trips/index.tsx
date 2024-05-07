@@ -20,6 +20,8 @@ import { BookingFormProps } from "./booking-form/type";
 import { GenericObject } from "../../App";
 import Itinerary from "../../components/itinerary";
 import { ItineraryProps } from "../../components/itinerary/type";
+import Video from "../../components/video";
+import { VideoProps } from "../../components/video/type";
 
 export default function TripPage(pageData: GenericObject) {
   const theme = useTheme();
@@ -51,6 +53,12 @@ export default function TripPage(pageData: GenericObject) {
             key={index}
           >
             <Itinerary {...(section as ItineraryProps)} />
+          </Section>
+        );
+      case "videoSection":
+        return (
+          <Section key={index}>
+            <Video {...(section as VideoProps)} />
           </Section>
         );
       case "tripGallery":
@@ -99,12 +107,7 @@ export default function TripPage(pageData: GenericObject) {
         );
       case "quotes":
         return (
-          <Section
-            // backgroundColor={theme.palette.text}
-            // textColor={theme.palette.white}
-            hideOverflow
-            key={index}
-          >
+          <Section hideOverflow key={index}>
             <Quotes {...(section as QuotesProps)} />
           </Section>
         );

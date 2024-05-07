@@ -53,7 +53,7 @@ export default function Quotes({ quotes, darkMode }: QuotesProps) {
       {isBreakpointSm ? (
         <Swiper
           modules={[Pagination]}
-          spaceBetween={40}
+          spaceBetween={25}
           slidesPerView="auto"
           loop
           centeredSlides

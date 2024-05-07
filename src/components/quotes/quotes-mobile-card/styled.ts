@@ -7,7 +7,7 @@ export const StyledCard = styled(`div`)(({ theme }) => ({
   height: "100%",
   width: "50vw",
   maxWidth: "500px",
-  padding: `${theme.spacing(7)} 0`,
+  padding: `${theme.spacing(5)} 0`,
 
   ".avatar": {
     marginBottom: theme.spacing(4),

@@ -11,6 +11,7 @@ import { bookingFormQuery } from "../pages/trips/booking-form/query";
 import { aboutIntroQuery } from "../pages/about/intro/query";
 import { hostsQuery } from "../pages/about/hosts/query";
 import { quotesQuery } from "../components/quotes/query";
+import { videoQuery } from "../components/video/query";
 
 export const pageQuery = `
 *[_type in ["page"]]{
@@ -28,7 +29,8 @@ export const pageQuery = `
     ${bookingFormQuery},
     ${aboutIntroQuery},
     ${hostsQuery},
-    ${quotesQuery}
+    ${quotesQuery},
+    ${videoQuery}
   }
 }
 `;
