@@ -3,12 +3,18 @@ import styled from "styled-components";
 export const StyledIntroduction = styled(`div`)(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(25),
-
-  padding: `0 ${theme.spacing(20)}`,
   margin: `0 auto`,
   minWidth: theme.maxContentWidth,
   maxWidth: theme.maxContentWidthLg,
 
+  "p strong": {
+    fontWeight: theme.fontWeight.semiBold,
+    textTransform: "uppercase",
+  },
+
+  [`@media ${theme.breakpoints.xxl}`]: {
+    padding: `0 ${theme.spacing(20)}`,
+  },
   [`@media ${theme.breakpoints.xl}`]: {
     maxWidth: theme.maxContentWidth,
     minWidth: "unset",
@@ -28,17 +34,17 @@ export const StyledIntroduction = styled(`div`)(({ theme }) => ({
 }));
 
 export const StyledTextContainer = styled(`div`)(() => ({
-  flex: 3,
+  flex: 2,
 }));
 
-export const StyledImageContainer = styled(`div`)(({ theme }) => ({
+export const StyledImageContainer = styled(`div`)(() => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
   flex: 1,
-  height: "inherit",
 
-  [`@media ${theme.breakpoints.xl}`]: {
-    width: "75%",
-  },
-  [`@media ${theme.breakpoints.lg}`]: {
-    width: "100%",
+  img: {
+    height: "auto",
+    maxWidth: "500px",
   },
 }));

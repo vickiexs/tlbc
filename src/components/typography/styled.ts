@@ -7,12 +7,14 @@ export const StyledHeading1 = styled(`h1`)(({ theme }) => ({
   margin: "0 auto",
   paddingTop: theme.spacing(35),
   paddingBottom: theme.spacing(10),
-  paddingLeft: theme.spacing(20),
-  paddingRight: theme.spacing(20),
   textTransform: "uppercase",
   minWidth: theme.maxContentWidth,
   maxWidth: theme.maxContentWidthLg,
 
+  [`@media ${theme.breakpoints.xxl}`]: {
+    paddingLeft: theme.spacing(20),
+    paddingRight: theme.spacing(20),
+  },
   [`@media ${theme.breakpoints.xl}`]: {
     maxWidth: theme.maxContentWidth,
     minWidth: "unset",

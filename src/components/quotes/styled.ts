@@ -10,6 +10,7 @@ export const StyledContainer = styled(`div`)(({ theme }) => ({
     width: "100%",
     height: "100%",
     overflow: "visible",
+    marginTop: theme.spacing(10),
   },
   ".swiper-wrapper": {
     height: "100%",

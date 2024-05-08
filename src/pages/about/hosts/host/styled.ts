@@ -41,6 +41,7 @@ export const StyledHeading3 = styled(`h3`)(({ theme }) => ({
 
 export const StyledImageContainer = styled(`div`)(({ theme }) => ({
   maxWidth: "750px",
+  aspectRatio: "16/9",
 
   [`@media ${theme.breakpoints.xl}`]: {
     maxWidth: "600px",
@@ -49,7 +50,8 @@ export const StyledImageContainer = styled(`div`)(({ theme }) => ({
     maxWidth: "400px",
   },
   [`@media ${theme.breakpoints.md}`]: {
-    maxWidth: "unset",
+    maxWidth: "100%",
+    aspectRatio: "6/4",
   },
 }));
 
@@ -92,7 +94,7 @@ export const StyledModalContent = styled(`div`)(({ theme }) => ({
 }));
 
 export const StyledModalImageContainer = styled(`div`)(({ theme }) => ({
-  maxHeight: "550px",
+  maxHeight: "650px",
   display: "flex",
   alignItems: "center",
   overflow: "hidden",
@@ -135,7 +137,7 @@ export const StyledModalTextContainer = styled(`div`)(({ theme }) => ({
 }));
 
 export const StyledCloseButton = styled(`button`)(({ theme }) => ({
-  position: "fixed",
+  position: "absolute",
   right: 0,
   color: theme.palette.white,
   backgroundColor: "rgba(0, 0, 0, 0.3)",
@@ -160,5 +162,6 @@ export const StyledCloseButton = styled(`button`)(({ theme }) => ({
   [`@media ${theme.breakpoints.md}`]: {
     height: "35px",
     width: "35px",
+    position: "fixed",
   },
 }));

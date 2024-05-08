@@ -8,12 +8,12 @@ import { VideoProps } from "./type";
 export default function Video({ videoUrl }: VideoProps) {
   const theme = useTheme();
   const isBreakpointMd = useMediaQuery(theme.breakpoints.md);
-  const isBreakpointXl = useMediaQuery(theme.breakpoints.xl);
+  const isBreakpointXxl = useMediaQuery(theme.breakpoints.xxl);
 
   const getVideoWidth = () => {
     if (isBreakpointMd) {
       return "100vw";
-    } else if (isBreakpointXl) {
+    } else if (isBreakpointXxl) {
       return "70vw";
     } else {
       return "100%";

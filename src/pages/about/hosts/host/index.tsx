@@ -41,7 +41,7 @@ export default function Host({
 
   const getMaxChars = () => {
     if (isBreakpointSm) {
-      return 330;
+      return 325;
     } else if (isBreakpointMd) {
       return 530;
     } else if (isBreakpointLg) {
