@@ -27,8 +27,6 @@ export default function TripPage(pageData: GenericObject) {
   const theme = useTheme();
   const { sections } = pageData;
 
-  console.log("PAGE DATA:", pageData);
-
   const renderPageSection = (section: GenericObject, index: number) => {
     switch (section._type) {
       case "spotlight":
