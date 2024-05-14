@@ -1,10 +1,10 @@
 import { defineConfig } from "vite";
-import { resolve } from 'path';
+import { resolve } from "path";
 import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/tlbc/',
+  base: "/",
   plugins: [react()],
   optimizeDeps: {
     exclude: ["portabletext_react"],
@@ -12,8 +12,8 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
-        fourzerofour: resolve(__dirname, '404.html'),
+        main: resolve(__dirname, "index.html"),
+        fourzerofour: resolve(__dirname, "404.html"),
       },
     },
   },
