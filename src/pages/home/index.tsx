@@ -6,5 +6,5 @@ export default function Home() {
   useEffect(() => {
     navigate("/about");
   }, []);
-  return <h1 style={{ marginTop: "200px" }}>HOME PAGE </h1>;
+  return <h1 style={{ marginTop: "200px" }}>HOME PAGE!</h1>;
 }
