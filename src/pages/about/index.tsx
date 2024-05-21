@@ -7,7 +7,6 @@ import { HostsProps } from "./hosts/type";
 import { GenericObject } from "../../App";
 
 export default function About(pageData: GenericObject) {
-  console.log("about page data:", pageData);
   const { heading, sections } = pageData;
 
   const renderPageSection = (section: GenericObject, index: number) => {

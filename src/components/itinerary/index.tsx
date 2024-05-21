@@ -11,13 +11,22 @@ import Typography from "../typography";
 import ItineraryCarouselCard from "./itinerary-carousel-card";
 import Hr from "../horizontal-rule";
 import ArrowIcon from "../icons/arrow";
+import CaptionedImage from "../captioned-image";
 
 import VerticalItinerary from "./vertical-itinerary";
 
-import { StyledItineraryContainer, StyledButtonContainer } from "./styled";
+import {
+  StyledItineraryContainer,
+  StyledButtonContainer,
+  StyledImageContainer,
+} from "./styled";
 import { ItineraryProps } from "./type";
 
-export default function Itinerary({ description, timeline }: ItineraryProps) {
+export default function Itinerary({
+  description,
+  timeline,
+  additionalImages,
+}: ItineraryProps) {
   const theme = useTheme();
   const isBreakpointLg = useMediaQuery(theme.breakpoints.lg);
   const isBreakpointMd = useMediaQuery(theme.breakpoints.md);
@@ -29,7 +38,6 @@ export default function Itinerary({ description, timeline }: ItineraryProps) {
       </Typography>
       {!isBreakpointMd ? (
         <Swiper
-          // onRealIndexChange={(swiper) => setTimelineIndex(swiper.realIndex)}
           slidesPerView="auto"
           spaceBetween={isBreakpointLg ? 60 : 80}
           modules={[Navigation]}
@@ -55,6 +63,18 @@ export default function Itinerary({ description, timeline }: ItineraryProps) {
         </Swiper>
       ) : (
         <VerticalItinerary items={timeline} />
+      )}
+      {additionalImages && (
+        <StyledImageContainer>
+          {additionalImages.map((image, index) => (
+            <CaptionedImage
+              image={image.image}
+              caption={image.caption}
+              aspectRatio={182 / 109}
+              key={index}
+            />
+          ))}
+        </StyledImageContainer>
       )}
     </StyledItineraryContainer>
   );

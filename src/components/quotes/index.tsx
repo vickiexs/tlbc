@@ -70,7 +70,7 @@ export default function Quotes({ quotes, darkMode }: QuotesProps) {
           <StyledQuote>{`"${quotes[activeIndex].quote}"`}</StyledQuote>
           <StyledImageLine>
             {quotes.map((testimonial, index) => (
-              <StyledImageContainer>
+              <StyledImageContainer key={index}>
                 <Avatar
                   size={index === activeIndex ? activeAvatarSize : avatarSize}
                 >

@@ -1,4 +1,5 @@
 import { headedContentBlockQuery } from "../headed-content-block/query";
+import { captionedImageFragment } from "../captioned-image/query";
 
 export const itineraryQuery = `
 _type == "itinerary" => {
@@ -6,6 +7,9 @@ _type == "itinerary" => {
   eyebrowHeading,
   description,
   timeline[]->{
-      ${headedContentBlockQuery}
+    ${headedContentBlockQuery}
+  },
+  additionalImages[]->{
+    ${captionedImageFragment}
   }
 }`;

@@ -112,3 +112,26 @@ export const StyledButtonContainer = styled(`div`)(({ theme }) => ({
     },
   },
 }));
+
+export const StyledImageContainer = styled(`div`)(({ theme }) => ({
+  display: "flex",
+  gap: theme.spacing(10),
+  marginTop: theme.spacing(25),
+
+  [`@media ${theme.breakpoints.md}`]: {
+    flexDirection: "column",
+    gap: theme.spacing(15),
+    marginTop: theme.spacing(20),
+
+    "figure:last-child": {
+      marginBottom: theme.spacing(3),
+      aspectRatio: "unset",
+    },
+  },
+  [`@media ${theme.breakpoints.sm}`]: {
+    marginTop: theme.spacing(15),
+  },
+  [`@media ${theme.breakpoints.xs}`]: {
+    gap: theme.spacing(12),
+  },
+}));

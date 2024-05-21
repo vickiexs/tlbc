@@ -20,6 +20,7 @@ export interface ImageProps {
   };
   height?: number;
   width?: number;
+  caption?: string;
 }
 
 export interface ImageMetadata {

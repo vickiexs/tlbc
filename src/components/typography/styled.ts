@@ -95,3 +95,23 @@ export const StyledBody = styled(`div`)(({ theme }) => ({
     fontSize: theme.fontSize(4),
   },
 }));
+
+export const StyledCaption = styled(`figcaption`)(({ theme }) => ({
+  fontSize: theme.fontSize(4),
+  fontWeight: theme.fontWeight.light,
+  color: "inherit",
+  a: {
+    color: "inherit",
+    fontSize: "inherit",
+  },
+  p: {
+    margin: 0,
+  },
+  ul: {
+    marginTop: 0,
+  },
+
+  [`@media ${theme.breakpoints.md}`]: {
+    fontSize: theme.fontSize(3),
+  },
+}));

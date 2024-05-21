@@ -4,6 +4,7 @@ import {
   StyledHeading3,
   StyledHeading4,
   StyledBody,
+  StyledCaption,
 } from "./styled";
 import { TypographyProps } from "./type";
 
@@ -32,6 +33,8 @@ export default function Typography({
         );
       case "body":
         return <StyledBody className={className}>{children}</StyledBody>;
+      case "caption":
+        return <StyledCaption className={className}>{children}</StyledCaption>;
     }
   };
   return <>{renderTypography()}</>;
