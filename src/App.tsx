@@ -42,7 +42,7 @@ function App() {
         .fetch(appQuery)
         .then((data) => setData(data))
         .catch(console.error);
-    }, 3000);
+    }, 5000);
   }, []);
 
   const getPageComponent = (key: string, pageData: GenericObject) => {

@@ -15,7 +15,7 @@ export default function Footer({ contact, links, copyright }: FooterProps) {
         {contact}
         <StyledIconLinks>
           {links.map((link, index) => (
-            <IconLink {...link} key={index} />
+            <IconLink {...link} target="_blank" key={index} />
           ))}
         </StyledIconLinks>
       </StyledContact>

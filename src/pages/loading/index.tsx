@@ -1,23 +1,30 @@
 import Typewriter from "typewriter-effect";
 
-import LoadingLogo from "./logo";
+import Logo from "../../components/header/logo";
 
-import { StyledContainer, StyledLogoContainer, StyledHeading } from "./styled";
+import {
+  StyledContainer,
+  StyledContentWrapper,
+  StyledLogoContainer,
+  StyledHeading,
+} from "./styled";
 
 export default function LoadingPage() {
   return (
     <StyledContainer>
-      <StyledLogoContainer>
-        <LoadingLogo />
-      </StyledLogoContainer>
-      <StyledHeading>
-        <Typewriter
-          options={{
-            strings: "LOADING...",
-            autoStart: true,
-          }}
-        />
-      </StyledHeading>
+      <StyledContentWrapper>
+        <StyledLogoContainer>
+          <Logo />
+        </StyledLogoContainer>
+        <StyledHeading>
+          <Typewriter
+            options={{
+              strings: "LOADING YOUR ADVENTURE...",
+              autoStart: true,
+            }}
+          />
+        </StyledHeading>
+      </StyledContentWrapper>
     </StyledContainer>
   );
 }

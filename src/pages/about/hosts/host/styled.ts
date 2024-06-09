@@ -24,12 +24,27 @@ export const StyledContainer = styled(`div`).withConfig({
   },
 }));
 
-export const StyledHeading3 = styled(`h3`)(({ theme }) => ({
+export const StyledHostName = styled("div")(({ theme }) => ({
+  display: "flex",
+  gap: theme.spacing(2),
+  alignItems: "center",
   fontSize: theme.fontSize(8),
   fontWeight: theme.fontWeight.semiBold,
   color: "inherit",
   textTransform: "uppercase",
   margin: 0,
+
+  a: {
+    marginTop: "2px",
+    [`@media ${theme.breakpoints.xs}`]: {
+      marginTop: 0,
+    },
+  },
+  "a:hover": {
+    svg: {
+      fill: theme.palette.primary.main,
+    },
+  },
 
   [`@media ${theme.breakpoints.lg}`]: {
     fontSize: theme.fontSize(6),
@@ -39,9 +54,22 @@ export const StyledHeading3 = styled(`h3`)(({ theme }) => ({
   },
 }));
 
+export const StyledRole = styled("div")(({ theme }) => ({
+  fontSize: theme.fontSize(4),
+  fontWeight: theme.fontWeight.semiBold,
+  color: "inherit",
+  textTransform: "uppercase",
+  margin: 0,
+
+  [`@media ${theme.breakpoints.md}`]: {
+    fontSize: theme.fontSize(3),
+  },
+}));
+
 export const StyledImageContainer = styled(`div`)(({ theme }) => ({
   maxWidth: "750px",
   aspectRatio: "16/9",
+  minWidth: "200px",
 
   [`@media ${theme.breakpoints.xl}`]: {
     maxWidth: "600px",
@@ -60,6 +88,7 @@ export const StyledInfoContainer = styled(`div`)(({ theme }) => ({
   flexDirection: "column",
   gap: theme.spacing(5),
   width: "100%",
+  textAlign: "justify",
 
   button: {
     alignSelf: "flex-start",
@@ -105,17 +134,12 @@ export const StyledModalImageContainer = styled(`div`)(({ theme }) => ({
 }));
 
 export const StyledModalTextContainer = styled(`div`)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.spacing(5),
   padding: theme.spacing(14),
+  textAlign: "justify",
 
-  h3: {
-    fontSize: theme.fontSize(9),
-    marginBottom: theme.spacing(5),
-
-    [`@media ${theme.breakpoints.md}`]: {
-      fontSize: theme.fontSize(7),
-      marginBottom: theme.spacing(3),
-    },
-  },
   "p strong": {
     fontWeight: theme.fontWeight.semiBold,
   },

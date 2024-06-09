@@ -6,6 +6,8 @@ _type == "hosts" => {
   heading,
   hosts[]->{
     name,
+    role,
+    instagram,
     ${imageQuery},
     bio[],
     bioSummary

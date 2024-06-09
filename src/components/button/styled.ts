@@ -3,12 +3,13 @@ import styled from "styled-components";
 export const StyledButton = styled(`button`)(({ theme }) => ({
   backgroundColor: "transparent",
   fontFamily: "inherit",
-  fontSize: theme.fontSize(5),
+  fontSize: theme.fontSize(4),
   fontWeight: theme.fontWeight.semiBold,
-  padding: `${theme.spacing(3)} ${theme.spacing(5)}`,
+  padding: `${theme.spacing(2)} ${theme.spacing(4)}`,
   textTransform: "uppercase",
   boxShadow: "none",
   cursor: "pointer",
+  WebkitTapHighlightColor: "transparent",
 
   "&.btn-light": {
     color: theme.palette.white,

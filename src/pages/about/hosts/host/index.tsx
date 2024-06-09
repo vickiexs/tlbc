@@ -9,10 +9,12 @@ import Image from "../../../../components/image";
 import Button from "../../../../components/button";
 import Modal from "../../../../components/modal";
 import Icon from "../../../../components/icons";
+import IconLink from "../../../../components/icon-link";
 
 import {
   StyledContainer,
-  StyledHeading3,
+  StyledHostName,
+  StyledRole,
   StyledImageContainer,
   StyledInfoContainer,
   StyledModalContent,
@@ -24,6 +26,8 @@ import { HostProps } from "./type";
 
 export default function Host({
   name,
+  role,
+  instagram,
   image,
   bio,
   bioSummary,
@@ -77,7 +81,13 @@ export default function Host({
             <Image {...image} />
           </StyledImageContainer>
           <StyledInfoContainer>
-            <StyledHeading3>{name}</StyledHeading3>
+            <StyledHostName>
+              {name}
+              {instagram && (
+                <IconLink link={instagram} icon="instagram" target="_blank" />
+              )}
+            </StyledHostName>
+            <StyledRole>{role}</StyledRole>
             <Typography variation="body">{`"${bioSummary.slice(
               0,
               getMaxChars()
@@ -92,7 +102,11 @@ export default function Host({
       ) : (
         <>
           <StyledInfoContainer>
-            <StyledHeading3>{name}</StyledHeading3>
+            <StyledHostName>
+              {name}
+              {instagram && <IconLink link="/" icon="instagram" />}
+            </StyledHostName>
+            <StyledRole>{role}</StyledRole>
             <Typography variation="body">{`"${bioSummary.slice(
               0,
               getMaxChars()
@@ -118,7 +132,11 @@ export default function Host({
               <Image {...image} />
             </StyledModalImageContainer>
             <StyledModalTextContainer>
-              <StyledHeading3>{name}</StyledHeading3>
+              <StyledHostName>
+                {name}
+                {instagram && <IconLink link="/" icon="instagram" />}
+              </StyledHostName>
+              <StyledRole>{role}</StyledRole>
               <Typography variation="body">
                 <PortableText value={bio} />
               </Typography>
