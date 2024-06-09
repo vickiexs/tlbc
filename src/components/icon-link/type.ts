@@ -3,4 +3,5 @@ export interface IconLinkProps {
   link: string;
   color?: string;
   size?: number;
+  target?: string;
 }
