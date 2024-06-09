@@ -155,6 +155,9 @@ export const StyledModalTextContainer = styled(`div`)(({ theme }) => ({
   [`@media ${theme.breakpoints.lg}`]: {
     padding: theme.spacing(10),
   },
+  [`@media ${theme.breakpoints.md}`]: {
+    gap: theme.spacing(4),
+  },
   [`@media ${theme.breakpoints.sm}`]: {
     padding: theme.spacing(7),
   },
