@@ -104,7 +104,7 @@ export default function Host({
           <StyledInfoContainer>
             <StyledHostName>
               {name}
-              {instagram && <IconLink link="/" icon="instagram" />}
+              {instagram && <IconLink link={instagram} icon="instagram" />}
             </StyledHostName>
             <StyledRole>{role}</StyledRole>
             <Typography variation="body">{`"${bioSummary.slice(
@@ -134,7 +134,7 @@ export default function Host({
             <StyledModalTextContainer>
               <StyledHostName>
                 {name}
-                {instagram && <IconLink link="/" icon="instagram" />}
+                {instagram && <IconLink link={instagram} icon="instagram" />}
               </StyledHostName>
               <StyledRole>{role}</StyledRole>
               <Typography variation="body">
