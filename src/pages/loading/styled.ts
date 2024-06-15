@@ -10,16 +10,20 @@ export const StyledContainer = styled(`div`)(() => ({
   alignItems: "center",
 }));
 
-export const StyledContentWrapper = styled(`div`)(() => ({
+export const StyledContentWrapper = styled(`div`)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  minHeight: "350px",
+  minHeight: "415px",
+
+  [`@media ${theme.breakpoints.md}`]: {
+    minHeight: "350px",
+  },
 }));
 
 export const StyledLogoContainer = styled(`div`)(({ theme }) => ({
-  height: "200px",
-  width: "200px",
+  height: "250px",
+  width: "250px",
   marginBottom: theme.spacing(5),
 
   svg: {
@@ -34,7 +38,7 @@ export const StyledLogoContainer = styled(`div`)(({ theme }) => ({
 }));
 
 export const StyledHeading = styled(`h1`)(({ theme }) => ({
-  fontSize: theme.fontSize(7),
+  fontSize: theme.fontSize(8),
   textAlign: "center",
   maxWidth: "300px",
 

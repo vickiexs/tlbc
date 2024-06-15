@@ -13,7 +13,7 @@ import IconLink from "../../../../components/icon-link";
 
 import {
   StyledContainer,
-  StyledHostName,
+  StyledName,
   StyledRole,
   StyledImageContainer,
   StyledInfoContainer,
@@ -22,9 +22,9 @@ import {
   StyledModalTextContainer,
   StyledCloseButton,
 } from "./styled";
-import { HostProps } from "./type";
+import { TeamMemberProps } from "./type";
 
-export default function Host({
+export default function TeamMember({
   name,
   role,
   instagram,
@@ -33,7 +33,7 @@ export default function Host({
   bioSummary,
   imageLeft,
   buttonLabel,
-}: HostProps) {
+}: TeamMemberProps) {
   const theme = useTheme();
   const [displayModal, setDisplayModal] = useState<boolean>(false);
 
@@ -81,12 +81,12 @@ export default function Host({
             <Image {...image} />
           </StyledImageContainer>
           <StyledInfoContainer>
-            <StyledHostName>
+            <StyledName>
               {name}
               {instagram && (
                 <IconLink link={instagram} icon="instagram" target="_blank" />
               )}
-            </StyledHostName>
+            </StyledName>
             <StyledRole>{role}</StyledRole>
             <Typography variation="body">{`"${bioSummary.slice(
               0,
@@ -102,12 +102,12 @@ export default function Host({
       ) : (
         <>
           <StyledInfoContainer>
-            <StyledHostName>
+            <StyledName>
               {name}
               {instagram && (
                 <IconLink link={instagram} icon="instagram" target="_blank" />
               )}
-            </StyledHostName>
+            </StyledName>
             <StyledRole>{role}</StyledRole>
             <Typography variation="body">{`"${bioSummary.slice(
               0,
@@ -134,12 +134,12 @@ export default function Host({
               <Image {...image} />
             </StyledModalImageContainer>
             <StyledModalTextContainer>
-              <StyledHostName>
+              <StyledName>
                 {name}
                 {instagram && (
                   <IconLink link={instagram} icon="instagram" target="_blank" />
                 )}
-              </StyledHostName>
+              </StyledName>
               <StyledRole>{role}</StyledRole>
               <Typography variation="body">
                 <PortableText value={bio} />

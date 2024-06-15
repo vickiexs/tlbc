@@ -1,10 +1,10 @@
 import { imageQuery } from "../../../components/image/query";
 
-export const hostsQuery = `
-_type == "hosts" => {
+export const teamMemberQuery = `
+_type == "teamMemberSection" => {
   _type,
   heading,
-  hosts[]->{
+  teamMembers[]->{
     name,
     role,
     instagram,

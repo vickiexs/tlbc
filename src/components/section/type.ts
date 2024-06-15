@@ -5,4 +5,5 @@ export interface SectionProps {
   backgroundColor?: string;
   textColor?: string;
   hideOverflow?: boolean;
+  removeTopPadding?: boolean;
 }

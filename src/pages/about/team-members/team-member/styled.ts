@@ -24,7 +24,7 @@ export const StyledContainer = styled(`div`).withConfig({
   },
 }));
 
-export const StyledHostName = styled("div")(({ theme }) => ({
+export const StyledName = styled("div")(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(2),
   alignItems: "center",

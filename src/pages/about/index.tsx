@@ -2,21 +2,33 @@ import Section from "../../components/section";
 import Typography from "../../components/typography";
 import AboutIntro from "./intro";
 import { AboutIntroProps } from "./intro/type";
-import Hosts from "./hosts";
-import { HostsProps } from "./hosts/type";
+import TeamMembers from "./team-members";
+import { TeamMembersProps } from "./team-members/type";
 import { GenericObject } from "../../App";
 
 export default function About(pageData: GenericObject) {
   const { heading, sections } = pageData;
 
+  const sectionIndices = Object.fromEntries(
+    sections.map((section: GenericObject) => [section._type, 0])
+  );
+
+  const updateSectionIndexCount = (sectionName: string) => {
+    sectionIndices[sectionName]++;
+  };
+
   const renderPageSection = (section: GenericObject, index: number) => {
     switch (section._type) {
       case "infoSection":
         return <AboutIntro {...(section as AboutIntroProps)} key={index} />;
-      case "hosts":
+      case "teamMemberSection":
+        updateSectionIndexCount(section._type);
         return (
-          <Section key={index}>
-            <Hosts {...(section as HostsProps)} />
+          <Section
+            removeTopPadding={sectionIndices[section._type] !== 1}
+            key={index}
+          >
+            <TeamMembers {...(section as TeamMembersProps)} />
           </Section>
         );
       default:

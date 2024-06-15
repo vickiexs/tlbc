@@ -2,7 +2,7 @@ import { PortableTextBlock } from "@portabletext/types";
 
 import { ImageProps } from "../../../../components/image/type";
 
-export interface HostProps {
+export interface TeamMemberProps {
   name: string;
   role: string;
   instagram?: string;

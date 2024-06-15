@@ -9,7 +9,7 @@ import { tripLogisticsQuery } from "../components/trip-logistics/query";
 import { facilitiesQuery } from "../pages/trips/facilities/query";
 import { bookingFormQuery } from "../pages/trips/booking-form/query";
 import { aboutIntroQuery } from "../pages/about/intro/query";
-import { hostsQuery } from "../pages/about/hosts/query";
+import { teamMemberQuery } from "../pages/about/team-members/query";
 import { quotesQuery } from "../components/quotes/query";
 import { videoQuery } from "../components/video/query";
 
@@ -28,7 +28,7 @@ export const pageQuery = `
     ${faqsQuery},
     ${bookingFormQuery},
     ${aboutIntroQuery},
-    ${hostsQuery},
+    ${teamMemberQuery},
     ${quotesQuery},
     ${videoQuery}
   }

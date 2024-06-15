@@ -10,11 +10,15 @@ export default function Section({
   backgroundColor,
   textColor,
   hideOverflow,
+  removeTopPadding = false,
 }: SectionProps) {
   return (
     <StyledSection backgroundColor={backgroundColor} textColor={textColor}>
       <StyledSectionContainer
-        style={{ overflow: hideOverflow ? "hidden" : "auto" }}
+        style={{
+          overflow: hideOverflow ? "hidden" : "auto",
+          paddingTop: removeTopPadding ? 0 : "revert-layer",
+        }}
       >
         {eyebrowHeading && (
           <Typography variation="h2">{eyebrowHeading}</Typography>

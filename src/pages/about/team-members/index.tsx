@@ -1,19 +1,19 @@
-import Host from "./host";
+import TeamMember from "./team-member";
 
 import { StyledContainer, StyledHeading2 } from "./styled";
-import { HostsProps } from "./type";
+import { TeamMembersProps } from "./type";
 
-export default function Hosts({
+export default function TeamMembers({
   heading,
-  hosts,
+  teamMembers,
   expandButtonLabel,
-}: HostsProps) {
+}: TeamMembersProps) {
   return (
     <StyledContainer>
       <StyledHeading2>{heading}</StyledHeading2>
-      {hosts.map((host, index) => (
-        <Host
-          {...host}
+      {teamMembers.map((teamMember, index) => (
+        <TeamMember
+          {...teamMember}
           buttonLabel={expandButtonLabel}
           imageLeft={index % 2 === 0}
           key={index}
