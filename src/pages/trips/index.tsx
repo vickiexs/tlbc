@@ -1,5 +1,6 @@
 import { useTheme } from "styled-components";
 
+import { GenericObject } from "../../App";
 import Section from "../../components/section";
 import Spotlight from "../../components/spotlight";
 import { SpotlightProps } from "../../components/spotlight/type";
@@ -17,7 +18,6 @@ import Quotes from "../../components/quotes";
 import { QuotesProps } from "../../components/quotes/type";
 import BookingForm from "./booking-form";
 import { BookingFormProps } from "./booking-form/type";
-import { GenericObject } from "../../App";
 import Itinerary from "../../components/itinerary";
 import { ItineraryProps } from "../../components/itinerary/type";
 import Video from "../../components/video";
@@ -115,6 +115,7 @@ export default function TripPage(pageData: GenericObject) {
         return null;
     }
   };
+
   return (
     <>
       {sections.map((section: GenericObject, index: number) =>

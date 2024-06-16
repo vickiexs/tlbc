@@ -23,8 +23,13 @@ _type == "tripLogistics" => {
     ${headedContentBlockQueryWithIcon}
   },
   tripHosts->{
-    heading,
+    hostsHeading,
     hosts[]->{
+      nickname,
+      ${imageQuery}
+    },
+    specialGuestsHeading,
+    specialGuests[]->{
       nickname,
       ${imageQuery}
     },

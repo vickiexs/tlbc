@@ -2,21 +2,17 @@ import { useTheme } from "styled-components";
 import { useMediaQuery } from "usehooks-ts";
 import { PortableText } from "@portabletext/react";
 
+import TripHosts from "./trip-hosts";
 import HeadedContentBlock from "../headed-content-block";
 import Typography from "../typography";
-import Avatar from "../avatar";
-import Link from "../link";
 import Hr from "../horizontal-rule";
-import Image from "../image";
 
 import {
   StyledTripLogistics,
   StyledTripDetailsContainer,
+  StyledDesktopDetailsContainer,
   StyledTripDetails,
   StyledColumn,
-  StyledHostDetails,
-  StyledHosts,
-  StyledHost,
   StyledTripCoverage,
 } from "./styled";
 import { TripLogisticsProps } from "./type";
@@ -33,9 +29,8 @@ export default function TripLogistics({
 }: TripLogisticsProps) {
   const theme = useTheme();
 
+  const isBreakpointMd = useMediaQuery(theme.breakpoints.md);
   const isBreakpointSm = useMediaQuery(theme.breakpoints.sm);
-
-  const avatarSize = 130;
 
   return (
     <StyledTripLogistics>
@@ -48,35 +43,31 @@ export default function TripLogistics({
             <HeadedContentBlock {...location} />
           </StyledTripDetails>
         ) : (
-          <StyledTripDetails>
-            <StyledColumn className="left-col">
-              <HeadedContentBlock {...dates} />
-              <HeadedContentBlock {...spaces} />
-            </StyledColumn>
-            <StyledColumn className="right-col">
-              <HeadedContentBlock {...price} />
-              <HeadedContentBlock {...location} />
-            </StyledColumn>
-          </StyledTripDetails>
+          <StyledDesktopDetailsContainer>
+            <StyledTripDetails>
+              <StyledColumn className="left-col">
+                <HeadedContentBlock {...dates} />
+                <HeadedContentBlock {...spaces} />
+              </StyledColumn>
+              <StyledColumn className="right-col">
+                <HeadedContentBlock {...price} />
+                <HeadedContentBlock {...location} />
+              </StyledColumn>
+            </StyledTripDetails>
+            {!isBreakpointMd && (
+              <Typography variation="body">
+                <PortableText value={bookCallInfo} />
+              </Typography>
+            )}
+          </StyledDesktopDetailsContainer>
         )}
-        <StyledHostDetails>
-          <Typography variation="h4">{tripHosts.heading}</Typography>
-          <StyledHosts>
-            {tripHosts.hosts.map((host, index) => (
-              <StyledHost key={index}>
-                <Avatar size={avatarSize}>
-                  <Image {...host.image} />
-                </Avatar>
-                <Typography variation="body">{host.nickname}</Typography>
-              </StyledHost>
-            ))}
-          </StyledHosts>
-          <Link {...tripHosts.link}></Link>
-        </StyledHostDetails>
+        <TripHosts {...tripHosts} />
       </StyledTripDetailsContainer>
-      <Typography variation="body">
-        <PortableText value={bookCallInfo} />
-      </Typography>
+      {isBreakpointMd && (
+        <Typography variation="body">
+          <PortableText value={bookCallInfo} />
+        </Typography>
+      )}
       <Hr color={theme.palette.grey} />
       <StyledTripCoverage>
         <HeadedContentBlock {...included} />
