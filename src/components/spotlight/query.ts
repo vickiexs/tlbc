@@ -7,6 +7,7 @@ _type == "spotlight" => {
   heading,
   subheadings[],
   ${imageQuery},
+  videoUrl,
   darkText,
   ${linkQuery}
 }`;

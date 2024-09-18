@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+import { Link } from "react-router-dom";
 import { MdMenu, MdClose } from "react-icons/md";
 
 export const StyledHeaderContainer = styled(`header`)(({ theme }) => ({
@@ -30,7 +31,7 @@ export const StyledHeaderContainer = styled(`header`)(({ theme }) => ({
   },
 }));
 
-export const StyledLogoContainer = styled(`div`)(({ theme }) => ({
+export const StyledLogoContainer = styled(Link)(({ theme }) => ({
   display: "flex",
   svg: {
     height: "75px",

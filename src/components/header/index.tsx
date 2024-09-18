@@ -77,7 +77,7 @@ export default function Header({ navItems }: HeaderProps) {
         "no-box-shadow": y === 0,
       })}
     >
-      <StyledLogoContainer>
+      <StyledLogoContainer to="/">
         <Logo />
       </StyledLogoContainer>
       <StyledNavLinks>

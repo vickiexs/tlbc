@@ -4,6 +4,7 @@ export const StyledSpotlightContainer = styled(`div`)(() => ({
   height: "100vh",
   width: "100%",
   position: "relative",
+  overflow: "hidden",
 }));
 
 export const StyledBackgroundImage = styled(`div`)(() => ({
@@ -18,14 +19,23 @@ export const StyledBackgroundImage = styled(`div`)(() => ({
   },
 }));
 
-export const StyledImageOverlay = styled(`div`)(() => ({
+export const StyledOverlay = styled(`div`)(() => ({
   position: "absolute",
   height: "100%",
   width: "100%",
   backgroundColor: "rgba(0, 0, 0, 0.25)",
 }));
 
-export const StyledTextContainer = styled(`div`).withConfig({
+export const StyledVideoOverlay = styled(`div`)(() => ({
+  position: "absolute",
+  height: "100%",
+  width: "100%",
+  backgroundColor: "rgba(0, 0, 0, 0.5)",
+  zIndex: 1,
+  pointerEvents: "none",
+}));
+
+export const StyledTextOverlay = styled(`div`).withConfig({
   shouldForwardProp: (props) => props !== "darkText",
 })<{ darkText: boolean }>(({ theme, darkText }) => ({
   display: "flex",
@@ -37,6 +47,16 @@ export const StyledTextContainer = styled(`div`).withConfig({
   position: "relative",
   zIndex: 3,
   textShadow: `1px 1px 10px rgba(0, 0, 0, 0.1)`,
+  pointerEvents: "none",
+  padding: `0 ${theme.spacing(10)}`,
+  textAlign: "center",
+  minHeight: "450px",
+}));
+
+export const StyledTextContainer = styled(`div`)(({ theme }) => ({
+  [`@media ${theme.breakpoints.md}`]: {
+    minHeight: "320px",
+  },
 }));
 
 export const StyledHeading = styled(`h1`)(({ theme }) => ({
@@ -44,7 +64,7 @@ export const StyledHeading = styled(`h1`)(({ theme }) => ({
   fontWeight: theme.fontWeight.semiBold,
   textTransform: "uppercase",
   textAlign: "center",
-  letterSpacing: "0.35rem",
+  letterSpacing: "0.15rem",
   margin: 0,
 
   [`@media ${theme.breakpoints.lg}`]: {
@@ -68,4 +88,12 @@ export const StyledSubtitle = styled(`div`)(({ theme }) => ({
     letterSpacing: "0.075rem",
     marginTop: theme.spacing(5),
   },
+}));
+
+export const StyledVideoContainer = styled(`div`)(() => ({
+  position: "absolute",
+  top: 0,
+  width: "100%",
+  height: "100vh",
+  overflow: "hidden",
 }));

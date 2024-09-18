@@ -1,5 +1,6 @@
 import { useState, useEffect, Fragment } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import { useTransition, animated } from "react-spring";
 import theme from "./theme";
 import { ThemeProvider } from "styled-components";
 import client from "./client";
@@ -29,6 +30,14 @@ interface AppData {
 function App() {
   const navigate = useNavigate();
   const [data, setData] = useState<AppData>();
+  const [isLoading, setIsLoading] = useState(true);
+
+  const transition = useTransition(isLoading, {
+    from: { opacity: 1 },
+    enter: { opacity: 1, scale: 1 },
+    leave: { opacity: 0, scale: 30 },
+    config: { duration: 1500 },
+  });
 
   useEffect(() => {
     const path = localStorage.getItem("path");
@@ -40,7 +49,10 @@ function App() {
     setTimeout(function () {
       client
         .fetch(appQuery)
-        .then((data) => setData(data))
+        .then((data) => {
+          setData(data);
+          setIsLoading(false);
+        })
         .catch(console.error);
     }, 5000);
   }, []);
@@ -48,7 +60,7 @@ function App() {
   const getPageComponent = (key: string, pageData: GenericObject) => {
     switch (key) {
       case "home":
-        return <Home />;
+        return <Home {...pageData} />;
       case "svalbard":
       case "greenland":
         return <TripPage {...pageData} />;
@@ -65,7 +77,14 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      {data ? (
+      {transition((style, isLoading) =>
+        isLoading ? (
+          <animated.div style={style}>
+            <LoadingPage />
+          </animated.div>
+        ) : null
+      )}
+      {data && (
         <Fragment>
           <Header {...(data.header[0] as HeaderProps)} />
           <Routes>
@@ -79,8 +98,6 @@ function App() {
           </Routes>
           <Footer {...(data.footer[0] as FooterProps)} />
         </Fragment>
-      ) : (
-        <LoadingPage />
       )}
     </ThemeProvider>
   );

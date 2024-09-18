@@ -31,7 +31,7 @@ export const StyledHosts = styled(`div`)(({ theme }) => ({
 
   "&.hosts": {
     [`@media ${theme.breakpoints.md}`]: {
-      gap: theme.spacing(5),
+      gap: theme.spacing(7),
     },
   },
 
