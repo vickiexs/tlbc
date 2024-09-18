@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledSpotlightContainer = styled(`div`)(() => ({
-  height: "100vh",
+  height: "100lvh",
   width: "100%",
   position: "relative",
   overflow: "hidden",
@@ -94,6 +94,6 @@ export const StyledVideoContainer = styled(`div`)(() => ({
   position: "absolute",
   top: 0,
   width: "100%",
-  height: "100vh",
+  height: "100lvh",
   overflow: "hidden",
 }));

@@ -31,7 +31,7 @@ export default function Spotlight({
 
   const playerSize: { width: string; height: string } = useMemo(() => {
     let playerWidth: number | string = size.height * (16 / 9);
-    let playerHeight = "100dvh";
+    let playerHeight = "100%";
 
     if (size.width > playerWidth) {
       playerWidth = "100vw";
