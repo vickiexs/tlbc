@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledSpotlightContainer = styled(`div`)(() => ({
-  height: "100lvh",
+  height: "100svh",
   width: "100%",
   position: "relative",
   overflow: "hidden",
@@ -44,17 +44,18 @@ export const StyledTextOverlay = styled(`div`).withConfig({
   alignItems: "center",
   justifyContent: "center",
   color: darkText ? theme.palette.text : theme.palette.white,
-  position: "relative",
+  position: "absolute",
+  top: 0,
   zIndex: 3,
   textShadow: `1px 1px 10px rgba(0, 0, 0, 0.1)`,
   pointerEvents: "none",
-  padding: `0 ${theme.spacing(10)}`,
+  padding: `0 ${theme.spacing(15)}`,
   textAlign: "center",
-  minHeight: "450px",
+  width: "100%",
 }));
 
 export const StyledTextContainer = styled(`div`)(({ theme }) => ({
-  [`@media ${theme.breakpoints.md}`]: {
+  [`@media ${theme.breakpoints.sm}`]: {
     minHeight: "320px",
   },
 }));
@@ -73,7 +74,6 @@ export const StyledHeading = styled(`h1`)(({ theme }) => ({
   [`@media ${theme.breakpoints.md}`]: {
     fontSize: theme.fontSize(12),
     letterSpacing: "0.15rem",
-    maxWidth: "350px",
   },
 }));
 
@@ -91,9 +91,9 @@ export const StyledSubtitle = styled(`div`)(({ theme }) => ({
 }));
 
 export const StyledVideoContainer = styled(`div`)(() => ({
-  position: "absolute",
+  position: "relative",
   top: 0,
   width: "100%",
-  height: "100lvh",
   overflow: "hidden",
+  height: "100svh",
 }));

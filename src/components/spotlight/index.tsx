@@ -31,7 +31,7 @@ export default function Spotlight({
 
   const playerSize: { width: string; height: string } = useMemo(() => {
     let playerWidth: number | string = size.height * (16 / 9);
-    let playerHeight = "100lvh";
+    let playerHeight = "100svh";
 
     if (size.width > playerWidth) {
       playerWidth = "100vw";
@@ -54,22 +54,6 @@ export default function Spotlight({
       {videoUrl ? (
         <>
           <StyledVideoOverlay />
-          <StyledTextOverlay darkText={darkText}>
-            <StyledTextContainer>
-              <StyledHeading>{heading}</StyledHeading>
-              {subheadings && (
-                <StyledSubtitle>
-                  <Typewriter
-                    options={{
-                      strings: subheadings,
-                      autoStart: true,
-                      loop: true,
-                    }}
-                  />
-                </StyledSubtitle>
-              )}
-            </StyledTextContainer>
-          </StyledTextOverlay>
           <StyledVideoContainer>
             <ReactPlayer
               className="react-player"
@@ -97,18 +81,20 @@ export default function Spotlight({
         </StyledBackgroundImage>
       )}
       <StyledTextOverlay darkText={darkText}>
-        <StyledHeading>{heading}</StyledHeading>
-        {subheadings && (
-          <StyledSubtitle>
-            <Typewriter
-              options={{
-                strings: subheadings,
-                autoStart: true,
-                loop: true,
-              }}
-            />
-          </StyledSubtitle>
-        )}
+        <StyledTextContainer>
+          <StyledHeading>{heading}</StyledHeading>
+          {subheadings && (
+            <StyledSubtitle>
+              <Typewriter
+                options={{
+                  strings: subheadings,
+                  autoStart: true,
+                  loop: true,
+                }}
+              />
+            </StyledSubtitle>
+          )}
+        </StyledTextContainer>
       </StyledTextOverlay>
     </StyledSpotlightContainer>
   );
