@@ -85,7 +85,11 @@ export const StyledBody = styled(`div`)(({ theme }) => ({
     fontSize: "inherit",
   },
   p: {
-    margin: 0,
+    marginTop: 0,
+    marginBottom: theme.spacing(5),
+  },
+  "p:last-child": {
+    marginBottom: 0,
   },
   ul: {
     marginTop: 0,
