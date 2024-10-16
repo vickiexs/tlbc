@@ -10,17 +10,20 @@ _type == "tripLogistics" => {
   _type,
   eyebrowHeading,
   heading,
-  dates->{
+  tripDetails[]->{
+    codename,
+    dates->{
+      ${headedContentBlockQueryWithIcon}
+    },
+    price->{
+      ${headedContentBlockQueryWithIcon}
+    },
+    spaces->{
     ${headedContentBlockQueryWithIcon}
-  },
-  price->{
-    ${headedContentBlockQueryWithIcon}
-  },
-  spaces->{
-    ${headedContentBlockQueryWithIcon}
-  },
-  location->{
-    ${headedContentBlockQueryWithIcon}
+    },
+    location->{
+      ${headedContentBlockQueryWithIcon}
+    },
   },
   tripHosts->{
     hostsHeading,

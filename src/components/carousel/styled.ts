@@ -16,33 +16,66 @@ export const StyledCarouselContainer = styled(`div`)(({ theme }) => ({
     height: "100%",
   },
   ".swiper-button-next": {
-    transform: "rotate(-90deg)",
-    height: "28px",
-    width: "28px",
-    backdropFilter: "blur(4px)",
-    WebkitBackdropFilter: "blur(4px)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "44px",
+    width: "44px",
+    top: "unset",
+    right: "45%",
+    border: "none",
     borderRadius: "50%",
-    padding: theme.spacing(4),
-    fill: theme.palette.white,
-    backgroundColor: "rgba(0, 0, 0, 0.1)",
-    transition: "300ms",
+    padding: 0,
+    transition: "all 500ms",
+    transform: "rotate(-90deg)",
+    svg: {
+      height: "44px",
+      padding: "10px",
+      transition: "all 300ms",
+      fill: theme.palette.text,
+    },
     "&:hover": {
-      backgroundColor: "rgba(0, 0, 0, 0.2)",
+      svg: {
+        transition: "all 300ms",
+        fill: theme.palette.white,
+      },
+    },
+    [`@media ${theme.breakpoints.xxl}`]: {
+      right: "43%",
+    },
+    [`@media ${theme.breakpoints.lg}`]: {
+      right: "40%",
     },
   },
   ".swiper-button-prev": {
-    transform: "rotate(90deg)",
-    height: "28px",
-    width: "28px",
-    backdropFilter: "blur(4px)",
-    WebkitBackdropFilter: "blur(4px)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "44px",
+    width: "44px",
+    top: "unset",
+    left: "45%",
+    border: "none",
     borderRadius: "50%",
-    padding: theme.spacing(4),
-    fill: theme.palette.white,
-    backgroundColor: "rgba(0, 0, 0, 0.1)",
-    transition: "300ms",
+    padding: 0,
+    transition: "all 250ms",
+    transform: "rotate(90deg)",
+    svg: {
+      height: "44px",
+      padding: "10px",
+      fill: theme.palette.text,
+    },
     "&:hover": {
-      backgroundColor: "rgba(0, 0, 0, 0.2)",
+      svg: {
+        transition: "all 300ms",
+        fill: theme.palette.white,
+      },
+    },
+    [`@media ${theme.breakpoints.xxl}`]: {
+      left: "43%",
+    },
+    [`@media ${theme.breakpoints.lg}`]: {
+      left: "40%",
     },
   },
   ".swiper-button-next.hidden": {
@@ -56,5 +89,23 @@ export const StyledCarouselContainer = styled(`div`)(({ theme }) => ({
   },
   ".swiper-button-prev:after": {
     display: "none",
+  },
+}));
+
+export const StyledButtonContainer = styled(`div`)(({ theme }) => ({
+  marginTop: theme.spacing(20),
+  display: "block",
+
+  [`@media ${theme.breakpoints.md}`]: {
+    display: "none",
+  },
+
+  ".hr": {
+    width: "4vw",
+    margin: "auto",
+
+    [`@media ${theme.breakpoints.xxl}`]: {
+      width: "5vw",
+    },
   },
 }));

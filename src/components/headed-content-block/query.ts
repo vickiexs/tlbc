@@ -6,5 +6,6 @@ export const headedContentBlockQuery = `
 export const headedContentBlockQueryWithIcon = `
   heading,
   headingIcon,
+  icon,
   content
 `;

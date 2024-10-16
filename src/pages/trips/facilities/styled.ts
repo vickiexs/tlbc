@@ -55,7 +55,7 @@ export const StyledColumn = styled(`div`)(({ theme }) => ({
 export const StyledCarouselImage = styled(`div`).withConfig({
   shouldForwardProp: (props) => props !== "aspectRatio",
 })<{ aspectRatio: number }>(({ theme, aspectRatio }) => ({
-  height: "30vh",
+  height: "40vh",
   width: "auto",
   aspectRatio: `${aspectRatio}`,
 

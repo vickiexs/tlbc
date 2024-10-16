@@ -3,12 +3,10 @@ import { PortableTextBlock } from "@portabletext/types";
 import { HeadedContentBlockProps as HeadedContentBlock } from "../headed-content-block/type";
 import { ImageProps } from "../image/type";
 import { TripHostsProps as TripHosts } from "./trip-hosts/type";
+import { TripDetails } from "./trip-details/type";
 
 export interface TripLogisticsProps {
-  dates: HeadedContentBlock;
-  price: HeadedContentBlock;
-  spaces: HeadedContentBlock;
-  location: HeadedContentBlock;
+  tripDetails: TripDetails[];
   tripHosts: TripHosts;
   bookCallInfo: PortableTextBlock;
   included: HeadedContentBlock;

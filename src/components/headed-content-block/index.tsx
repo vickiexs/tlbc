@@ -11,6 +11,7 @@ import { HeadedContentBlockProps } from "./type";
 export default function HeadedContentBlock({
   heading,
   headingIcon,
+  icon,
   content,
 }: HeadedContentBlockProps) {
   const theme = useTheme();
@@ -23,7 +24,7 @@ export default function HeadedContentBlock({
   return (
     <StyledHeadedContentBlock>
       <StyledHeading>
-        {headingIcon && <Icon icon={headingIcon} size={getIconSize()} />}
+        {icon && <Icon icon={icon} size={getIconSize()} />}
         <Typography variation="h4">{heading}</Typography>
       </StyledHeading>
       <Typography variation="body">

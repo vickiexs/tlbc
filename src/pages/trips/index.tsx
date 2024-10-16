@@ -76,6 +76,7 @@ export default function TripPage(pageData: GenericObject) {
             eyebrowHeading={section.eyebrowHeading}
             heading={section.heading}
             backgroundColor={theme.palette.secondary.light}
+            hideOverflow
             key={index}
           >
             <Facilities {...(section as FacilitiesProps)} />
