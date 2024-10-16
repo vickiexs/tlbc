@@ -10,7 +10,6 @@ import { HeadedContentBlockProps } from "./type";
 
 export default function HeadedContentBlock({
   heading,
-  headingIcon,
   icon,
   content,
 }: HeadedContentBlockProps) {

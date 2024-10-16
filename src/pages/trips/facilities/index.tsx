@@ -47,7 +47,7 @@ export default function Facilities({
         </StyledColumn>
       </StyledFacilitiesText>
       <div>
-        <Carousel loop centeredSlides>
+        <Carousel>
           {imageCarousel.map((img, index) => (
             <StyledCarouselImage
               key={index}
