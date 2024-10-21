@@ -25,10 +25,10 @@ export default function TripDetails({
 
   return (
     <StyledTripDetailsContainer>
-      {tripDetails.map((details) => {
+      {tripDetails.map((details, index) => {
         const { codename, dates, price, spaces, location } = details;
         return isBreakpointSm ? (
-          <>
+          <div key={index}>
             {codename && (
               <StyledCodename variation="body">{`Code name: ${codename}`}</StyledCodename>
             )}
@@ -38,9 +38,9 @@ export default function TripDetails({
               <HeadedContentBlock {...spaces} />
               <HeadedContentBlock {...location} />
             </StyledTripDetails>
-          </>
+          </div>
         ) : (
-          <StyledDesktopDetailsContainer>
+          <StyledDesktopDetailsContainer key={index}>
             {codename && (
               <StyledCodename variation="body">{`Code name: ${codename}`}</StyledCodename>
             )}

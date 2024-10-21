@@ -12,6 +12,7 @@ import { aboutIntroQuery } from "../pages/about/intro/query";
 import { teamMemberQuery } from "../pages/about/team-members/query";
 import { quotesQuery } from "../components/quotes/query";
 import { videoQuery } from "../components/video/query";
+import { testimonialsQuery } from "../pages/testimonials/testimonial-listing/query";
 
 export const pageQuery = `
 *[_type in ["page"]]{
@@ -30,7 +31,8 @@ export const pageQuery = `
     ${aboutIntroQuery},
     ${teamMemberQuery},
     ${quotesQuery},
-    ${videoQuery}
+    ${videoQuery},
+    ${testimonialsQuery}
   }
 }
 `;

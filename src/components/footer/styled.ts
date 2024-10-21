@@ -24,7 +24,7 @@ export const StyledContact = styled(`div`)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   gap: theme.spacing(4),
-  fontSize: theme.fontSize(6),
+  fontSize: theme.fontSize(5),
   fontWeight: theme.fontWeight.semiBold,
   textTransform: "uppercase",
 

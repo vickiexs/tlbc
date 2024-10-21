@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import IconButton from "../icon-button";
+
 export const StyledVideoContainer = styled(`div`)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
@@ -21,4 +23,44 @@ export const StyledVideoWrapper = styled(`div`)(() => ({
   justifyContent: "center",
   width: "100%",
   maxWidth: "1500px",
+}));
+
+export const StyledThumbnail = styled(`div`)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  position: "relative",
+  height: "75vh",
+
+  ".play-icon": {
+    zIndex: 1,
+    position: "absolute",
+    transform: "scale(1)",
+    transition: "all 300ms ease-in-out",
+
+    "&:hover": {
+      transform: "scale(1.1)",
+    },
+
+    svg: {
+      fill: theme.palette.white,
+      filter: "drop-shadow(0px 0px 15px #595959)",
+      height: "100px",
+      width: "100px",
+
+      [`@media ${theme.breakpoints.md}`]: {
+        height: "70px",
+        width: "70px",
+      },
+    },
+  },
+
+  [`@media ${theme.breakpoints.md}`]: {
+    height: "75vh",
+  },
+}));
+
+export const StyledPlayIcon = styled(IconButton)(() => ({
+  position: "absolute",
+  top: 0,
 }));

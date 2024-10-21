@@ -5,6 +5,7 @@ import { IoPricetags } from "react-icons/io5";
 import { MdPeople } from "react-icons/md";
 import { MdLocationPin } from "react-icons/md";
 import { MdClose } from "react-icons/md";
+import { RiPlayCircleFill } from "react-icons/ri";
 
 interface IconProps {
   icon: string;
@@ -28,6 +29,8 @@ export default function Icon({ icon, size }: IconProps) {
         return <MdLocationPin size={size} />;
       case "close":
         return <MdClose size={size} />;
+      case "playCircle":
+        return <RiPlayCircleFill size={size} />;
     }
   };
 

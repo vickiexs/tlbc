@@ -6,7 +6,7 @@ export const StyledAccordionContainer = styled(`div`)(() => ({
 }));
 
 export const StyledAccordionHeader = styled(`button`)(({ theme }) => ({
-  fontFamily: "inherit",
+  fontFamily: "Titillium Web",
   fontSize: theme.fontSize(5),
   fontWeight: theme.fontWeight.semiBold,
   color: "inherit",

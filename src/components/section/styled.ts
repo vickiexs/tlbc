@@ -23,7 +23,7 @@ export const StyledSectionContainer = styled(`div`)(({ theme }) => ({
   maxWidth: theme.maxContentWidthLg,
 
   [`@media ${theme.breakpoints.xxl}`]: {
-    padding: `${theme.spacing(18)} ${theme.spacing(20)}`,
+    padding: theme.spacing(20),
   },
   [`@media ${theme.breakpoints.xl}`]: {
     maxWidth: theme.maxContentWidth,
@@ -31,12 +31,12 @@ export const StyledSectionContainer = styled(`div`)(({ theme }) => ({
     margin: 0,
   },
   [`@media ${theme.breakpoints.lg}`]: {
-    padding: `${theme.spacing(14)} ${theme.spacing(14)}`,
+    padding: theme.spacing(14),
   },
   [`@media ${theme.breakpoints.md}`]: {
-    padding: `${theme.spacing(10)} ${theme.spacing(10)}`,
+    padding: theme.spacing(10),
   },
   [`@media ${theme.breakpoints.sm}`]: {
-    padding: `${theme.spacing(8)} ${theme.spacing(7)}`,
+    padding: `${theme.spacing(10)} ${theme.spacing(7)}`,
   },
 }));

@@ -30,7 +30,9 @@ export default function TripPage(pageData: GenericObject) {
   const renderPageSection = (section: GenericObject, index: number) => {
     switch (section._type) {
       case "spotlight":
-        return <Spotlight {...(section as SpotlightProps)} key={index} />;
+        return (
+          <Spotlight {...(section as SpotlightProps)} fixedHeight key={index} />
+        );
       case "infoSection":
         return (
           <Section

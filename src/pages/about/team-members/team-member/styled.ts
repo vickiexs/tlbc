@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import Typography from "../../../../components/typography";
+
 export const StyledContainer = styled(`div`).withConfig({
   shouldForwardProp: (props) => props !== "isLeftImage",
 })<{ isLeftImage: boolean }>(({ theme, isLeftImage }) => ({
@@ -67,18 +69,10 @@ export const StyledRole = styled("div")(({ theme }) => ({
 }));
 
 export const StyledImageContainer = styled(`div`)(({ theme }) => ({
-  maxWidth: "750px",
+  flexBasis: "100%",
   aspectRatio: "16/9",
-  minWidth: "200px",
 
-  [`@media ${theme.breakpoints.xl}`]: {
-    maxWidth: "600px",
-  },
-  [`@media ${theme.breakpoints.lg}`]: {
-    maxWidth: "400px",
-  },
   [`@media ${theme.breakpoints.md}`]: {
-    maxWidth: "100%",
     aspectRatio: "6/4",
   },
 }));
@@ -87,8 +81,10 @@ export const StyledInfoContainer = styled(`div`)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(5),
-  width: "100%",
+  flexBasis: "100%",
   textAlign: "justify",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
 
   button: {
     alignSelf: "flex-start",
@@ -100,6 +96,20 @@ export const StyledInfoContainer = styled(`div`)(({ theme }) => ({
 
   [`@media ${theme.breakpoints.lg}`]: {
     gap: theme.spacing(3),
+  },
+}));
+
+export const StyledBio = styled(Typography)(({ theme }) => ({
+  overflow: "hidden",
+  WebkitLineClamp: 9,
+  display: "-webkit-inline-box",
+  WebkitBoxOrient: "vertical",
+
+  [`@media ${theme.breakpoints.xl}`]: {
+    WebkitLineClamp: 7,
+  },
+  [`@media ${theme.breakpoints.lg}`]: {
+    WebkitLineClamp: 5,
   },
 }));
 
@@ -160,35 +170,5 @@ export const StyledModalTextContainer = styled(`div`)(({ theme }) => ({
   },
   [`@media ${theme.breakpoints.sm}`]: {
     padding: theme.spacing(7),
-  },
-}));
-
-export const StyledCloseButton = styled(`button`)(({ theme }) => ({
-  position: "absolute",
-  right: 0,
-  color: theme.palette.white,
-  backgroundColor: "rgba(0, 0, 0, 0.3)",
-  backdropFilter: "blur(4px)",
-  WebkitBackdropFilter: "blur(4px)",
-  borderRadius: "50%",
-  border: "none",
-  height: "40px",
-  width: "40px",
-  padding: 0,
-  marginTop: theme.spacing(4),
-  marginRight: theme.spacing(4),
-  transition: "all 250ms",
-  "&:hover": {
-    cursor: "pointer",
-    backgroundColor: "rgba(0, 0, 0, 0.4)",
-  },
-  svg: {
-    marginTop: theme.spacing(1),
-  },
-
-  [`@media ${theme.breakpoints.md}`]: {
-    height: "35px",
-    width: "35px",
-    position: "fixed",
   },
 }));

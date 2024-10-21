@@ -1,4 +1,4 @@
-import { imageQuery } from "../image/query";
+import { imageQuery, imageFragment } from "../image/query";
 import { linkQuery } from "../link/query";
 
 export const spotlightQuery = `
@@ -7,6 +7,9 @@ _type == "spotlight" => {
   heading,
   subheadings[],
   ${imageQuery},
+  mobileImage {
+    ${imageFragment}
+  },
   videoUrl,
   darkText,
   ${linkQuery}

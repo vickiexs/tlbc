@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const StyledHeading1 = styled(`h1`)(({ theme }) => ({
+  fontFamily: "Mukta",
   fontSize: theme.fontSize(16),
-  fontWeight: theme.fontWeight.semiBold,
+  fontWeight: theme.fontWeight.regular,
   color: "inherit",
   margin: "0 auto",
   paddingTop: theme.spacing(35),

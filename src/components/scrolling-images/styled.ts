@@ -18,10 +18,10 @@ export const StyledImageContainer = styled(`div`)(({ theme }) => ({
   gap: theme.spacing(4),
   scrollBehavior: "smooth",
   ".img-row:nth-child(odd)": {
-    marginLeft: `-${theme.spacing(15)}`,
+    marginLeft: `-${theme.spacing(55)}`,
   },
   ".img-row:nth-child(even)": {
-    marginLeft: theme.spacing(75),
+    marginLeft: theme.spacing(20),
   },
 
   [`@media ${theme.breakpoints.md}`]: {
@@ -47,16 +47,13 @@ export const StyledRow = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledImage = styled(`div`).withConfig({
-  shouldForwardProp: (props) => props !== "aspectRatio",
-})<{ aspectRatio: number }>(({ theme, aspectRatio }) => ({
+export const StyledImage = styled(`div`)(({ theme }) => ({
   height: "300px",
-  width: "auto",
-  aspectRatio: `${aspectRatio}`,
+  aspectRatio: "450 / 300",
   flex: "0 0 auto",
 
   [`@media ${theme.breakpoints.md}`]: {
-    height: "200px",
+    maxHeight: "200px",
   },
   [`@media ${theme.breakpoints.sm}`]: {
     height: "150px",

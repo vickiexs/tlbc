@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledContainer = styled(`div`)(() => ({
-  height: "100vh",
+  height: "100svh",
   width: "100%",
   position: "relative",
   display: "flex",
@@ -24,7 +24,7 @@ export const StyledContentWrapper = styled(`div`)(({ theme }) => ({
 export const StyledLogoContainer = styled(`div`)(({ theme }) => ({
   height: "250px",
   width: "250px",
-  marginBottom: theme.spacing(5),
+  marginBottom: theme.spacing(10),
 
   svg: {
     height: "100%",
@@ -38,12 +38,15 @@ export const StyledLogoContainer = styled(`div`)(({ theme }) => ({
 }));
 
 export const StyledHeading = styled(`h1`)(({ theme }) => ({
-  fontSize: theme.fontSize(8),
+  fontWeight: theme.fontWeight.regular,
+  fontSize: theme.fontSize(5),
   textAlign: "center",
-  maxWidth: "300px",
+  maxWidth: "400px",
+  letterSpacing: "0.1rem",
 
   [`@media ${theme.breakpoints.md}`]: {
-    fontSize: theme.fontSize(7),
-    maxWidth: "250px",
+    fontWeight: theme.fontWeight.semiBold,
+    fontSize: theme.fontSize(4),
+    maxWidth: "150px",
   },
 }));

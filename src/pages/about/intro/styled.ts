@@ -35,6 +35,7 @@ export const StyledIntroduction = styled(`div`)(({ theme }) => ({
 
 export const StyledTextContainer = styled(`div`)(() => ({
   flex: 2,
+  textAlign: "justify",
 }));
 
 export const StyledImageContainer = styled(`div`)(() => ({

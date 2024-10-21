@@ -60,10 +60,7 @@ export default function ScrollingImages({
           >
             <StyledRow>
               {row.map((image, index) => (
-                <StyledImage
-                  aspectRatio={image.asset.metadata.dimensions.aspectRatio}
-                  key={index}
-                >
+                <StyledImage key={index}>
                   <Image
                     {...image}
                     height={isMobile ? mobileImageHeight : desktopImageHeight}

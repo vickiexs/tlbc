@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledButton = styled(`button`)(({ theme }) => ({
   backgroundColor: "transparent",
-  fontFamily: "inherit",
+  fontFamily: "Titillium Web",
   fontSize: theme.fontSize(4),
   fontWeight: theme.fontWeight.semiBold,
   padding: `${theme.spacing(2)} ${theme.spacing(4)}`,

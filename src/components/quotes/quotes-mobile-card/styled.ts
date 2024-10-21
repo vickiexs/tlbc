@@ -8,6 +8,7 @@ export const StyledCard = styled(`div`)(({ theme }) => ({
   width: "50vw",
   maxWidth: "500px",
   padding: `${theme.spacing(5)} 0`,
+  textAlign: "center",
 
   ".avatar": {
     marginBottom: theme.spacing(4),
@@ -15,9 +16,9 @@ export const StyledCard = styled(`div`)(({ theme }) => ({
 }));
 
 export const StyledQuote = styled(`q`)(({ theme }) => ({
+  fontWeight: theme.fontWeight.light,
   fontSize: theme.fontSize(4),
   fontStyle: "italic",
-  textAlign: "center",
   marginTop: theme.spacing(7),
   marginBottom: theme.spacing(10),
 }));

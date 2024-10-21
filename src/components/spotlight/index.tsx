@@ -1,8 +1,10 @@
 import { useMemo } from "react";
+import { useLocation } from "react-router-dom";
 import { useTheme } from "styled-components";
 import ReactPlayer from "react-player";
 import Typewriter from "typewriter-effect";
 import { useWindowSize } from "usehooks-ts";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 import Image from "../image";
 
@@ -10,6 +12,7 @@ import {
   StyledSpotlightContainer,
   StyledBackgroundImage,
   StyledOverlay,
+  StyledGradientOverlay,
   StyledVideoOverlay,
   StyledTextOverlay,
   StyledTextContainer,
@@ -23,11 +26,23 @@ export default function Spotlight({
   heading,
   subheadings,
   image,
+  mobileImage,
   videoUrl,
   darkText,
+  fixedHeight = false,
 }: SpotlightProps) {
   const theme = useTheme();
   const size = useWindowSize();
+
+  const isMobile = useMediaQuery(theme.breakpoints.md);
+
+  const location = useLocation();
+  const isHomepage = location.pathname === "/";
+
+  const spotlightImage = useMemo(
+    () => (isMobile && mobileImage ? mobileImage : image),
+    [isMobile, image, mobileImage]
+  );
 
   const playerSize: { width: string; height: string } = useMemo(() => {
     let playerWidth: number | string = size.height * (16 / 9);
@@ -50,7 +65,23 @@ export default function Spotlight({
   }, [size]);
 
   return (
-    <StyledSpotlightContainer id="spotlight">
+    <StyledSpotlightContainer id="spotlight" fixedHeight={fixedHeight}>
+      <StyledTextOverlay darkText={darkText} isHomepage={isHomepage}>
+        <StyledTextContainer isHomepage={isHomepage}>
+          <StyledHeading>{heading}</StyledHeading>
+          {subheadings && (
+            <StyledSubtitle>
+              <Typewriter
+                options={{
+                  strings: subheadings,
+                  autoStart: true,
+                  loop: true,
+                }}
+              />
+            </StyledSubtitle>
+          )}
+        </StyledTextContainer>
+      </StyledTextOverlay>
       {videoUrl ? (
         <>
           <StyledVideoOverlay />
@@ -75,27 +106,12 @@ export default function Spotlight({
           </StyledVideoContainer>
         </>
       ) : (
-        <StyledBackgroundImage>
+        <StyledBackgroundImage fixedHeight={fixedHeight}>
+          <StyledGradientOverlay />
           <StyledOverlay />
-          <Image {...image} />
+          <Image {...spotlightImage} />
         </StyledBackgroundImage>
       )}
-      <StyledTextOverlay darkText={darkText}>
-        <StyledTextContainer>
-          <StyledHeading>{heading}</StyledHeading>
-          {subheadings && (
-            <StyledSubtitle>
-              <Typewriter
-                options={{
-                  strings: subheadings,
-                  autoStart: true,
-                  loop: true,
-                }}
-              />
-            </StyledSubtitle>
-          )}
-        </StyledTextContainer>
-      </StyledTextOverlay>
     </StyledSpotlightContainer>
   );
 }

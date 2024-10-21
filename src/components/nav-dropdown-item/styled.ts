@@ -6,7 +6,7 @@ export const StyledNavDropdownItem = styled(`button`)(({ theme }) => ({
   backgroundColor: "transparent",
   padding: 0,
   color: "inherit",
-  fontFamily: "Titillium Web",
+
   fontSize: theme.fontSize(4),
   fontWeight: theme.fontWeight.semiBold,
   textAlign: "inherit",

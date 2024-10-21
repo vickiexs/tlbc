@@ -1,13 +1,21 @@
 import styled from "styled-components";
 
-export const StyledSpotlightContainer = styled(`div`)(() => ({
+export const StyledSpotlightContainer = styled(`div`).withConfig({
+  shouldForwardProp: (props) => props !== "fixedHeight",
+})<{ fixedHeight: boolean }>(({ theme, fixedHeight }) => ({
   height: "100svh",
   width: "100%",
   position: "relative",
   overflow: "hidden",
+
+  [`@media ${theme.breakpoints.md}`]: {
+    height: fixedHeight ? "600px" : "100svh",
+  },
 }));
 
-export const StyledBackgroundImage = styled(`div`)(() => ({
+export const StyledBackgroundImage = styled(`div`).withConfig({
+  shouldForwardProp: (props) => props !== "fixedHeight",
+})<{ fixedHeight: boolean }>(({ theme, fixedHeight }) => ({
   height: "100vh",
   width: "100%",
   position: "absolute",
@@ -17,13 +25,34 @@ export const StyledBackgroundImage = styled(`div`)(() => ({
     width: "100%",
     objectFit: "cover",
   },
+
+  [`@media ${theme.breakpoints.md}`]: {
+    height: fixedHeight ? "600px" : "100svh",
+  },
 }));
 
-export const StyledOverlay = styled(`div`)(() => ({
+export const StyledOverlay = styled(`div`)(({ theme }) => ({
   position: "absolute",
   height: "100%",
   width: "100%",
   backgroundColor: "rgba(0, 0, 0, 0.25)",
+
+  [`@media ${theme.breakpoints.md}`]: {
+    backgroundColor: "rgba(0, 0, 0, 0)",
+  },
+}));
+
+export const StyledGradientOverlay = styled(`div`)(({ theme }) => ({
+  position: "absolute",
+  height: "100%",
+  width: "100%",
+  background:
+    "linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.05) 10%, rgba(0, 0, 0, 0) 17%, rgba(0, 0, 0, 0) 100%)",
+
+  [`@media ${theme.breakpoints.md}`]: {
+    background:
+      "linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 100%), linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 100%)",
+  },
 }));
 
 export const StyledVideoOverlay = styled(`div`)(() => ({
@@ -36,36 +65,55 @@ export const StyledVideoOverlay = styled(`div`)(() => ({
 }));
 
 export const StyledTextOverlay = styled(`div`).withConfig({
-  shouldForwardProp: (props) => props !== "darkText",
-})<{ darkText: boolean }>(({ theme, darkText }) => ({
-  display: "flex",
-  flexDirection: "column",
-  height: "100%",
-  alignItems: "center",
-  justifyContent: "center",
-  color: darkText ? theme.palette.text : theme.palette.white,
-  position: "absolute",
-  top: 0,
-  zIndex: 3,
-  textShadow: `1px 1px 10px rgba(0, 0, 0, 0.1)`,
-  pointerEvents: "none",
-  padding: `0 ${theme.spacing(15)}`,
-  textAlign: "center",
-  width: "100%",
-}));
+  shouldForwardProp: (props) => props !== "darkText" && props !== "isHomepage",
+})<{ darkText: boolean; isHomepage: boolean }>(
+  ({ theme, darkText, isHomepage }) => ({
+    display: "flex",
+    flexDirection: "column",
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    color: darkText ? theme.palette.text : theme.palette.white,
+    position: "absolute",
+    top: 0,
+    zIndex: 3,
+    textShadow: `1px 1px 10px rgba(0, 0, 0, 0.1)`,
+    pointerEvents: "none",
+    padding: `0 ${theme.spacing(15)}`,
+    textAlign: "center",
+    width: "100%",
 
-export const StyledTextContainer = styled(`div`)(({ theme }) => ({
+    [`@media ${theme.breakpoints.md}`]: {
+      padding: isHomepage
+        ? `0 ${theme.spacing(15)}`
+        : `${theme.spacing(10)} ${theme.spacing(7)}`,
+      textAlign: isHomepage ? "center" : "left",
+      alignItems: isHomepage ? "center" : "flex-start",
+      justifyContent: isHomepage ? "center" : "flex-end",
+    },
+  })
+);
+
+export const StyledTextContainer = styled(`div`).withConfig({
+  shouldForwardProp: (props) => props !== "isHomepage",
+})<{ isHomepage: boolean }>(({ theme, isHomepage }) => ({
+  [`@media ${theme.breakpoints.md}`]: {
+    h1: {
+      textAlign: isHomepage ? "center" : "left",
+    },
+  },
   [`@media ${theme.breakpoints.sm}`]: {
-    minHeight: "320px",
+    minHeight: isHomepage ? "320px" : "unset",
   },
 }));
 
 export const StyledHeading = styled(`h1`)(({ theme }) => ({
-  fontSize: theme.fontSize(20),
-  fontWeight: theme.fontWeight.semiBold,
+  fontFamily: "Mukta",
+  fontSize: theme.fontSize(16),
+  fontWeight: 400,
   textTransform: "uppercase",
   textAlign: "center",
-  letterSpacing: "0.15rem",
+  letterSpacing: "0.35rem",
   margin: 0,
 
   [`@media ${theme.breakpoints.lg}`]: {
@@ -78,15 +126,15 @@ export const StyledHeading = styled(`h1`)(({ theme }) => ({
 }));
 
 export const StyledSubtitle = styled(`div`)(({ theme }) => ({
-  fontSize: theme.fontSize(6),
-  fontWeight: theme.fontWeight.semiBold,
+  fontSize: theme.fontSize(5),
+  fontWeight: theme.fontWeight.regular,
   textTransform: "uppercase",
   letterSpacing: "0.1rem",
+  marginTop: "-10px",
 
   [`@media ${theme.breakpoints.md}`]: {
-    fontSize: theme.fontSize(5),
+    fontSize: theme.fontSize(4),
     letterSpacing: "0.075rem",
-    marginTop: theme.spacing(5),
   },
 }));
 

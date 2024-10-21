@@ -4,6 +4,6 @@ import client from "../client";
 
 const builder = imageUrlBuilder(client);
 
-export function urlFor(source: SanityImageSource) {
+export function getImgUrl(source: SanityImageSource) {
   return builder.image(source);
 }

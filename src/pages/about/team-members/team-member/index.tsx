@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useTheme } from "styled-components";
 import { useMediaQuery } from "usehooks-ts";
 
@@ -8,8 +8,10 @@ import Typography from "../../../../components/typography";
 import Image from "../../../../components/image";
 import Button from "../../../../components/button";
 import Modal from "../../../../components/modal";
-import Icon from "../../../../components/icons";
+import CloseButton from "../../../../components/modal/close-button";
 import IconLink from "../../../../components/icon-link";
+
+import { useOutsideClick } from "../../../../utils/handleOutsideClick";
 
 import {
   StyledContainer,
@@ -20,7 +22,7 @@ import {
   StyledModalContent,
   StyledModalImageContainer,
   StyledModalTextContainer,
-  StyledCloseButton,
+  StyledBio,
 } from "./styled";
 import { TeamMemberProps } from "./type";
 
@@ -37,27 +39,7 @@ export default function TeamMember({
   const theme = useTheme();
   const [displayModal, setDisplayModal] = useState<boolean>(false);
 
-  const isBreakpointXxl = useMediaQuery(theme.breakpoints.xxl);
-  const isBreakpointXl = useMediaQuery(theme.breakpoints.xl);
-  const isBreakpointLg = useMediaQuery(theme.breakpoints.lg);
   const isBreakpointMd = useMediaQuery(theme.breakpoints.md);
-  const isBreakpointSm = useMediaQuery(theme.breakpoints.sm);
-
-  const getMaxChars = () => {
-    if (isBreakpointSm) {
-      return 325;
-    } else if (isBreakpointMd) {
-      return 530;
-    } else if (isBreakpointLg) {
-      return 300;
-    } else if (isBreakpointXl) {
-      return 510;
-    } else if (isBreakpointXxl) {
-      return 850;
-    } else {
-      return 1310;
-    }
-  };
 
   const openModal = () => {
     const html = document.getElementsByTagName("html")[0];
@@ -72,6 +54,9 @@ export default function TeamMember({
 
     setDisplayModal(false);
   };
+
+  const modalRef = useRef(null);
+  useOutsideClick(modalRef, closeModal);
 
   return (
     <StyledContainer isLeftImage={imageLeft ?? false}>
@@ -88,10 +73,7 @@ export default function TeamMember({
               )}
             </StyledName>
             <StyledRole>{role}</StyledRole>
-            <Typography variation="body">{`"${bioSummary.slice(
-              0,
-              getMaxChars()
-            )}..."`}</Typography>
+            <StyledBio variation="body">{bioSummary}</StyledBio>
             <Button
               label={buttonLabel}
               variant="dark"
@@ -109,10 +91,7 @@ export default function TeamMember({
               )}
             </StyledName>
             <StyledRole>{role}</StyledRole>
-            <Typography variation="body">{`"${bioSummary.slice(
-              0,
-              getMaxChars()
-            )}..."`}</Typography>
+            <StyledBio variation="body">{bioSummary}</StyledBio>
             <Button
               label={buttonLabel}
               variant="dark"
@@ -125,11 +104,9 @@ export default function TeamMember({
         </>
       )}
       {displayModal && (
-        <Modal>
-          <StyledModalContent>
-            <StyledCloseButton onClick={closeModal}>
-              <Icon icon="close" size={isBreakpointMd ? 24 : 32} />
-            </StyledCloseButton>
+        <Modal borderRadius={10}>
+          <StyledModalContent ref={modalRef}>
+            <CloseButton handleClick={closeModal} />
             <StyledModalImageContainer>
               <Image {...image} />
             </StyledModalImageContainer>

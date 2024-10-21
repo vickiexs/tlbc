@@ -36,7 +36,7 @@ function App() {
     from: { opacity: 1 },
     enter: { opacity: 1, scale: 1 },
     leave: { opacity: 0, scale: 30 },
-    config: { duration: 1500 },
+    config: { duration: 1000 },
   });
 
   useEffect(() => {
