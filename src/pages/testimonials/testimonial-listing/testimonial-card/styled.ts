@@ -75,6 +75,10 @@ export const StyledTestimonial = styled("div").withConfig({
     },
   },
 
+  em: {
+    paddingRight: "1.5px",
+  },
+
   [`@media ${theme.breakpoints.md}`]: {
     maxHeight: isExpanded ? "100%" : "calc(7 * 26px)",
   },
@@ -135,6 +139,6 @@ export const StyledButton = styled("button")(({ theme }) => ({
   },
 
   [`@media ${theme.breakpoints.md}`]: {
-    fontSize: theme.fontSize(4),
+    fontSize: "14px",
   },
 }));
