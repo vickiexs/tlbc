@@ -37,6 +37,11 @@ export default function TestimonialListing({
     [columnNumber, testimonials]
   );
 
+  const hiddenTestimonials = useMemo(
+    () => testimonials.length - columnNumber * pageSize,
+    [columnNumber, pageSize, testimonials]
+  );
+
   return (
     <StyledListingContainer>
       <StyledListing>
@@ -56,7 +61,7 @@ export default function TestimonialListing({
       </StyledListing>
       {pageSize <= Math.ceil(testimonials.length / columnNumber) && (
         <Button
-          label={loadMoreLabel}
+          label={`${loadMoreLabel} (${hiddenTestimonials})`}
           variant="dark"
           handleClick={() => setPageSize((prevState) => prevState + 6)}
           className="load-more-button"
