@@ -10,6 +10,7 @@ import Button from "../../../../components/button";
 import Modal from "../../../../components/modal";
 import CloseButton from "../../../../components/modal/close-button";
 import IconLink from "../../../../components/icon-link";
+import Ellipsis from "../../../../atoms/ellipsis";
 
 import { useOutsideClick } from "../../../../utils/handleOutsideClick";
 
@@ -59,7 +60,7 @@ export default function TeamMember({
   useOutsideClick(modalRef, closeModal);
 
   return (
-    <StyledContainer isLeftImage={imageLeft ?? false}>
+    <StyledContainer>
       {imageLeft || isBreakpointMd ? (
         <>
           <StyledImageContainer>
@@ -74,6 +75,7 @@ export default function TeamMember({
             </StyledName>
             <StyledRole>{role}</StyledRole>
             <StyledBio variation="body">{bioSummary}</StyledBio>
+            <Ellipsis />
             <Button
               label={buttonLabel}
               variant="dark"
@@ -92,6 +94,7 @@ export default function TeamMember({
             </StyledName>
             <StyledRole>{role}</StyledRole>
             <StyledBio variation="body">{bioSummary}</StyledBio>
+            <Ellipsis />
             <Button
               label={buttonLabel}
               variant="dark"

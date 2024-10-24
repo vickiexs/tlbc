@@ -22,6 +22,9 @@ export const StyledHeading1 = styled(`h1`)(({ theme }) => ({
     margin: 0,
   },
   [`@media ${theme.breakpoints.lg}`]: {
+    fontSize: theme.fontSize(14),
+    paddingLeft: theme.spacing(14),
+    paddingRight: theme.spacing(14),
     paddingBottom: theme.spacing(7),
   },
   [`@media ${theme.breakpoints.md}`]: {
@@ -87,7 +90,7 @@ export const StyledBody = styled(`div`)(({ theme }) => ({
   },
   p: {
     marginTop: 0,
-    marginBottom: theme.spacing(5),
+    marginBottom: "30px",
   },
   "p:last-child": {
     marginBottom: 0,
@@ -95,7 +98,13 @@ export const StyledBody = styled(`div`)(({ theme }) => ({
   ul: {
     marginTop: 0,
   },
+  strong: {
+    fontWeight: theme.fontWeight.semiBold,
+  },
 
+  [`@media ${theme.breakpoints.lg}`]: {
+    fontSize: "18px",
+  },
   [`@media ${theme.breakpoints.md}`]: {
     fontSize: theme.fontSize(4),
   },

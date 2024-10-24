@@ -2,12 +2,9 @@ import styled from "styled-components";
 
 import Typography from "../../../../components/typography";
 
-export const StyledContainer = styled(`div`).withConfig({
-  shouldForwardProp: (props) => props !== "isLeftImage",
-})<{ isLeftImage: boolean }>(({ theme, isLeftImage }) => ({
+export const StyledContainer = styled(`div`)(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(20),
-  justifyContent: isLeftImage ? "flex-start" : "space-between",
   width: "100%",
   marginBottom: theme.spacing(10),
 
@@ -84,14 +81,9 @@ export const StyledInfoContainer = styled(`div`)(({ theme }) => ({
   flexBasis: "100%",
   textAlign: "justify",
   overflow: "hidden",
-  textOverflow: "ellipsis",
 
   button: {
     alignSelf: "flex-start",
-    marginTop: theme.spacing(4),
-    [`@media ${theme.breakpoints.sm}`]: {
-      marginTop: theme.spacing(2),
-    },
   },
 
   [`@media ${theme.breakpoints.lg}`]: {
@@ -101,15 +93,9 @@ export const StyledInfoContainer = styled(`div`)(({ theme }) => ({
 
 export const StyledBio = styled(Typography)(({ theme }) => ({
   overflow: "hidden",
-  WebkitLineClamp: 9,
-  display: "-webkit-inline-box",
-  WebkitBoxOrient: "vertical",
-
-  [`@media ${theme.breakpoints.xl}`]: {
-    WebkitLineClamp: 7,
-  },
-  [`@media ${theme.breakpoints.lg}`]: {
-    WebkitLineClamp: 5,
+  maxHeight: "250px",
+  [`@media ${theme.breakpoints.md}`]: {
+    maxHeight: "240px",
   },
 }));
 

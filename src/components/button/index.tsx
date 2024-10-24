@@ -1,13 +1,19 @@
+import classNames from "classnames";
+
 import { StyledButton } from "./styled";
 import { ButtonProps } from "./type";
 
 export default function Button({
+  className,
   label,
   variant = "dark",
   handleClick,
 }: ButtonProps) {
   return (
-    <StyledButton className={`btn-${variant}`} onClick={handleClick}>
+    <StyledButton
+      className={classNames(`btn-${variant}`, className)}
+      onClick={handleClick}
+    >
       {label}
     </StyledButton>
   );

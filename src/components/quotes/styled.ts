@@ -69,10 +69,10 @@ export const StyledImageContainer = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledName = styled(`div`)(({ theme }) => ({
+export const StyledName = styled("div")(({ theme }) => ({
   fontSize: theme.fontSize(4),
   fontWeight: theme.fontWeight.semiBold,
-  marginTop: theme.spacing(5),
+  marginTop: theme.spacing(10),
   textTransform: "uppercase",
 
   [`@media ${theme.breakpoints.md}`]: {

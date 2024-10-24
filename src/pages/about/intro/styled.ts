@@ -13,20 +13,21 @@ export const StyledIntroduction = styled(`div`)(({ theme }) => ({
   },
 
   [`@media ${theme.breakpoints.xxl}`]: {
+    gap: theme.spacing(15),
     padding: `0 ${theme.spacing(20)}`,
   },
   [`@media ${theme.breakpoints.xl}`]: {
+    gap: theme.spacing(10),
     maxWidth: theme.maxContentWidth,
     minWidth: "unset",
     margin: 0,
   },
   [`@media ${theme.breakpoints.lg}`]: {
     flexDirection: "column",
-    gap: theme.spacing(10),
+    padding: `0 ${theme.spacing(14)}`,
   },
   [`@media ${theme.breakpoints.md}`]: {
     padding: `0 ${theme.spacing(10)}`,
-    gap: theme.spacing(8),
   },
   [`@media ${theme.breakpoints.sm}`]: {
     padding: `0 ${theme.spacing(7)}`,
