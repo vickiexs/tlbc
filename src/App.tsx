@@ -34,9 +34,9 @@ function App() {
 
   const transition = useTransition(isLoading, {
     from: { opacity: 1 },
-    enter: { opacity: 1, scale: 1 },
-    leave: { opacity: 0, scale: 30 },
-    config: { duration: 1000 },
+    enter: { opacity: 1, scale: 0.1 },
+    leave: { opacity: 0, scale: 1 },
+    config: { duration: 700 },
   });
 
   useEffect(() => {

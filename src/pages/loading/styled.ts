@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const StyledContainer = styled(`div`)(() => ({
   height: "100svh",
-  width: "100%",
   position: "relative",
   display: "flex",
   flexDirection: "column",
@@ -10,43 +9,43 @@ export const StyledContainer = styled(`div`)(() => ({
   alignItems: "center",
 }));
 
-export const StyledContentWrapper = styled(`div`)(({ theme }) => ({
+export const StyledContentWrapper = styled(`div`)(() => ({
+  position: "relative",
+  top: 0,
+  height: "100svh",
+}));
+
+export const StyledContent = styled(`div`)(() => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  minHeight: "415px",
+  minHeight: "3200px",
 
-  [`@media ${theme.breakpoints.md}`]: {
-    minHeight: "350px",
-  },
+  position: "relative",
+  left: "50%",
+  top: "50%",
+  transform: "translateX(-50%) translateY(-50%)",
 }));
 
 export const StyledLogoContainer = styled(`div`)(({ theme }) => ({
-  height: "250px",
-  width: "250px",
-  marginBottom: theme.spacing(10),
+  height: "2000px",
+  width: "2000px",
+  marginBottom: theme.spacing(50),
 
   svg: {
     height: "100%",
     width: "100%",
   },
-
-  [`@media ${theme.breakpoints.md}`]: {
-    height: "200px",
-    width: "200px",
-  },
 }));
 
 export const StyledHeading = styled(`h1`)(({ theme }) => ({
-  fontWeight: theme.fontWeight.regular,
-  fontSize: theme.fontSize(5),
+  fontWeight: theme.fontWeight.semiBold,
+  fontSize: theme.fontSize(35),
   textAlign: "center",
-  maxWidth: "400px",
   letterSpacing: "0.1rem",
 
   [`@media ${theme.breakpoints.md}`]: {
     fontWeight: theme.fontWeight.semiBold,
-    fontSize: theme.fontSize(4),
-    maxWidth: "150px",
+    maxWidth: "1500px",
   },
 }));
