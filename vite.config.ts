@@ -7,6 +7,12 @@ export default defineConfig({
   base: "/",
   plugins: [react()],
   optimizeDeps: {
+    include: [
+      "react-fast-compare",
+      "invariant",
+      "shallowequal",
+      "react-helmet-async",
+    ],
     exclude: ["portabletext_react"],
   },
   build: {

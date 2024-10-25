@@ -1,3 +1,4 @@
+import Metadata from "../../components/metadata";
 import Section from "../../components/section";
 import Typography from "../../components/typography";
 import AboutIntro from "./intro";
@@ -7,7 +8,7 @@ import { TeamMembersProps } from "./team-members/type";
 import { GenericObject } from "../../App";
 
 export default function About(pageData: GenericObject) {
-  const { heading, sections } = pageData;
+  const { metadata, heading, sections } = pageData;
 
   const sectionIndices = Object.fromEntries(
     sections.map((section: GenericObject) => [section._type, 0])
@@ -38,6 +39,7 @@ export default function About(pageData: GenericObject) {
 
   return (
     <>
+      <Metadata {...metadata} />
       <Typography variation="h1">{heading}</Typography>
       {sections.map((section: GenericObject, index: number) =>
         renderPageSection(section, index)

@@ -1,6 +1,7 @@
 import { useTheme } from "styled-components";
 
 import { GenericObject } from "../../App";
+import Metadata from "../../components/metadata";
 import Section from "../../components/section";
 import Spotlight from "../../components/spotlight";
 import { SpotlightProps } from "../../components/spotlight/type";
@@ -25,7 +26,7 @@ import { VideoProps } from "../../components/video/type";
 
 export default function TripPage(pageData: GenericObject) {
   const theme = useTheme();
-  const { sections } = pageData;
+  const { metadata, sections } = pageData;
 
   const renderPageSection = (section: GenericObject, index: number) => {
     switch (section._type) {
@@ -121,6 +122,7 @@ export default function TripPage(pageData: GenericObject) {
 
   return (
     <>
+      <Metadata {...metadata} />
       {sections.map((section: GenericObject, index: number) =>
         renderPageSection(section, index)
       )}

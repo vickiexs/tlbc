@@ -33,6 +33,9 @@ export const pageQuery = `
     ${quotesQuery},
     ${videoQuery},
     ${testimonialsQuery}
+  },
+  metadata->{
+    title
   }
 }
 `;

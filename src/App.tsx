@@ -1,6 +1,7 @@
 import { useState, useEffect, Fragment } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useTransition, animated } from "react-spring";
+import { HelmetProvider } from "react-helmet-async";
 import theme from "./theme";
 import { ThemeProvider } from "styled-components";
 import client from "./client";
@@ -76,30 +77,32 @@ function App() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      {transition((style, isLoading) =>
-        isLoading ? (
-          <animated.div style={style}>
-            <LoadingPage />
-          </animated.div>
-        ) : null
-      )}
-      {data && (
-        <Fragment>
-          <Header {...(data.header[0] as HeaderProps)} />
-          <Routes>
-            {data.pages.map((page, index) => (
-              <Route
-                path={page.path}
-                element={getPageComponent(page.key, page)}
-                key={index}
-              />
-            ))}
-          </Routes>
-          <Footer {...(data.footer[0] as FooterProps)} />
-        </Fragment>
-      )}
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider theme={theme}>
+        {transition((style, isLoading) =>
+          isLoading ? (
+            <animated.div style={style}>
+              <LoadingPage />
+            </animated.div>
+          ) : null
+        )}
+        {data && (
+          <Fragment>
+            <Header {...(data.header[0] as HeaderProps)} />
+            <Routes>
+              {data.pages.map((page, index) => (
+                <Route
+                  path={page.path}
+                  element={getPageComponent(page.key, page)}
+                  key={index}
+                />
+              ))}
+            </Routes>
+            <Footer {...(data.footer[0] as FooterProps)} />
+          </Fragment>
+        )}
+      </ThemeProvider>
+    </HelmetProvider>
   );
 }
 

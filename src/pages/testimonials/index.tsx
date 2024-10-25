@@ -1,3 +1,4 @@
+import Metadata from "../../components/metadata";
 import Typography from "../../components/typography";
 
 import { GenericObject } from "../../App";
@@ -6,7 +7,7 @@ import TestimonialListing from "./testimonial-listing";
 import { TestimonialsProps } from "./testimonial-listing/type";
 
 export default function Testimonials(pageData: GenericObject) {
-  const { heading, sections } = pageData;
+  const { metadata, heading, sections } = pageData;
 
   const renderPageSection = (section: GenericObject, index: number) => {
     switch (section._type) {
@@ -21,6 +22,7 @@ export default function Testimonials(pageData: GenericObject) {
 
   return (
     <>
+      <Metadata {...metadata} />
       <Typography variation="h1">{heading}</Typography>
       {sections.map((section: GenericObject, index: number) =>
         renderPageSection(section, index)

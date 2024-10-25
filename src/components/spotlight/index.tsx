@@ -94,7 +94,6 @@ export default function Spotlight({
               muted
               width={playerSize.width}
               height={playerSize.height}
-              strictMode={false}
               style={{
                 position: "relative",
                 left: "50%",
