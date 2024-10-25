@@ -1,4 +1,4 @@
-import { imageFragment } from "../../../components/image/query";
+import { imageFragment } from "../../../atoms/image/query";
 
 export const facilitiesQuery = `
 _type == "facilities" => {

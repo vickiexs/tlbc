@@ -3,7 +3,7 @@ import { useTheme } from "styled-components";
 import { PortableText } from "@portabletext/react";
 
 import Typography from "../../typography";
-import Hr from "../../horizontal-rule";
+import Hr from "../../../atoms/horizontal-rule";
 
 import {
   StyledCarouselCard,

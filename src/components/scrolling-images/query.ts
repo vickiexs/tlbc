@@ -1,5 +1,5 @@
-import { imageFragment } from "../image/query";
-import { linkQuery } from "../link/query";
+import { imageFragment } from "../../atoms/image/query";
+import { linkQuery } from "../../atoms/link/query";
 
 export const scrollingImagesQuery = `
 _type == "tripGallery" => {

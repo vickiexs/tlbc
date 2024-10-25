@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
-import Image from "../../../components/image";
-import Button from "../../../components/button";
+import Image from "../../../atoms/image";
+import Button from "../../../atoms/button";
 
 import {
   StyledSpotlightContainer,

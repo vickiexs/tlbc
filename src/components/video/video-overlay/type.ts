@@ -1,4 +1,4 @@
-import { ImageProps as Image } from "../../image/type";
+import { ImageProps as Image } from "../../../atoms/image/type";
 
 export interface VideoOverlayProps {
   videoUrl: string;

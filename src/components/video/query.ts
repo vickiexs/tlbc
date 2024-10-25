@@ -1,4 +1,4 @@
-import { imageFragment } from "../image/query";
+import { imageFragment } from "../../atoms/image/query";
 
 export const videoQuery = `
 _type == "videoSection" => {

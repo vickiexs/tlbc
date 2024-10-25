@@ -9,8 +9,8 @@ import { PortableText } from "@portabletext/react";
 
 import Typography from "../typography";
 import ItineraryCarouselCard from "./itinerary-carousel-card";
-import Hr from "../horizontal-rule";
-import ArrowIcon from "../icons/arrow";
+import Hr from "../../atoms/horizontal-rule";
+import ArrowIcon from "../../atoms/icons/arrow";
 import CaptionedImage from "../captioned-image";
 
 import VerticalItinerary from "./vertical-itinerary";

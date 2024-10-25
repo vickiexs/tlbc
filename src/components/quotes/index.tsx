@@ -7,10 +7,10 @@ import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import classNames from "classnames";
 
-import Avatar from "../avatar";
-import Image from "../image";
-import Hr from "../horizontal-rule";
-import ArrowIcon from "../icons/arrow";
+import Avatar from "../../atoms/avatar";
+import Image from "../../atoms/image";
+import Hr from "../../atoms/horizontal-rule";
+import ArrowIcon from "../../atoms/icons/arrow";
 import QuotesCarouselCard from "./quotes-mobile-card";
 
 import {

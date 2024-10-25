@@ -1,6 +1,6 @@
 import { PortableTextBlock } from "@portabletext/types";
 
-import { ImageProps as Image } from "../../../components/image/type";
+import { ImageProps as Image } from "../../../atoms/image/type";
 
 export interface TestimonialsProps {
   testimonials: Testimonial[];

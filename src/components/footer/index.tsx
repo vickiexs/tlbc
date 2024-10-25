@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useTheme } from "styled-components";
 
-import IconLink from "../icon-link";
+import IconLink from "../../atoms/icon-link";
 
 import {
   StyledFooterWrapper,

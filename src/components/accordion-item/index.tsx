@@ -2,7 +2,7 @@ import { PortableText, PortableTextComponents } from "@portabletext/react";
 import classNames from "classnames";
 
 import Typography from "../typography";
-import ArrowIcon from "../icons/arrow";
+import ArrowIcon from "../../atoms/icons/arrow";
 
 import {
   StyledAccordionContainer,

@@ -1,5 +1,5 @@
-import { LinkProps as Link } from "../../link/type";
-import { ImageProps } from "../../image/type";
+import { LinkProps as Link } from "../../../atoms/link/type";
+import { ImageProps } from "../../../atoms/image/type";
 
 export interface TripHostsProps {
   hostsHeading: string;

@@ -5,9 +5,9 @@ import { useWindowSize, useMediaQuery } from "@uidotdev/usehooks";
 import classNames from "classnames";
 
 import Typography from "../../../../components/typography";
-import Avatar from "../../../../components/avatar";
-import Image from "../../../../components/image";
-import ArrowIcon from "../../../../components/icons/arrow";
+import Avatar from "../../../../atoms/avatar";
+import Image from "../../../../atoms/image";
+import ArrowIcon from "../../../../atoms/icons/arrow";
 import Ellipsis from "../../../../atoms/ellipsis";
 
 import {

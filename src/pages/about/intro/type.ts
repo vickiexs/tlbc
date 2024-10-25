@@ -1,6 +1,6 @@
 import { PortableTextBlock } from "@portabletext/types";
 
-import { ImageProps } from "../../../components/image/type";
+import { ImageProps } from "../../../atoms/image/type";
 
 export interface AboutIntroProps {
   content: PortableTextBlock;

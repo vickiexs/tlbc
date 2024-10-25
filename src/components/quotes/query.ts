@@ -1,4 +1,4 @@
-import { imageQuery } from "../image/query";
+import { imageQuery } from "../../atoms/image/query";
 
 export const quotesQuery = `
 _type == "quotes" => {

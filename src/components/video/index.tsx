@@ -2,9 +2,9 @@ import { useState, useMemo } from "react";
 import { useTheme } from "styled-components";
 import { useMediaQuery } from "@uidotdev/usehooks";
 
-import Image from "../image";
+import Image from "../../atoms/image";
 import IconButton from "../icon-button";
-import Icon from "../icons";
+import Icon from "../../atoms/icons";
 import VideoOverlay from "./video-overlay";
 
 import { StyledThumbnail } from "./styled";

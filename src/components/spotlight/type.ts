@@ -1,4 +1,4 @@
-import { ImageProps } from "../image/type";
+import { ImageProps } from "../../atoms/image/type";
 
 export interface SpotlightProps {
   heading: string;

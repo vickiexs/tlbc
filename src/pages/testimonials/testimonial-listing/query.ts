@@ -1,4 +1,4 @@
-import { imageQuery } from "../../../components/image/query";
+import { imageQuery } from "../../../atoms/image/query";
 
 export const testimonialsQuery = `
 _type == "testimonials" => {

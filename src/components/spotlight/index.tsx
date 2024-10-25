@@ -6,7 +6,7 @@ import Typewriter from "typewriter-effect";
 import { useWindowSize } from "usehooks-ts";
 import { useMediaQuery } from "@uidotdev/usehooks";
 
-import Image from "../image";
+import Image from "../../atoms/image";
 
 import {
   StyledSpotlightContainer,

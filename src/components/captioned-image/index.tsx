@@ -1,4 +1,4 @@
-import Image from "../image";
+import Image from "../../atoms/image";
 import Typography from "../typography";
 
 import { StyledCaptionedImage } from "./styled";

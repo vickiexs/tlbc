@@ -1,7 +1,7 @@
 import { PortableText } from "@portabletext/react";
 
 import Typography from "../typography";
-import Image from "../image";
+import Image from "../../atoms/image";
 
 import {
   StyledTripIntroduction,

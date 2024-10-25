@@ -5,7 +5,7 @@ import { PortableText } from "@portabletext/react";
 import TripHosts from "./trip-hosts";
 import HeadedContentBlock from "../headed-content-block";
 import Typography from "../typography";
-import Hr from "../horizontal-rule";
+import Hr from "../../atoms/horizontal-rule";
 import TripDetails from "./trip-details";
 
 import {

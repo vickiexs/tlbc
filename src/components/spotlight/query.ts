@@ -1,5 +1,5 @@
-import { imageQuery, imageFragment } from "../image/query";
-import { linkQuery } from "../link/query";
+import { imageQuery, imageFragment } from "../../atoms/image/query";
+import { linkQuery } from "../../atoms/link/query";
 
 export const spotlightQuery = `
 _type == "spotlight" => {

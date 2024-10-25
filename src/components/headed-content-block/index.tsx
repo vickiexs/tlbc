@@ -3,7 +3,7 @@ import { useMediaQuery } from "usehooks-ts";
 import { PortableText } from "@portabletext/react";
 
 import Typography from "../typography";
-import Icon from "../icons";
+import Icon from "../../atoms/icons";
 
 import { StyledHeadedContentBlock, StyledHeading } from "./styled";
 import { HeadedContentBlockProps } from "./type";
