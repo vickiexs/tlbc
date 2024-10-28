@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { useTheme } from "styled-components";
 
 import classNames from "classnames";
+
+import { useOutsideClick } from "../../utils/handleOutsideClick";
 
 import {
   StyledNavDropdownItem,
@@ -26,6 +28,9 @@ export default function NavDropdownItem({
     setShowDropdownMenu(false);
   }, [location.pathname]);
 
+  const menuRef = useRef(null);
+  useOutsideClick(menuRef, () => setShowDropdownMenu(false));
+
   return (
     <StyledNavDropdownItem
       onClick={() => setShowDropdownMenu(!showDropdownMenu)}
@@ -37,6 +42,7 @@ export default function NavDropdownItem({
         {label}
       </StyledLabel>
       <StyledDropdownMenu
+        ref={menuRef}
         className={classNames({
           visible: showDropdownMenu,
           transparent: underlineColor === theme.palette.white,
@@ -50,6 +56,7 @@ export default function NavDropdownItem({
             className={classNames("nav-dropdown-link", {
               dark: underlineColor === theme.palette.white,
             })}
+            underlineColor={underlineColor}
           >
             {item.label}
           </StyledDropdownLink>

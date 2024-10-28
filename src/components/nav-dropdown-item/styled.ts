@@ -7,6 +7,7 @@ export const StyledNavDropdownItem = styled(`button`)(({ theme }) => ({
   padding: 0,
   color: "inherit",
 
+  fontFamily: "Titillium Web",
   fontSize: theme.fontSize(4),
   fontWeight: theme.fontWeight.semiBold,
   textAlign: "inherit",
@@ -75,25 +76,32 @@ export const StyledDropdownMenu = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledDropdownLink = styled(Link)(({ theme }) => ({
+export const StyledDropdownLink = styled(Link).withConfig({
+  shouldForwardProp: (props) =>
+    props !== "dropdownMenuOpen" && props !== "underlineColor",
+})<{
+  underlineColor: string | undefined;
+}>(({ theme, underlineColor }) => ({
   display: "flex",
   color: "inherit",
   fontWeight: theme.fontWeight.semiBold,
   whiteSpace: "nowrap",
   textDecoration: "none",
   textTransform: "uppercase",
-  padding: `0 ${theme.spacing(5)}`,
   transition: "500ms",
-  "&:hover": {
-    color: theme.palette.primary.main,
+  position: "relative",
+  width: "fit-content",
+  margin: `0 ${theme.spacing(5)}`,
+  "&:before": {
+    transition: "all 500ms ease-in-out",
+    height: "2px",
+    content: '""',
+    position: "absolute",
+    backgroundColor: underlineColor ? underlineColor : theme.palette.text,
+    width: "0%",
+    bottom: "-3px",
   },
-  "&.dark": {
-    "&:hover": {
-      color: theme.palette.text,
-    },
-  },
-
-  [`@media ${theme.breakpoints.md}`]: {
-    padding: 0,
+  "&:hover:before": {
+    width: "100%",
   },
 }));
