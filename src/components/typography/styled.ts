@@ -12,7 +12,7 @@ export const StyledHeading1 = styled(`h1`)(({ theme }) => ({
   minWidth: theme.maxContentWidth,
   maxWidth: theme.maxContentWidthLg,
 
-  [`@media ${theme.breakpoints.xxl}`]: {
+  [`@media ${theme.breakpoints.xxxl}`]: {
     paddingLeft: theme.spacing(20),
     paddingRight: theme.spacing(20),
   },

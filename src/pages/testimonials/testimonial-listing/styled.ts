@@ -13,7 +13,6 @@ export const StyledListingContainer = styled("div")(({ theme }) => ({
 
 export const StyledListing = styled("div")(({ theme }) => ({
   margin: `0 auto`,
-  padding: `${theme.spacing(18)} 0`,
   marginBottom: theme.spacing(10),
   minWidth: theme.maxContentWidth,
   maxWidth: theme.maxContentWidthLg,
@@ -21,7 +20,7 @@ export const StyledListing = styled("div")(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(10),
 
-  [`@media ${theme.breakpoints.xxl}`]: {
+  [`@media ${theme.breakpoints.xxxl}`]: {
     padding: `0 ${theme.spacing(20)}`,
   },
   [`@media ${theme.breakpoints.xl}`]: {

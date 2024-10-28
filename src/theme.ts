@@ -5,6 +5,7 @@ const size = {
   lg: "1280px", // for laptops
   xl: "1512px", // for desktop / monitors
   xxl: "1920px", // for big screens
+  xxxl: "2080px",
 };
 
 const theme = {
@@ -41,6 +42,7 @@ const theme = {
     lg: `(max-width: ${size.lg})`,
     xl: `(max-width: ${size.xl})`,
     xxl: `(max-width: ${size.xxl})`,
+    xxxl: `(max-width: ${size.xxxl})`,
   },
   maxContentWidth: "1512px",
   maxContentWidthLg: "1920px",

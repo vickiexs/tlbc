@@ -12,7 +12,7 @@ export const StyledIntroduction = styled(`div`)(({ theme }) => ({
     textTransform: "uppercase",
   },
 
-  [`@media ${theme.breakpoints.xxl}`]: {
+  [`@media ${theme.breakpoints.xxxl}`]: {
     gap: theme.spacing(15),
     padding: `0 ${theme.spacing(20)}`,
   },
