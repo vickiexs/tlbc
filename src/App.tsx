@@ -58,12 +58,11 @@ function App() {
     }, 5000);
   }, []);
 
-  const getPageComponent = (key: string, pageData: GenericObject) => {
-    switch (key) {
+  const getPageComponent = (template: string, pageData: GenericObject) => {
+    switch (template) {
       case "home":
         return <Home {...pageData} />;
-      case "svalbard":
-      case "greenland":
+      case "expedition":
         return <TripPage {...pageData} />;
       case "memories":
         return <ArcticMemories {...pageData} />;
@@ -93,7 +92,7 @@ function App() {
               {data.pages.map((page, index) => (
                 <Route
                   path={page.path}
-                  element={getPageComponent(page.key, page)}
+                  element={getPageComponent(page.template, page)}
                   key={index}
                 />
               ))}

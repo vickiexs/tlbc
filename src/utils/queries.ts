@@ -17,6 +17,7 @@ import { testimonialsQuery } from "../pages/testimonials/testimonial-listing/que
 export const pageQuery = `
 *[_type in ["page"]]{
   key,
+  template,
   path,
   heading,
   sections[]->{
