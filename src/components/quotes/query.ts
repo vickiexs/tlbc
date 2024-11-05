@@ -1,4 +1,5 @@
 import { imageQuery } from "../../atoms/image/query";
+import { linkQuery } from "../../atoms/link/query";
 
 export const quotesQuery = `
 _type == "quotes" => {
@@ -9,5 +10,6 @@ _type == "quotes" => {
     location,
     quote,
     ${imageQuery}
-  }
+  },
+  ${linkQuery}
 }`;

@@ -11,6 +11,7 @@ import Avatar from "../../atoms/avatar";
 import Image from "../../atoms/image";
 import Hr from "../../atoms/horizontal-rule";
 import ArrowIcon from "../../atoms/icons/arrow";
+import Link from "../../atoms/link";
 import QuotesCarouselCard from "./quotes-mobile-card";
 
 import {
@@ -24,7 +25,7 @@ import {
 } from "./styled";
 import { QuotesProps } from "./type";
 
-export default function Quotes({ quotes, darkMode }: QuotesProps) {
+export default function Quotes({ quotes, link, darkMode }: QuotesProps) {
   const theme = useTheme();
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -51,20 +52,23 @@ export default function Quotes({ quotes, darkMode }: QuotesProps) {
   return (
     <StyledContainer>
       {isBreakpointSm ? (
-        <Swiper
-          modules={[Pagination]}
-          spaceBetween={25}
-          slidesPerView="auto"
-          loop
-          centeredSlides
-          pagination
-        >
-          {quotes.map((testimonial, index) => (
-            <SwiperSlide key={index}>
-              <QuotesCarouselCard {...testimonial} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        <Fragment>
+          <Swiper
+            modules={[Pagination]}
+            spaceBetween={25}
+            slidesPerView="auto"
+            loop
+            centeredSlides
+            pagination
+          >
+            {quotes.map((testimonial, index) => (
+              <SwiperSlide key={index}>
+                <QuotesCarouselCard {...testimonial} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          {link && <Link {...link} />}
+        </Fragment>
       ) : (
         <Fragment>
           <StyledQuote>{`"${quotes[activeIndex].quote}"`}</StyledQuote>
@@ -109,6 +113,7 @@ export default function Quotes({ quotes, darkMode }: QuotesProps) {
             </StyledHr>
           </StyledImageLine>
           <StyledName>{`${quotes[activeIndex].fullName} - ${quotes[activeIndex].location}`}</StyledName>
+          {link && <Link {...link} />}
         </Fragment>
       )}
     </StyledContainer>

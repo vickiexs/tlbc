@@ -29,6 +29,10 @@ export const StyledContainer = styled(`div`)(({ theme }) => ({
   ".swiper-pagination-bullet-active": {
     backgroundColor: `${theme.palette.text} !important`,
   },
+
+  ".link": {
+    marginTop: theme.spacing(10),
+  },
 }));
 
 export const StyledQuote = styled(`div`)(({ theme }) => ({
@@ -42,8 +46,8 @@ export const StyledQuote = styled(`div`)(({ theme }) => ({
   minHeight: "150px",
 
   [`@media ${theme.breakpoints.md}`]: {
-    fontSize: theme.fontSize(5),
-    maxWidth: "400px",
+    fontSize: theme.fontSize(5.5),
+    maxWidth: "450px",
     minHeight: "130px",
     marginBottom: theme.spacing(10),
   },
@@ -74,10 +78,6 @@ export const StyledName = styled("div")(({ theme }) => ({
   fontWeight: theme.fontWeight.semiBold,
   marginTop: theme.spacing(10),
   textTransform: "uppercase",
-
-  [`@media ${theme.breakpoints.md}`]: {
-    fontSize: theme.fontSize(3),
-  },
 }));
 
 export const StyledHr = styled(`div`)(({ theme }) => ({

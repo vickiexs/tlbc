@@ -16,7 +16,7 @@ export default function QuotesCarouselCard({
         <Image {...image} />
       </Avatar>
       <StyledGuestInfo>{fullName}</StyledGuestInfo>
-      <StyledGuestInfo>{location}</StyledGuestInfo>
+      <StyledGuestInfo className="location">{location}</StyledGuestInfo>
       <StyledQuote>{quote}</StyledQuote>
     </StyledCard>
   );

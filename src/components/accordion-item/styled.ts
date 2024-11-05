@@ -17,6 +17,7 @@ export const StyledAccordionHeader = styled(`button`)(({ theme }) => ({
   marginBottom: theme.spacing(3),
   border: "none",
   backgroundColor: "transparent",
+  WebkitTapHighlightColor: "transparent",
   "&:hover": {
     cursor: "pointer",
   },

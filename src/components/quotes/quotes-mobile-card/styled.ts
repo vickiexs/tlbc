@@ -27,4 +27,8 @@ export const StyledGuestInfo = styled(`div`)(({ theme }) => ({
   alignItems: "center",
   fontWeight: theme.fontWeight.semiBold,
   textTransform: "uppercase",
+
+  "&.location": {
+    minHeight: "48px",
+  },
 }));
