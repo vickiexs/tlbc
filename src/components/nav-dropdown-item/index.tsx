@@ -32,17 +32,18 @@ export default function NavDropdownItem({
   useOutsideClick(menuRef, () => setShowDropdownMenu(false));
 
   return (
-    <StyledNavDropdownItem
-      onClick={() => setShowDropdownMenu(!showDropdownMenu)}
-    >
-      <StyledLabel
-        dropdownMenuOpen={showDropdownMenu}
-        underlineColor={underlineColor}
+    <div ref={menuRef}>
+      <StyledNavDropdownItem
+        onClick={() => setShowDropdownMenu(!showDropdownMenu)}
       >
-        {label}
-      </StyledLabel>
+        <StyledLabel
+          dropdownMenuOpen={showDropdownMenu}
+          underlineColor={underlineColor}
+        >
+          {label}
+        </StyledLabel>
+      </StyledNavDropdownItem>
       <StyledDropdownMenu
-        ref={menuRef}
         className={classNames({
           visible: showDropdownMenu,
           transparent: underlineColor === theme.palette.white,
@@ -62,6 +63,6 @@ export default function NavDropdownItem({
           </StyledDropdownLink>
         ))}
       </StyledDropdownMenu>
-    </StyledNavDropdownItem>
+    </div>
   );
 }

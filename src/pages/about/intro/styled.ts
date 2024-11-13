@@ -39,10 +39,11 @@ export const StyledTextContainer = styled(`div`)(() => ({
   textAlign: "justify",
 }));
 
-export const StyledImageContainer = styled(`div`)(() => ({
+export const StyledImageContainer = styled(`div`)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
-  alignItems: "center",
+  alignItems: "flex-start",
+  marginTop: `-${theme.spacing(7)}`,
   flex: 1,
 
   img: {

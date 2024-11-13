@@ -6,6 +6,7 @@ export const StyledNavDropdownItem = styled(`button`)(({ theme }) => ({
   backgroundColor: "transparent",
   padding: 0,
   color: "inherit",
+  WebkitTapHighlightColor: "transparent",
 
   fontFamily: "Titillium Web",
   fontSize: theme.fontSize(4),
@@ -103,5 +104,11 @@ export const StyledDropdownLink = styled(Link).withConfig({
   },
   "&:hover:before": {
     width: "100%",
+  },
+
+  [`@media ${theme.breakpoints.md}`]: {
+    margin: 0,
+    width: "140px",
+    whiteSpace: "initial",
   },
 }));

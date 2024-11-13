@@ -58,7 +58,7 @@ export default function TripPage(pageData: GenericObject) {
         );
       case "videoSection":
         return (
-          <Section key={index}>
+          <Section key={index} eyebrowHeading={section.eyebrowHeading}>
             <Video {...(section as VideoProps)} />
           </Section>
         );

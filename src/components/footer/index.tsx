@@ -33,7 +33,7 @@ export default function Footer({ contact, links, copyright }: FooterProps) {
         </StyledIconLinks>
       </StyledContact>
       <StyledCopyright>
-        &copy; {new Date().getFullYear()} {copyright}
+        &copy; {`2021 - ${new Date().getFullYear()}`} {copyright}
       </StyledCopyright>
     </StyledFooterWrapper>
   );
