@@ -21,7 +21,7 @@ export const StyledImageContainer = styled(`div`)(({ theme }) => ({
     marginLeft: `-${theme.spacing(55)}`,
   },
   ".img-row:nth-child(even)": {
-    marginLeft: theme.spacing(20),
+    marginLeft: theme.spacing(100),
   },
 
   [`@media ${theme.breakpoints.md}`]: {
