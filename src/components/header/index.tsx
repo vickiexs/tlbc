@@ -8,6 +8,7 @@ import classNames from "classnames";
 import Logo from "./logo";
 
 import NavLink from "../nav-link";
+import NavDropdownItem from "../nav-dropdown-item";
 import IconButton from "../icon-button";
 
 import {
@@ -81,7 +82,16 @@ export default function Header({ navItems }: HeaderProps) {
       </StyledLogoContainer>
       <StyledNavLinks>
         {navItems.map((navItem, index) =>
-          isNavDropdownItem(navItem) ? null : (
+          isNavDropdownItem(navItem) ? (
+            <NavDropdownItem
+              {...navItem}
+              underlineColor={
+                isTransparentHeader ? theme.palette.white : theme.palette.text
+              }
+              closeMobileMenu={closeMobileMenu}
+              key={index}
+            />
+          ) : (
             <NavLink
               label={navItem.label}
               link={navItem.link}
@@ -109,7 +119,16 @@ export default function Header({ navItems }: HeaderProps) {
         </IconButton>
         <StyledMobileMenuItems>
           {navItems.map((navItem, index) =>
-            isNavDropdownItem(navItem) ? null : (
+            isNavDropdownItem(navItem) ? (
+              <NavDropdownItem
+                {...navItem}
+                underlineColor={
+                  isTransparentHeader ? theme.palette.white : theme.palette.text
+                }
+                closeMobileMenu={closeMobileMenu}
+                key={index}
+              />
+            ) : (
               <NavLink
                 label={navItem.label}
                 link={navItem.link}

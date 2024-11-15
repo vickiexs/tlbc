@@ -20,6 +20,7 @@ export const StyledVideoOverlay = styled("div")(({ theme }) => ({
 
     [`@media ${theme.breakpoints.md}`]: {
       width: "100%",
+      height: "100%",
       padding: `0 ${theme.spacing(7)}`,
     },
   },

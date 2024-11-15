@@ -28,6 +28,7 @@ export const StyledModalContainer = styled(`div`).withConfig({
 }));
 
 export const StyledCloseButton = styled(`button`)(({ theme }) => ({
+  zIndex: 2,
   position: "absolute",
   right: 0,
   color: theme.palette.white,
