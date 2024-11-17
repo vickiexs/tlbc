@@ -80,7 +80,7 @@ export const StyledTestimonial = styled("div").withConfig({
   },
 
   [`@media ${theme.breakpoints.md}`]: {
-    maxHeight: isExpanded ? "100%" : "calc(7 * 26px)",
+    maxHeight: isExpanded ? "100%" : "calc(7 * 27px)",
   },
 }));
 
