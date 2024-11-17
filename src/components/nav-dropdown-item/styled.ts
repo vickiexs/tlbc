@@ -57,7 +57,7 @@ export const StyledDropdownMenu = styled(`div`)(({ theme }) => ({
     marginTop: theme.spacing(4),
   },
   "&.visible": {
-    maxHeight: "170px",
+    maxHeight: "250px",
   },
   "&.transparent": {
     backgroundColor: "transparent",
