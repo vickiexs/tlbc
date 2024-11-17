@@ -66,6 +66,6 @@ export const StyledHeading = styled(`h1`)(({ theme }) => ({
   },
   [`@media ${theme.breakpoints.md}`]: {
     fontWeight: theme.fontWeight.semiBold,
-    maxWidth: "1500px",
+    // maxWidth: "1500px",
   },
 }));

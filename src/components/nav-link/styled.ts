@@ -15,6 +15,7 @@ export const StyledNavLink = styled(Link).withConfig({
   fontWeight: 600,
   textDecoration: "none",
   textTransform: "uppercase",
+  WebkitTapHighlightColor: "transparent",
   "&:before": {
     transition: "all 500ms ease-in-out",
     height: "2px",
