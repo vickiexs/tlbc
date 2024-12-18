@@ -87,17 +87,19 @@ function App() {
         )}
         {data && (
           <Fragment>
-            <Header {...(data.header[0] as HeaderProps)} />
-            <Routes>
-              {data.pages.map((page, index) => (
-                <Route
-                  path={page.path}
-                  element={getPageComponent(page.template, page)}
-                  key={index}
-                />
-              ))}
-            </Routes>
-            <Footer {...(data.footer[0] as FooterProps)} />
+            <div style={{ overflow: "hidden", position: "relative" }}>
+              <Header {...(data.header[0] as HeaderProps)} />
+              <Routes>
+                {data.pages.map((page, index) => (
+                  <Route
+                    path={page.path}
+                    element={getPageComponent(page.template, page)}
+                    key={index}
+                  />
+                ))}
+              </Routes>
+              <Footer {...(data.footer[0] as FooterProps)} />
+            </div>
           </Fragment>
         )}
       </ThemeProvider>

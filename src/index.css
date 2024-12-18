@@ -15,13 +15,14 @@ html {
   box-sizing: border-box;
   height: 100%;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   margin: 0;
+  padding: 0;
   height: 100%;
-  position: relative;
-  overflow-x: hidden;
 }
 
 button {
