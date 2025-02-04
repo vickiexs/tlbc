@@ -6,5 +6,8 @@ _type == "faqs" => {
   faqs[]->{
     question,
     answer[]
-  }
+  },
+  viewMoreLabel,
+  viewLessLabel,
+  displaySingleColumn
 }`;

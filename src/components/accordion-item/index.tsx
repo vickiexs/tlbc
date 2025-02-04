@@ -9,6 +9,7 @@ import {
   StyledAccordionHeader,
   StyledAccordionHeaderLabel,
   StyledAccordionHeaderLastWord,
+  StyledAccordionContentWrapper,
   StyledAccordionContent,
 } from "./styled";
 import { AccordionProps } from "./type";
@@ -62,15 +63,15 @@ export default function AccordionItem({
           <ArrowIcon />
         </StyledAccordionHeaderLastWord>
       </StyledAccordionHeader>
-      <StyledAccordionContent
+      <StyledAccordionContentWrapper
         className={classNames({ visible: index === activeItem })}
       >
-        <Typography variation="body">
-          {index === activeItem && (
+        <StyledAccordionContent>
+          <Typography variation="body">
             <PortableText value={content} components={components} />
-          )}
-        </Typography>
-      </StyledAccordionContent>
+          </Typography>
+        </StyledAccordionContent>
+      </StyledAccordionContentWrapper>
     </StyledAccordionContainer>
   );
 }

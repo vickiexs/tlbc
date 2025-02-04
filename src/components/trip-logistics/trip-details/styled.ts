@@ -33,7 +33,7 @@ export const StyledDesktopDetailsContainer = styled(`div`)(({ theme }) => ({
 
 export const StyledTripDetails = styled(`div`)(({ theme }) => ({
   display: "flex",
-  gap: theme.spacing(10),
+  gap: theme.spacing(20),
   width: "100%",
   ".left-col": {
     width: "60%",

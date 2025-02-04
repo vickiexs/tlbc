@@ -14,7 +14,6 @@ export const StyledAccordionHeader = styled(`button`)(({ theme }) => ({
   textTransform: "uppercase",
   textAlign: "left",
   padding: 0,
-  marginBottom: theme.spacing(3),
   border: "none",
   backgroundColor: "transparent",
   WebkitTapHighlightColor: "transparent",
@@ -34,7 +33,6 @@ export const StyledAccordionHeader = styled(`button`)(({ theme }) => ({
 
   [`@media ${theme.breakpoints.md}`]: {
     fontSize: theme.fontSize(4),
-    marginBottom: theme.spacing(2),
     svg: {
       height: "13px",
     },
@@ -56,16 +54,27 @@ export const StyledAccordionHeaderLastWord = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledAccordionContent = styled(`div`)(() => ({
-  maxHeight: 0,
-  height: 0,
-  opacity: 0,
-  pointerEvents: "none",
+export const StyledAccordionContentWrapper = styled(`div`)(() => ({
+  display: "grid",
+  gridTemplateRows: "0fr",
+  transition: "grid-template-rows 0.75s ease-in-out",
   "&.visible": {
-    maxHeight: "650px",
-    height: "100%",
-    opacity: 1,
-    pointerEvents: "auto",
-    transition: "all 1.5s ease-in-out",
+    gridTemplateRows: "1fr",
+  },
+}));
+
+export const StyledAccordionContent = styled(`div`)(({ theme }) => ({
+  marginTop: theme.spacing(4),
+  marginBottom: theme.spacing(4),
+  overflow: "hidden",
+  p: {
+    marginBottom: theme.spacing(5),
+    [`@media ${theme.breakpoints.md}`]: {
+      marginBottom: theme.spacing(3),
+    },
+  },
+  [`@media ${theme.breakpoints.md}`]: {
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
   },
 }));
