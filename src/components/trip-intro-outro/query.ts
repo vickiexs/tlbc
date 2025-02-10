@@ -6,5 +6,6 @@ _type == "infoSection" => {
   eyebrowHeading,
   heading,
   content[],
-  ${imageQuery}
+  ${imageQuery},
+  caption
 }`;

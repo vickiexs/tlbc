@@ -5,4 +5,5 @@ import { ImageProps } from "../../atoms/image/type";
 export interface TripIntroOutroProps {
   content: PortableTextBlock;
   image: ImageProps;
+  caption?: string;
 }
