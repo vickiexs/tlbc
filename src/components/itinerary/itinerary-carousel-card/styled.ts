@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledCarouselCard = styled(`div`)(({ theme }) => ({
   maxWidth: "450px",
+  textAlign: "justify",
 
   [`@media ${theme.breakpoints.lg}`]: {
     maxWidth: "350px",
