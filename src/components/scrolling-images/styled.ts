@@ -18,10 +18,10 @@ export const StyledImageContainer = styled(`div`)(({ theme }) => ({
   gap: theme.spacing(4),
   scrollBehavior: "smooth",
   ".img-row:nth-child(odd)": {
-    marginLeft: `-${theme.spacing(55)}`,
+    marginLeft: `${theme.spacing(15)}`,
   },
   ".img-row:nth-child(even)": {
-    marginLeft: theme.spacing(100),
+    marginLeft: theme.spacing(90),
   },
 
   [`@media ${theme.breakpoints.md}`]: {
