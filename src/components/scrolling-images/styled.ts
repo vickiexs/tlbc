@@ -29,10 +29,10 @@ export const StyledImageContainer = styled(`div`)(({ theme }) => ({
   },
   [`@media ${theme.breakpoints.sm}`]: {
     ".img-row:nth-child(odd)": {
-      marginLeft: `-${theme.spacing(9)}`,
+      marginLeft: theme.spacing(10),
     },
     ".img-row:nth-child(even)": {
-      marginLeft: theme.spacing(230),
+      marginLeft: theme.spacing(-5),
     },
   },
 }));

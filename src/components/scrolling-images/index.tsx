@@ -2,7 +2,6 @@ import { useRef } from "react";
 import { useTheme } from "styled-components";
 import { animated } from "react-spring";
 import { useIntersectionObserver, useMediaQuery } from "@uidotdev/usehooks";
-import useDetectScroll from "@smakss/react-scroll-direction";
 
 import Image from "../../common/image";
 import Link from "../../common/link";
@@ -20,7 +19,6 @@ export default function ScrollingImages({
   link,
 }: ScrollingImagesProps) {
   const theme = useTheme();
-  const { scrollPosition } = useDetectScroll();
 
   const [ref, entry] = useIntersectionObserver({
     threshold: 0,
@@ -30,6 +28,7 @@ export default function ScrollingImages({
 
   const isMobile = useMediaQuery(theme.breakpoints.xs);
 
+  const SCROLL_RATE = 0.075;
   const desktopImageHeight = 300;
   const mobileImageHeight = 175;
 
@@ -42,17 +41,22 @@ export default function ScrollingImages({
 
   const containerRef = useRef<HTMLDivElement>(null!);
 
+  const imageOffset = !entry?.isIntersecting
+    ? 0
+    : document.getElementById("image-container")?.getBoundingClientRect().top ??
+      0;
+
   return (
     <StyledContainer ref={ref}>
-      <StyledImageContainer ref={containerRef}>
+      <StyledImageContainer ref={containerRef} id="image-container">
         {rows.map((row, index) => (
           <animated.div
             style={{
               willChange: "transform",
-              transform: `translateX(${index % 2 === 0 ? "" : "-"}${
-                entry?.isIntersecting && scrollPosition.top
-                  ? scrollPosition.top * 0.075
-                  : 0
+              transform: `translateX(${
+                index % 2 === 0
+                  ? imageOffset * SCROLL_RATE
+                  : imageOffset * -SCROLL_RATE
               }px)`,
             }}
             className="img-row"
