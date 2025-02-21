@@ -41,10 +41,11 @@ export default function ScrollingImages({
 
   const containerRef = useRef<HTMLDivElement>(null!);
 
-  const imageOffset = !entry?.isIntersecting
-    ? 0
-    : document.getElementById("image-container")?.getBoundingClientRect().top ??
-      0;
+  let containerOffset: number;
+  const imageContainer = document.getElementById("image-container");
+  if (imageContainer && entry?.isIntersecting) {
+    containerOffset = imageContainer.getBoundingClientRect().top;
+  }
 
   return (
     <StyledContainer ref={ref}>
@@ -54,9 +55,11 @@ export default function ScrollingImages({
             style={{
               willChange: "transform",
               transform: `translateX(${
-                index % 2 === 0
-                  ? imageOffset * SCROLL_RATE
-                  : imageOffset * -SCROLL_RATE
+                !entry?.isIntersecting
+                  ? 0
+                  : index % 2 === 0
+                  ? containerOffset * SCROLL_RATE
+                  : containerOffset * -SCROLL_RATE
               }px)`,
             }}
             className="img-row"
