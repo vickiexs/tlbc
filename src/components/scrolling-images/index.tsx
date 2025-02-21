@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { useTheme } from "styled-components";
 import { animated } from "react-spring";
 import { useIntersectionObserver, useMediaQuery } from "@uidotdev/usehooks";
+import useDetectScroll from "@smakss/react-scroll-direction";
 
 import Image from "../../common/image";
 import Link from "../../common/link";
@@ -19,6 +20,7 @@ export default function ScrollingImages({
   link,
 }: ScrollingImagesProps) {
   const theme = useTheme();
+  useDetectScroll();
 
   const [ref, entry] = useIntersectionObserver({
     threshold: 0,
