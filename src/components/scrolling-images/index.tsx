@@ -4,8 +4,8 @@ import { animated } from "react-spring";
 import { useIntersectionObserver, useMediaQuery } from "@uidotdev/usehooks";
 import useDetectScroll from "@smakss/react-scroll-direction";
 
-import Image from "../../atoms/image";
-import Link from "../../atoms/link";
+import Image from "../../common/image";
+import Link from "../../common/link";
 
 import {
   StyledContainer,

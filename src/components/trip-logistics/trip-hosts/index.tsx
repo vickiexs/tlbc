@@ -2,9 +2,9 @@ import { useTheme } from "styled-components";
 import { useMediaQuery } from "usehooks-ts";
 
 import Typography from "../../typography";
-import Avatar from "../../../atoms/avatar";
-import Link from "../../../atoms/link";
-import Image from "../../../atoms/image";
+import Avatar from "../../../common/avatar";
+import Link from "../../../common/link";
+import Image from "../../../common/image";
 
 import { StyledHostsContainer, StyledHosts, StyledHost } from "./styled";
 import { TripHostsProps } from "./type";

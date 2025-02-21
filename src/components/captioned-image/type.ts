@@ -1,4 +1,4 @@
-import { ImageProps as Image } from "../../atoms/image/type";
+import { ImageProps as Image } from "../../common/image/type";
 
 export interface CaptionedImageProps {
   image: Image;

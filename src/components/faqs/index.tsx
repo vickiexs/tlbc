@@ -3,7 +3,7 @@ import { useTheme } from "styled-components";
 import { useMediaQuery } from "usehooks-ts";
 
 import AccordionItem from "../accordion-item";
-import Button from "../../atoms/button";
+import Button from "../../common/button";
 
 import { StyledContainer, StyledListing, StyledColumn } from "./styled";
 import { FAQProps } from "./type";

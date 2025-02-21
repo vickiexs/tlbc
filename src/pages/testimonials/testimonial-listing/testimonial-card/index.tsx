@@ -5,10 +5,10 @@ import { useWindowSize, useMediaQuery } from "@uidotdev/usehooks";
 import classNames from "classnames";
 
 import Typography from "../../../../components/typography";
-import Avatar from "../../../../atoms/avatar";
-import Image from "../../../../atoms/image";
-import ArrowIcon from "../../../../atoms/icons/arrow";
-import Ellipsis from "../../../../atoms/ellipsis";
+import Avatar from "../../../../common/avatar";
+import Image from "../../../../common/image";
+import ArrowIcon from "../../../../common/icons/arrow";
+import Ellipsis from "../../../../common/ellipsis";
 
 import {
   StyledTestimonialCard,

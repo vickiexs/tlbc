@@ -1,5 +1,5 @@
-import Avatar from "../../../atoms/avatar";
-import Image from "../../../atoms/image";
+import Avatar from "../../../common/avatar";
+import Image from "../../../common/image";
 
 import { StyledCard, StyledQuote, StyledGuestInfo } from "./styled";
 import { Quote } from "./type";

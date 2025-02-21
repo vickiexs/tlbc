@@ -5,12 +5,12 @@ import { useMediaQuery } from "usehooks-ts";
 import { PortableText } from "@portabletext/react";
 
 import Typography from "../../../../components/typography";
-import Image from "../../../../atoms/image";
-import Button from "../../../../atoms/button";
+import Image from "../../../../common/image";
+import Button from "../../../../common/button";
 import Modal from "../../../../components/modal";
 import CloseButton from "../../../../components/modal/close-button";
-import IconLink from "../../../../atoms/icon-link";
-import Ellipsis from "../../../../atoms/ellipsis";
+import IconLink from "../../../../common/icon-link";
+import Ellipsis from "../../../../common/ellipsis";
 
 import { useOutsideClick } from "../../../../utils/handleOutsideClick";
 

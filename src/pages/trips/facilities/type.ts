@@ -1,7 +1,7 @@
 import { PortableTextBlock } from "@portabletext/types";
 
 import { HeadedContentBlockProps as HeadedContentBlock } from "../../../components/headed-content-block/type";
-import { ImageProps as Image } from "../../../atoms/image/type";
+import { ImageProps as Image } from "../../../common/image/type";
 
 export interface FacilitiesProps {
   description: PortableTextBlock;

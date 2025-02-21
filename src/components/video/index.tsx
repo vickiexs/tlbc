@@ -3,9 +3,9 @@ import { useTheme } from "styled-components";
 import ReactPlayer from "react-player/vimeo";
 import { useMediaQuery } from "@uidotdev/usehooks";
 
-import Image from "../../atoms/image";
+import Image from "../../common/image";
 import IconButton from "../icon-button";
-import Icon from "../../atoms/icons";
+import Icon from "../../common/icons";
 import VideoOverlay from "./video-overlay";
 
 import { StyledThumbnail } from "./styled";

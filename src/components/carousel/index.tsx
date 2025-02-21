@@ -7,8 +7,8 @@ import "swiper/css/pagination";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import ArrowIcon from "../../atoms/icons/arrow";
-import Hr from "../../atoms/horizontal-rule";
+import ArrowIcon from "../../common/icons/arrow";
+import Hr from "../../common/horizontal-rule";
 
 import { StyledCarouselContainer, StyledButtonContainer } from "./styled";
 import { CarouselProps } from "./type";

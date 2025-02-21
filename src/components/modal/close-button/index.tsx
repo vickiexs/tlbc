@@ -1,7 +1,7 @@
 import { useTheme } from "styled-components";
 import { useMediaQuery } from "@uidotdev/usehooks";
 
-import Icon from "../../../atoms/icons";
+import Icon from "../../../common/icons";
 
 import { StyledCloseButton } from "../styled";
 

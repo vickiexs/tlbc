@@ -2,8 +2,8 @@ import {
   headedContentBlockQuery,
   headedContentBlockQueryWithIcon,
 } from "../headed-content-block/query";
-import { linkQuery } from "../../atoms/link/query";
-import { imageQuery } from "../../atoms/image/query";
+import { linkQuery } from "../../common/link/query";
+import { imageQuery } from "../../common/image/query";
 
 export const tripLogisticsQuery = `
 _type == "tripLogistics" => {

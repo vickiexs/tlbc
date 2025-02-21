@@ -3,7 +3,7 @@ import { useTheme } from "styled-components";
 import { useMediaQuery } from "@uidotdev/usehooks";
 
 import TestimonialCard from "./testimonial-card";
-import Button from "../../../atoms/button";
+import Button from "../../../common/button";
 
 import { splitArray } from "../../../utils/splitArray";
 
