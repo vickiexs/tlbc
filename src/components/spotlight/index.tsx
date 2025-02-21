@@ -89,6 +89,7 @@ export default function Spotlight({
             <ReactPlayer
               className="react-player"
               url={videoUrl}
+              playsinline
               playing
               loop
               muted
