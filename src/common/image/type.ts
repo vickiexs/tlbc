@@ -21,6 +21,7 @@ export interface ImageProps {
   height?: number;
   width?: number;
   caption?: string;
+  noPreview?: boolean;
 }
 
 export interface ImageMetadata {

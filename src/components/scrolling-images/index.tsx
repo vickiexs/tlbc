@@ -73,6 +73,7 @@ export default function ScrollingImages({
                   <Image
                     {...image}
                     height={isMobile ? mobileImageHeight : desktopImageHeight}
+                    noPreview
                   />
                 </StyledImage>
               ))}
