@@ -5,8 +5,8 @@ import Metadata from "../../components/metadata";
 import Section from "../../components/section";
 import Spotlight from "../../components/spotlight";
 import { SpotlightProps } from "../../components/spotlight/type";
-import TripIntroOutro from "../../components/trip-intro-outro";
-import { TripIntroOutroProps } from "../../components/trip-intro-outro/type";
+import InfoSection from "../../components/info-section";
+import { InfoSectionProps } from "../../components/info-section/type";
 import ScrollingImages from "../../components/scrolling-images";
 import { ScrollingImagesProps } from "../../components/scrolling-images/type";
 import Facilities from "./facilities";
@@ -39,9 +39,15 @@ export default function TripPage(pageData: GenericObject) {
           <Section
             eyebrowHeading={section.eyebrowHeading}
             heading={section.heading}
+            backgroundColor={
+              section.darkMode ? theme.palette.text : theme.palette.white
+            }
+            textColor={
+              section.darkMode ? theme.palette.white : theme.palette.text
+            }
             key={index}
           >
-            <TripIntroOutro {...(section as TripIntroOutroProps)} />
+            <InfoSection {...(section as InfoSectionProps)} />
           </Section>
         );
       case "itinerary":

@@ -7,5 +7,7 @@ _type == "infoSection" => {
   heading,
   content[],
   ${imageQuery},
-  caption
+  caption,
+  darkMode,
+  imageFirst
 }`;

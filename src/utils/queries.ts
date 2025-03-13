@@ -4,7 +4,7 @@ import { headerQuery } from "../components/header/query";
 import { scrollingImagesQuery } from "../components/scrolling-images/query";
 import { spotlightQuery } from "../components/spotlight/query";
 import { itineraryQuery } from "../components/itinerary/query";
-import { tripIntroOutroQuery } from "../components/trip-intro-outro/query";
+import { tripIntroOutroQuery } from "../components/info-section/query";
 import { tripLogisticsQuery } from "../components/trip-logistics/query";
 import { facilitiesQuery } from "../pages/trips/facilities/query";
 import { bookingFormQuery } from "../pages/trips/booking-form/query";

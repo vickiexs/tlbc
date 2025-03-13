@@ -4,6 +4,10 @@ export const StyledTripIntroduction = styled(`div`)(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(20),
 
+  ".dark-mode": {
+    color: theme.palette.white,
+  },
+
   [`@media ${theme.breakpoints.xxl}`]: {
     gap: theme.spacing(15),
   },
