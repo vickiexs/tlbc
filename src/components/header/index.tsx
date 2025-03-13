@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useMediaQuery, useWindowSize } from "usehooks-ts";
-import { useWindowScroll } from "@uidotdev/usehooks";
+import useDetectScroll from "@smakss/react-scroll-direction";
 import { useTheme } from "styled-components";
 import classNames from "classnames";
 
@@ -30,13 +30,15 @@ export default function Header({ navItems }: HeaderProps) {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [spotlightOffset, setSpotlightOffset] = useState(0);
   const [spotlight, setSpotlight] = useState<HTMLElement | null>();
+  const [visible, setVisible] = useState(true);
+  const [headerHeight, setHeaderHeight] = useState(100);
   const { height } = useWindowSize();
-  const [{ y }] = useWindowScroll();
+  const { scrollDir, scrollPosition } = useDetectScroll();
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.md);
 
-  const isTransparentHeader = spotlight && (y as number) < spotlightOffset;
+  const isTransparentHeader = spotlight && scrollPosition.top < spotlightOffset;
 
   useEffect(() => {
     setShowMobileMenu(false);
@@ -49,6 +51,25 @@ export default function Header({ navItems }: HeaderProps) {
       setSpotlightOffset(spotlight.offsetHeight);
     }
   }, [height, spotlight]);
+
+  useEffect(() => {
+    if (isMobile) {
+      setHeaderHeight(74);
+    } else {
+      setHeaderHeight(100);
+    }
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (
+      scrollDir === "down" &&
+      scrollPosition.top > spotlightOffset - headerHeight
+    ) {
+      setVisible(false);
+    } else {
+      setVisible(true);
+    }
+  }, [scrollDir, scrollPosition, spotlightOffset, headerHeight]);
 
   const openMobileMenu = () => {
     const html = document.getElementsByTagName("html")[0];
@@ -74,8 +95,9 @@ export default function Header({ navItems }: HeaderProps) {
     <StyledHeaderContainer
       className={classNames({
         solid: !isTransparentHeader,
-        "no-box-shadow": y === 0,
+        "no-box-shadow": scrollPosition.top === 0,
       })}
+      visible={visible}
     >
       <StyledLogoContainer to="/">
         <Logo />

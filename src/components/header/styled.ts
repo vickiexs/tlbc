@@ -3,33 +3,48 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { MdMenu, MdClose } from "react-icons/md";
 
-export const StyledHeaderContainer = styled(`header`)(({ theme }) => ({
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  padding: `${theme.spacing(3)} ${theme.spacing(10)}`,
-  gap: theme.spacing(1),
-  color: theme.palette.white,
-  backgroundColor: "transparent",
-  boxShadow: "none",
-  zIndex: 10,
-  position: "fixed",
-  left: 0,
-  right: 0,
-  transition: "all 0.5s ease-in-out",
-  "&.solid": {
-    backgroundColor: theme.palette.white,
-    color: theme.palette.text,
-    boxShadow: "2px 1px 7px 3px rgb(0 0 0 / 10%)",
-  },
-  "&.no-box-shadow": {
-    boxShadow: "none",
-  },
+export const StyledHeaderContainer = styled(`header`).withConfig({
+  shouldForwardProp: (props) => props !== "visible",
+})<{
+  visible: boolean;
+}>(({ theme, visible }) => {
+  const desktopHeight = 100;
+  const mobileHeight = 74;
 
-  [`@media ${theme.breakpoints.md}`]: {
-    padding: `${theme.spacing(3)} ${theme.spacing(6)}`,
-  },
-}));
+  return {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: `${theme.spacing(3)} ${theme.spacing(10)}`,
+    gap: theme.spacing(1),
+    color: theme.palette.white,
+    backgroundColor: "transparent",
+    boxShadow: "none",
+    zIndex: 10,
+    position: "fixed",
+    left: 0,
+    right: 0,
+    transition: "all 0.5s ease-in-out",
+    transform: visible
+      ? "translateY(0)"
+      : `translateY(calc(-${desktopHeight}px))`,
+    "&.solid": {
+      backgroundColor: theme.palette.white,
+      color: theme.palette.text,
+      boxShadow: "2px 1px 7px 3px rgb(0 0 0 / 10%)",
+    },
+    "&.no-box-shadow": {
+      boxShadow: "none",
+    },
+
+    [`@media ${theme.breakpoints.md}`]: {
+      padding: `${theme.spacing(3)} ${theme.spacing(6)}`,
+      transform: visible
+        ? "translateY(0)"
+        : `translateY(calc(-${mobileHeight}px))`,
+    },
+  };
+});
 
 export const StyledLogoContainer = styled(Link)(({ theme }) => ({
   display: "flex",
