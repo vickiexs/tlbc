@@ -9,7 +9,6 @@ export const StyledHeaderContainer = styled(`header`).withConfig({
   visible: boolean;
 }>(({ theme, visible }) => {
   const desktopHeight = 100;
-  const mobileHeight = 74;
 
   return {
     display: "flex",
@@ -39,9 +38,7 @@ export const StyledHeaderContainer = styled(`header`).withConfig({
 
     [`@media ${theme.breakpoints.md}`]: {
       padding: `${theme.spacing(3)} ${theme.spacing(6)}`,
-      transform: visible
-        ? "translateY(0)"
-        : `translateY(calc(-${mobileHeight}px))`,
+      transform: "none",
     },
   };
 });
