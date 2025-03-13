@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main # Runs only when changes are merged into main
-  workflow_dispatch: # Allows manual trigger from GitHub UI
 
 permissions:
   contents: write
