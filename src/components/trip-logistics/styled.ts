@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 export const StyledTripLogistics = styled(`div`)(({ theme }) => ({
   marginTop: theme.spacing(6),
+
+  [`@media ${theme.breakpoints.md}`]: {
+    margin: 0,
+  },
 }));
 
 export const StyledTripDetailsContainer = styled(`div`)(({ theme }) => ({

@@ -17,10 +17,13 @@ export const StyledCodename = styled(Typography)(({ theme }) => ({
   margin: 0,
 
   [`@media ${theme.breakpoints.lg}`]: {
-    fontSize: theme.fontSize(6),
+    fontSize: theme.fontSize(4.5),
   },
   [`@media ${theme.breakpoints.md}`]: {
-    fontSize: theme.fontSize(5),
+    fontSize: theme.fontSize(4),
+  },
+  [`@media ${theme.breakpoints.sm}`]: {
+    marginBottom: theme.spacing(4),
   },
 }));
 
@@ -43,7 +46,6 @@ export const StyledTripDetails = styled(`div`)(({ theme }) => ({
   },
 
   [`@media ${theme.breakpoints.md}`]: {
-    justifyContent: "center",
     ".left-col": {
       width: "unset",
     },
