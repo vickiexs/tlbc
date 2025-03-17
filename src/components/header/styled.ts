@@ -5,12 +5,18 @@ import { MdMenu, MdClose } from "react-icons/md";
 
 export const StyledHeader = styled(`header`).withConfig({
   shouldForwardProp: (props) =>
-    props !== "visible" && props !== "isMobile" && props !== "mobileMenuOpen",
+    props !== "visible" &&
+    props !== "isTransparent" &&
+    props !== "atTop" &&
+    props !== "isMobile" &&
+    props !== "menuOpen",
 })<{
   visible: boolean;
+  isTransparent: boolean;
+  atTop: boolean;
   isMobile: boolean;
-  mobileMenuOpen: boolean;
-}>(({ theme, visible, isMobile, mobileMenuOpen }) => {
+  menuOpen: boolean;
+}>(({ theme, visible, isTransparent, atTop, isMobile, menuOpen }) => {
   const desktopHeight = 100;
   const mobileHeight = 74;
   const height = isMobile ? mobileHeight : desktopHeight;
@@ -20,37 +26,40 @@ export const StyledHeader = styled(`header`).withConfig({
     flexDirection: "column",
     padding: `${theme.spacing(3)} ${theme.spacing(10)}`,
     gap: theme.spacing(1),
-    color: theme.palette.white,
-    backgroundColor: mobileMenuOpen ? theme.palette.white : "transparent",
-    boxShadow: "none",
-    zIndex: 2,
+    color:
+      menuOpen || !isTransparent ? theme.palette.text : theme.palette.white,
+    backgroundColor:
+      menuOpen || !isTransparent ? theme.palette.white : "transparent",
+    zIndex: 5,
     position: "fixed",
     left: 0,
     right: 0,
-    height: mobileMenuOpen ? "300px" : height,
+    height: menuOpen ? "190px" : height,
     overflow: "hidden",
-    borderBottomLeftRadius: mobileMenuOpen ? "15px" : 0,
-    borderBottomRightRadius: mobileMenuOpen ? "15px" : 0,
-    transition: "all 0.5s ease-in-out",
+    borderBottomLeftRadius: menuOpen ? "15px" : 0,
+    borderBottomRightRadius: menuOpen ? "15px" : 0,
+    boxShadow:
+      (menuOpen || !isTransparent) && !atTop
+        ? "2px 1px 7px 3px rgb(0 0 0 / 10%)"
+        : "none",
+    transition: "all 0.5s ease-in-out, color 0.2s ease-in-out",
     transform: visible
       ? "translateY(0)"
       : `translateY(calc(-${desktopHeight}px))`,
-    "&.solid": {
-      backgroundColor: theme.palette.white,
-      color: theme.palette.text,
-      boxShadow: "2px 1px 7px 3px rgb(0 0 0 / 10%)",
-    },
-    "&.no-box-shadow": {
-      boxShadow: "none",
-    },
 
     ".hamburger-icon": {
       height: "28px",
       width: "28px",
     },
 
+    svg: {
+      fill:
+        menuOpen || !isTransparent ? theme.palette.text : theme.palette.white,
+    },
+
     [`@media ${theme.breakpoints.md}`]: {
       padding: `${theme.spacing(3)} ${theme.spacing(7)}`,
+      height: menuOpen ? "300px" : height,
       transform: visible
         ? "translateY(0)"
         : `translateY(calc(-${mobileHeight}px))`,
@@ -115,13 +124,32 @@ export const StyledMobileOverlay = styled(`div`)(() => ({
   left: 0,
   backgroundColor: "rgba( 0, 0, 0, 0 )",
   transition: "all 0.7s ease-in-out",
-  zIndex: 1,
+  zIndex: 4,
   pointerEvents: "none",
   "&.visible": {
     backgroundColor: "rgba( 0, 0, 0, 0.6 )",
     backdropFilter: "blur(2px)",
     WebkitBackdropFilter: "blur(2px)",
   },
+}));
+
+export const StyledDesktopMenu = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.spacing(7),
+
+  ".hr": {
+    opacity: 0.2,
+    height: "1px",
+    marginTop: theme.spacing(3),
+    marginBottom: 0,
+  },
+}));
+
+export const StyledMenuLinks = styled("nav")(({ theme }) => ({
+  display: "flex",
+  justifyContent: "flex-end",
+  gap: theme.spacing(7),
 }));
 
 export const StyledMobileMenu = styled("nav")(({ theme }) => ({
@@ -152,8 +180,8 @@ export const StyledSubmenu = styled("div")(({ theme }) => ({
 }));
 
 export const StyledNavDropdownItem = styled("button").withConfig({
-  shouldForwardProp: (props) => props !== "open" && props !== "mobileMenuOpen",
-})<{ open: boolean }>(({ theme, open }) => ({
+  shouldForwardProp: (props) => props !== "active" && props !== "menuOpen",
+})<{ active: boolean; menuOpen?: boolean }>(({ theme, active, menuOpen }) => ({
   border: "none",
   backgroundColor: "transparent",
   padding: 0,
@@ -166,11 +194,20 @@ export const StyledNavDropdownItem = styled("button").withConfig({
   textTransform: "uppercase",
   display: "flex",
   alignItems: "center",
-  gap: theme.spacing(2),
+  gap: theme.spacing(1.5),
 
   svg: {
     height: "12px",
-    transform: open ? "rotate(90deg)" : "rotate(-90deg)",
-    transition: "transform 0.5s ease-in-out",
+    transform: active ? "rotate(180deg)" : "rotate(0deg)",
+    transition: "all 0.5s ease-in-out",
+  },
+
+  [`@media ${theme.breakpoints.md}`]: {
+    opacity: menuOpen && !active ? 0.5 : 1,
+    transition: "opacity 0.3s ease-in-out",
+    gap: theme.spacing(2),
+    svg: {
+      transform: active ? "rotate(90deg)" : "rotate(-90deg)",
+    },
   },
 }));

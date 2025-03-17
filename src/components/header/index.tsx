@@ -10,8 +10,8 @@ import Logo from "./logo";
 
 import HamburgerIcon from "../../common/icons/hamburger-icon";
 import NavLink from "../../common/nav-link";
+import Hr from "../../common/horizontal-rule";
 import ArrowIcon from "../../common/icons/arrow";
-import NavDropdownItem from "../nav-dropdown-item";
 import IconButton from "../icon-button";
 
 import { useOutsideClick } from "../../utils/handleOutsideClick";
@@ -21,19 +21,21 @@ import {
   StyledHeaderContainer,
   StyledLogoContainer,
   StyledNavLinks,
+  StyledDesktopMenu,
+  StyledMenuLinks,
   StyledMobileOverlay,
   StyledMobileMenu,
   StyledMobileMenuItems,
   StyledNavDropdownItem,
   StyledSubmenu,
 } from "./styled";
-import { HeaderProps } from "./type";
+import { HeaderProps, NavDropdownItem as NavDropdownType } from "./type";
 import { NavLinkProps as NavLinkType } from "../../common/nav-link/type";
-import { NavDropdownItemProps as NavDropdownType } from "../nav-dropdown-item/type";
 
 export default function Header({ navItems }: HeaderProps) {
   const location = useLocation();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(true);
+  const [desktopMenuOpen, setDesktopMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [submenuOpen, setSubmenuOpen] = useState(false);
   const [selectedSubmenu, setSelectedSubmenu] = useState<
     NavDropdownType | undefined
@@ -49,6 +51,8 @@ export default function Header({ navItems }: HeaderProps) {
 
   const isTransparentHeader =
     (spotlight && scrollPosition.top < spotlightOffset) ?? false;
+
+  const atTop = useMemo(() => scrollPosition.top === 0, [scrollPosition]);
 
   useEffect(() => {
     setMobileMenuOpen(false);
@@ -76,23 +80,58 @@ export default function Header({ navItems }: HeaderProps) {
     return (navItem as NavDropdownType).dropdownItems !== null;
   };
 
+  const lockScroll = () => {
+    const html = document.getElementsByTagName("html")[0];
+    html.classList.add("lock-scroll");
+  };
+
+  const unlockScroll = () => {
+    const html = document.getElementsByTagName("html")[0];
+    html.classList.remove("lock-scroll");
+  };
+
+  const closeDesktopMenu = () => {
+    setDesktopMenuOpen(false);
+    setSelectedSubmenu(undefined);
+    unlockScroll();
+  };
+
+  const closeMobileMenu = () => {
+    setSubmenuOpen(false);
+    setSelectedSubmenu(undefined);
+    setMobileMenuOpen(false);
+    unlockScroll();
+  };
+
+  const toggleDesktopMenu = (navDropdownItem: NavDropdownType) => {
+    if (desktopMenuOpen) {
+      closeDesktopMenu();
+    } else {
+      setDesktopMenuOpen(true);
+      setSelectedSubmenu(navDropdownItem);
+      lockScroll();
+    }
+  };
+
   const toggleMobileMenu = () => {
     if (mobileMenuOpen) {
-      setMobileMenuOpen(false);
-      const html = document.getElementsByTagName("html")[0];
-      html.classList.remove("lock-scroll");
+      closeMobileMenu();
     } else {
       setMobileMenuOpen(true);
-      const html = document.getElementsByTagName("html")[0];
-      html.classList.add("lock-scroll");
+      lockScroll();
     }
-    setSubmenuOpen(false);
   };
 
   const toggleMenuItem = (navDropdownItem: NavDropdownType) => {
     if (submenuOpen) {
       setSubmenuOpen(false);
       setSelectedSubmenu(undefined);
+      if (selectedSubmenu?.label !== navDropdownItem.label) {
+        setTimeout(() => {
+          setSubmenuOpen(true);
+          setSelectedSubmenu(navDropdownItem);
+        }, 500);
+      }
     } else {
       setSubmenuOpen(true);
       setSelectedSubmenu(navDropdownItem);
@@ -104,19 +143,14 @@ export default function Header({ navItems }: HeaderProps) {
     config: { duration: scrollPosition.top === 0 ? 0 : 700 },
   });
 
-  const submenuItems = useMemo(
-    () =>
-      submenuOpen && selectedSubmenu?.dropdownItems
-        ? selectedSubmenu.dropdownItems
-        : [],
-    [submenuOpen, selectedSubmenu]
-  );
+  const submenuItems = selectedSubmenu?.dropdownItems ?? [];
 
-  const submenuTransitions = useTransition(submenuItems, {
-    from: { opacity: 0, transform: "translateX(20px)" },
+  const submenuTransitions = useTransition(submenuOpen ? submenuItems : [], {
+    from: { opacity: 0, transform: "translateX(-30px)" },
     enter: { opacity: 1, transform: "translateX(0px)" },
-    leave: { opacity: 0, transform: "translateX(20px)" },
+    leave: { opacity: 0, transform: "translateX(-30px)" },
     trail: 100,
+    config: { duration: 300 },
     keys: (item) => item.label,
   });
 
@@ -126,13 +160,11 @@ export default function Header({ navItems }: HeaderProps) {
   return (
     <>
       <StyledHeader
-        className={classNames({
-          solid: !isTransparentHeader,
-          "no-box-shadow": scrollPosition.top === 0 || mobileMenuOpen,
-        })}
         visible={visible}
+        isTransparent={isTransparentHeader}
+        atTop={atTop}
         isMobile={isMobile}
-        mobileMenuOpen={mobileMenuOpen}
+        menuOpen={desktopMenuOpen || mobileMenuOpen}
         ref={headerRef}
       >
         <StyledHeaderContainer>
@@ -142,26 +174,23 @@ export default function Header({ navItems }: HeaderProps) {
           <StyledNavLinks>
             {navItems.map((navItem, index) =>
               isNavDropdownItem(navItem) ? (
-                <NavDropdownItem
-                  {...navItem}
-                  underlineColor={
-                    isTransparentHeader
-                      ? theme.palette.white
-                      : theme.palette.text
-                  }
-                  closeMobileMenu={toggleMobileMenu}
+                <StyledNavDropdownItem
+                  onClick={() => toggleDesktopMenu(navItem)}
+                  active={desktopMenuOpen}
                   key={index}
-                />
+                >
+                  {navItem.label} <ArrowIcon />
+                </StyledNavDropdownItem>
               ) : (
                 <NavLink
                   label={navItem.label}
                   link={navItem.link}
                   underlineColor={
-                    isTransparentHeader
+                    isTransparentHeader && !desktopMenuOpen
                       ? theme.palette.white
                       : theme.palette.text
                   }
-                  closeMobileMenu={toggleMobileMenu}
+                  closeMenu={closeDesktopMenu}
                   key={index}
                 />
               )
@@ -183,6 +212,21 @@ export default function Header({ navItems }: HeaderProps) {
             </animated.div>
           )}
         </StyledHeaderContainer>
+        {!isMobile && (
+          <StyledDesktopMenu>
+            <Hr />
+            <StyledMenuLinks>
+              {selectedSubmenu?.dropdownItems.map((navItem, index) => (
+                <NavLink
+                  label={navItem.label}
+                  link={navItem.link}
+                  closeMenu={toggleMobileMenu}
+                  key={index}
+                />
+              ))}
+            </StyledMenuLinks>
+          </StyledDesktopMenu>
+        )}
         {isMobile && (
           <StyledMobileMenu>
             <StyledMobileMenuItems>
@@ -190,15 +234,23 @@ export default function Header({ navItems }: HeaderProps) {
                 isNavDropdownItem(navItem) ? (
                   <StyledNavDropdownItem
                     onClick={() => toggleMenuItem(navItem)}
-                    open={submenuOpen}
+                    active={
+                      (selectedSubmenu &&
+                        selectedSubmenu.label === navItem.label) as boolean
+                    }
+                    menuOpen={submenuOpen}
+                    key={index}
                   >
                     {navItem.label} <ArrowIcon />
                   </StyledNavDropdownItem>
                 ) : (
                   <NavLink
+                    className={classNames({
+                      inactive: submenuOpen,
+                    })}
                     label={navItem.label}
                     link={navItem.link}
-                    closeMobileMenu={toggleMobileMenu}
+                    closeMenu={closeMobileMenu}
                     key={index}
                   />
                 )
@@ -210,7 +262,7 @@ export default function Header({ navItems }: HeaderProps) {
                   <NavLink
                     label={navItem.label}
                     link={navItem.link}
-                    closeMobileMenu={toggleMobileMenu}
+                    closeMenu={closeMobileMenu}
                   />
                 </animated.div>
               ))}
@@ -219,7 +271,7 @@ export default function Header({ navItems }: HeaderProps) {
         )}
       </StyledHeader>
       <StyledMobileOverlay
-        className={classNames({ visible: mobileMenuOpen })}
+        className={classNames({ visible: desktopMenuOpen || mobileMenuOpen })}
       />
     </>
   );
