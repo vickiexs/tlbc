@@ -1,47 +1,61 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import { useMediaQuery, useWindowSize } from "usehooks-ts";
+import { animated, useSpring, useTransition } from "@react-spring/web";
 import useDetectScroll from "@smakss/react-scroll-direction";
 import { useTheme } from "styled-components";
 import classNames from "classnames";
 
 import Logo from "./logo";
 
-import NavLink from "../nav-link";
-import NavDropdownItem from "../nav-dropdown-item";
+import HamburgerIcon from "../../common/icons/hamburger-icon";
+import NavLink from "../../common/nav-link";
+import Hr from "../../common/horizontal-rule";
+import ArrowIcon from "../../common/icons/arrow";
 import IconButton from "../icon-button";
 
+import { useOutsideClick } from "../../utils/handleOutsideClick";
+
 import {
+  StyledHeader,
   StyledHeaderContainer,
   StyledLogoContainer,
   StyledNavLinks,
-  StyledMenuIcon,
-  StyledCloseIcon,
+  StyledDesktopMenu,
+  StyledMenuLinks,
   StyledMobileOverlay,
   StyledMobileMenu,
   StyledMobileMenuItems,
+  StyledNavDropdownItem,
+  StyledSubmenu,
 } from "./styled";
-import { HeaderProps } from "./type";
-import { NavLinkProps as NavLinkType } from "../nav-link/type";
-import { NavDropdownItemProps as NavDropdownType } from "../nav-dropdown-item/type";
+import { HeaderProps, NavDropdownItem as NavDropdownType } from "./type";
+import { NavLinkProps as NavLinkType } from "../../common/nav-link/type";
 
 export default function Header({ navItems }: HeaderProps) {
   const location = useLocation();
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [desktopMenuOpen, setDesktopMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [submenuOpen, setSubmenuOpen] = useState(false);
+  const [selectedSubmenu, setSelectedSubmenu] = useState<
+    NavDropdownType | undefined
+  >(undefined);
   const [spotlightOffset, setSpotlightOffset] = useState(0);
   const [spotlight, setSpotlight] = useState<HTMLElement | null>();
   const [visible, setVisible] = useState(true);
-  const [headerHeight, setHeaderHeight] = useState(100);
   const { height } = useWindowSize();
   const { scrollDir, scrollPosition } = useDetectScroll();
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.md);
 
-  const isTransparentHeader = spotlight && scrollPosition.top < spotlightOffset;
+  const isTransparentHeader =
+    (spotlight && scrollPosition.top < spotlightOffset) ?? false;
+
+  const atTop = useMemo(() => scrollPosition.top === 0, [scrollPosition]);
 
   useEffect(() => {
-    setShowMobileMenu(false);
+    setMobileMenuOpen(false);
     document.body.style.overflowY = "visible";
     setSpotlight(document.getElementById("spotlight"));
   }, [location.pathname]);
@@ -53,37 +67,12 @@ export default function Header({ navItems }: HeaderProps) {
   }, [height, spotlight]);
 
   useEffect(() => {
-    if (isMobile) {
-      setHeaderHeight(74);
-    } else {
-      setHeaderHeight(100);
-    }
-  }, [isMobile]);
-
-  useEffect(() => {
-    if (
-      scrollDir === "down" &&
-      scrollPosition.top > spotlightOffset - headerHeight
-    ) {
+    if (scrollDir === "down") {
       setVisible(false);
     } else {
       setVisible(true);
     }
-  }, [scrollDir, scrollPosition, spotlightOffset, headerHeight]);
-
-  const openMobileMenu = () => {
-    const html = document.getElementsByTagName("html")[0];
-    html.classList.add("lock-scroll");
-
-    setShowMobileMenu(true);
-  };
-
-  const closeMobileMenu = () => {
-    const html = document.getElementsByTagName("html")[0];
-    html.classList.remove("lock-scroll");
-
-    setShowMobileMenu(false);
-  };
+  }, [scrollDir]);
 
   const isNavDropdownItem = (
     navItem: NavLinkType | NavDropdownType
@@ -91,79 +80,199 @@ export default function Header({ navItems }: HeaderProps) {
     return (navItem as NavDropdownType).dropdownItems !== null;
   };
 
+  const lockScroll = () => {
+    const html = document.getElementsByTagName("html")[0];
+    html.classList.add("lock-scroll");
+  };
+
+  const unlockScroll = () => {
+    const html = document.getElementsByTagName("html")[0];
+    html.classList.remove("lock-scroll");
+  };
+
+  const closeDesktopMenu = () => {
+    setDesktopMenuOpen(false);
+    setSelectedSubmenu(undefined);
+    unlockScroll();
+  };
+
+  const closeMobileMenu = () => {
+    setSubmenuOpen(false);
+    setSelectedSubmenu(undefined);
+    setMobileMenuOpen(false);
+    unlockScroll();
+  };
+
+  const toggleDesktopMenu = (navDropdownItem: NavDropdownType) => {
+    if (desktopMenuOpen) {
+      closeDesktopMenu();
+    } else {
+      setDesktopMenuOpen(true);
+      setSelectedSubmenu(navDropdownItem);
+      lockScroll();
+    }
+  };
+
+  const toggleMobileMenu = () => {
+    if (mobileMenuOpen) {
+      closeMobileMenu();
+    } else {
+      setMobileMenuOpen(true);
+      lockScroll();
+    }
+  };
+
+  const toggleMenuItem = (navDropdownItem: NavDropdownType) => {
+    if (submenuOpen) {
+      setSubmenuOpen(false);
+      setSelectedSubmenu(undefined);
+      if (selectedSubmenu?.label !== navDropdownItem.label) {
+        setTimeout(() => {
+          setSubmenuOpen(true);
+          setSelectedSubmenu(navDropdownItem);
+        }, 500);
+      }
+    } else {
+      setSubmenuOpen(true);
+      setSelectedSubmenu(navDropdownItem);
+    }
+  };
+
+  const hamburgerSpring = useSpring({
+    delay: mobileMenuOpen ? 0 : 700,
+    config: { duration: scrollPosition.top === 0 ? 0 : 700 },
+  });
+
+  const submenuItems = selectedSubmenu?.dropdownItems ?? [];
+
+  const submenuTransitions = useTransition(submenuOpen ? submenuItems : [], {
+    from: { opacity: 0, transform: "translateX(-30px)" },
+    enter: { opacity: 1, transform: "translateX(0px)" },
+    leave: { opacity: 0, transform: "translateX(-30px)" },
+    trail: 100,
+    config: { duration: 300 },
+    keys: (item) => item.label,
+  });
+
+  const headerRef = useRef(null);
+  useOutsideClick(headerRef, () => toggleMobileMenu());
+
   return (
-    <StyledHeaderContainer
-      className={classNames({
-        solid: !isTransparentHeader,
-        "no-box-shadow": scrollPosition.top === 0,
-      })}
-      visible={visible}
-    >
-      <StyledLogoContainer to="/">
-        <Logo />
-      </StyledLogoContainer>
-      <StyledNavLinks>
-        {navItems.map((navItem, index) =>
-          isNavDropdownItem(navItem) ? (
-            <NavDropdownItem
-              {...navItem}
-              underlineColor={
-                isTransparentHeader ? theme.palette.white : theme.palette.text
-              }
-              closeMobileMenu={closeMobileMenu}
-              key={index}
-            />
-          ) : (
-            <NavLink
-              label={navItem.label}
-              link={navItem.link}
-              underlineColor={
-                isTransparentHeader ? theme.palette.white : theme.palette.text
-              }
-              closeMobileMenu={closeMobileMenu}
-              key={index}
-            />
-          )
-        )}
-      </StyledNavLinks>
-      {isMobile && (
-        <IconButton onClick={() => openMobileMenu()}>
-          <StyledMenuIcon
-            className={classNames({
-              light: isTransparentHeader,
-            })}
-          />
-        </IconButton>
-      )}
-      <StyledMobileMenu className={classNames({ visible: showMobileMenu })}>
-        <IconButton onClick={() => closeMobileMenu()}>
-          <StyledCloseIcon />
-        </IconButton>
-        <StyledMobileMenuItems>
-          {navItems.map((navItem, index) =>
-            isNavDropdownItem(navItem) ? (
-              <NavDropdownItem
-                {...navItem}
-                underlineColor={
-                  isTransparentHeader ? theme.palette.white : theme.palette.text
-                }
-                closeMobileMenu={closeMobileMenu}
-                key={index}
-              />
-            ) : (
-              <NavLink
-                label={navItem.label}
-                link={navItem.link}
-                closeMobileMenu={closeMobileMenu}
-                key={index}
-              />
-            )
+    <>
+      <StyledHeader
+        visible={visible}
+        isTransparent={isTransparentHeader}
+        atTop={atTop}
+        isMobile={isMobile}
+        menuOpen={desktopMenuOpen || mobileMenuOpen}
+        ref={headerRef}
+      >
+        <StyledHeaderContainer>
+          <StyledLogoContainer to="/">
+            <Logo />
+          </StyledLogoContainer>
+          <StyledNavLinks>
+            {navItems.map((navItem, index) =>
+              isNavDropdownItem(navItem) ? (
+                <StyledNavDropdownItem
+                  onClick={() => toggleDesktopMenu(navItem)}
+                  active={desktopMenuOpen}
+                  key={index}
+                >
+                  {navItem.label} <ArrowIcon />
+                </StyledNavDropdownItem>
+              ) : (
+                <NavLink
+                  label={navItem.label}
+                  link={navItem.link}
+                  underlineColor={
+                    isTransparentHeader && !desktopMenuOpen
+                      ? theme.palette.white
+                      : theme.palette.text
+                  }
+                  closeMenu={closeDesktopMenu}
+                  key={index}
+                />
+              )
+            )}
+          </StyledNavLinks>
+          {isMobile && (
+            <animated.div
+              style={{
+                ...hamburgerSpring,
+              }}
+            >
+              <IconButton onClick={toggleMobileMenu}>
+                <HamburgerIcon
+                  className="hamburger-icon"
+                  isOpen={mobileMenuOpen}
+                  dark={!isTransparentHeader}
+                />
+              </IconButton>
+            </animated.div>
           )}
-        </StyledMobileMenuItems>
-      </StyledMobileMenu>
+        </StyledHeaderContainer>
+        {!isMobile && (
+          <StyledDesktopMenu>
+            <Hr />
+            <StyledMenuLinks>
+              {selectedSubmenu?.dropdownItems.map((navItem, index) => (
+                <NavLink
+                  label={navItem.label}
+                  link={navItem.link}
+                  closeMenu={toggleMobileMenu}
+                  key={index}
+                />
+              ))}
+            </StyledMenuLinks>
+          </StyledDesktopMenu>
+        )}
+        {isMobile && (
+          <StyledMobileMenu>
+            <StyledMobileMenuItems>
+              {navItems.map((navItem, index) =>
+                isNavDropdownItem(navItem) ? (
+                  <StyledNavDropdownItem
+                    onClick={() => toggleMenuItem(navItem)}
+                    active={
+                      (selectedSubmenu &&
+                        selectedSubmenu.label === navItem.label) as boolean
+                    }
+                    menuOpen={submenuOpen}
+                    key={index}
+                  >
+                    {navItem.label} <ArrowIcon />
+                  </StyledNavDropdownItem>
+                ) : (
+                  <NavLink
+                    className={classNames({
+                      inactive: submenuOpen,
+                    })}
+                    label={navItem.label}
+                    link={navItem.link}
+                    closeMenu={closeMobileMenu}
+                    key={index}
+                  />
+                )
+              )}
+            </StyledMobileMenuItems>
+            <StyledSubmenu>
+              {submenuTransitions((styles, navItem) => (
+                <animated.div key={navItem.label} style={styles}>
+                  <NavLink
+                    label={navItem.label}
+                    link={navItem.link}
+                    closeMenu={closeMobileMenu}
+                  />
+                </animated.div>
+              ))}
+            </StyledSubmenu>
+          </StyledMobileMenu>
+        )}
+      </StyledHeader>
       <StyledMobileOverlay
-        className={classNames({ visible: showMobileMenu })}
+        className={classNames({ visible: desktopMenuOpen || mobileMenuOpen })}
       />
-    </StyledHeaderContainer>
+    </>
   );
 }

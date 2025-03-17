@@ -20,7 +20,7 @@ export const StyledCodename = styled(Typography)(({ theme }) => ({
     fontSize: theme.fontSize(4.5),
   },
   [`@media ${theme.breakpoints.md}`]: {
-    fontSize: theme.fontSize(4),
+    fontSize: theme.fontSize(3.5),
   },
   [`@media ${theme.breakpoints.sm}`]: {
     marginBottom: theme.spacing(4),

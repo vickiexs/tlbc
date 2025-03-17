@@ -16,6 +16,12 @@ export const StyledNavLink = styled(Link).withConfig({
   textDecoration: "none",
   textTransform: "uppercase",
   WebkitTapHighlightColor: "transparent",
+  opacity: 1,
+  transition: "all 0.3s ease-in-out",
+  width: "fit-content",
+  "&.inactive": {
+    opacity: 0.5,
+  },
   "&:before": {
     transition: "all 500ms ease-in-out",
     height: "2px",
@@ -26,7 +32,7 @@ export const StyledNavLink = styled(Link).withConfig({
     bottom: "-3px",
 
     [`@media ${theme.breakpoints.md}`]: {
-      width: "0%",
+      width: isActive ? "100%" : "0%",
     },
   },
   "&:hover:before": {
