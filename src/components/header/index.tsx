@@ -46,6 +46,9 @@ export default function Header({ navItems }: HeaderProps) {
   const { height } = useWindowSize();
   const { scrollDir, scrollPosition } = useDetectScroll();
 
+  console.log("desktop menu:", desktopMenuOpen);
+  console.log("mobile menu:", mobileMenuOpen);
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.md);
 
@@ -155,7 +158,7 @@ export default function Header({ navItems }: HeaderProps) {
   });
 
   const headerRef = useRef(null);
-  useOutsideClick(headerRef, () => toggleMobileMenu());
+  useOutsideClick(headerRef, () => isMobile && closeMobileMenu());
 
   return (
     <>
@@ -271,7 +274,9 @@ export default function Header({ navItems }: HeaderProps) {
         )}
       </StyledHeader>
       <StyledMobileOverlay
-        className={classNames({ visible: desktopMenuOpen || mobileMenuOpen })}
+        className={classNames({
+          visible: desktopMenuOpen || mobileMenuOpen,
+        })}
       />
     </>
   );
