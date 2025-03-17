@@ -220,7 +220,7 @@ export default function Header({ navItems }: HeaderProps) {
                 <NavLink
                   label={navItem.label}
                   link={navItem.link}
-                  closeMenu={toggleMobileMenu}
+                  closeMenu={closeDesktopMenu}
                   key={index}
                 />
               ))}
