@@ -1,4 +1,4 @@
-import { NavLinkProps as NavLink } from "../nav-link/type";
+import { NavLinkProps as NavLink } from "../../common/nav-link/type";
 
 export interface NavDropdownItemProps {
   label: string;

@@ -7,4 +7,5 @@ export const StyledIconButton = styled(`button`)(() => ({
   border: "none",
   padding: 0,
   backgroundColor: "transparent",
+  WebkitTapHighlightColor: "transparent",
 }));

@@ -3,26 +3,34 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { MdMenu, MdClose } from "react-icons/md";
 
-export const StyledHeaderContainer = styled(`header`).withConfig({
-  shouldForwardProp: (props) => props !== "visible",
+export const StyledHeader = styled(`header`).withConfig({
+  shouldForwardProp: (props) =>
+    props !== "visible" && props !== "isMobile" && props !== "mobileMenuOpen",
 })<{
   visible: boolean;
-}>(({ theme, visible }) => {
+  isMobile: boolean;
+  mobileMenuOpen: boolean;
+}>(({ theme, visible, isMobile, mobileMenuOpen }) => {
   const desktopHeight = 100;
+  const mobileHeight = 74;
+  const height = isMobile ? mobileHeight : desktopHeight;
 
   return {
     display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: "column",
     padding: `${theme.spacing(3)} ${theme.spacing(10)}`,
     gap: theme.spacing(1),
     color: theme.palette.white,
-    backgroundColor: "transparent",
+    backgroundColor: mobileMenuOpen ? theme.palette.white : "transparent",
     boxShadow: "none",
-    zIndex: 10,
+    zIndex: 2,
     position: "fixed",
     left: 0,
     right: 0,
+    height: mobileMenuOpen ? "300px" : height,
+    overflow: "hidden",
+    borderBottomLeftRadius: mobileMenuOpen ? "15px" : 0,
+    borderBottomRightRadius: mobileMenuOpen ? "15px" : 0,
     transition: "all 0.5s ease-in-out",
     transform: visible
       ? "translateY(0)"
@@ -36,12 +44,27 @@ export const StyledHeaderContainer = styled(`header`).withConfig({
       boxShadow: "none",
     },
 
+    ".hamburger-icon": {
+      height: "28px",
+      width: "28px",
+    },
+
     [`@media ${theme.breakpoints.md}`]: {
-      padding: `${theme.spacing(3)} ${theme.spacing(6)}`,
-      transform: "none",
+      padding: `${theme.spacing(3)} ${theme.spacing(7)}`,
+      transform: visible
+        ? "translateY(0)"
+        : `translateY(calc(-${mobileHeight}px))`,
     },
   };
 });
+
+export const StyledHeaderContainer = styled("div")(() => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  height: "fit-content",
+  width: "100%",
+}));
 
 export const StyledLogoContainer = styled(Link)(({ theme }) => ({
   display: "flex",
@@ -86,12 +109,12 @@ export const StyledCloseIcon = styled(MdClose)(({ theme }) => ({
 
 export const StyledMobileOverlay = styled(`div`)(() => ({
   position: "fixed",
-  height: "100%",
+  height: "100vh",
   width: "100%",
   top: 0,
   left: 0,
   backgroundColor: "rgba( 0, 0, 0, 0 )",
-  transition: "all 1s ease-in-out",
+  transition: "all 0.7s ease-in-out",
   zIndex: 1,
   pointerEvents: "none",
   "&.visible": {
@@ -101,51 +124,53 @@ export const StyledMobileOverlay = styled(`div`)(() => ({
   },
 }));
 
-export const StyledMobileMenu = styled(`div`)(({ theme }) => ({
-  position: "fixed",
-  width: "60%",
-  top: 0,
-  bottom: 0,
-  right: "-700px",
-  zIndex: 10,
-  backgroundColor: theme.palette.white,
-  padding: theme.spacing(6),
-  transition: "all 1s ease-in-out",
-  "&.visible": {
-    right: 0,
-  },
-  button: {
-    alignSelf: "flex-start",
-  },
-  display: "none",
+export const StyledMobileMenu = styled("nav")(({ theme }) => ({
+  display: "flex",
+  justifyContent: "space-between",
+  gap: theme.spacing(7),
+}));
 
-  [`@media ${theme.breakpoints.md}`]: {
-    display: "flex",
-    flexDirection: "column",
-  },
-  [`@media ${theme.breakpoints.sm}`]: {
-    right: "-600px",
-  },
-  [`@media ${theme.breakpoints.sm}`]: {
-    right: "-500px",
+export const StyledMobileMenuItems = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  marginTop: theme.spacing(12),
+  color: theme.palette.text,
+  gap: theme.spacing(5),
+
+  "button, a": {
+    fontSize: theme.fontSize(4.5),
   },
 }));
 
-export const StyledMobileMenuItems = styled(`nav`)(({ theme }) => ({
-  height: "100%",
-  marginLeft: theme.spacing(10),
-  textAlign: "left",
+export const StyledSubmenu = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  justifyContent: "center",
-  marginTop: "-50px",
+  alignItems: "flex-end",
+  marginTop: theme.spacing(12),
   color: theme.palette.text,
-  "a, button": {
-    marginTop: theme.spacing(10),
-  },
-  ".nav-dropdown-link": {
-    marginTop: theme.spacing(6),
-    marginBottom: 0,
-    color: theme.palette.primary.main,
+  gap: theme.spacing(4),
+}));
+
+export const StyledNavDropdownItem = styled("button").withConfig({
+  shouldForwardProp: (props) => props !== "open" && props !== "mobileMenuOpen",
+})<{ open: boolean }>(({ theme, open }) => ({
+  border: "none",
+  backgroundColor: "transparent",
+  padding: 0,
+  color: "inherit",
+  WebkitTapHighlightColor: "transparent",
+  fontFamily: "Titillium Web",
+  fontSize: theme.fontSize(4),
+  fontWeight: theme.fontWeight.semiBold,
+  textAlign: "inherit",
+  textTransform: "uppercase",
+  display: "flex",
+  alignItems: "center",
+  gap: theme.spacing(2),
+
+  svg: {
+    height: "12px",
+    transform: open ? "rotate(90deg)" : "rotate(-90deg)",
+    transition: "transform 0.5s ease-in-out",
   },
 }));
