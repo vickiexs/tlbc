@@ -18,12 +18,13 @@ import { useOutsideClick } from "../../utils/handleOutsideClick";
 
 import {
   StyledHeader,
+  StyledHeaderBackground,
   StyledHeaderContainer,
   StyledLogoContainer,
   StyledNavLinks,
   StyledDesktopMenu,
   StyledMenuLinks,
-  StyledMobileOverlay,
+  StyledOverlay,
   StyledMobileMenu,
   StyledMobileMenuItems,
   StyledNavDropdownItem,
@@ -165,8 +166,6 @@ export default function Header({ navItems }: HeaderProps) {
       <StyledHeader
         visible={visible}
         isTransparent={isTransparentHeader}
-        atTop={atTop}
-        isMobile={isMobile}
         menuOpen={desktopMenuOpen || mobileMenuOpen}
         ref={headerRef}
       >
@@ -273,7 +272,13 @@ export default function Header({ navItems }: HeaderProps) {
           </StyledMobileMenu>
         )}
       </StyledHeader>
-      <StyledMobileOverlay
+      <StyledHeaderBackground
+        visible={visible}
+        menuOpen={desktopMenuOpen || mobileMenuOpen}
+        isTransparent={isTransparentHeader}
+        atTop={atTop}
+      />
+      <StyledOverlay
         className={classNames({
           visible: desktopMenuOpen || mobileMenuOpen,
         })}

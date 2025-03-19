@@ -3,24 +3,19 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { MdMenu, MdClose } from "react-icons/md";
 
+const DESKTOP_HEADER_HEIGHT = 100;
+const MOBILE_HEADER_HEIGHT = 74;
+const DESKTOP_MENU_HEIGHT = 90;
+const MOBILE_MENU_HEIGHT = 300;
+
 export const StyledHeader = styled(`header`).withConfig({
   shouldForwardProp: (props) =>
-    props !== "visible" &&
-    props !== "isTransparent" &&
-    props !== "atTop" &&
-    props !== "isMobile" &&
-    props !== "menuOpen",
+    props !== "visible" && props !== "isTransparent" && props !== "menuOpen",
 })<{
   visible: boolean;
   isTransparent: boolean;
-  atTop: boolean;
-  isMobile: boolean;
   menuOpen: boolean;
-}>(({ theme, visible, isTransparent, atTop, isMobile, menuOpen }) => {
-  const desktopHeight = 100;
-  const mobileHeight = 74;
-  const height = isMobile ? mobileHeight : desktopHeight;
-
+}>(({ theme, visible, isTransparent, menuOpen }) => {
   return {
     display: "flex",
     flexDirection: "column",
@@ -28,24 +23,17 @@ export const StyledHeader = styled(`header`).withConfig({
     gap: theme.spacing(1),
     color:
       menuOpen || !isTransparent ? theme.palette.text : theme.palette.white,
-    backgroundColor:
-      menuOpen || !isTransparent ? theme.palette.white : "transparent",
-    zIndex: 5,
+    backgroundColor: "transparent",
+    zIndex: 6,
     position: "fixed",
     left: 0,
     right: 0,
-    height: menuOpen ? "190px" : height,
-    overflow: "hidden",
-    borderBottomLeftRadius: menuOpen ? "15px" : 0,
-    borderBottomRightRadius: menuOpen ? "15px" : 0,
-    boxShadow:
-      (menuOpen || !isTransparent) && !atTop
-        ? "2px 1px 7px 3px rgb(0 0 0 / 10%)"
-        : "none",
-    transition: "all 0.5s ease-in-out, color 0.2s ease-in-out",
+    height: `calc(${DESKTOP_HEADER_HEIGHT + DESKTOP_MENU_HEIGHT}px)`,
+    clipPath: menuOpen ? "inset(0 0 0 0)" : "inset(0 0 calc(90px) 0)",
+    transition: "all 0.5s ease-in-out",
     transform: visible
       ? "translateY(0)"
-      : `translateY(calc(-${desktopHeight}px))`,
+      : `translateY(calc(-${DESKTOP_HEADER_HEIGHT}px))`,
 
     ".hamburger-icon": {
       height: "28px",
@@ -58,14 +46,57 @@ export const StyledHeader = styled(`header`).withConfig({
     },
 
     [`@media ${theme.breakpoints.md}`]: {
+      height: `calc(${MOBILE_HEADER_HEIGHT + MOBILE_MENU_HEIGHT}px)`,
+      clipPath: menuOpen ? "inset(0 0 0 0)" : "inset(0 0 calc(300px) 0)",
       padding: `${theme.spacing(3)} ${theme.spacing(7)}`,
-      height: menuOpen ? "300px" : height,
       transform: visible
         ? "translateY(0)"
-        : `translateY(calc(-${mobileHeight}px))`,
+        : `translateY(calc(-${MOBILE_HEADER_HEIGHT}px))`,
     },
   };
 });
+
+export const StyledHeaderBackground = styled("div").withConfig({
+  shouldForwardProp: (props) =>
+    props !== "visible" &&
+    props !== "isTransparent" &&
+    props !== "atTop" &&
+    props !== "menuOpen",
+})<{
+  visible: boolean;
+  isTransparent: boolean;
+  atTop: boolean;
+  menuOpen: boolean;
+}>(({ theme, visible, isTransparent, menuOpen, atTop }) => ({
+  height: DESKTOP_HEADER_HEIGHT,
+  position: "fixed",
+  top: 0,
+  width: "100%",
+  zIndex: 5,
+  transition: "all 0.5s ease-in-out",
+  transform: visible
+    ? menuOpen
+      ? "translateY(0) scaleY(1.9)"
+      : "translateY(0) scaleY(1)"
+    : `translateY(calc(-100px))`,
+  transformOrigin: "top",
+  backgroundColor:
+    menuOpen || !isTransparent ? theme.palette.white : "transparent",
+  boxShadow:
+    (menuOpen || !isTransparent) && !atTop
+      ? "2px 1px 7px 3px rgb(0 0 0 / 10%)"
+      : "none",
+
+  [`@media ${theme.breakpoints.md}`]: {
+    height: MOBILE_HEADER_HEIGHT,
+    overflow: "hidden",
+    transform: visible
+      ? menuOpen
+        ? "translateY(0) scaleY(4)"
+        : "translateY(0) scaleY(1)"
+      : `translateY(calc(-100px))`,
+  },
+}));
 
 export const StyledHeaderContainer = styled("div")(() => ({
   display: "flex",
@@ -95,6 +126,10 @@ export const StyledNavLinks = styled(`nav`)(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(6),
 
+  a: {
+    transition: "color 0s ease-in-out",
+  },
+
   [`@media ${theme.breakpoints.md}`]: {
     display: "none",
   },
@@ -116,18 +151,19 @@ export const StyledCloseIcon = styled(MdClose)(({ theme }) => ({
   fill: theme.palette.text,
 }));
 
-export const StyledMobileOverlay = styled(`div`)(() => ({
+export const StyledOverlay = styled(`div`)(() => ({
   position: "fixed",
   height: "100vh",
   width: "100%",
   top: 0,
   left: 0,
-  backgroundColor: "rgba( 0, 0, 0, 0 )",
-  transition: "all 0.7s ease-in-out",
+  backgroundColor: "rgba( 0, 0, 0, 0.6 )",
+  transition: "all 0.5s ease-in-out",
   zIndex: 4,
   pointerEvents: "none",
+  opacity: 0,
   "&.visible": {
-    backgroundColor: "rgba( 0, 0, 0, 0.6 )",
+    opacity: 1,
     backdropFilter: "blur(2px)",
     WebkitBackdropFilter: "blur(2px)",
   },
@@ -150,6 +186,10 @@ export const StyledMenuLinks = styled("nav")(({ theme }) => ({
   display: "flex",
   justifyContent: "flex-end",
   gap: theme.spacing(7),
+
+  a: {
+    transition: "color 0s ease-in-out",
+  },
 }));
 
 export const StyledMobileMenu = styled("nav")(({ theme }) => ({
@@ -208,6 +248,7 @@ export const StyledNavDropdownItem = styled("button").withConfig({
     gap: theme.spacing(2),
     svg: {
       transform: active ? "rotate(90deg)" : "rotate(-90deg)",
+      fill: theme.palette.text,
     },
   },
 }));
