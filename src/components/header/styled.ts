@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { MdMenu, MdClose } from "react-icons/md";
 
+import NavLink from "../../common/nav-link";
+
 const DESKTOP_HEADER_HEIGHT = 100;
 const MOBILE_HEADER_HEIGHT = 74;
 const DESKTOP_MENU_HEIGHT = 90;
@@ -251,4 +253,8 @@ export const StyledNavDropdownItem = styled("button").withConfig({
       fill: theme.palette.text,
     },
   },
+}));
+
+export const MobileNavLink = styled(NavLink)(() => ({
+  textAlign: "right",
 }));

@@ -29,6 +29,7 @@ import {
   StyledMobileMenuItems,
   StyledNavDropdownItem,
   StyledSubmenu,
+  MobileNavLink,
 } from "./styled";
 import { HeaderProps, NavDropdownItem as NavDropdownType } from "./type";
 import { NavLinkProps as NavLinkType } from "../../common/nav-link/type";
@@ -261,7 +262,7 @@ export default function Header({ navItems }: HeaderProps) {
             <StyledSubmenu>
               {submenuTransitions((styles, navItem) => (
                 <animated.div key={navItem.label} style={styles}>
-                  <NavLink
+                  <MobileNavLink
                     label={navItem.label}
                     link={navItem.link}
                     closeMenu={closeMobileMenu}
