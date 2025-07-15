@@ -36,7 +36,8 @@ export const pageQuery = `
     ${testimonialsQuery}
   },
   metadata->{
-    title
+    title,
+    description
   }
 }
 `;
