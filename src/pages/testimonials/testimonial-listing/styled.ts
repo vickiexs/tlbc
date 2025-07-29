@@ -1,17 +1,15 @@
 import styled from "styled-components";
 
-export const StyledListingContainer = styled("div")(({ theme }) => ({
+import Button from "../../../common/button";
+
+export const ListingContainer = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(10),
   marginBottom: theme.spacing(10),
-
-  ".load-more-button": {
-    alignSelf: "center",
-  },
 }));
 
-export const StyledListing = styled("div")(({ theme }) => ({
+export const Listing = styled("div")(({ theme }) => ({
   margin: `0 auto`,
   marginBottom: theme.spacing(10),
   minWidth: theme.maxContentWidth,
@@ -41,7 +39,7 @@ export const StyledListing = styled("div")(({ theme }) => ({
   },
 }));
 
-export const StyledColumn = styled("div")(({ theme }) => ({
+export const Column = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(8),
@@ -50,4 +48,8 @@ export const StyledColumn = styled("div")(({ theme }) => ({
   [`@media ${theme.breakpoints.md}`]: {
     gap: theme.spacing(6),
   },
+}));
+
+export const LoadMoreButton = styled(Button)(() => ({
+  alignSelf: "center",
 }));

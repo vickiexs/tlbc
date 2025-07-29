@@ -34,7 +34,7 @@ export default function Spotlight({
         {link && (
           <Button
             label={link.label}
-            variant={darkText ? "dark" : "light"}
+            mode={darkText ? "light" : "dark"}
             handleClick={() => navigate(link.link)}
           />
         )}

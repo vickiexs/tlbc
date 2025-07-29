@@ -3,11 +3,10 @@ import { useTheme } from "styled-components";
 import { useMediaQuery } from "@uidotdev/usehooks";
 
 import TestimonialCard from "./testimonial-card";
-import Button from "../../../common/button";
 
 import { splitArray } from "../../../utils/splitArray";
 
-import { StyledListingContainer, StyledListing, StyledColumn } from "./styled";
+import * as S from "./styled";
 import { TestimonialsProps } from "./type";
 
 export default function TestimonialListing({
@@ -43,10 +42,10 @@ export default function TestimonialListing({
   );
 
   return (
-    <StyledListingContainer>
-      <StyledListing>
+    <S.ListingContainer>
+      <S.Listing>
         {columns.map((column, firstIndex) => (
-          <StyledColumn key={firstIndex}>
+          <S.Column key={firstIndex}>
             {column.slice(0, pageSize).map((testimonial, secondIndex) => (
               <TestimonialCard
                 {...testimonial}
@@ -56,17 +55,15 @@ export default function TestimonialListing({
                 key={secondIndex}
               />
             ))}
-          </StyledColumn>
+          </S.Column>
         ))}
-      </StyledListing>
+      </S.Listing>
       {pageSize <= Math.ceil(testimonials.length / columnNumber) && (
-        <Button
+        <S.LoadMoreButton
           label={`${loadMoreLabel} (${hiddenTestimonials})`}
-          variant="dark"
           handleClick={() => setPageSize((prevState) => prevState + 6)}
-          className="load-more-button"
         />
       )}
-    </StyledListingContainer>
+    </S.ListingContainer>
   );
 }

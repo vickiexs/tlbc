@@ -60,13 +60,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
-}
-
-@media (max-width: 600px) {
-  .container {
-    gap: 15px;
-  }
+  gap: 60px;
 }
 
 .loader--hide {
@@ -80,8 +74,8 @@ button {
 
 .logo-container {
   position: relative;
-  height: 20vh;
-  width: clamp(150px, 27vw, 300px);
+  height: 100%;
+  width: clamp(200px, 12vw, 250px);
 
   img {
     height: 100%;
@@ -142,7 +136,7 @@ button {
   color: var(--loading-font-color);
   text-align: center;
   font-family: "JetBrains Mono", monospace;
-  font-size: clamp(16px, 3vw, 20px);
+  font-size: clamp(20px, 1vw, 36px);
   width: max-content;
 
   animation: textGlitch 1s linear infinite;
@@ -169,6 +163,36 @@ button {
     animation: typewriter var(--typewriterSpeed)
         steps(var(--typewriterCharacters)) var(--typewriterDelay) forwards,
       blink 750ms steps(var(--typewriterCharacters)) infinite;
+  }
+}
+
+@media (max-width: 1920px) {
+  .container {
+    gap: 40px;
+  }
+  .logo-container {
+    width: clamp(150px, 27vw, 200px);
+  }
+  .loading-text {
+    font-size: clamp(20px, 1vw, 28px);
+  }
+}
+
+@media (max-width: 1280px) {
+  .loading-text {
+    font-size: clamp(16px, 3vw, 24px);
+  }
+}
+
+@media (max-width: 900px) {
+  .logo-container {
+    width: clamp(150px, 27vw, 300px);
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    gap: 30px;
   }
 }
 

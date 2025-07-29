@@ -3,9 +3,8 @@ import { useTheme } from "styled-components";
 import { useMediaQuery } from "usehooks-ts";
 
 import AccordionItem from "../accordion-item";
-import Button from "../../common/button";
 
-import { StyledContainer, StyledListing, StyledColumn } from "./styled";
+import * as S from "./styled";
 import { FAQProps } from "./type";
 
 export default function FAQs({
@@ -49,10 +48,10 @@ export default function FAQs({
   };
 
   return (
-    <StyledContainer>
-      <StyledListing>
+    <S.Container>
+      <S.Listing>
         {faqs && (
-          <StyledColumn>
+          <S.Column>
             {faqs.slice(0, maxIndex).map((faq, index) => (
               <AccordionItem
                 header={faq.question}
@@ -63,10 +62,10 @@ export default function FAQs({
                 key={index}
               />
             ))}
-          </StyledColumn>
+          </S.Column>
         )}
         {faqs && !isSingleColumn && (
-          <StyledColumn>
+          <S.Column>
             {secondColumn.slice(0, maxIndex).map((faq, index) => (
               <AccordionItem
                 header={faq.question}
@@ -77,19 +76,18 @@ export default function FAQs({
                 key={index}
               />
             ))}
-          </StyledColumn>
+          </S.Column>
         )}
-      </StyledListing>
+      </S.Listing>
       {faqs && viewMoreLabel && viewLessLabel && (
-        <Button
+        <S.LoadMoreButton
+          mode="dark"
           label={getButtonLabel()}
-          variant="light"
           handleClick={() =>
             setMaxIndex((prevState) => handleButtonClick(prevState))
           }
-          className="load-more-button"
         />
       )}
-    </StyledContainer>
+    </S.Container>
   );
 }

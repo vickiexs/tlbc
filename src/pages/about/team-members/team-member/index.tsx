@@ -76,11 +76,7 @@ export default function TeamMember({
             <StyledRole>{role}</StyledRole>
             <StyledBio variation="body">{bioSummary}</StyledBio>
             <Ellipsis />
-            <Button
-              label={buttonLabel}
-              variant="dark"
-              handleClick={openModal}
-            />
+            <Button label={buttonLabel} handleClick={openModal} />
           </StyledInfoContainer>
         </>
       ) : (
@@ -95,11 +91,7 @@ export default function TeamMember({
             <StyledRole>{role}</StyledRole>
             <StyledBio variation="body">{bioSummary}</StyledBio>
             <Ellipsis />
-            <Button
-              label={buttonLabel}
-              variant="dark"
-              handleClick={openModal}
-            />
+            <Button label={buttonLabel} handleClick={openModal} />
           </StyledInfoContainer>
           <StyledImageContainer>
             <Image {...image} />
