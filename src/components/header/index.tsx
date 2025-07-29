@@ -48,9 +48,6 @@ export default function Header({ navItems }: HeaderProps) {
   const { height } = useWindowSize();
   const { scrollDir, scrollPosition } = useDetectScroll();
 
-  console.log("desktop menu:", desktopMenuOpen);
-  console.log("mobile menu:", mobileMenuOpen);
-
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.md);
 

@@ -1,6 +1,5 @@
 import { useState, useEffect, Fragment } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { useTransition, animated } from "react-spring";
 import { HelmetProvider } from "react-helmet-async";
 import theme from "./theme";
 import { ThemeProvider } from "styled-components";
@@ -13,7 +12,6 @@ import ArcticMemories from "./pages/arctic-memories";
 import Testimonials from "./pages/testimonials";
 import About from "./pages/about";
 import Error404 from "./pages/404";
-import LoadingPage from "./pages/loading";
 
 import Header from "./components/header";
 import { HeaderProps } from "./components/header/type";
@@ -31,14 +29,23 @@ interface AppData {
 function App() {
   const navigate = useNavigate();
   const [data, setData] = useState<AppData>();
-  const [isLoading, setIsLoading] = useState(true);
 
-  const transition = useTransition(isLoading, {
-    from: { opacity: 1 },
-    enter: { opacity: 1, scale: 0.1 },
-    leave: { opacity: 0, scale: 1 },
-    config: { duration: 700 },
-  });
+  const hideLoadingScreen = () => {
+    const loader = document.querySelector(".loader");
+    const container = document.querySelector(".container");
+
+    if (loader) loader.classList.add("loader--hide");
+    if (container) container.classList.add("container--hide");
+
+    const html = document.getElementsByTagName("html")[0];
+    html.classList.remove("lock-scroll");
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      hideLoadingScreen();
+    }, 4000);
+  }, []);
 
   useEffect(() => {
     const path = localStorage.getItem("path");
@@ -47,15 +54,12 @@ function App() {
       navigate(path.split(/\/(.*)/s)[1]);
     }
 
-    setTimeout(function () {
-      client
-        .fetch(appQuery)
-        .then((data) => {
-          setData(data);
-          setIsLoading(false);
-        })
-        .catch(console.error);
-    }, 5000);
+    client
+      .fetch(appQuery)
+      .then((fetchedData) => {
+        setData(fetchedData);
+      })
+      .catch(console.error);
   }, []);
 
   const getPageComponent = (template: string, pageData: GenericObject) => {
@@ -78,13 +82,6 @@ function App() {
   return (
     <HelmetProvider>
       <ThemeProvider theme={theme}>
-        {transition((style, isLoading) =>
-          isLoading ? (
-            <animated.div style={style}>
-              <LoadingPage />
-            </animated.div>
-          ) : null
-        )}
         {data && (
           <Fragment>
             <div style={{ overflow: "hidden", position: "relative" }}>

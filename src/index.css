@@ -1,8 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 
 :root {
   font-family: "Titillium Web";
+  --bg-color: #000;
+  --loading-font-color: #fff;
+  --loading-text: "LOADING YOUR ADVENTURE...";
+  --typewriterSpeed: 2.5s;
+  --typewriterCharacters: 22;
+  --typewriterDelay: 0.5s;
 }
 
 *,
@@ -33,6 +40,210 @@ button {
 
 .lock-scroll {
   overflow: hidden;
+}
+
+.loader {
+  position: absolute;
+  top: 0;
+  background-color: var(--bg-color);
+  height: 100svh;
+  width: 100%;
+  transition: opacity 0.5s;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    gap: 15px;
+  }
+}
+
+.loader--hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.container.container--hide {
+  display: none;
+}
+
+.logo-container {
+  position: relative;
+  height: 20vh;
+  width: clamp(150px, 27vw, 300px);
+
+  img {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    display: block;
+  }
+}
+
+.glitch-layers {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.glitch {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-image: url("/logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  transform: translateX(-2%);
+  animation: glitch 4s infinite linear alternate;
+}
+
+.glitch-flash {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-image: url("/logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  transform: translateX(2%);
+  animation: flash 1s infinite linear;
+}
+
+.text-container {
+  position: relative;
+}
+
+.loading-text {
+  position: relative;
+  color: var(--loading-font-color);
+  text-align: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: clamp(16px, 3vw, 20px);
+  width: max-content;
+
+  animation: textGlitch 1s linear infinite;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &::before {
+    background: var(--bg-color);
+    animation: typewriter var(--typewriterSpeed)
+      steps(var(--typewriterCharacters)) var(--typewriterDelay) forwards;
+  }
+
+  &::after {
+    width: 0.125em;
+    background: var(--loading-font-color);
+    animation: typewriter var(--typewriterSpeed)
+        steps(var(--typewriterCharacters)) var(--typewriterDelay) forwards,
+      blink 750ms steps(var(--typewriterCharacters)) infinite;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: polygon(0 15%, 100% 15%, 100% 30%, 0 30%);
+  }
+  15% {
+    clip-path: polygon(0 3%, 100% 3%, 100% 3%, 0 3%);
+  }
+  25% {
+    clip-path: polygon(0 8%, 100% 8%, 100% 20%, 0 20%);
+  }
+  30% {
+    clip-path: polygon(0 20%, 100% 20%, 100% 20%, 0 20%);
+  }
+  45% {
+    clip-path: polygon(0 45%, 100% 45%, 100% 45%, 0 45%);
+  }
+  50% {
+    clip-path: polygon(0 50%, 100% 50%, 100% 57%, 0 57%);
+  }
+  65% {
+    clip-path: polygon(0 60%, 100% 60%, 100% 60%, 0 60%);
+  }
+  75% {
+    clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
+  }
+  80% {
+    clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%);
+  }
+  95% {
+    clip-path: polygon(0 45%, 100% 45%, 100% 60%, 0 60%);
+  }
+  100% {
+    clip-path: polygon(0 11%, 100% 11%, 100% 15%, 0 15%);
+  }
+}
+
+@keyframes flash {
+  0% {
+    opacity: 0.2;
+  }
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes blink {
+  to {
+    background: transparent;
+  }
+}
+
+@keyframes textGlitch {
+  2%,
+  64% {
+    transform: translate(0.7px, 0) skew(0deg);
+  }
+  4%,
+  60% {
+    transform: translate(-0.7px, 0) skew(0deg);
+  }
+  62% {
+    transform: translate(0, 0) skew(5deg);
+  }
 }
 
 @font-face {

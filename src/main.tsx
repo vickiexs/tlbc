@@ -5,6 +5,9 @@ import "./index.css";
 import App from "./App";
 import ScrollToTop from "./utils/scrollToTop";
 
+const html = document.getElementsByTagName("html")[0];
+html.classList.add("lock-scroll");
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
