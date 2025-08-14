@@ -12,7 +12,7 @@ import CloseButton from "../../../../components/modal/close-button";
 import IconLink from "../../../../common/icon-link";
 import Ellipsis from "../../../../common/ellipsis";
 
-import { useOutsideClick } from "../../../../utils/handleOutsideClick";
+import { useOutsideClick } from "../../../../utils/hooks/handleOutsideClick";
 
 import {
   StyledContainer,

@@ -1,10 +1,13 @@
 import { useState, useEffect, Fragment } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
-import theme from "./theme";
 import { ThemeProvider } from "styled-components";
+
+import theme from "./theme";
+
 import client from "./client";
 import { appQuery } from "./utils/queries";
+import usePageTracking from "./utils/hooks/analyticsPageTracking";
 
 import Home from "./pages/home";
 import TripPage from "./pages/trips";
@@ -29,6 +32,8 @@ interface AppData {
 function App() {
   const navigate = useNavigate();
   const [data, setData] = useState<AppData>();
+
+  usePageTracking("G-QFB2QJ3G09");
 
   const hideLoadingScreen = () => {
     const loader = document.querySelector(".loader");

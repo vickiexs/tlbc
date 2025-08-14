@@ -14,7 +14,7 @@ import Hr from "../../common/horizontal-rule";
 import ArrowIcon from "../../common/icons/arrow";
 import IconButton from "../icon-button";
 
-import { useOutsideClick } from "../../utils/handleOutsideClick";
+import { useOutsideClick } from "../../utils/hooks/handleOutsideClick";
 
 import {
   StyledHeader,

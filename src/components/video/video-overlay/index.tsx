@@ -4,7 +4,7 @@ import ReactPlayer from "react-player/vimeo";
 import Modal from "../../modal";
 import CloseButton from "../../modal/close-button";
 
-import { useOutsideClick } from "../../../utils/handleOutsideClick";
+import { useOutsideClick } from "../../../utils/hooks/handleOutsideClick";
 
 import { StyledVideoOverlay, StyledModalContent } from "./styled";
 import { VideoOverlayProps } from "../type";
