@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { Link } from "react-router-dom";
 
-export const StyledNavLink = styled(Link).withConfig({
+export const NavLink = styled(Link).withConfig({
   shouldForwardProp: (props) =>
     props !== "isActive" && props !== "underlineColor",
 })<{

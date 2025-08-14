@@ -1,10 +1,10 @@
-import { StyledAvatar } from "./styled";
+import * as S from "./styled";
 import { AvatarProps } from "./type";
 
 export default function Avatar({ children, size }: AvatarProps) {
   return (
-    <StyledAvatar size={size} className="avatar">
+    <S.Avatar size={size} className="avatar">
       {children}
-    </StyledAvatar>
+    </S.Avatar>
   );
 }

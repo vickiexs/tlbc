@@ -1,6 +1,6 @@
-import { StyledHr } from "./styled";
+import * as S from "./styled";
 import { HrProps } from "./type";
 
 export default function Hr({ color }: HrProps) {
-  return <StyledHr color={color} className="hr" />;
+  return <S.Hr color={color} className="hr" />;
 }

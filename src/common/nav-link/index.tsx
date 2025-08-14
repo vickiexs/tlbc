@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { StyledNavLink } from "./styled";
+import * as S from "./styled";
 import { NavLinkProps } from "./type";
 
 export default function NavLink({
@@ -11,7 +11,7 @@ export default function NavLink({
 }: NavLinkProps) {
   const location = useLocation();
   return (
-    <StyledNavLink
+    <S.NavLink
       className={className ?? ""}
       to={link}
       underlineColor={underlineColor}
@@ -19,6 +19,6 @@ export default function NavLink({
       onClick={closeMenu}
     >
       {label}
-    </StyledNavLink>
+    </S.NavLink>
   );
 }
