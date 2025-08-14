@@ -3,6 +3,7 @@ import { linkQuery } from "../../common/link/query";
 
 export const spotlightQuery = `
 _type == "spotlight" => {
+  _id,
   _type,
   heading,
   subheadings[],
@@ -10,7 +11,6 @@ _type == "spotlight" => {
   mobileImage {
     ${imageFragment}
   },
-  videoUrl,
   darkText,
   ${linkQuery}
 }`;

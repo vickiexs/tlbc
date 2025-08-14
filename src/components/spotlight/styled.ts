@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledSpotlightContainer = styled(`div`).withConfig({
+export const SpotlightContainer = styled(`div`).withConfig({
   shouldForwardProp: (props) => props !== "fixedHeight",
 })<{ fixedHeight: boolean }>(({ theme, fixedHeight }) => ({
   height: "100svh",
@@ -13,7 +13,7 @@ export const StyledSpotlightContainer = styled(`div`).withConfig({
   },
 }));
 
-export const StyledBackgroundImage = styled(`div`).withConfig({
+export const BackgroundImage = styled(`div`).withConfig({
   shouldForwardProp: (props) => props !== "fixedHeight",
 })<{ fixedHeight: boolean }>(({ theme, fixedHeight }) => ({
   height: "100vh",
@@ -31,7 +31,7 @@ export const StyledBackgroundImage = styled(`div`).withConfig({
   },
 }));
 
-export const StyledOverlay = styled(`div`)(({ theme }) => ({
+export const Overlay = styled(`div`)(({ theme }) => ({
   position: "absolute",
   height: "100%",
   width: "100%",
@@ -42,7 +42,7 @@ export const StyledOverlay = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledGradientOverlay = styled(`div`)(({ theme }) => ({
+export const GradientOverlay = styled(`div`)(({ theme }) => ({
   position: "absolute",
   height: "100%",
   width: "100%",
@@ -55,7 +55,7 @@ export const StyledGradientOverlay = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledVideoOverlay = styled(`div`)(() => ({
+export const VideoOverlay = styled(`div`)(() => ({
   position: "absolute",
   height: "100%",
   width: "100%",
@@ -64,7 +64,7 @@ export const StyledVideoOverlay = styled(`div`)(() => ({
   pointerEvents: "none",
 }));
 
-export const StyledTextOverlay = styled(`div`).withConfig({
+export const TextOverlay = styled(`div`).withConfig({
   shouldForwardProp: (props) => props !== "darkText" && props !== "isHomepage",
 })<{ darkText: boolean; isHomepage: boolean }>(
   ({ theme, darkText, isHomepage }) => ({
@@ -94,7 +94,7 @@ export const StyledTextOverlay = styled(`div`).withConfig({
   })
 );
 
-export const StyledTextContainer = styled(`div`).withConfig({
+export const TextContainer = styled(`div`).withConfig({
   shouldForwardProp: (props) => props !== "isHomepage",
 })<{ isHomepage: boolean }>(({ theme, isHomepage }) => ({
   [`@media ${theme.breakpoints.md}`]: {
@@ -107,7 +107,7 @@ export const StyledTextContainer = styled(`div`).withConfig({
   },
 }));
 
-export const StyledHeading = styled(`h1`)(({ theme }) => ({
+export const Heading = styled(`h1`)(({ theme }) => ({
   fontFamily: "Mukta",
   fontSize: theme.fontSize(16),
   fontWeight: 400,
@@ -125,7 +125,7 @@ export const StyledHeading = styled(`h1`)(({ theme }) => ({
   },
 }));
 
-export const StyledSubtitle = styled(`div`)(({ theme }) => ({
+export const Subtitle = styled(`div`)(({ theme }) => ({
   fontSize: theme.fontSize(5),
   fontWeight: theme.fontWeight.regular,
   textTransform: "uppercase",
@@ -138,10 +138,8 @@ export const StyledSubtitle = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledVideoContainer = styled(`div`)(() => ({
-  position: "relative",
-  top: 0,
+export const BackgroundVideo = styled("video")(() => ({
   width: "100%",
-  overflow: "hidden",
   height: "100svh",
+  objectFit: "cover",
 }));

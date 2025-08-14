@@ -5,7 +5,8 @@ export interface SpotlightProps {
   subheadings?: string[];
   image: ImageProps;
   mobileImage: ImageProps;
-  videoUrl?: string;
   darkText: boolean;
   fixedHeight?: boolean;
+  video?: string;
+  videoWebOptimised?: string;
 }

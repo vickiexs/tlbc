@@ -1,25 +1,12 @@
 import { useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import { useTheme } from "styled-components";
-import ReactPlayer from "react-player";
 import Typewriter from "typewriter-effect";
-import { useWindowSize } from "usehooks-ts";
 import { useMediaQuery } from "@uidotdev/usehooks";
 
 import Image from "../../common/image";
 
-import {
-  StyledSpotlightContainer,
-  StyledBackgroundImage,
-  StyledOverlay,
-  StyledGradientOverlay,
-  StyledVideoOverlay,
-  StyledTextOverlay,
-  StyledTextContainer,
-  StyledHeading,
-  StyledSubtitle,
-  StyledVideoContainer,
-} from "./styled";
+import * as S from "./styled";
 import { SpotlightProps } from "./type";
 
 export default function Spotlight({
@@ -27,12 +14,12 @@ export default function Spotlight({
   subheadings,
   image,
   mobileImage,
-  videoUrl,
   darkText,
   fixedHeight = false,
+  video,
+  videoWebOptimised,
 }: SpotlightProps) {
   const theme = useTheme();
-  const size = useWindowSize();
 
   const isMobile = useMediaQuery(theme.breakpoints.md);
 
@@ -44,33 +31,13 @@ export default function Spotlight({
     [isMobile, image, mobileImage]
   );
 
-  const playerSize: { width: string; height: string } = useMemo(() => {
-    let playerWidth: number | string = size.height * (16 / 9);
-    let playerHeight = "100svh";
-
-    if (size.width > playerWidth) {
-      playerWidth = "100vw";
-      playerHeight = `${size.width * (9 / 16)}px`;
-
-      return {
-        width: playerWidth,
-        height: playerHeight,
-      };
-    }
-
-    return {
-      width: `${playerWidth}px`,
-      height: playerHeight,
-    };
-  }, [size]);
-
   return (
-    <StyledSpotlightContainer id="spotlight" fixedHeight={fixedHeight}>
-      <StyledTextOverlay darkText={darkText} isHomepage={isHomepage}>
-        <StyledTextContainer isHomepage={isHomepage}>
-          <StyledHeading>{heading}</StyledHeading>
+    <S.SpotlightContainer id="spotlight" fixedHeight={fixedHeight}>
+      <S.TextOverlay darkText={darkText} isHomepage={isHomepage}>
+        <S.TextContainer isHomepage={isHomepage}>
+          <S.Heading>{heading}</S.Heading>
           {subheadings && (
-            <StyledSubtitle>
+            <S.Subtitle>
               <Typewriter
                 options={{
                   strings: subheadings,
@@ -78,40 +45,25 @@ export default function Spotlight({
                   loop: true,
                 }}
               />
-            </StyledSubtitle>
+            </S.Subtitle>
           )}
-        </StyledTextContainer>
-      </StyledTextOverlay>
-      {videoUrl ? (
+        </S.TextContainer>
+      </S.TextOverlay>
+      {video && videoWebOptimised ? (
         <>
-          <StyledVideoOverlay />
-          <StyledVideoContainer>
-            <ReactPlayer
-              className="react-player"
-              url={videoUrl}
-              playsinline
-              playing
-              loop
-              muted
-              width={playerSize.width}
-              height={playerSize.height}
-              style={{
-                position: "relative",
-                left: "50%",
-                top: "50%",
-                transform: "translateX(-50%) translateY(-50%)",
-                backgroundColor: theme.palette.white,
-              }}
-            />
-          </StyledVideoContainer>
+          <S.VideoOverlay />
+          <S.BackgroundVideo autoPlay loop muted playsInline>
+            <source src={videoWebOptimised} type="video/webm" />
+            <source src={video} type="video/mp4" />
+          </S.BackgroundVideo>
         </>
       ) : (
-        <StyledBackgroundImage fixedHeight={fixedHeight}>
-          <StyledGradientOverlay />
-          <StyledOverlay />
+        <S.BackgroundImage fixedHeight={fixedHeight}>
+          <S.GradientOverlay />
+          <S.Overlay />
           <Image {...spotlightImage} />
-        </StyledBackgroundImage>
+        </S.BackgroundImage>
       )}
-    </StyledSpotlightContainer>
+    </S.SpotlightContainer>
   );
 }
