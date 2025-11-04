@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledContainer = styled(`div`)(({ theme }) => ({
+export const Container = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -12,7 +12,7 @@ export const StyledContainer = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledImageContainer = styled(`div`)(({ theme }) => ({
+export const ImageContainer = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(4),
@@ -37,7 +37,7 @@ export const StyledImageContainer = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledRow = styled(`div`)(({ theme }) => ({
+export const Row = styled("div")(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(4),
   flexWrap: "nowrap",
@@ -47,7 +47,7 @@ export const StyledRow = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledImage = styled(`div`)(({ theme }) => ({
+export const Image = styled("div")(({ theme }) => ({
   height: "300px",
   aspectRatio: "450 / 300",
   flex: "0 0 auto",
@@ -60,7 +60,7 @@ export const StyledImage = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledLinkContainer = styled(`div`)(() => ({
+export const LinkContainer = styled("div")(() => ({
   display: "flex",
   justifyContent: "center",
 }));

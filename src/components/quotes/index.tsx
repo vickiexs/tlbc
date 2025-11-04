@@ -14,15 +14,7 @@ import ArrowIcon from "../../common/icons/arrow";
 import Link from "../../common/link";
 import QuotesCarouselCard from "./quotes-mobile-card";
 
-import {
-  StyledContainer,
-  StyledQuote,
-  StyledImageLine,
-  StyledImageContainer,
-  StyledName,
-  StyledHr,
-  StyledArrowButton,
-} from "./styled";
+import * as S from "./styled";
 import { QuotesProps } from "./type";
 
 export default function Quotes({ quotes, link, darkMode }: QuotesProps) {
@@ -50,7 +42,7 @@ export default function Quotes({ quotes, link, darkMode }: QuotesProps) {
   }, [quotes]);
 
   return (
-    <StyledContainer>
+    <S.Container>
       {isBreakpointSm ? (
         <Fragment>
           <Swiper
@@ -71,19 +63,19 @@ export default function Quotes({ quotes, link, darkMode }: QuotesProps) {
         </Fragment>
       ) : (
         <Fragment>
-          <StyledQuote>{`"${quotes[activeIndex].quote}"`}</StyledQuote>
-          <StyledImageLine>
+          <S.Quote>{`"${quotes[activeIndex].quote}"`}</S.Quote>
+          <S.ImageLine>
             {quotes.map((testimonial, index) => (
-              <StyledImageContainer key={index}>
+              <S.ImageContainer key={index}>
                 <Avatar
                   size={index === activeIndex ? activeAvatarSize : avatarSize}
                 >
                   <Image {...testimonial.image} />
                 </Avatar>
-              </StyledImageContainer>
+              </S.ImageContainer>
             ))}
-            <StyledHr>
-              <StyledArrowButton
+            <S.Hr>
+              <S.ArrowButton
                 className={classNames("left-arrow-btn", {
                   "dark-mode": darkMode,
                 })}
@@ -94,11 +86,11 @@ export default function Quotes({ quotes, link, darkMode }: QuotesProps) {
                 }
               >
                 <ArrowIcon />
-              </StyledArrowButton>
+              </S.ArrowButton>
               <Hr
                 color={darkMode ? theme.palette.white : "rgba(0, 0, 0, 0.7)"}
               />
-              <StyledArrowButton
+              <S.ArrowButton
                 className={classNames("right-arrow-btn", {
                   "dark-mode": darkMode,
                 })}
@@ -109,13 +101,13 @@ export default function Quotes({ quotes, link, darkMode }: QuotesProps) {
                 }
               >
                 <ArrowIcon />
-              </StyledArrowButton>
-            </StyledHr>
-          </StyledImageLine>
-          <StyledName>{`${quotes[activeIndex].fullName} - ${quotes[activeIndex].location}`}</StyledName>
+              </S.ArrowButton>
+            </S.Hr>
+          </S.ImageLine>
+          <S.Name>{`${quotes[activeIndex].fullName} - ${quotes[activeIndex].location}`}</S.Name>
           {link && <Link {...link} />}
         </Fragment>
       )}
-    </StyledContainer>
+    </S.Container>
   );
 }

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import IconButton from "../icon-button";
 
-export const StyledVideoContainer = styled(`div`)(({ theme }) => ({
+export const VideoContainer = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   width: "100%",
@@ -18,14 +18,14 @@ export const StyledVideoContainer = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledVideoWrapper = styled(`div`)(() => ({
+export const VideoWrapper = styled("div")(() => ({
   display: "flex",
   justifyContent: "center",
   width: "100%",
   maxWidth: "1500px",
 }));
 
-export const StyledThumbnail = styled(`div`)(({ theme }) => ({
+export const Thumbnail = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -60,7 +60,7 @@ export const StyledThumbnail = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledPlayIcon = styled(IconButton)(() => ({
+export const PlayIcon = styled(IconButton)(() => ({
   position: "absolute",
   top: 0,
 }));

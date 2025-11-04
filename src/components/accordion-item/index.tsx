@@ -4,14 +4,7 @@ import classNames from "classnames";
 import Typography from "../typography";
 import ArrowIcon from "../../common/icons/arrow";
 
-import {
-  StyledAccordionContainer,
-  StyledAccordionHeader,
-  StyledAccordionHeaderLabel,
-  StyledAccordionHeaderLastWord,
-  StyledAccordionContentWrapper,
-  StyledAccordionContent,
-} from "./styled";
+import * as S from "./styled";
 import { AccordionProps } from "./type";
 
 export default function AccordionItem({
@@ -48,30 +41,30 @@ export default function AccordionItem({
   };
 
   return (
-    <StyledAccordionContainer>
-      <StyledAccordionHeader
+    <S.AccordionContainer>
+      <S.AccordionHeader
         onClick={handleHeaderClick}
         className={classNames({ open: index === activeItem })}
       >
-        <StyledAccordionHeaderLabel>
+        <S.AccordionHeaderLabel>
           {splitString(header, "first")}
-        </StyledAccordionHeaderLabel>
-        <StyledAccordionHeaderLastWord>
-          <StyledAccordionHeaderLabel>
+        </S.AccordionHeaderLabel>
+        <S.AccordionHeaderLastWord>
+          <S.AccordionHeaderLabel>
             {splitString(header, "last")}
-          </StyledAccordionHeaderLabel>
+          </S.AccordionHeaderLabel>
           <ArrowIcon />
-        </StyledAccordionHeaderLastWord>
-      </StyledAccordionHeader>
-      <StyledAccordionContentWrapper
+        </S.AccordionHeaderLastWord>
+      </S.AccordionHeader>
+      <S.AccordionContentWrapper
         className={classNames({ visible: index === activeItem })}
       >
-        <StyledAccordionContent>
+        <S.AccordionContent>
           <Typography variation="body">
             <PortableText value={content} components={components} />
           </Typography>
-        </StyledAccordionContent>
-      </StyledAccordionContentWrapper>
-    </StyledAccordionContainer>
+        </S.AccordionContent>
+      </S.AccordionContentWrapper>
+    </S.AccordionContainer>
   );
 }

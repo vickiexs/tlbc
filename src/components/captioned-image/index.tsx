@@ -1,7 +1,7 @@
 import Image from "../../common/image";
 import Typography from "../typography";
 
-import { StyledCaptionedImage } from "./styled";
+import * as S from "./styled";
 import { CaptionedImageProps } from "./type";
 
 export default function CaptionedImage({
@@ -10,13 +10,13 @@ export default function CaptionedImage({
   aspectRatio,
 }: CaptionedImageProps) {
   return (
-    <StyledCaptionedImage
+    <S.CaptionedImage
       aspectRatio={
         aspectRatio ? aspectRatio : image.asset.metadata.dimensions.aspectRatio
       }
     >
       <Image {...image} />
       {caption && <Typography variation="caption">{caption}</Typography>}
-    </StyledCaptionedImage>
+    </S.CaptionedImage>
   );
 }

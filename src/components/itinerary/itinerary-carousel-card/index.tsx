@@ -5,12 +5,7 @@ import { PortableText } from "@portabletext/react";
 import Typography from "../../typography";
 import Hr from "../../../common/horizontal-rule";
 
-import {
-  StyledCarouselCard,
-  StyledCardHeading,
-  StyledLineContainer,
-  StyledTimelineBullet,
-} from "./styled";
+import * as S from "./styled";
 import { HeadedContentBlockProps } from "../../headed-content-block/type";
 
 export default function ItineraryCarouselCard({
@@ -19,15 +14,15 @@ export default function ItineraryCarouselCard({
 }: HeadedContentBlockProps) {
   const theme = useTheme();
   return (
-    <StyledCarouselCard>
-      <StyledCardHeading>{heading}</StyledCardHeading>
-      <StyledLineContainer>
-        <StyledTimelineBullet />
+    <S.CarouselCard>
+      <S.CardHeading>{heading}</S.CardHeading>
+      <S.LineContainer>
+        <S.TimelineBullet />
         <Hr color={theme.palette.white} />
-      </StyledLineContainer>
+      </S.LineContainer>
       <Typography variation="body">
         <PortableText value={content} />
       </Typography>
-    </StyledCarouselCard>
+    </S.CarouselCard>
   );
 }

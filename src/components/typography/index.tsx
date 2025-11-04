@@ -1,11 +1,4 @@
-import {
-  StyledHeading1,
-  StyledHeading2,
-  StyledHeading3,
-  StyledHeading4,
-  StyledBody,
-  StyledCaption,
-} from "./styled";
+import * as S from "./styled";
 import { TypographyProps } from "./type";
 
 export default function Typography({
@@ -16,25 +9,17 @@ export default function Typography({
   const renderTypography = () => {
     switch (variation) {
       case "h1":
-        return (
-          <StyledHeading1 className={className}>{children}</StyledHeading1>
-        );
+        return <S.Heading1 className={className}>{children}</S.Heading1>;
       case "h2":
-        return (
-          <StyledHeading2 className={className}>{children}</StyledHeading2>
-        );
+        return <S.Heading2 className={className}>{children}</S.Heading2>;
       case "h3":
-        return (
-          <StyledHeading3 className={className}>{children}</StyledHeading3>
-        );
+        return <S.Heading3 className={className}>{children}</S.Heading3>;
       case "h4":
-        return (
-          <StyledHeading4 className={className}>{children}</StyledHeading4>
-        );
+        return <S.Heading4 className={className}>{children}</S.Heading4>;
       case "body":
-        return <StyledBody className={className}>{children}</StyledBody>;
+        return <S.Body className={className}>{children}</S.Body>;
       case "caption":
-        return <StyledCaption className={className}>{children}</StyledCaption>;
+        return <S.Caption className={className}>{children}</S.Caption>;
     }
   };
   return <>{renderTypography()}</>;

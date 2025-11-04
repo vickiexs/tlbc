@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-export const StyledAccordionContainer = styled(`div`)(() => ({
+export const AccordionContainer = styled("div")(() => ({
   display: "flex",
   flexDirection: "column",
 }));
 
-export const StyledAccordionHeader = styled(`button`)(({ theme }) => ({
+export const AccordionHeader = styled("button")(({ theme }) => ({
   fontFamily: "Titillium Web",
   fontSize: theme.fontSize(5),
   fontWeight: theme.fontWeight.semiBold,
@@ -39,11 +39,11 @@ export const StyledAccordionHeader = styled(`button`)(({ theme }) => ({
   },
 }));
 
-export const StyledAccordionHeaderLabel = styled(`div`)(() => ({
+export const AccordionHeaderLabel = styled("div")(() => ({
   display: "inline",
 }));
 
-export const StyledAccordionHeaderLastWord = styled(`div`)(({ theme }) => ({
+export const AccordionHeaderLastWord = styled("div")(({ theme }) => ({
   display: "inline",
   whiteSpace: "nowrap",
   svg: {
@@ -54,7 +54,7 @@ export const StyledAccordionHeaderLastWord = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledAccordionContentWrapper = styled(`div`)(() => ({
+export const AccordionContentWrapper = styled("div")(() => ({
   display: "grid",
   gridTemplateRows: "0fr",
   transition: "grid-template-rows 0.75s ease-in-out",
@@ -63,7 +63,7 @@ export const StyledAccordionContentWrapper = styled(`div`)(() => ({
   },
 }));
 
-export const StyledAccordionContent = styled(`div`)(({ theme }) => ({
+export const AccordionContent = styled("div")(({ theme }) => ({
   marginTop: theme.spacing(4),
   marginBottom: theme.spacing(4),
   overflow: "hidden",

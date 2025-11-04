@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledVideoOverlay = styled("div")(({ theme }) => ({
+export const VideoOverlay = styled("div")(({ theme }) => ({
   ".modal-container": {
     position: "relative",
     overflow: "visible",
@@ -26,7 +26,7 @@ export const StyledVideoOverlay = styled("div")(({ theme }) => ({
   },
 }));
 
-export const StyledModalContent = styled("div")(() => ({
+export const ModalContent = styled("div")(() => ({
   position: "relative",
   width: "100%",
 }));

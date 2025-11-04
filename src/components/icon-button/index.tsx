@@ -1,4 +1,4 @@
-import { StyledIconButton } from "./styled";
+import * as S from "./styled";
 import { IconButtonProps } from "./type";
 
 export default function IconButton({
@@ -7,8 +7,8 @@ export default function IconButton({
   onClick,
 }: IconButtonProps) {
   return (
-    <StyledIconButton onClick={onClick} className={className}>
+    <S.IconButton onClick={onClick} className={className}>
       {children}
-    </StyledIconButton>
+    </S.IconButton>
   );
 }

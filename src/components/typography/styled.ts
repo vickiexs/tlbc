@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledHeading1 = styled(`h1`)(({ theme }) => ({
+export const Heading1 = styled("h1")(({ theme }) => ({
   fontFamily: "Mukta",
   fontSize: theme.fontSize(16),
   fontWeight: theme.fontWeight.regular,
@@ -40,7 +40,7 @@ export const StyledHeading1 = styled(`h1`)(({ theme }) => ({
   },
 }));
 
-export const StyledHeading2 = styled(`h2`)(({ theme }) => ({
+export const Heading2 = styled("h2")(({ theme }) => ({
   fontSize: theme.fontSize(5),
   fontWeight: theme.fontWeight.semiBold,
   color: "inherit",
@@ -51,7 +51,7 @@ export const StyledHeading2 = styled(`h2`)(({ theme }) => ({
   },
 }));
 
-export const StyledHeading3 = styled(`h3`)(({ theme }) => ({
+export const Heading3 = styled("h3")(({ theme }) => ({
   fontSize: theme.fontSize(10),
   fontWeight: theme.fontWeight.regular,
   color: "inherit",
@@ -65,7 +65,7 @@ export const StyledHeading3 = styled(`h3`)(({ theme }) => ({
   },
 }));
 
-export const StyledHeading4 = styled(`h4`)(({ theme }) => ({
+export const Heading4 = styled("h4")(({ theme }) => ({
   fontSize: theme.fontSize(7),
   fontWeight: theme.fontWeight.semiBold,
   textTransform: "uppercase",
@@ -80,7 +80,7 @@ export const StyledHeading4 = styled(`h4`)(({ theme }) => ({
   },
 }));
 
-export const StyledBody = styled(`div`)(({ theme }) => ({
+export const Body = styled("div")(({ theme }) => ({
   fontSize: theme.fontSize(5),
   fontWeight: theme.fontWeight.light,
   color: "inherit",
@@ -110,7 +110,7 @@ export const StyledBody = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledCaption = styled(`figcaption`)(({ theme }) => ({
+export const Caption = styled("figcaption")(({ theme }) => ({
   fontSize: theme.fontSize(4),
   fontWeight: theme.fontWeight.light,
   color: "inherit",

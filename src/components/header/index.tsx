@@ -16,21 +16,7 @@ import IconButton from "../icon-button";
 
 import { useOutsideClick } from "../../utils/hooks/handleOutsideClick";
 
-import {
-  StyledHeader,
-  StyledHeaderBackground,
-  StyledHeaderContainer,
-  StyledLogoContainer,
-  StyledNavLinks,
-  StyledDesktopMenu,
-  StyledMenuLinks,
-  StyledOverlay,
-  StyledMobileMenu,
-  StyledMobileMenuItems,
-  StyledNavDropdownItem,
-  StyledSubmenu,
-  MobileNavLink,
-} from "./styled";
+import * as S from "./styled";
 import { HeaderProps, NavDropdownItem as NavDropdownType } from "./type";
 import { NavLinkProps as NavLinkType } from "../../common/nav-link/type";
 
@@ -161,26 +147,26 @@ export default function Header({ navItems }: HeaderProps) {
 
   return (
     <>
-      <StyledHeader
+      <S.Header
         visible={visible}
         isTransparent={isTransparentHeader}
         menuOpen={desktopMenuOpen || mobileMenuOpen}
         ref={headerRef}
       >
-        <StyledHeaderContainer>
-          <StyledLogoContainer to="/">
+        <S.HeaderContainer>
+          <S.LogoContainer to="/">
             <Logo />
-          </StyledLogoContainer>
-          <StyledNavLinks>
+          </S.LogoContainer>
+          <S.NavLinks>
             {navItems.map((navItem, index) =>
               isNavDropdownItem(navItem) ? (
-                <StyledNavDropdownItem
+                <S.NavDropdownItem
                   onClick={() => toggleDesktopMenu(navItem)}
                   active={desktopMenuOpen}
                   key={index}
                 >
                   {navItem.label} <ArrowIcon />
-                </StyledNavDropdownItem>
+                </S.NavDropdownItem>
               ) : (
                 <NavLink
                   label={navItem.label}
@@ -195,7 +181,7 @@ export default function Header({ navItems }: HeaderProps) {
                 />
               )
             )}
-          </StyledNavLinks>
+          </S.NavLinks>
           {isMobile && (
             <animated.div
               style={{
@@ -211,11 +197,11 @@ export default function Header({ navItems }: HeaderProps) {
               </IconButton>
             </animated.div>
           )}
-        </StyledHeaderContainer>
+        </S.HeaderContainer>
         {!isMobile && (
-          <StyledDesktopMenu>
+          <S.DesktopMenu>
             <Hr />
-            <StyledMenuLinks>
+            <S.MenuLinks>
               {selectedSubmenu?.dropdownItems.map((navItem, index) => (
                 <NavLink
                   label={navItem.label}
@@ -224,15 +210,15 @@ export default function Header({ navItems }: HeaderProps) {
                   key={index}
                 />
               ))}
-            </StyledMenuLinks>
-          </StyledDesktopMenu>
+            </S.MenuLinks>
+          </S.DesktopMenu>
         )}
         {isMobile && (
-          <StyledMobileMenu>
-            <StyledMobileMenuItems>
+          <S.MobileMenu>
+            <S.MobileMenuItems>
               {navItems.map((navItem, index) =>
                 isNavDropdownItem(navItem) ? (
-                  <StyledNavDropdownItem
+                  <S.NavDropdownItem
                     onClick={() => toggleMenuItem(navItem)}
                     active={
                       (selectedSubmenu &&
@@ -242,7 +228,7 @@ export default function Header({ navItems }: HeaderProps) {
                     key={index}
                   >
                     {navItem.label} <ArrowIcon />
-                  </StyledNavDropdownItem>
+                  </S.NavDropdownItem>
                 ) : (
                   <NavLink
                     className={classNames({
@@ -255,28 +241,28 @@ export default function Header({ navItems }: HeaderProps) {
                   />
                 )
               )}
-            </StyledMobileMenuItems>
-            <StyledSubmenu>
+            </S.MobileMenuItems>
+            <S.Submenu>
               {submenuTransitions((styles, navItem) => (
                 <animated.div key={navItem.label} style={styles}>
-                  <MobileNavLink
+                  <S.MobileNavLink
                     label={navItem.label}
                     link={navItem.link}
                     closeMenu={closeMobileMenu}
                   />
                 </animated.div>
               ))}
-            </StyledSubmenu>
-          </StyledMobileMenu>
+            </S.Submenu>
+          </S.MobileMenu>
         )}
-      </StyledHeader>
-      <StyledHeaderBackground
+      </S.Header>
+      <S.HeaderBackground
         visible={visible}
         menuOpen={desktopMenuOpen || mobileMenuOpen}
         isTransparent={isTransparentHeader}
         atTop={atTop}
       />
-      <StyledOverlay
+      <S.Overlay
         className={classNames({
           visible: desktopMenuOpen || mobileMenuOpen,
         })}

@@ -1,7 +1,7 @@
 import Avatar from "../../../common/avatar";
 import Image from "../../../common/image";
 
-import { StyledCard, StyledQuote, StyledGuestInfo } from "./styled";
+import * as S from "./styled";
 import { Quote } from "./type";
 
 export default function QuotesCarouselCard({
@@ -11,13 +11,13 @@ export default function QuotesCarouselCard({
   image,
 }: Quote) {
   return (
-    <StyledCard>
+    <S.Card>
       <Avatar size={120}>
         <Image {...image} />
       </Avatar>
-      <StyledGuestInfo>{fullName}</StyledGuestInfo>
-      <StyledGuestInfo className="location">{location}</StyledGuestInfo>
-      <StyledQuote>{quote}</StyledQuote>
-    </StyledCard>
+      <S.GuestInfo>{fullName}</S.GuestInfo>
+      <S.GuestInfo className="location">{location}</S.GuestInfo>
+      <S.Quote>{quote}</S.Quote>
+    </S.Card>
   );
 }

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledCarouselCard = styled(`div`)(({ theme }) => ({
+export const CarouselCard = styled("div")(({ theme }) => ({
   maxWidth: "450px",
   textAlign: "justify",
 
@@ -9,7 +9,7 @@ export const StyledCarouselCard = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledCardHeading = styled(`div`)(({ theme }) => ({
+export const CardHeading = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   textTransform: "uppercase",
@@ -17,7 +17,7 @@ export const StyledCardHeading = styled(`div`)(({ theme }) => ({
   fontWeight: theme.fontWeight.semiBold,
 }));
 
-export const StyledLineContainer = styled(`div`)(({ theme }) => ({
+export const LineContainer = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   position: "relative",
@@ -33,7 +33,7 @@ export const StyledLineContainer = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledTimelineBullet = styled(`div`)(({ theme }) => ({
+export const TimelineBullet = styled("div")(({ theme }) => ({
   position: "absolute",
   top: 0,
   height: "20px",

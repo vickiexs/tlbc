@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledItineraryContainer = styled(`div`)(({ theme }) => ({
+export const ItineraryContainer = styled("div")(({ theme }) => ({
   ".swiper": {
     width: "100%",
     height: "100%",
@@ -99,7 +99,7 @@ export const StyledItineraryContainer = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledButtonContainer = styled(`div`)(({ theme }) => ({
+export const ButtonContainer = styled("div")(({ theme }) => ({
   marginTop: theme.spacing(20),
 
   ".hr": {
@@ -113,7 +113,7 @@ export const StyledButtonContainer = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledImageContainer = styled(`div`)(({ theme }) => ({
+export const ImageContainer = styled("div")(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(10),
   marginTop: theme.spacing(25),

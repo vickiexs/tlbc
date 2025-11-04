@@ -1,6 +1,6 @@
 import Typography from "../typography";
 
-import { StyledSection, StyledSectionContainer } from "./styled";
+import * as S from "./styled";
 import { SectionProps } from "./type";
 
 export default function Section({
@@ -13,8 +13,8 @@ export default function Section({
   removeTopPadding = false,
 }: SectionProps) {
   return (
-    <StyledSection backgroundColor={backgroundColor} textColor={textColor}>
-      <StyledSectionContainer
+    <S.Section backgroundColor={backgroundColor} textColor={textColor}>
+      <S.SectionContainer
         style={{
           overflow: hideOverflow ? "hidden" : "auto",
           paddingTop: removeTopPadding ? 0 : "revert-layer",
@@ -25,7 +25,7 @@ export default function Section({
         )}
         {heading && <Typography variation="h3">{heading}</Typography>}
         {children}
-      </StyledSectionContainer>
-    </StyledSection>
+      </S.SectionContainer>
+    </S.Section>
   );
 }

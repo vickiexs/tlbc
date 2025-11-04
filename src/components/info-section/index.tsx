@@ -4,13 +4,7 @@ import classNames from "classnames";
 import Typography from "../typography";
 import Image from "../../common/image";
 
-import {
-  StyledTripIntroduction,
-  StyledTextContainer,
-  StyledImageContainer,
-  StyledImage,
-  StyledCaption,
-} from "./styled";
+import * as S from "./styled";
 import { InfoSectionProps } from "./type";
 
 export default function InfoSection({
@@ -21,38 +15,38 @@ export default function InfoSection({
   imageFirst,
 }: InfoSectionProps) {
   return (
-    <StyledTripIntroduction
+    <S.TripIntroduction
       className={classNames("info-section", { "dark-mode": darkMode })}
     >
       {imageFirst ? (
         <>
-          <StyledImageContainer>
-            <StyledImage hasCaption={caption !== null ? true : false}>
+          <S.ImageContainer>
+            <S.Image hasCaption={caption !== null ? true : false}>
               <Image {...image} caption={caption} />
-            </StyledImage>
-            {caption && <StyledCaption>{caption}</StyledCaption>}
-          </StyledImageContainer>
-          <StyledTextContainer>
+            </S.Image>
+            {caption && <S.Caption>{caption}</S.Caption>}
+          </S.ImageContainer>
+          <S.TextContainer>
             <Typography variation="body">
               <PortableText value={content} />
             </Typography>
-          </StyledTextContainer>
+          </S.TextContainer>
         </>
       ) : (
         <>
-          <StyledTextContainer>
+          <S.TextContainer>
             <Typography variation="body">
               <PortableText value={content} />
             </Typography>
-          </StyledTextContainer>
-          <StyledImageContainer>
-            <StyledImage hasCaption={caption !== null ? true : false}>
+          </S.TextContainer>
+          <S.ImageContainer>
+            <S.Image hasCaption={caption !== null ? true : false}>
               <Image {...image} caption={caption} />
-            </StyledImage>
-            {caption && <StyledCaption>{caption}</StyledCaption>}
-          </StyledImageContainer>
+            </S.Image>
+            {caption && <S.Caption>{caption}</S.Caption>}
+          </S.ImageContainer>
         </>
       )}
-    </StyledTripIntroduction>
+    </S.TripIntroduction>
   );
 }

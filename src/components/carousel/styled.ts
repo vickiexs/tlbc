@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledCarouselContainer = styled(`div`)(({ theme }) => ({
+export const CarouselContainer = styled("div")(({ theme }) => ({
   position: "relative",
 
   ".swiper": {
@@ -92,7 +92,7 @@ export const StyledCarouselContainer = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledButtonContainer = styled(`div`)(({ theme }) => ({
+export const ButtonContainer = styled("div")(({ theme }) => ({
   marginTop: theme.spacing(20),
   display: "block",
 

@@ -1,15 +1,12 @@
-import { StyledBackgroundOverlay, StyledModalContainer } from "./styled";
+import * as S from "./styled";
 import { ModalProps } from "./type";
 
 export default function Modal({ children, borderRadius }: ModalProps) {
   return (
-    <StyledBackgroundOverlay>
-      <StyledModalContainer
-        className="modal-container"
-        borderRadius={borderRadius}
-      >
+    <S.BackgroundOverlay>
+      <S.ModalContainer className="modal-container" borderRadius={borderRadius}>
         {children}
-      </StyledModalContainer>
-    </StyledBackgroundOverlay>
+      </S.ModalContainer>
+    </S.BackgroundOverlay>
   );
 }

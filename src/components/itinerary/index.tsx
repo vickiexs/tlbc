@@ -15,11 +15,7 @@ import CaptionedImage from "../captioned-image";
 
 import VerticalItinerary from "./vertical-itinerary";
 
-import {
-  StyledItineraryContainer,
-  StyledButtonContainer,
-  StyledImageContainer,
-} from "./styled";
+import * as S from "./styled";
 import { ItineraryProps } from "./type";
 
 export default function Itinerary({
@@ -32,7 +28,7 @@ export default function Itinerary({
   const isBreakpointMd = useMediaQuery(theme.breakpoints.md);
 
   return (
-    <StyledItineraryContainer>
+    <S.ItineraryContainer>
       <Typography variation="body">
         <PortableText value={description} />
       </Typography>
@@ -51,7 +47,7 @@ export default function Itinerary({
               <ItineraryCarouselCard {...timelineItem} />
             </SwiperSlide>
           ))}
-          <StyledButtonContainer>
+          <S.ButtonContainer>
             <div className="swiper-button-next">
               <ArrowIcon />
             </div>
@@ -59,13 +55,13 @@ export default function Itinerary({
               <ArrowIcon />
             </div>
             <Hr color={theme.palette.white} />
-          </StyledButtonContainer>
+          </S.ButtonContainer>
         </Swiper>
       ) : (
         <VerticalItinerary items={timeline} />
       )}
       {additionalImages && (
-        <StyledImageContainer>
+        <S.ImageContainer>
           {additionalImages.map((image, index) => (
             <CaptionedImage
               image={image.image}
@@ -74,8 +70,8 @@ export default function Itinerary({
               key={index}
             />
           ))}
-        </StyledImageContainer>
+        </S.ImageContainer>
       )}
-    </StyledItineraryContainer>
+    </S.ItineraryContainer>
   );
 }

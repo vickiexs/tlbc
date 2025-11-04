@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledHostsContainer = styled(`div`)(({ theme }) => ({
+export const Container = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(6),
@@ -23,7 +23,7 @@ export const StyledHostsContainer = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledHosts = styled(`div`)(({ theme }) => ({
+export const Hosts = styled("div")(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(3),
   flexWrap: "wrap",
@@ -40,7 +40,7 @@ export const StyledHosts = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledHost = styled(`div`)(({ theme }) => ({
+export const Host = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",

@@ -6,7 +6,7 @@ import Avatar from "../../../common/avatar";
 import Link from "../../../common/link";
 import Image from "../../../common/image";
 
-import { StyledHostsContainer, StyledHosts, StyledHost } from "./styled";
+import * as S from "./styled";
 import { TripHostsProps } from "./type";
 
 export default function TripHosts({
@@ -27,11 +27,11 @@ export default function TripHosts({
   const mobileGuestAvatarSize = 80;
 
   return (
-    <StyledHostsContainer>
+    <S.Container>
       <Typography variation="h4">{hostsHeading}</Typography>
-      <StyledHosts className="hosts">
+      <S.Hosts className="hosts">
         {hosts.map((host, index) => (
-          <StyledHost key={index}>
+          <S.Host key={index}>
             <Avatar
               size={isBreakpointSm ? mobileHostsAvatarSize : hostsAvatarSize}
             >
@@ -40,17 +40,17 @@ export default function TripHosts({
             <Typography variation="body" className="host-name">
               {host.nickname}
             </Typography>
-          </StyledHost>
+          </S.Host>
         ))}
-      </StyledHosts>
+      </S.Hosts>
       {specialGuests && (
         <>
           <Typography variation="h4" className="special-guests-heading">
             {specialGuestsHeading}
           </Typography>
-          <StyledHosts>
+          <S.Hosts>
             {specialGuests.map((guest, index) => (
-              <StyledHost key={index}>
+              <S.Host key={index}>
                 <Avatar
                   size={
                     isBreakpointSm ? mobileGuestAvatarSize : guestAvatarSize
@@ -61,12 +61,12 @@ export default function TripHosts({
                 <Typography variation="body" className="host-name">
                   {guest.nickname}
                 </Typography>
-              </StyledHost>
+              </S.Host>
             ))}
-          </StyledHosts>
+          </S.Hosts>
         </>
       )}
       <Link {...link}></Link>
-    </StyledHostsContainer>
+    </S.Container>
   );
 }
