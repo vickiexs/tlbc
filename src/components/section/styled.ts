@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledSection = styled(`div`).withConfig({
+export const Section = styled("div").withConfig({
   shouldForwardProp: (props) =>
     props !== "backgroundColor" && props !== "textColor",
 })<{
@@ -13,7 +13,7 @@ export const StyledSection = styled(`div`).withConfig({
   fill: textColor ? textColor : theme.palette.text,
 }));
 
-export const StyledSectionContainer = styled(`div`)(({ theme }) => ({
+export const SectionContainer = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(5),

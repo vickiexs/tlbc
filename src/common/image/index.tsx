@@ -1,6 +1,6 @@
 import { baseUrl } from "../../utils/constants";
 
-import { StyledImage } from "./styled";
+import * as S from "./styled";
 import { ImageProps } from "./type";
 
 export default function Image({
@@ -11,7 +11,7 @@ export default function Image({
   noPreview = false,
 }: ImageProps) {
   return (
-    <StyledImage
+    <S.Image
       id={asset._id}
       baseUrl={baseUrl}
       preview={noPreview ? undefined : asset.metadata.lqip}

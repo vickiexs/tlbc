@@ -6,7 +6,7 @@ import CloseButton from "../../modal/close-button";
 
 import { useOutsideClick } from "../../../utils/hooks/handleOutsideClick";
 
-import { StyledVideoOverlay, StyledModalContent } from "./styled";
+import * as S from "./styled";
 import { VideoOverlayProps } from "../type";
 
 export default function VideoOverlay({
@@ -20,11 +20,11 @@ export default function VideoOverlay({
   useOutsideClick(modalRef, handleClose);
 
   return (
-    <StyledVideoOverlay>
+    <S.VideoOverlay>
       {open && (
         <Modal>
           <CloseButton handleClick={handleClose} />
-          <StyledModalContent ref={modalRef}>
+          <S.ModalContent ref={modalRef}>
             <ReactPlayer
               id="video-player"
               ref={player}
@@ -39,9 +39,9 @@ export default function VideoOverlay({
                 backgroundColor: "transparent",
               }}
             />
-          </StyledModalContent>
+          </S.ModalContent>
         </Modal>
       )}
-    </StyledVideoOverlay>
+    </S.VideoOverlay>
   );
 }

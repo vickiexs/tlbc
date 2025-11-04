@@ -7,12 +7,7 @@ import useDetectScroll from "@smakss/react-scroll-direction";
 import Image from "../../common/image";
 import Link from "../../common/link";
 
-import {
-  StyledContainer,
-  StyledImageContainer,
-  StyledRow,
-  StyledImage,
-} from "./styled";
+import * as S from "./styled";
 import { ScrollingImagesProps } from "./type";
 
 export default function ScrollingImages({
@@ -50,8 +45,8 @@ export default function ScrollingImages({
   }
 
   return (
-    <StyledContainer ref={ref}>
-      <StyledImageContainer ref={containerRef} id="image-container">
+    <S.Container ref={ref}>
+      <S.ImageContainer ref={containerRef} id="image-container">
         {rows.map((row, index) => (
           <animated.div
             style={{
@@ -67,21 +62,21 @@ export default function ScrollingImages({
             className="img-row"
             key={index}
           >
-            <StyledRow>
+            <S.Row>
               {row.map((image, index) => (
-                <StyledImage key={index}>
+                <S.Image key={index}>
                   <Image
                     {...image}
                     height={isMobile ? mobileImageHeight : desktopImageHeight}
                     noPreview
                   />
-                </StyledImage>
+                </S.Image>
               ))}
-            </StyledRow>
+            </S.Row>
           </animated.div>
         ))}
-      </StyledImageContainer>
+      </S.ImageContainer>
       {link && <Link label={link.label} link={link.link} />}
-    </StyledContainer>
+    </S.Container>
   );
 }

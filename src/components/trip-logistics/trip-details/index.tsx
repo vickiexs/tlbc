@@ -5,13 +5,7 @@ import { PortableText } from "@portabletext/react";
 import HeadedContentBlock from "../../headed-content-block";
 import Typography from "../../typography";
 
-import {
-  StyledTripDetailsContainer,
-  StyledCodename,
-  StyledDesktopDetailsContainer,
-  StyledTripDetails,
-  StyledColumn,
-} from "./styled";
+import * as S from "./styled";
 import { TripDetailsProps } from "./type";
 
 export default function TripDetails({
@@ -24,37 +18,37 @@ export default function TripDetails({
   const isBreakpointSm = useMediaQuery(theme.breakpoints.sm);
 
   return (
-    <StyledTripDetailsContainer>
+    <S.TripDetailsContainer>
       {tripDetails.map((details, index) => {
         const { codename, dates, price, spaces, location } = details;
         return isBreakpointSm ? (
           <div key={index}>
             {codename && (
-              <StyledCodename variation="body">{`Code name: ${codename}`}</StyledCodename>
+              <S.TripCodename variation="body">{`Code name: ${codename}`}</S.TripCodename>
             )}
-            <StyledTripDetails>
+            <S.TripDetails>
               <HeadedContentBlock {...dates} />
               <HeadedContentBlock {...price} />
               <HeadedContentBlock {...spaces} />
               <HeadedContentBlock {...location} />
-            </StyledTripDetails>
+            </S.TripDetails>
           </div>
         ) : (
-          <StyledDesktopDetailsContainer key={index}>
+          <S.DesktopDetailsContainer key={index}>
             {codename && (
-              <StyledCodename variation="body">{`Code name: ${codename}`}</StyledCodename>
+              <S.TripCodename variation="body">{`Code name: ${codename}`}</S.TripCodename>
             )}
-            <StyledTripDetails>
-              <StyledColumn className="left-col">
+            <S.TripDetails>
+              <S.Column className="left-col">
                 <HeadedContentBlock {...dates} />
                 <HeadedContentBlock {...spaces} />
-              </StyledColumn>
-              <StyledColumn className="right-col">
+              </S.Column>
+              <S.Column className="right-col">
                 <HeadedContentBlock {...price} />
                 <HeadedContentBlock {...location} />
-              </StyledColumn>
-            </StyledTripDetails>
-          </StyledDesktopDetailsContainer>
+              </S.Column>
+            </S.TripDetails>
+          </S.DesktopDetailsContainer>
         );
       })}
       {!isBreakpointMd && (
@@ -62,6 +56,6 @@ export default function TripDetails({
           <PortableText value={bookCallInfo} />
         </Typography>
       )}
-    </StyledTripDetailsContainer>
+    </S.TripDetailsContainer>
   );
 }

@@ -3,12 +3,7 @@ import { useTheme } from "styled-components";
 
 import IconLink from "../../common/icon-link";
 
-import {
-  StyledFooterWrapper,
-  StyledContact,
-  StyledIconLinks,
-  StyledCopyright,
-} from "./styled";
+import * as S from "./styled";
 import { FooterProps } from "./type";
 
 export default function Footer({ contact, links, copyright }: FooterProps) {
@@ -18,10 +13,10 @@ export default function Footer({ contact, links, copyright }: FooterProps) {
   const isHomepage = location.pathname === "/";
 
   return (
-    <StyledFooterWrapper isHomepage={isHomepage}>
-      <StyledContact>
+    <S.FooterWrapper isHomepage={isHomepage}>
+      <S.Contact>
         {contact}
-        <StyledIconLinks>
+        <S.IconLinks>
           {links.map((link, index) => (
             <IconLink
               {...link}
@@ -30,11 +25,11 @@ export default function Footer({ contact, links, copyright }: FooterProps) {
               key={index}
             />
           ))}
-        </StyledIconLinks>
-      </StyledContact>
-      <StyledCopyright>
+        </S.IconLinks>
+      </S.Contact>
+      <S.Copyright>
         &copy; {`2021 - ${new Date().getFullYear()}`} {copyright}
-      </StyledCopyright>
-    </StyledFooterWrapper>
+      </S.Copyright>
+    </S.FooterWrapper>
   );
 }

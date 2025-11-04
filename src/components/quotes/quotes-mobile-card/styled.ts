@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledCard = styled(`div`)(({ theme }) => ({
+export const Card = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -15,7 +15,7 @@ export const StyledCard = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledQuote = styled(`q`)(({ theme }) => ({
+export const Quote = styled("q")(({ theme }) => ({
   fontWeight: theme.fontWeight.light,
   fontSize: theme.fontSize(4),
   fontStyle: "italic",
@@ -23,7 +23,7 @@ export const StyledQuote = styled(`q`)(({ theme }) => ({
   marginBottom: theme.spacing(10),
 }));
 
-export const StyledGuestInfo = styled(`div`)(({ theme }) => ({
+export const GuestInfo = styled("div")(({ theme }) => ({
   alignItems: "center",
   fontWeight: theme.fontWeight.semiBold,
   textTransform: "uppercase",

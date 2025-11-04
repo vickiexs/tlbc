@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 import Typography from "../../typography";
 
-export const StyledTripDetailsContainer = styled(`div`)(({ theme }) => ({
+export const TripDetailsContainer = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(11),
   maxWidth: "750px",
 }));
 
-export const StyledCodename = styled(Typography)(({ theme }) => ({
+export const TripCodename = styled(Typography)(({ theme }) => ({
   fontSize: theme.fontSize(5),
   fontWeight: theme.fontWeight.semiBold,
   textTransform: "uppercase",
@@ -27,14 +27,14 @@ export const StyledCodename = styled(Typography)(({ theme }) => ({
   },
 }));
 
-export const StyledDesktopDetailsContainer = styled(`div`)(({ theme }) => ({
+export const DesktopDetailsContainer = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(4),
   maxWidth: "750px",
 }));
 
-export const StyledTripDetails = styled(`div`)(({ theme }) => ({
+export const TripDetails = styled("div")(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(20),
   width: "100%",
@@ -63,7 +63,7 @@ export const StyledTripDetails = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledColumn = styled(`div`)(({ theme }) => ({
+export const Column = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(10),

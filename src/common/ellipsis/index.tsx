@@ -1,5 +1,5 @@
-import { StyledEllipsis } from "./styled";
+import * as S from "./styled";
 
 export default function Ellipsis() {
-  return <StyledEllipsis>...</StyledEllipsis>;
+  return <S.Ellipsis>...</S.Ellipsis>;
 }

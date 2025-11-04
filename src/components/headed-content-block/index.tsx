@@ -5,7 +5,7 @@ import { PortableText } from "@portabletext/react";
 import Typography from "../typography";
 import Icon from "../../common/icons";
 
-import { StyledHeadedContentBlock, StyledHeading } from "./styled";
+import * as S from "./styled";
 import { HeadedContentBlockProps } from "./type";
 
 export default function HeadedContentBlock({
@@ -21,14 +21,14 @@ export default function HeadedContentBlock({
   };
 
   return (
-    <StyledHeadedContentBlock>
-      <StyledHeading>
+    <S.HeadedContentBlock>
+      <S.Heading>
         {icon && <Icon icon={icon} size={getIconSize()} />}
         <Typography variation="h4">{heading}</Typography>
-      </StyledHeading>
+      </S.Heading>
       <Typography variation="body">
         <PortableText value={content} />
       </Typography>
-    </StyledHeadedContentBlock>
+    </S.HeadedContentBlock>
   );
 }

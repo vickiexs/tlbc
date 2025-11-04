@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledIconButton = styled(`button`)(() => ({
+export const IconButton = styled("button")(() => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",

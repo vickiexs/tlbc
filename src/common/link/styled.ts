@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 
-export const StyledLink = styled(Link).withConfig({
+export const Link = styled(RouterLink).withConfig({
   shouldForwardProp: (props) => props !== "underlineColour",
 })<{
   underlineColour: string | undefined;

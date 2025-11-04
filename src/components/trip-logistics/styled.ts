@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledTripLogistics = styled(`div`)(({ theme }) => ({
+export const TripLogistics = styled("div")(({ theme }) => ({
   marginTop: theme.spacing(6),
 
   [`@media ${theme.breakpoints.md}`]: {
@@ -8,7 +8,7 @@ export const StyledTripLogistics = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledTripDetailsContainer = styled(`div`)(({ theme }) => ({
+export const TripDetailsContainer = styled("div")(({ theme }) => ({
   display: "flex",
   marginBottom: theme.spacing(12),
   gap: theme.spacing(75),
@@ -25,7 +25,7 @@ export const StyledTripDetailsContainer = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledTripCoverage = styled(`div`)(({ theme }) => ({
+export const TripCoverage = styled("div")(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(10),
   li: {

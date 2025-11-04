@@ -10,7 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import ArrowIcon from "../../common/icons/arrow";
 import Hr from "../../common/horizontal-rule";
 
-import { StyledCarouselContainer, StyledButtonContainer } from "./styled";
+import * as S from "./styled";
 import { CarouselProps } from "./type";
 
 export default function Carousel({ children }: CarouselProps) {
@@ -18,7 +18,7 @@ export default function Carousel({ children }: CarouselProps) {
   const isMobile = useMediaQuery(theme.breakpoints.md);
 
   return (
-    <StyledCarouselContainer className="carousel-container">
+    <S.CarouselContainer className="carousel-container">
       <Swiper
         spaceBetween={isMobile ? 12 : 20}
         slidesPerView="auto"
@@ -31,7 +31,7 @@ export default function Carousel({ children }: CarouselProps) {
         {children.map((child, index) => (
           <SwiperSlide key={index}>{child}</SwiperSlide>
         ))}
-        <StyledButtonContainer>
+        <S.ButtonContainer>
           <div className="swiper-button-next">
             <ArrowIcon />
           </div>
@@ -39,8 +39,8 @@ export default function Carousel({ children }: CarouselProps) {
             <ArrowIcon />
           </div>
           <Hr color={theme.palette.text} />
-        </StyledButtonContainer>
+        </S.ButtonContainer>
       </Swiper>
-    </StyledCarouselContainer>
+    </S.CarouselContainer>
   );
 }

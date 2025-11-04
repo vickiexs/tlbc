@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledTripIntroduction = styled(`div`)(({ theme }) => ({
+export const TripIntroduction = styled("div")(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(20),
 
@@ -21,19 +21,19 @@ export const StyledTripIntroduction = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledTextContainer = styled(`div`)(() => ({
+export const TextContainer = styled("div")(() => ({
   width: "100%",
   textAlign: "justify",
 }));
 
-export const StyledImageContainer = styled(`div`)(() => ({
+export const ImageContainer = styled("div")(() => ({
   position: "relative",
   display: "flex",
   flexDirection: "column",
   width: "100%",
 }));
 
-export const StyledImage = styled(`div`).withConfig({
+export const Image = styled("div").withConfig({
   shouldForwardProp: (props) => props !== "hasCaption",
 })<{
   hasCaption: boolean;
@@ -49,7 +49,7 @@ export const StyledImage = styled(`div`).withConfig({
   },
 }));
 
-export const StyledCaption = styled(`div`)(({ theme }) => ({
+export const Caption = styled("div")(({ theme }) => ({
   position: "absolute",
   bottom: 0,
   fontStyle: "italic",

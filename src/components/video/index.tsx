@@ -8,7 +8,7 @@ import IconButton from "../icon-button";
 import Icon from "../../common/icons";
 import VideoOverlay from "./video-overlay";
 
-import { StyledThumbnail } from "./styled";
+import * as S from "./styled";
 import { VideoProps } from "./type";
 
 export default function Video({
@@ -57,7 +57,7 @@ export default function Video({
         />
       )}
       {thumbnailImage && isMobile && (
-        <StyledThumbnail>
+        <S.Thumbnail>
           <Image {...thumbnailImage} />
           {videoUrl && (
             <>
@@ -71,7 +71,7 @@ export default function Video({
               />
             </>
           )}
-        </StyledThumbnail>
+        </S.Thumbnail>
       )}
     </>
   );

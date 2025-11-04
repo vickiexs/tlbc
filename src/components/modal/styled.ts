@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledBackgroundOverlay = styled(`div`)(() => ({
+export const BackgroundOverlay = styled("div")(() => ({
   position: "fixed",
   top: 0,
   left: 0,
@@ -13,7 +13,7 @@ export const StyledBackgroundOverlay = styled(`div`)(() => ({
   alignItems: "center",
 }));
 
-export const StyledModalContainer = styled(`div`).withConfig({
+export const ModalContainer = styled("div").withConfig({
   shouldForwardProp: (props) => props !== "borderRadius",
 })<{ borderRadius?: number }>(({ theme, borderRadius }) => ({
   display: "flex",
@@ -27,7 +27,7 @@ export const StyledModalContainer = styled(`div`).withConfig({
   },
 }));
 
-export const StyledCloseButton = styled(`button`)(({ theme }) => ({
+export const CloseButton = styled("button")(({ theme }) => ({
   zIndex: 2,
   position: "absolute",
   right: 0,

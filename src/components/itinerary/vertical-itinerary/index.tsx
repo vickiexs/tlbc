@@ -6,15 +6,7 @@ import { PortableText } from "@portabletext/react";
 
 import Typography from "../../typography";
 
-import {
-  StyledItineraryContainer,
-  StyledItems,
-  StyledItemInfoContainer,
-  StyledCardHeading,
-  StyledVerticalLine,
-  StyledTimelineBullet,
-  // StyledVerticalLineMask,
-} from "./styled";
+import * as S from "./styled";
 import { HeadedContentBlockProps } from "../../headed-content-block/type";
 
 interface VerticalItineraryProps {
@@ -34,21 +26,21 @@ export default function VerticalItinerary({ items }: VerticalItineraryProps) {
   // });
 
   return (
-    <StyledItineraryContainer className="vertical-itinerary">
+    <S.ItineraryContainer className="vertical-itinerary">
       {/* <StyledVerticalLineMask /> */}
-      <StyledVerticalLine />
+      <S.VerticalLine />
       {/* </StyledLineContainer> */}
-      <StyledItems>
+      <S.Items>
         {items.map((item, index) => (
-          <StyledItemInfoContainer key={index}>
-            <StyledTimelineBullet />
-            <StyledCardHeading>{item.heading}</StyledCardHeading>
+          <S.ItemInfoContainer key={index}>
+            <S.TimelineBullet />
+            <S.CardHeading>{item.heading}</S.CardHeading>
             <Typography variation="body">
               <PortableText value={item.content} />
             </Typography>
-          </StyledItemInfoContainer>
+          </S.ItemInfoContainer>
         ))}
-      </StyledItems>
-    </StyledItineraryContainer>
+      </S.Items>
+    </S.ItineraryContainer>
   );
 }

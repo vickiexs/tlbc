@@ -3,7 +3,7 @@ import { useMediaQuery } from "@uidotdev/usehooks";
 
 import Icon from "../../../common/icons";
 
-import { StyledCloseButton } from "../styled";
+import * as S from "../styled";
 
 interface CloseButtonProps {
   handleClick: () => void;
@@ -14,8 +14,8 @@ export default function CloseButton({ handleClick }: CloseButtonProps) {
   const isMobile = useMediaQuery(theme.breakpoints.md);
 
   return (
-    <StyledCloseButton onClick={handleClick} className="close-button">
+    <S.CloseButton onClick={handleClick} className="close-button">
       <Icon icon="close" size={isMobile ? 24 : 32} />
-    </StyledCloseButton>
+    </S.CloseButton>
   );
 }

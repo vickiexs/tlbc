@@ -10,7 +10,7 @@ const MOBILE_HEADER_HEIGHT = 74;
 const DESKTOP_MENU_HEIGHT = 90;
 const MOBILE_MENU_HEIGHT = 300;
 
-export const StyledHeader = styled(`header`).withConfig({
+export const Header = styled("header").withConfig({
   shouldForwardProp: (props) =>
     props !== "visible" && props !== "isTransparent" && props !== "menuOpen",
 })<{
@@ -58,7 +58,7 @@ export const StyledHeader = styled(`header`).withConfig({
   };
 });
 
-export const StyledHeaderBackground = styled("div").withConfig({
+export const HeaderBackground = styled("div").withConfig({
   shouldForwardProp: (props) =>
     props !== "visible" &&
     props !== "isTransparent" &&
@@ -100,7 +100,7 @@ export const StyledHeaderBackground = styled("div").withConfig({
   },
 }));
 
-export const StyledHeaderContainer = styled("div")(() => ({
+export const HeaderContainer = styled("div")(() => ({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
@@ -108,7 +108,7 @@ export const StyledHeaderContainer = styled("div")(() => ({
   width: "100%",
 }));
 
-export const StyledLogoContainer = styled(Link)(({ theme }) => ({
+export const LogoContainer = styled(Link)(({ theme }) => ({
   display: "flex",
   svg: {
     height: "75px",
@@ -124,7 +124,7 @@ export const StyledLogoContainer = styled(Link)(({ theme }) => ({
   },
 }));
 
-export const StyledNavLinks = styled(`nav`)(({ theme }) => ({
+export const NavLinks = styled("nav")(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(6),
 
@@ -137,7 +137,7 @@ export const StyledNavLinks = styled(`nav`)(({ theme }) => ({
   },
 }));
 
-export const StyledMenuIcon = styled(MdMenu)(({ theme }) => ({
+export const MenuIcon = styled(MdMenu)(({ theme }) => ({
   height: "40px",
   width: "40px",
   fill: theme.palette.text,
@@ -147,13 +147,13 @@ export const StyledMenuIcon = styled(MdMenu)(({ theme }) => ({
   },
 }));
 
-export const StyledCloseIcon = styled(MdClose)(({ theme }) => ({
+export const CloseIcon = styled(MdClose)(({ theme }) => ({
   height: "40px",
   width: "40px",
   fill: theme.palette.text,
 }));
 
-export const StyledOverlay = styled(`div`)(() => ({
+export const Overlay = styled(`div`)(() => ({
   position: "fixed",
   height: "100vh",
   width: "100%",
@@ -171,7 +171,7 @@ export const StyledOverlay = styled(`div`)(() => ({
   },
 }));
 
-export const StyledDesktopMenu = styled("div")(({ theme }) => ({
+export const DesktopMenu = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(7),
@@ -184,7 +184,7 @@ export const StyledDesktopMenu = styled("div")(({ theme }) => ({
   },
 }));
 
-export const StyledMenuLinks = styled("nav")(({ theme }) => ({
+export const MenuLinks = styled("nav")(({ theme }) => ({
   display: "flex",
   justifyContent: "flex-end",
   gap: theme.spacing(7),
@@ -194,13 +194,13 @@ export const StyledMenuLinks = styled("nav")(({ theme }) => ({
   },
 }));
 
-export const StyledMobileMenu = styled("nav")(({ theme }) => ({
+export const MobileMenu = styled("nav")(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
   gap: theme.spacing(7),
 }));
 
-export const StyledMobileMenuItems = styled("div")(({ theme }) => ({
+export const MobileMenuItems = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   marginTop: theme.spacing(12),
@@ -212,7 +212,7 @@ export const StyledMobileMenuItems = styled("div")(({ theme }) => ({
   },
 }));
 
-export const StyledSubmenu = styled("div")(({ theme }) => ({
+export const Submenu = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-end",
@@ -221,7 +221,7 @@ export const StyledSubmenu = styled("div")(({ theme }) => ({
   gap: theme.spacing(4),
 }));
 
-export const StyledNavDropdownItem = styled("button").withConfig({
+export const NavDropdownItem = styled("button").withConfig({
   shouldForwardProp: (props) => props !== "active" && props !== "menuOpen",
 })<{ active: boolean; menuOpen?: boolean }>(({ theme, active, menuOpen }) => ({
   border: "none",

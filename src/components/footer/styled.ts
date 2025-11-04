@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledFooterWrapper = styled(`footer`).withConfig({
+export const FooterWrapper = styled("footer").withConfig({
   shouldForwardProp: (props) => props !== "isHomepage",
 })<{ isHomepage: boolean }>(({ theme, isHomepage }) => ({
   display: "flex",
@@ -20,7 +20,7 @@ export const StyledFooterWrapper = styled(`footer`).withConfig({
   },
 }));
 
-export const StyledContact = styled(`div`)(({ theme }) => ({
+export const Contact = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   gap: theme.spacing(4),
@@ -38,7 +38,7 @@ export const StyledContact = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledIconLinks = styled(`div`)(({ theme }) => ({
+export const IconLinks = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -52,7 +52,7 @@ export const StyledIconLinks = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledCopyright = styled(`div`)(({ theme }) => ({
+export const Copyright = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   fontSize: theme.fontSize(3),

@@ -1,6 +1,6 @@
 import Icon from "../icons";
 
-import { StyledIconLink } from "./styled";
+import * as S from "./styled";
 import { IconLinkProps } from "./type";
 
 export default function IconLink({
@@ -11,8 +11,8 @@ export default function IconLink({
   target = "_self",
 }: IconLinkProps) {
   return (
-    <StyledIconLink href={link} color={color} target={target}>
+    <S.IconLink href={link} color={color} target={target}>
       <Icon icon={icon} size={size} />
-    </StyledIconLink>
+    </S.IconLink>
   );
 }

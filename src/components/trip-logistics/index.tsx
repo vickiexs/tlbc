@@ -8,11 +8,7 @@ import Typography from "../typography";
 import Hr from "../../common/horizontal-rule";
 import TripDetails from "./trip-details";
 
-import {
-  StyledTripLogistics,
-  StyledTripDetailsContainer,
-  StyledTripCoverage,
-} from "./styled";
+import * as S from "./styled";
 import { TripLogisticsProps } from "./type";
 
 export default function TripLogistics({
@@ -27,21 +23,21 @@ export default function TripLogistics({
   const isBreakpointMd = useMediaQuery(theme.breakpoints.md);
 
   return (
-    <StyledTripLogistics>
-      <StyledTripDetailsContainer>
+    <S.TripLogistics>
+      <S.TripDetailsContainer>
         <TripDetails tripDetails={tripDetails} bookCallInfo={bookCallInfo} />
         <TripHosts {...tripHosts} />
-      </StyledTripDetailsContainer>
+      </S.TripDetailsContainer>
       {isBreakpointMd && (
         <Typography variation="body">
           <PortableText value={bookCallInfo} />
         </Typography>
       )}
       <Hr color={theme.palette.grey} />
-      <StyledTripCoverage>
+      <S.TripCoverage>
         <HeadedContentBlock {...included} />
         <HeadedContentBlock {...notIncluded} />
-      </StyledTripCoverage>
-    </StyledTripLogistics>
+      </S.TripCoverage>
+    </S.TripLogistics>
   );
 }

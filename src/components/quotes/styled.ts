@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledContainer = styled(`div`)(({ theme }) => ({
+export const Container = styled("div")(({ theme }) => ({
   position: "relative",
   display: "flex",
   flexDirection: "column",
@@ -35,7 +35,7 @@ export const StyledContainer = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledQuote = styled(`div`)(({ theme }) => ({
+export const Quote = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -53,14 +53,14 @@ export const StyledQuote = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledImageLine = styled(`div`)(() => ({
+export const ImageLine = styled("div")(() => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   minHeight: "80px",
 }));
 
-export const StyledImageContainer = styled(`div`)(({ theme }) => ({
+export const ImageContainer = styled("div")(({ theme }) => ({
   position: "relative",
   margin: `0 ${theme.spacing(10)}`,
   zIndex: 2,
@@ -73,14 +73,14 @@ export const StyledImageContainer = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledName = styled("div")(({ theme }) => ({
+export const Name = styled("div")(({ theme }) => ({
   fontSize: theme.fontSize(4),
   fontWeight: theme.fontWeight.semiBold,
   marginTop: theme.spacing(10),
   textTransform: "uppercase",
 }));
 
-export const StyledHr = styled(`div`)(({ theme }) => ({
+export const Hr = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   position: "absolute",
@@ -96,7 +96,7 @@ export const StyledHr = styled(`div`)(({ theme }) => ({
   },
 }));
 
-export const StyledArrowButton = styled(`button`)(({ theme }) => ({
+export const ArrowButton = styled("button")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
