@@ -1,4 +1,4 @@
-import{c as Pe,g as Xe}from"./main-3KV64w4n.js";var se={exports:{}};/** @license
+import{c as Pe,g as Xe}from"./main-CweL3j_Y.js";var se={exports:{}};/** @license
  * eventsource.js
  * Available under MIT License (MIT)
  * https://github.com/Yaffle/EventSource/
