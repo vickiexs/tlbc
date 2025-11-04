@@ -28,7 +28,7 @@ export default function FAQs({
     if (isSingleColumn) {
       return maxIndex >= faqCount ? 5 : prevState + 5;
     } else {
-      return maxIndex >= mid ? 5 : prevState + 5;
+      return maxIndex >= mid ? 5 : Math.min(prevState + 5, mid);
     }
   };
 

@@ -10,14 +10,7 @@ import Image from "../../../../common/image";
 import ArrowIcon from "../../../../common/icons/arrow";
 import Ellipsis from "../../../../common/ellipsis";
 
-import {
-  StyledTestimonialCard,
-  StyledCardHeader,
-  StyledGuestDetails,
-  StyledHeading,
-  StyledTestimonial,
-  StyledButton,
-} from "./styled";
+import * as S from "./styled";
 import { Testimonial } from "../type";
 
 export default function TestimonialCard({
@@ -49,34 +42,34 @@ export default function TestimonialCard({
   }, [text, width]);
 
   return (
-    <StyledTestimonialCard>
-      <StyledCardHeader>
+    <S.TestimonialCard>
+      <S.CardHeader>
         <Avatar size={avatarSize}>
           <Image {...image} />
         </Avatar>
-        <StyledGuestDetails>
-          <StyledHeading>{`${fullName} (AGE ${age})`}</StyledHeading>
-          <StyledHeading className="location">{location}</StyledHeading>
-        </StyledGuestDetails>
-      </StyledCardHeader>
-      <StyledTestimonial isExpanded={isExpanded} id={`testimonial-${index}`}>
+        <S.GuestDetails>
+          <S.Heading>{`${fullName} (AGE ${age})`}</S.Heading>
+          <S.Heading className="location">{location}</S.Heading>
+        </S.GuestDetails>
+      </S.CardHeader>
+      <S.Testimonial isExpanded={isExpanded} id={`testimonial-${index}`}>
         <Typography variation="body">
           <PortableText value={testimonial} />
         </Typography>
-        <StyledHeading className="trip">{trips}</StyledHeading>
-      </StyledTestimonial>
+        <S.Heading className="trip">{trips}</S.Heading>
+      </S.Testimonial>
       {isTextClamped && (
         <>
           {!isExpanded && <Ellipsis />}
-          <StyledButton
+          <S.Button
             onClick={() => setIsExpanded((prevState) => !prevState)}
             className={classNames({ "read-less": isExpanded })}
           >
             {isExpanded ? collapseTextLabel : expandTextLabel}
             <ArrowIcon />
-          </StyledButton>
+          </S.Button>
         </>
       )}
-    </StyledTestimonialCard>
+    </S.TestimonialCard>
   );
 }

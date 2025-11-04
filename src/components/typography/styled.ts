@@ -90,7 +90,7 @@ export const Body = styled("div")(({ theme }) => ({
   },
   p: {
     marginTop: 0,
-    marginBottom: "30px",
+    marginBottom: theme.spacing(5),
   },
   "p:last-child": {
     marginBottom: 0,

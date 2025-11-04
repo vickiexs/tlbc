@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledTestimonialCard = styled("div")(({ theme }) => ({
+export const TestimonialCard = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(5),
@@ -18,7 +18,7 @@ export const StyledTestimonialCard = styled("div")(({ theme }) => ({
   },
 }));
 
-export const StyledCardHeader = styled("div")(({ theme }) => ({
+export const CardHeader = styled("div")(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(5),
   alignItems: "center",
@@ -28,13 +28,13 @@ export const StyledCardHeader = styled("div")(({ theme }) => ({
   },
 }));
 
-export const StyledGuestDetails = styled("div")(({ theme }) => ({
+export const GuestDetails = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(1),
 }));
 
-export const StyledHeading = styled("div")(({ theme }) => ({
+export const Heading = styled("div")(({ theme }) => ({
   fontSize: theme.fontSize(4),
   fontWeight: theme.fontWeight.semiBold,
   textTransform: "uppercase",
@@ -59,7 +59,7 @@ export const StyledHeading = styled("div")(({ theme }) => ({
   },
 }));
 
-export const StyledTestimonial = styled("div").withConfig({
+export const Testimonial = styled("div").withConfig({
   shouldForwardProp: (props) => props !== "isExpanded",
 })<{ isExpanded: boolean }>(({ theme, isExpanded }) => ({
   position: "relative",
@@ -69,6 +69,7 @@ export const StyledTestimonial = styled("div").withConfig({
   maxHeight: isExpanded ? "100%" : "calc(8 * 30px)",
 
   p: {
+    marginBottom: "30px",
     lineHeight: "30px",
     [`@media ${theme.breakpoints.md}`]: {
       lineHeight: "26px",
@@ -87,7 +88,7 @@ export const StyledTestimonial = styled("div").withConfig({
   },
 }));
 
-export const StyledButton = styled("button")(({ theme }) => ({
+export const Button = styled("button")(({ theme }) => ({
   WebkitTapHighlightColor: "transparent",
   position: "relative",
   backgroundColor: "transparent",
