@@ -11,9 +11,10 @@ import usePageTracking from "./utils/hooks/analyticsPageTracking";
 
 import Home from "./pages/home";
 import TripPage from "./pages/trips";
-import ArcticMemories from "./pages/arctic-memories";
+import ArcticMemories from "./pages/gallery";
 import Testimonials from "./pages/testimonials";
 import About from "./pages/about";
+import Gallery from "./pages/gallery";
 import Error404 from "./pages/404";
 
 import Header from "./components/header";
@@ -79,6 +80,8 @@ function App() {
         return <Testimonials {...pageData} />;
       case "about":
         return <About {...pageData} />;
+      case "gallery":
+        return <Gallery {...pageData} />;
       case "error":
         return <Error404 {...pageData} />;
     }

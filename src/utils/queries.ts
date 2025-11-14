@@ -12,6 +12,7 @@ import { aboutIntroQuery } from "../pages/about/intro/query";
 import { teamMemberQuery } from "../pages/about/team-members/query";
 import { quotesQuery } from "../components/quotes/query";
 import { videoQuery } from "../components/video/query";
+import { imageQuery, imageFragment } from "../common/image/query";
 import { testimonialsQuery } from "../pages/testimonials/testimonial-listing/query";
 
 export const pageQuery = `
@@ -34,6 +35,31 @@ export const pageQuery = `
     ${quotesQuery},
     ${videoQuery},
     ${testimonialsQuery}
+  },
+  metadata->{
+    title,
+    description
+  }
+}
+`;
+
+export const galleryAlbumsQuery = `
+*[_type in ["galleryAlbum"]]{
+  path,
+  heading,
+  coverImage {
+    ${imageFragment}
+  }
+}
+`;
+
+export const galleryPageQuery = `
+*[_type in ["galleryAlbum"]]{
+  key,
+  path,
+  heading,
+  media[]->{
+    ${imageQuery}
   },
   metadata->{
     title,
