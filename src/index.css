@@ -3,277 +3,277 @@
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 
 :root {
-  font-family: "Titillium Web";
-  --bg-color: #000;
-  --loading-font-color: #fff;
-  --loading-text: "LOADING YOUR ADVENTURE...";
-  --typewriterSpeed: 2.5s;
-  --typewriterCharacters: 22;
-  --typewriterDelay: 0.5s;
+	font-family: "Titillium Web";
+	--bg-color: #000;
+	--loading-font-color: #fff;
+	--loading-text: "LOADING YOUR ADVENTURE...";
+	--typewriterSpeed: 2.5s;
+	--typewriterCharacters: 22;
+	--typewriterDelay: 0.5s;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+	box-sizing: inherit;
 }
 
 html {
-  box-sizing: border-box;
-  height: 100%;
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	height: 100%;
+	overflow-x: hidden;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+	margin: 0;
+	padding: 0;
+	height: 100%;
 }
 
 button {
-  &:hover {
-    cursor: pointer;
-  }
+	&:hover {
+		cursor: pointer;
+	}
 }
 
 .lock-scroll {
-  overflow: hidden;
+	overflow: hidden;
 }
 
 .loader {
-  position: absolute;
-  top: 0;
-  background-color: var(--bg-color);
-  height: 100svh;
-  width: 100%;
-  transition: opacity 0.5s;
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	position: absolute;
+	top: 0;
+	background-color: var(--bg-color);
+	height: 100svh;
+	width: 100%;
+	transition: opacity 0.5s;
+	z-index: 999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 60px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 60px;
 }
 
 .loader--hide {
-  opacity: 0;
-  pointer-events: none;
+	opacity: 0;
+	pointer-events: none;
 }
 
 .container.container--hide {
-  display: none;
+	display: none;
 }
 
 .logo-container {
-  position: relative;
-  height: 100%;
-  width: clamp(200px, 12vw, 250px);
+	position: relative;
+	height: 100%;
+	width: clamp(200px, 12vw, 250px);
 
-  img {
-    height: 100%;
-    width: 100%;
-    position: relative;
-    z-index: 1;
-    display: block;
-  }
+	img {
+		height: 100%;
+		width: 100%;
+		position: relative;
+		z-index: 1;
+		display: block;
+	}
 }
 
 .glitch-layers {
-  position: absolute;
-  z-index: 2;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
+	position: absolute;
+	z-index: 2;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	display: flex;
+	flex-direction: column;
 }
 
 .glitch {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background-image: url("/logo.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-image: url("/icon-logo.svg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
 
-  transform: translateX(-2%);
-  animation: glitch 4s infinite linear alternate;
+	transform: translateX(-2%);
+	animation: glitch 4s infinite linear alternate;
 }
 
 .glitch-flash {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background-image: url("/logo.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-image: url("/icon-logo.svg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
 
-  transform: translateX(2%);
-  animation: flash 1s infinite linear;
+	transform: translateX(2%);
+	animation: flash 1s infinite linear;
 }
 
 .text-container {
-  position: relative;
+	position: relative;
 }
 
 .loading-text {
-  position: relative;
-  color: var(--loading-font-color);
-  text-align: center;
-  font-family: "JetBrains Mono", monospace;
-  font-size: clamp(20px, 1vw, 36px);
-  width: max-content;
+	position: relative;
+	color: var(--loading-font-color);
+	text-align: center;
+	font-family: "JetBrains Mono", monospace;
+	font-size: clamp(20px, 1vw, 36px);
+	width: max-content;
 
-  animation: textGlitch 1s linear infinite;
+	animation: textGlitch 1s linear infinite;
 
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
 
-  &::before {
-    background: var(--bg-color);
-    animation: typewriter var(--typewriterSpeed)
-      steps(var(--typewriterCharacters)) var(--typewriterDelay) forwards;
-  }
+	&::before {
+		background: var(--bg-color);
+		animation: typewriter var(--typewriterSpeed)
+			steps(var(--typewriterCharacters)) var(--typewriterDelay) forwards;
+	}
 
-  &::after {
-    width: 0.125em;
-    background: var(--loading-font-color);
-    animation: typewriter var(--typewriterSpeed)
-        steps(var(--typewriterCharacters)) var(--typewriterDelay) forwards,
-      blink 750ms steps(var(--typewriterCharacters)) infinite;
-  }
+	&::after {
+		width: 0.125em;
+		background: var(--loading-font-color);
+		animation: typewriter var(--typewriterSpeed)
+				steps(var(--typewriterCharacters)) var(--typewriterDelay) forwards,
+			blink 750ms steps(var(--typewriterCharacters)) infinite;
+	}
 }
 
 @media (max-width: 1920px) {
-  .container {
-    gap: 40px;
-  }
-  .logo-container {
-    width: clamp(150px, 27vw, 200px);
-  }
-  .loading-text {
-    font-size: clamp(20px, 1vw, 28px);
-  }
+	.container {
+		gap: 40px;
+	}
+	.logo-container {
+		width: clamp(150px, 27vw, 200px);
+	}
+	.loading-text {
+		font-size: clamp(20px, 1vw, 28px);
+	}
 }
 
 @media (max-width: 1280px) {
-  .loading-text {
-    font-size: clamp(16px, 3vw, 24px);
-  }
+	.loading-text {
+		font-size: clamp(16px, 3vw, 24px);
+	}
 }
 
 @media (max-width: 900px) {
-  .logo-container {
-    width: clamp(150px, 27vw, 300px);
-  }
+	.logo-container {
+		width: clamp(150px, 27vw, 300px);
+	}
 }
 
 @media (max-width: 600px) {
-  .container {
-    gap: 30px;
-  }
+	.container {
+		gap: 30px;
+	}
 }
 
 @keyframes glitch {
-  0% {
-    clip-path: polygon(0 15%, 100% 15%, 100% 30%, 0 30%);
-  }
-  15% {
-    clip-path: polygon(0 3%, 100% 3%, 100% 3%, 0 3%);
-  }
-  25% {
-    clip-path: polygon(0 8%, 100% 8%, 100% 20%, 0 20%);
-  }
-  30% {
-    clip-path: polygon(0 20%, 100% 20%, 100% 20%, 0 20%);
-  }
-  45% {
-    clip-path: polygon(0 45%, 100% 45%, 100% 45%, 0 45%);
-  }
-  50% {
-    clip-path: polygon(0 50%, 100% 50%, 100% 57%, 0 57%);
-  }
-  65% {
-    clip-path: polygon(0 60%, 100% 60%, 100% 60%, 0 60%);
-  }
-  75% {
-    clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
-  }
-  80% {
-    clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%);
-  }
-  95% {
-    clip-path: polygon(0 45%, 100% 45%, 100% 60%, 0 60%);
-  }
-  100% {
-    clip-path: polygon(0 11%, 100% 11%, 100% 15%, 0 15%);
-  }
+	0% {
+		clip-path: polygon(0 15%, 100% 15%, 100% 30%, 0 30%);
+	}
+	15% {
+		clip-path: polygon(0 3%, 100% 3%, 100% 3%, 0 3%);
+	}
+	25% {
+		clip-path: polygon(0 8%, 100% 8%, 100% 20%, 0 20%);
+	}
+	30% {
+		clip-path: polygon(0 20%, 100% 20%, 100% 20%, 0 20%);
+	}
+	45% {
+		clip-path: polygon(0 45%, 100% 45%, 100% 45%, 0 45%);
+	}
+	50% {
+		clip-path: polygon(0 50%, 100% 50%, 100% 57%, 0 57%);
+	}
+	65% {
+		clip-path: polygon(0 60%, 100% 60%, 100% 60%, 0 60%);
+	}
+	75% {
+		clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
+	}
+	80% {
+		clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%);
+	}
+	95% {
+		clip-path: polygon(0 45%, 100% 45%, 100% 60%, 0 60%);
+	}
+	100% {
+		clip-path: polygon(0 11%, 100% 11%, 100% 15%, 0 15%);
+	}
 }
 
 @keyframes flash {
-  0% {
-    opacity: 0.2;
-  }
-  30% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
+	0% {
+		opacity: 0.2;
+	}
+	30% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+	}
 }
 
 @keyframes typewriter {
-  to {
-    left: 100%;
-  }
+	to {
+		left: 100%;
+	}
 }
 
 @keyframes blink {
-  to {
-    background: transparent;
-  }
+	to {
+		background: transparent;
+	}
 }
 
 @keyframes textGlitch {
-  2%,
-  64% {
-    transform: translate(0.7px, 0) skew(0deg);
-  }
-  4%,
-  60% {
-    transform: translate(-0.7px, 0) skew(0deg);
-  }
-  62% {
-    transform: translate(0, 0) skew(5deg);
-  }
+	2%,
+	64% {
+		transform: translate(0.7px, 0) skew(0deg);
+	}
+	4%,
+	60% {
+		transform: translate(-0.7px, 0) skew(0deg);
+	}
+	62% {
+		transform: translate(0, 0) skew(5deg);
+	}
 }
 
 @font-face {
-  font-family: "Mukta";
-  src: url("https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
+	font-family: "Mukta";
+	src: url("https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
 }
