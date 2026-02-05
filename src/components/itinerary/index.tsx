@@ -22,9 +22,15 @@ export default function Itinerary({
 	additionalImages,
 }: ItineraryProps) {
 	const theme = useTheme();
-	const isBreakpointLg = useMediaQuery(theme.breakpoints.lg);
 	const isBreakpointMd = useMediaQuery(theme.breakpoints.md);
 	const isBreakpointSm = useMediaQuery(theme.breakpoints.sm);
+
+	const getSlideGap = () => {
+		if (isBreakpointSm) return 30;
+		if (isBreakpointMd) return 40;
+		if (isBreakpointMd) return 60;
+		return 80;
+	};
 
 	return (
 		<S.ItineraryContainer>
@@ -33,7 +39,7 @@ export default function Itinerary({
 			</Typography>
 			<Swiper
 				slidesPerView="auto"
-				spaceBetween={isBreakpointMd ? 40 : isBreakpointLg ? 60 : 80}
+				spaceBetween={getSlideGap()}
 				modules={[Navigation]}
 				navigation={{
 					nextEl: ".swiper-button-next",

@@ -8,7 +8,10 @@ export const CarouselCard = styled("div")(({ theme }) => ({
 		maxWidth: "350px",
 	},
 	[`@media ${theme.breakpoints.sm}`]: {
-		maxWidth: "300px",
+		maxWidth: "320px",
+	},
+	[`@media ${theme.breakpoints.xs}`]: {
+		maxWidth: "calc(100vw - 56px)",
 	},
 }));
 

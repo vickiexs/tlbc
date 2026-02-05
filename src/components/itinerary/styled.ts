@@ -9,6 +9,12 @@ export const ItineraryContainer = styled("div")(({ theme }) => ({
 		height: "100%",
 		overflow: "visible",
 		marginTop: theme.spacing(20),
+		[`@media ${theme.breakpoints.md}`]: {
+			marginTop: theme.spacing(15),
+		},
+		[`@media ${theme.breakpoints.sm}`]: {
+			marginTop: theme.spacing(12),
+		},
 	},
 	".swiper-wrapper": {
 		height: "100%",
@@ -41,6 +47,7 @@ export const ItineraryContainer = styled("div")(({ theme }) => ({
 		padding: 0,
 		transition: "all 500ms",
 		transform: "rotate(-90deg)",
+		WebkitTapHighlightColor: "transparent",
 		svg: {
 			height: "44px",
 			padding: "10px",
@@ -48,6 +55,9 @@ export const ItineraryContainer = styled("div")(({ theme }) => ({
 		},
 		"&:hover": {
 			backgroundColor: "rgba(0, 0, 0, 0.3)",
+			[`@media ${theme.breakpoints.sm}`]: {
+				backgroundColor: "transparent",
+			},
 		},
 		[`@media ${theme.breakpoints.xxl}`]: {
 			right: "43%",
@@ -72,6 +82,7 @@ export const ItineraryContainer = styled("div")(({ theme }) => ({
 		padding: 0,
 		transition: "all 250ms",
 		transform: "rotate(90deg)",
+		WebkitTapHighlightColor: "transparent",
 		svg: {
 			height: "44px",
 			padding: "10px",
@@ -79,6 +90,9 @@ export const ItineraryContainer = styled("div")(({ theme }) => ({
 		},
 		"&:hover": {
 			backgroundColor: "rgba(0, 0, 0, 0.3)",
+			[`@media ${theme.breakpoints.sm}`]: {
+				backgroundColor: "transparent",
+			},
 		},
 		[`@media ${theme.breakpoints.xxl}`]: {
 			left: "43%",
@@ -128,6 +142,7 @@ export const ButtonContainer = styled("div")(({ theme }) => ({
 	},
 
 	[`@media ${theme.breakpoints.md}`]: {
+		marginTop: theme.spacing(15),
 		marginBottom: theme.spacing(10),
 	},
 }));
