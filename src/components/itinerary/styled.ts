@@ -67,6 +67,9 @@ export const ItineraryContainer = styled("div")(({ theme }) => ({
 		},
 		[`@media ${theme.breakpoints.sm}`]: {
 			right: "20%",
+			"&:active": {
+				backgroundColor: "rgba(0, 0, 0, 0.3)",
+			},
 		},
 	},
 	".swiper-button-prev": {
@@ -102,6 +105,9 @@ export const ItineraryContainer = styled("div")(({ theme }) => ({
 		},
 		[`@media ${theme.breakpoints.sm}`]: {
 			left: "20%",
+			"&:active": {
+				backgroundColor: "rgba(0, 0, 0, 0.3)",
+			},
 		},
 	},
 	".swiper-button-next.hidden": {
