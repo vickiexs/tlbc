@@ -13,65 +13,62 @@ import Hr from "../../common/horizontal-rule";
 import ArrowIcon from "../../common/icons/arrow";
 import CaptionedImage from "../captioned-image";
 
-import VerticalItinerary from "./vertical-itinerary";
-
 import * as S from "./styled";
 import { ItineraryProps } from "./type";
 
 export default function Itinerary({
-  description,
-  timeline,
-  additionalImages,
+	description,
+	timeline,
+	additionalImages,
 }: ItineraryProps) {
-  const theme = useTheme();
-  const isBreakpointLg = useMediaQuery(theme.breakpoints.lg);
-  const isBreakpointMd = useMediaQuery(theme.breakpoints.md);
+	const theme = useTheme();
+	const isBreakpointLg = useMediaQuery(theme.breakpoints.lg);
+	const isBreakpointMd = useMediaQuery(theme.breakpoints.md);
+	const isBreakpointSm = useMediaQuery(theme.breakpoints.sm);
 
-  return (
-    <S.ItineraryContainer>
-      <Typography variation="body">
-        <PortableText value={description} />
-      </Typography>
-      {!isBreakpointMd ? (
-        <Swiper
-          slidesPerView="auto"
-          spaceBetween={isBreakpointLg ? 60 : 80}
-          modules={[Navigation]}
-          navigation={{
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          }}
-        >
-          {timeline.map((timelineItem, index) => (
-            <SwiperSlide key={index}>
-              <ItineraryCarouselCard {...timelineItem} />
-            </SwiperSlide>
-          ))}
-          <S.ButtonContainer>
-            <div className="swiper-button-next">
-              <ArrowIcon />
-            </div>
-            <div className="swiper-button-prev">
-              <ArrowIcon />
-            </div>
-            <Hr color={theme.palette.white} />
-          </S.ButtonContainer>
-        </Swiper>
-      ) : (
-        <VerticalItinerary items={timeline} />
-      )}
-      {additionalImages && (
-        <S.ImageContainer>
-          {additionalImages.map((image, index) => (
-            <CaptionedImage
-              image={image.image}
-              caption={image.caption}
-              aspectRatio={182 / 109}
-              key={index}
-            />
-          ))}
-        </S.ImageContainer>
-      )}
-    </S.ItineraryContainer>
-  );
+	return (
+		<S.ItineraryContainer>
+			<Typography variation="body" className="description">
+				<PortableText value={description} />
+			</Typography>
+			<Swiper
+				slidesPerView="auto"
+				spaceBetween={isBreakpointMd ? 40 : isBreakpointLg ? 60 : 80}
+				modules={[Navigation]}
+				navigation={{
+					nextEl: ".swiper-button-next",
+					prevEl: ".swiper-button-prev",
+				}}
+				centeredSlides={isBreakpointSm ? true : false}
+				centeredSlidesBounds={isBreakpointSm ? true : false}
+			>
+				{timeline.map((timelineItem, index) => (
+					<SwiperSlide key={index}>
+						<ItineraryCarouselCard {...timelineItem} />
+					</SwiperSlide>
+				))}
+				<S.ButtonContainer>
+					<div className="swiper-button-next">
+						<ArrowIcon />
+					</div>
+					<div className="swiper-button-prev">
+						<ArrowIcon />
+					</div>
+					<Hr color={theme.palette.white} />
+				</S.ButtonContainer>
+			</Swiper>
+			{additionalImages && (
+				<S.ImageContainer>
+					{additionalImages.map((image, index) => (
+						<CaptionedImage
+							image={image.image}
+							caption={image.caption}
+							aspectRatio={182 / 109}
+							key={index}
+						/>
+					))}
+				</S.ImageContainer>
+			)}
+		</S.ItineraryContainer>
+	);
 }
