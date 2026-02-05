@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+const BULLET_SIZE_DESKTOP = "20px";
+const BULLET_SIZE_TABLET = "17px";
+const BULLET_SIZE_MOBILE = "15px";
+
 export const CarouselCard = styled("div")(({ theme }) => ({
 	maxWidth: "450px",
 	textAlign: "justify",
@@ -32,7 +36,7 @@ export const LineContainer = styled("div")(({ theme }) => ({
 	justifyContent: "center",
 	position: "relative",
 	width: "100%",
-	height: "20px",
+	height: BULLET_SIZE_DESKTOP,
 	margin: `${theme.spacing(8)} 0`,
 
 	".hr": {
@@ -41,13 +45,29 @@ export const LineContainer = styled("div")(({ theme }) => ({
 		width: "150%",
 		margin: 0,
 	},
+
+	[`@media ${theme.breakpoints.lg}`]: {
+		height: BULLET_SIZE_TABLET,
+	},
+	[`@media ${theme.breakpoints.md}`]: {
+		height: BULLET_SIZE_MOBILE,
+	},
 }));
 
 export const TimelineBullet = styled("div")(({ theme }) => ({
 	position: "absolute",
 	top: 0,
-	height: "20px",
-	width: "20px",
+	height: BULLET_SIZE_DESKTOP,
+	width: BULLET_SIZE_DESKTOP,
 	borderRadius: "50%",
 	backgroundColor: theme.palette.white,
+
+	[`@media ${theme.breakpoints.lg}`]: {
+		height: BULLET_SIZE_TABLET,
+		width: BULLET_SIZE_TABLET,
+	},
+	[`@media ${theme.breakpoints.md}`]: {
+		height: BULLET_SIZE_MOBILE,
+		width: BULLET_SIZE_MOBILE,
+	},
 }));
