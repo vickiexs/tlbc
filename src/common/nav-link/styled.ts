@@ -32,14 +32,14 @@ export const NavLink = styled(Link).withConfig({
 		bottom: "-3px",
 
 		[`@media ${theme.breakpoints.md}`]: {
-			width: isActive ? "100%" : "0%",
+			display: "none",
 		},
 	},
 	"&:hover:before": {
 		width: "100%",
 
 		[`@media ${theme.breakpoints.md}`]: {
-			width: "0%",
+			display: "none",
 		},
 	},
 	[`@media ${theme.breakpoints.xxs}`]: {

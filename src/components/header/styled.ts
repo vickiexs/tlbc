@@ -272,6 +272,9 @@ export const NavDropdownItem = styled("button").withConfig({
 	},
 }));
 
-export const MobileNavLink = styled(NavLink)(() => ({
+export const MobileNavLink = styled(NavLink).withConfig({
+	shouldForwardProp: (props) => props !== "active",
+})<{ active: boolean }>(({ active }) => ({
 	textAlign: "right",
+	opacity: active ? 0.5 : 1,
 }));
