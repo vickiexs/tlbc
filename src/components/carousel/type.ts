@@ -1,3 +1,5 @@
 export interface CarouselProps {
-  children: JSX.Element[];
+	children: JSX.Element[];
+	centeredSlides?: boolean;
+	centeredSlidesBounds?: boolean;
 }

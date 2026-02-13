@@ -13,34 +13,40 @@ import Hr from "../../common/horizontal-rule";
 import * as S from "./styled";
 import { CarouselProps } from "./type";
 
-export default function Carousel({ children }: CarouselProps) {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.md);
+export default function Carousel({
+	children,
+	centeredSlides,
+	centeredSlidesBounds,
+}: CarouselProps) {
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.md);
 
-  return (
-    <S.CarouselContainer className="carousel-container">
-      <Swiper
-        spaceBetween={isMobile ? 12 : 20}
-        slidesPerView="auto"
-        modules={[Navigation]}
-        navigation={{
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        }}
-      >
-        {children.map((child, index) => (
-          <SwiperSlide key={index}>{child}</SwiperSlide>
-        ))}
-        <S.ButtonContainer>
-          <div className="swiper-button-next">
-            <ArrowIcon />
-          </div>
-          <div className="swiper-button-prev">
-            <ArrowIcon />
-          </div>
-          <Hr color={theme.palette.text} />
-        </S.ButtonContainer>
-      </Swiper>
-    </S.CarouselContainer>
-  );
+	return (
+		<S.CarouselContainer className="carousel-container">
+			<Swiper
+				spaceBetween={isMobile ? 12 : 20}
+				slidesPerView="auto"
+				modules={[Navigation]}
+				navigation={{
+					nextEl: ".swiper-button-next",
+					prevEl: ".swiper-button-prev",
+				}}
+				centeredSlides={centeredSlides}
+				centeredSlidesBounds={centeredSlidesBounds}
+			>
+				{children.map((child, index) => (
+					<SwiperSlide key={index}>{child}</SwiperSlide>
+				))}
+				<S.ButtonContainer>
+					<div className="swiper-button-next">
+						<ArrowIcon />
+					</div>
+					<div className="swiper-button-prev">
+						<ArrowIcon />
+					</div>
+					<Hr color={theme.palette.text} />
+				</S.ButtonContainer>
+			</Swiper>
+		</S.CarouselContainer>
+	);
 }
