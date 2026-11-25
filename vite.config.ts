@@ -6,6 +6,11 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   base: "/",
   plugins: [react()],
+  server: {
+    // Sanity CORS only allows this origin, so fail loudly instead of drifting to 5174
+    port: 5173,
+    strictPort: true,
+  },
   optimizeDeps: {
     include: [
       "react-fast-compare",
@@ -18,8 +23,8 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, "index.html"),
-        fourzerofour: resolve(__dirname, "404.html"),
+        main: resolve(import.meta.dirname, "index.html"),
+        fourzerofour: resolve(import.meta.dirname, "404.html"),
       },
     },
   },
